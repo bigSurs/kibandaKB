@@ -1,8 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/routes/router.gr.dart';
+import 'package:get_it/get_it.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -12,6 +16,22 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+    @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      // await startKioskMode();
+      TokenCubit tokenCubit = GetIt.I.get<TokenCubit>();
+
+      // IsDeCubit isDeCubit = GetIt.I.get<IsDeCubit>();
+
+      tokenCubit.state.isEmpty
+          ? AutoRouter.of(context).replace(LoginRoute())
+          : isDeCubit.state
+              ? AutoRouter.of(context).replace(MainHomeDeliveryExecutiveRoute())
+              : AutoRouter.of(context).replace(const MainHomeRoute());
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     color: Palette.orangeColor),
                 children: [
                   TextSpan(
-                      text: 'Delivery',
+                      text: 'Kibanda',
                       style: TextStyle(color: Palette.greenColor))
                 ])),
           ),
