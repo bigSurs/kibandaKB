@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:overlay_support/overlay_support.dart';
@@ -23,35 +24,40 @@ class KwikBasketKibandaApp extends StatelessWidget {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-    return OverlaySupport.global(
-      child: MaterialApp.router(
-        title: 'Kwikbasket Delivery App',
-        debugShowCheckedModeBanner: false,
-        supportedLocales: const [
-          Locale('en'),
-        ],
-        localizationsDelegates: const [
-          FormBuilderLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
-        theme: ThemeData(
-            textTheme: GoogleFonts.poppinsTextTheme(),
-            primaryColor: Palette.greenColor,
-            colorScheme: const ColorScheme(
-                primary: Palette.greenColor,
-                secondary: Palette.orangeColor,
-                surface: Colors.white,
-                background: Colors.white,
-                error: Colors.red,
-                onPrimary: Colors.white,
-                onSecondary: Colors.white,
-                onSurface: Palette.greenColor,
-                onBackground: Palette.greenColor,
-                onError: Colors.white,
-                brightness: Brightness.light)),
-        routeInformationParser: _appRouter.defaultRouteParser(),
-        routerDelegate: _appRouter.delegate(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => TokenCubit('')),
+      ],
+      child: OverlaySupport.global(
+        child: MaterialApp.router(
+          title: 'Kwikbasket Delivery App',
+          debugShowCheckedModeBanner: false,
+          supportedLocales: const [
+            Locale('en'),
+          ],
+          localizationsDelegates: const [
+            FormBuilderLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          theme: ThemeData(
+              textTheme: GoogleFonts.poppinsTextTheme(),
+              primaryColor: Palette.greenColor,
+              colorScheme: const ColorScheme(
+                  primary: Palette.greenColor,
+                  secondary: Palette.orangeColor,
+                  surface: Colors.white,
+                  background: Colors.white,
+                  error: Colors.red,
+                  onPrimary: Colors.white,
+                  onSecondary: Colors.white,
+                  onSurface: Palette.greenColor,
+                  onBackground: Palette.greenColor,
+                  onError: Colors.white,
+                  brightness: Brightness.light)),
+          routeInformationParser: _appRouter.defaultRouteParser(),
+          routerDelegate: _appRouter.delegate(),
+        ),
       ),
     );
   }

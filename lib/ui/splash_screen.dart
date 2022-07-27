@@ -16,22 +16,28 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-    @override
+  @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 5), () {
+      AutoRouter.of(context).replace(LoginRoute());
       // await startKioskMode();
-      TokenCubit tokenCubit = GetIt.I.get<TokenCubit>();
 
-      // IsDeCubit isDeCubit = GetIt.I.get<IsDeCubit>();
+      // TokenCubit tokenCubit = GetIt.I.get<TokenCubit>();
 
-      tokenCubit.state.isEmpty
-          ? AutoRouter.of(context).replace(LoginRoute())
-          : isDeCubit.state
-              ? AutoRouter.of(context).replace(MainHomeDeliveryExecutiveRoute())
-              : AutoRouter.of(context).replace(const MainHomeRoute());
+      // // IsDeCubit isDeCubit = GetIt.I.get<IsDeCubit>();
+      // tokenCubit.state.isEmpty
+      //     ? AutoRouter.of(context).replace(const LoginRoute())
+      //     : AutoRouter.of(context).replace(const MainHomeRoute());
+
+      // tokenCubit.state.isEmpty
+      //     ? AutoRouter.of(context).replace(LoginRoute())
+      //     : isDeCubit.state
+      //         ? AutoRouter.of(context).replace(MainHomeDeliveryExecutiveRoute())
+      //         : AutoRouter.of(context).replace(const MainHomeRoute());
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

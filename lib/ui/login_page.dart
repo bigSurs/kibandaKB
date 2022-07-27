@@ -7,6 +7,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/routes/router.gr.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({
@@ -67,7 +68,7 @@ class LoginCard extends StatelessWidget {
                         color: Palette.orangeColor),
                     children: [
                       TextSpan(
-                          text: 'Delivery',
+                          text: 'Kibanda',
                           style: TextStyle(color: Palette.greenColor))
                     ])),
                 // ignore: todo
@@ -123,6 +124,18 @@ class LoginCard extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
+                CupertinoButton(
+                    child: const Text('Login'),
+                    color: Palette.greenColor,
+                    onPressed: () {
+                      //TODO:UNCOMMENT THE LOGIN SIGN UP LOGIC
+                      AutoRouter.of(context).replace(const MainHomeRoute());
+                      // if (_formKey.currentState!.saveAndValidate()) {
+                      //   context
+                      //       .read<LoginCubit>()
+                      //       .login(data: _formKey.currentState!.value);
+                      // }
+                    }),
                 // ListTile(
                 //   title: const Text('Order processing'),
                 //   onTap: () {
