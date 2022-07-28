@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:kibanda_kb/utilities/interceptors/auth_interceptor.dart';
@@ -11,7 +10,7 @@ class RestClient {
 
   Dio? get dio => _dio;
 
-  String baseURL = 'https://stage.apiadmin.kwikbasket.com/api/';
+  String baseURL = 'https://stage.salesexecutiveapi.kwikbasket.com/api/';
 
   RestClient({BaseOptions? options}) {
     create(options);
