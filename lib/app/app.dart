@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/cubits/login_cubit/login_cubit.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:kibanda_kb/routes/router.dart';
@@ -26,6 +27,7 @@ class KwikBasketKibandaApp extends StatelessWidget {
     ]);
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => TokenCubit('')),
       ],
       child: OverlaySupport.global(

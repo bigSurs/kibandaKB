@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kibanda_kb/models/api_response/api_response.dart';
 import 'package:kibanda_kb/models/login_response/login_response.dart';
@@ -20,7 +21,7 @@ class LoginCubit extends Cubit<LoginState> {
     } on String catch (e) {
       emit(LoginFailed(error: e));
     } catch (e) {
-      emit(LoginFailed(error: 'An error has occured'));
+      emit(LoginFailed(error: e.toString()));
     }
   }
 }

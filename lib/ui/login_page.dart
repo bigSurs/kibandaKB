@@ -82,12 +82,12 @@ class LoginCard extends StatelessWidget {
                   height: 40,
                 ),
                 FormBuilderTextField(
-                  name: 'user_name',
+                  name: 'email',
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                   ]),
                   decoration: InputDecoration(
-                    hintText: 'Username',
+                    hintText: 'email',
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(width: 2)),
@@ -128,18 +128,18 @@ class LoginCard extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                CupertinoButton(
-                    child: const Text('Login'),
-                    color: Palette.greenColor,
-                    onPressed: () {
-                      //TODO:UNCOMMENT THE LOGIN SIGN UP LOGIC
-                      // AutoRouter.of(context).replace(const MainHomeRoute());
-                      if (_formKey.currentState!.saveAndValidate()) {
-                        context
-                            .read<LoginCubit>()
-                            .login(data: _formKey.currentState!.value);
-                      }
-                    }),
+                // CupertinoButton(
+                //     child: const Text('Login'),
+                //     color: Palette.greenColor,
+                //     onPressed: () {
+                //       //TODO:UNCOMMENT THE LOGIN SIGN UP LOGIC
+                //       // AutoRouter.of(context).replace(const MainHomeRoute());
+                //       if (_formKey.currentState!.saveAndValidate()) {
+                //         context
+                //             .read<LoginCubit>()
+                //             .login(data: _formKey.currentState!.value);
+                //       }
+                //     }),
                 // ListTile(
                 //   title: const Text('Order processing'),
                 //   onTap: () {
@@ -183,7 +183,7 @@ class LoginCard extends StatelessWidget {
                       return const SpinKitHourGlass(color: Palette.greenColor);
                     }
                     return CupertinoButton(
-                        child: const Text('Login'),
+                        child: Text('Login'),
                         color: Palette.greenColor,
                         onPressed: () {
                           if (_formKey.currentState!.saveAndValidate()) {
