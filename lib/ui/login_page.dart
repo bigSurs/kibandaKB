@@ -6,8 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/cubits/login_cubit/login_cubit.dart';
+import 'package:kibanda_kb/cubits/op_selection_cubit/op_selection_cubit.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
+import 'package:kibanda_kb/utilities/toast/toast.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({
@@ -129,12 +133,12 @@ class LoginCard extends StatelessWidget {
                     color: Palette.greenColor,
                     onPressed: () {
                       //TODO:UNCOMMENT THE LOGIN SIGN UP LOGIC
-                      AutoRouter.of(context).replace(const MainHomeRoute());
-                      // if (_formKey.currentState!.saveAndValidate()) {
-                      //   context
-                      //       .read<LoginCubit>()
-                      //       .login(data: _formKey.currentState!.value);
-                      // }
+                      // AutoRouter.of(context).replace(const MainHomeRoute());
+                      if (_formKey.currentState!.saveAndValidate()) {
+                        context
+                            .read<LoginCubit>()
+                            .login(data: _formKey.currentState!.value);
+                      }
                     }),
                 // ListTile(
                 //   title: const Text('Order processing'),
@@ -160,51 +164,36 @@ class LoginCard extends StatelessWidget {
                 //     },
                 //   ),
                 // ),
-                // BlocConsumer<LoginCubit, LoginState>(
-                //   listener: (context, state) async {
-                //     if (state is LoginSuccess) {
-                //       bool isDe =
-                //           state.loginResponse.delivery_executive_id != null;
-                //       bool isOp =
-                //           state.loginResponse.order_processor_id != null;
-                //       context.read<IsDeCubit>().emit(isDe
-                //           ? true
-                //           : isOp
-                //               ? false
-                //               : false);
-                //       await AppToast.showToast(
-                //           message: 'Login successful', isError: false);
-                //       context
-                //           .read<TokenCubit>()
-                //           .saveToken(state.loginResponse.token!);
-
-                //       isOp
-                //           ? AutoRouter.of(context).replace(MainHomeRoute())
-                //           : isDe
-                //               ? AutoRouter.of(context)
-                //                   .replace(MainHomeDeliveryExecutiveRoute())
-                //               : print('Error');
-                //     }
-                //     if (state is LoginFailed) {
-                //       AppToast.showToast(message: state.error, isError: true);
-                //     }
-                //   },
-                //   builder: (context, state) {
-                //     if (state is LoginLoading) {
-                //       return const SpinKitHourGlass(color: Palette.greenColor);
-                //     }
-                //     return CupertinoButton(
-                //         child: const Text('Login'),
-                //         color: Palette.greenColor,
-                //         onPressed: () {
-                //           if (_formKey.currentState!.saveAndValidate()) {
-                //             context
-                //                 .read<LoginCubit>()
-                //                 .login(data: _formKey.currentState!.value);
-                //           }
-                //         });
-                //   },
-                // ),
+                BlocConsumer<LoginCubit, LoginState>(
+                  listener: (context, state) async {
+                    if (state is LoginSuccess) {
+                      await AppToast.showToast(
+                          message: 'Login successful', isError: false);
+                      context
+                          .read<TokenCubit>()
+                          .saveToken(state.loginResponse.token!);
+                      AutoRouter.of(context).replace(const MainHomeRoute());
+                    }
+                    if (state is LoginFailed) {
+                      AppToast.showToast(message: state.error, isError: true);
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is LoginLoading) {
+                      return const SpinKitHourGlass(color: Palette.greenColor);
+                    }
+                    return CupertinoButton(
+                        child: const Text('Login'),
+                        color: Palette.greenColor,
+                        onPressed: () {
+                          if (_formKey.currentState!.saveAndValidate()) {
+                            context
+                                .read<LoginCubit>()
+                                .login(data: _formKey.currentState!.value);
+                          }
+                        });
+                  },
+                ),
 
                 CupertinoButton(
                     child: const Text('Forgot password?'),
