@@ -1,17 +1,16 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_prodcuts.dart';
 import 'package:kibanda_kb/utilities/rest_client/rest_client.dart';
 
-part 'vendor_cubits_state.dart';
-part 'vendor_cubits_cubit.freezed.dart';
+part 'vendor_products_state.dart';
+part 'vendor_products_cubit.freezed.dart';
 
-class VendorCubitsCubit extends Cubit<VendorCubitsState> {
-  VendorCubitsCubit() : super(VendorCubitsState.initial());
+class VendorProductsCubit extends Cubit<VendorProductsState> {
+  VendorProductsCubit() : super(VendorProductsState.initial());
 
   getvendorprducts() async {
-    emit(const VendorCubitsState.loading());
+    emit(const VendorProductsState.loading());
     try {
       var response = await RestClient().dio!.get(
           'https://stage.salesexecutiveapi.kwikbasket.com/api/products',
@@ -30,9 +29,9 @@ class VendorCubitsCubit extends Cubit<VendorCubitsState> {
       //     ((index) => AssignedOrder.fromJson(ordersinJson[index])));
       // print(orders[0]);
 
-      emit(VendorCubitsState.success(assignedProducts: products));
+      emit(VendorProductsState.success(assignedProducts: products));
     } catch (e) {
-      emit(VendorCubitsState.failed());
+      emit(VendorProductsState.failed());
     }
   }
 }
