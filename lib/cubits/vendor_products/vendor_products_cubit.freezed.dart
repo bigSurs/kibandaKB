@@ -20,49 +20,49 @@ mixin _$VendorProductsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProdcuts>? assignedProducts) success,
-    required TResult Function() failed,
+    required TResult Function() success,
+    required TResult Function(String error) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
-    TResult Function()? failed,
+    TResult Function()? success,
+    TResult Function(String error)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
-    TResult Function()? failed,
+    TResult Function()? success,
+    TResult Function(String error)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Laoding value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(Failed_ value) failed,
+    required TResult Function(_Failed value) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Laoding value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(Failed_ value)? failed,
+    TResult Function(_Failed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Laoding value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(Failed_ value)? failed,
+    TResult Function(_Failed value)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,8 +127,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProdcuts>? assignedProducts) success,
-    required TResult Function() failed,
+    required TResult Function() success,
+    required TResult Function(String error) failed,
   }) {
     return initial();
   }
@@ -138,8 +138,8 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
-    TResult Function()? failed,
+    TResult Function()? success,
+    TResult Function(String error)? failed,
   }) {
     return initial?.call();
   }
@@ -149,8 +149,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
-    TResult Function()? failed,
+    TResult Function()? success,
+    TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -163,9 +163,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Laoding value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(Failed_ value) failed,
+    required TResult Function(_Failed value) failed,
   }) {
     return initial(this);
   }
@@ -174,9 +174,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Laoding value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(Failed_ value)? failed,
+    TResult Function(_Failed value)? failed,
   }) {
     return initial?.call(this);
   }
@@ -185,9 +185,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Laoding value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(Failed_ value)? failed,
+    TResult Function(_Failed value)? failed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -202,27 +202,27 @@ abstract class _Initial implements VendorProductsState {
 }
 
 /// @nodoc
-abstract class _$$_LaodingCopyWith<$Res> {
-  factory _$$_LaodingCopyWith(
-          _$_Laoding value, $Res Function(_$_Laoding) then) =
-      __$$_LaodingCopyWithImpl<$Res>;
+abstract class _$$_LoadingCopyWith<$Res> {
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
+      __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LaodingCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res>
     extends _$VendorProductsStateCopyWithImpl<$Res>
-    implements _$$_LaodingCopyWith<$Res> {
-  __$$_LaodingCopyWithImpl(_$_Laoding _value, $Res Function(_$_Laoding) _then)
-      : super(_value, (v) => _then(v as _$_Laoding));
+    implements _$$_LoadingCopyWith<$Res> {
+  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+      : super(_value, (v) => _then(v as _$_Loading));
 
   @override
-  _$_Laoding get _value => super._value as _$_Laoding;
+  _$_Loading get _value => super._value as _$_Loading;
 }
 
 /// @nodoc
 
-class _$_Laoding implements _Laoding {
-  const _$_Laoding();
+class _$_Loading implements _Loading {
+  const _$_Loading();
 
   @override
   String toString() {
@@ -232,7 +232,7 @@ class _$_Laoding implements _Laoding {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Laoding);
+        (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -243,8 +243,8 @@ class _$_Laoding implements _Laoding {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProdcuts>? assignedProducts) success,
-    required TResult Function() failed,
+    required TResult Function() success,
+    required TResult Function(String error) failed,
   }) {
     return loading();
   }
@@ -254,8 +254,8 @@ class _$_Laoding implements _Laoding {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
-    TResult Function()? failed,
+    TResult Function()? success,
+    TResult Function(String error)? failed,
   }) {
     return loading?.call();
   }
@@ -265,8 +265,8 @@ class _$_Laoding implements _Laoding {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
-    TResult Function()? failed,
+    TResult Function()? success,
+    TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -279,9 +279,9 @@ class _$_Laoding implements _Laoding {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Laoding value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(Failed_ value) failed,
+    required TResult Function(_Failed value) failed,
   }) {
     return loading(this);
   }
@@ -290,9 +290,9 @@ class _$_Laoding implements _Laoding {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Laoding value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(Failed_ value)? failed,
+    TResult Function(_Failed value)? failed,
   }) {
     return loading?.call(this);
   }
@@ -301,9 +301,9 @@ class _$_Laoding implements _Laoding {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Laoding value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(Failed_ value)? failed,
+    TResult Function(_Failed value)? failed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -313,8 +313,8 @@ class _$_Laoding implements _Laoding {
   }
 }
 
-abstract class _Laoding implements VendorProductsState {
-  const factory _Laoding() = _$_Laoding;
+abstract class _Loading implements VendorProductsState {
+  const factory _Loading() = _$_Loading;
 }
 
 /// @nodoc
@@ -322,7 +322,6 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
-  $Res call({List<VendorProdcuts>? assignedProducts});
 }
 
 /// @nodoc
@@ -334,174 +333,22 @@ class __$$_SuccessCopyWithImpl<$Res>
 
   @override
   _$_Success get _value => super._value as _$_Success;
-
-  @override
-  $Res call({
-    Object? assignedProducts = freezed,
-  }) {
-    return _then(_$_Success(
-      assignedProducts: assignedProducts == freezed
-          ? _value._assignedProducts
-          : assignedProducts // ignore: cast_nullable_to_non_nullable
-              as List<VendorProdcuts>?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success({final List<VendorProdcuts>? assignedProducts})
-      : _assignedProducts = assignedProducts;
-
-  final List<VendorProdcuts>? _assignedProducts;
-  @override
-  List<VendorProdcuts>? get assignedProducts {
-    final value = _assignedProducts;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  const _$_Success();
 
   @override
   String toString() {
-    return 'VendorProductsState.success(assignedProducts: $assignedProducts)';
+    return 'VendorProductsState.success()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Success &&
-            const DeepCollectionEquality()
-                .equals(other._assignedProducts, _assignedProducts));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_assignedProducts));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<VendorProdcuts>? assignedProducts) success,
-    required TResult Function() failed,
-  }) {
-    return success(assignedProducts);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
-    TResult Function()? failed,
-  }) {
-    return success?.call(assignedProducts);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
-    TResult Function()? failed,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(assignedProducts);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Laoding value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(Failed_ value) failed,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Laoding value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(Failed_ value)? failed,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Laoding value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(Failed_ value)? failed,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Success implements VendorProductsState {
-  const factory _Success({final List<VendorProdcuts>? assignedProducts}) =
-      _$_Success;
-
-  List<VendorProdcuts>? get assignedProducts;
-  @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$Failed_CopyWith<$Res> {
-  factory _$$Failed_CopyWith(_$Failed_ value, $Res Function(_$Failed_) then) =
-      __$$Failed_CopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$Failed_CopyWithImpl<$Res>
-    extends _$VendorProductsStateCopyWithImpl<$Res>
-    implements _$$Failed_CopyWith<$Res> {
-  __$$Failed_CopyWithImpl(_$Failed_ _value, $Res Function(_$Failed_) _then)
-      : super(_value, (v) => _then(v as _$Failed_));
-
-  @override
-  _$Failed_ get _value => super._value as _$Failed_;
-}
-
-/// @nodoc
-
-class _$Failed_ implements Failed_ {
-  const _$Failed_();
-
-  @override
-  String toString() {
-    return 'VendorProductsState.failed()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Failed_);
+        (other.runtimeType == runtimeType && other is _$_Success);
   }
 
   @override
@@ -512,10 +359,10 @@ class _$Failed_ implements Failed_ {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProdcuts>? assignedProducts) success,
-    required TResult Function() failed,
+    required TResult Function() success,
+    required TResult Function(String error) failed,
   }) {
-    return failed();
+    return success();
   }
 
   @override
@@ -523,10 +370,10 @@ class _$Failed_ implements Failed_ {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
-    TResult Function()? failed,
+    TResult Function()? success,
+    TResult Function(String error)? failed,
   }) {
-    return failed?.call();
+    return success?.call();
   }
 
   @override
@@ -534,12 +381,12 @@ class _$Failed_ implements Failed_ {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
-    TResult Function()? failed,
+    TResult Function()? success,
+    TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
-    if (failed != null) {
-      return failed();
+    if (success != null) {
+      return success();
     }
     return orElse();
   }
@@ -548,9 +395,148 @@ class _$Failed_ implements Failed_ {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Laoding value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(Failed_ value) failed,
+    required TResult Function(_Failed value) failed,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failed value)? failed,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Success implements VendorProductsState {
+  const factory _Success() = _$_Success;
+}
+
+/// @nodoc
+abstract class _$$_FailedCopyWith<$Res> {
+  factory _$$_FailedCopyWith(_$_Failed value, $Res Function(_$_Failed) then) =
+      __$$_FailedCopyWithImpl<$Res>;
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$_FailedCopyWithImpl<$Res>
+    extends _$VendorProductsStateCopyWithImpl<$Res>
+    implements _$$_FailedCopyWith<$Res> {
+  __$$_FailedCopyWithImpl(_$_Failed _value, $Res Function(_$_Failed) _then)
+      : super(_value, (v) => _then(v as _$_Failed));
+
+  @override
+  _$_Failed get _value => super._value as _$_Failed;
+
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_$_Failed(
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Failed implements _Failed {
+  const _$_Failed(this.error);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'VendorProductsState.failed(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Failed &&
+            const DeepCollectionEquality().equals(other.error, error));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_FailedCopyWith<_$_Failed> get copyWith =>
+      __$$_FailedCopyWithImpl<_$_Failed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(String error) failed,
+  }) {
+    return failed(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(String error)? failed,
+  }) {
+    return failed?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(String error)? failed,
+    required TResult orElse(),
+  }) {
+    if (failed != null) {
+      return failed(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failed value) failed,
   }) {
     return failed(this);
   }
@@ -559,9 +545,9 @@ class _$Failed_ implements Failed_ {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Laoding value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(Failed_ value)? failed,
+    TResult Function(_Failed value)? failed,
   }) {
     return failed?.call(this);
   }
@@ -570,9 +556,9 @@ class _$Failed_ implements Failed_ {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Laoding value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(Failed_ value)? failed,
+    TResult Function(_Failed value)? failed,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -582,6 +568,11 @@ class _$Failed_ implements Failed_ {
   }
 }
 
-abstract class Failed_ implements VendorProductsState {
-  const factory Failed_() = _$Failed_;
+abstract class _Failed implements VendorProductsState {
+  const factory _Failed(final String error) = _$_Failed;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$_FailedCopyWith<_$_Failed> get copyWith =>
+      throw _privateConstructorUsedError;
 }
