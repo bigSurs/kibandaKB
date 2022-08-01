@@ -20,7 +20,7 @@ mixin _$VendorProductsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProdcuts>? assignedProducts) success,
+    required TResult Function(List<VendorProducts>? assignedProducts) success,
     required TResult Function() failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$VendorProductsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
+    TResult Function(List<VendorProducts>? assignedProducts)? success,
     TResult Function()? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$VendorProductsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
+    TResult Function(List<VendorProducts>? assignedProducts)? success,
     TResult Function()? failed,
     required TResult orElse(),
   }) =>
@@ -127,7 +127,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProdcuts>? assignedProducts) success,
+    required TResult Function(List<VendorProducts>? assignedProducts) success,
     required TResult Function() failed,
   }) {
     return initial();
@@ -138,7 +138,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
+    TResult Function(List<VendorProducts>? assignedProducts)? success,
     TResult Function()? failed,
   }) {
     return initial?.call();
@@ -149,7 +149,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
+    TResult Function(List<VendorProducts>? assignedProducts)? success,
     TResult Function()? failed,
     required TResult orElse(),
   }) {
@@ -243,7 +243,7 @@ class _$_Laoding implements _Laoding {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProdcuts>? assignedProducts) success,
+    required TResult Function(List<VendorProducts>? assignedProducts) success,
     required TResult Function() failed,
   }) {
     return loading();
@@ -254,7 +254,7 @@ class _$_Laoding implements _Laoding {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
+    TResult Function(List<VendorProducts>? assignedProducts)? success,
     TResult Function()? failed,
   }) {
     return loading?.call();
@@ -265,7 +265,7 @@ class _$_Laoding implements _Laoding {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
+    TResult Function(List<VendorProducts>? assignedProducts)? success,
     TResult Function()? failed,
     required TResult orElse(),
   }) {
@@ -322,7 +322,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
-  $Res call({List<VendorProdcuts>? assignedProducts});
+  $Res call({List<VendorProducts>? assignedProducts});
 }
 
 /// @nodoc
@@ -343,7 +343,7 @@ class __$$_SuccessCopyWithImpl<$Res>
       assignedProducts: assignedProducts == freezed
           ? _value._assignedProducts
           : assignedProducts // ignore: cast_nullable_to_non_nullable
-              as List<VendorProdcuts>?,
+              as List<VendorProducts>?,
     ));
   }
 }
@@ -351,12 +351,12 @@ class __$$_SuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success({final List<VendorProdcuts>? assignedProducts})
+  const _$_Success({final List<VendorProducts>? assignedProducts})
       : _assignedProducts = assignedProducts;
 
-  final List<VendorProdcuts>? _assignedProducts;
+  final List<VendorProducts>? _assignedProducts;
   @override
-  List<VendorProdcuts>? get assignedProducts {
+  List<VendorProducts>? get assignedProducts {
     final value = _assignedProducts;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -391,7 +391,7 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProdcuts>? assignedProducts) success,
+    required TResult Function(List<VendorProducts>? assignedProducts) success,
     required TResult Function() failed,
   }) {
     return success(assignedProducts);
@@ -402,7 +402,7 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
+    TResult Function(List<VendorProducts>? assignedProducts)? success,
     TResult Function()? failed,
   }) {
     return success?.call(assignedProducts);
@@ -413,7 +413,7 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
+    TResult Function(List<VendorProducts>? assignedProducts)? success,
     TResult Function()? failed,
     required TResult orElse(),
   }) {
@@ -462,10 +462,10 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements VendorProductsState {
-  const factory _Success({final List<VendorProdcuts>? assignedProducts}) =
+  const factory _Success({final List<VendorProducts>? assignedProducts}) =
       _$_Success;
 
-  List<VendorProdcuts>? get assignedProducts;
+  List<VendorProducts>? get assignedProducts;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -512,7 +512,7 @@ class _$Failed_ implements Failed_ {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProdcuts>? assignedProducts) success,
+    required TResult Function(List<VendorProducts>? assignedProducts) success,
     required TResult Function() failed,
   }) {
     return failed();
@@ -523,7 +523,7 @@ class _$Failed_ implements Failed_ {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
+    TResult Function(List<VendorProducts>? assignedProducts)? success,
     TResult Function()? failed,
   }) {
     return failed?.call();
@@ -534,7 +534,7 @@ class _$Failed_ implements Failed_ {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProdcuts>? assignedProducts)? success,
+    TResult Function(List<VendorProducts>? assignedProducts)? success,
     TResult Function()? failed,
     required TResult orElse(),
   }) {

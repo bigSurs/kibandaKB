@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kibanda_kb/models/vendor_prodcuts/vendor_prodcuts.dart';
+import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
+
 import 'package:kibanda_kb/utilities/rest_client/rest_client.dart';
 
 part 'vendor_products_state.dart';
@@ -18,8 +19,8 @@ class VendorProductsCubit extends Cubit<VendorProductsState> {
             'order_status_id': 1,
           });
       List prodcutsinJson = response.data['data']['products'][''];
-      List<VendorProdcuts> products = prodcutsinJson.map((e) {
-        return VendorProdcuts.fromJson(e);
+      List<VendorProducts> products = prodcutsinJson.map((e) {
+        return VendorProducts.fromJson(e);
       }).toList();
 
       // Map<String, dynamic> map = json.decode(response.data['data']);

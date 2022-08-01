@@ -5,6 +5,6 @@ class VendorProductsState with _$VendorProductsState {
   const factory VendorProductsState.initial() = _Initial;
   const factory VendorProductsState.loading() = _Laoding;
   const factory VendorProductsState.success(
-      {List<VendorProdcuts>? assignedProducts}) = _Success;
+      {List<VendorProducts>? assignedProducts}) = _Success;
   const factory VendorProductsState.failed() = Failed_;
 }
