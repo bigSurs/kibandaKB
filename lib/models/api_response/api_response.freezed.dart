@@ -191,7 +191,9 @@ class _$_ApiResponse implements _ApiResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApiResponseToJson(this);
+    return _$$_ApiResponseToJson(
+      this,
+    );
   }
 }
 
@@ -206,13 +208,13 @@ abstract class _ApiResponse implements ApiResponse {
       _$_ApiResponse.fromJson;
 
   @override
-  bool? get success => throw _privateConstructorUsedError;
+  bool? get success;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
-  Map<String, dynamic>? get data => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get data;
   @override
   @JsonKey(ignore: true)
   _$$_ApiResponseCopyWith<_$_ApiResponse> get copyWith =>

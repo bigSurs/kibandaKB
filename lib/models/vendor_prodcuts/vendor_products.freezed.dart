@@ -1,0 +1,456 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+
+part of 'vendor_products.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+VendorProducts _$VendorProductsFromJson(Map<String, dynamic> json) {
+  return _VendorProducts.fromJson(json);
+}
+
+/// @nodoc
+mixin _$VendorProducts {
+  int? get product_id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  num? get product_sr_no => throw _privateConstructorUsedError;
+  String? get model => throw _privateConstructorUsedError;
+  String? get default_price => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get unit => throw _privateConstructorUsedError;
+  String? get weight => throw _privateConstructorUsedError;
+  String? get produce_type => throw _privateConstructorUsedError;
+  num? get sort_order => throw _privateConstructorUsedError;
+  String? get price => throw _privateConstructorUsedError;
+  num? get max_qty => throw _privateConstructorUsedError;
+  num? get min_quantity => throw _privateConstructorUsedError;
+  String? get left_symbol_currency => throw _privateConstructorUsedError;
+  String? get right_symbol_curreny => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $VendorProductsCopyWith<VendorProducts> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VendorProductsCopyWith<$Res> {
+  factory $VendorProductsCopyWith(
+          VendorProducts value, $Res Function(VendorProducts) then) =
+      _$VendorProductsCopyWithImpl<$Res>;
+  $Res call(
+      {int? product_id,
+      String? name,
+      num? product_sr_no,
+      String? model,
+      String? default_price,
+      String? image,
+      String? unit,
+      String? weight,
+      String? produce_type,
+      num? sort_order,
+      String? price,
+      num? max_qty,
+      num? min_quantity,
+      String? left_symbol_currency,
+      String? right_symbol_curreny});
+}
+
+/// @nodoc
+class _$VendorProductsCopyWithImpl<$Res>
+    implements $VendorProductsCopyWith<$Res> {
+  _$VendorProductsCopyWithImpl(this._value, this._then);
+
+  final VendorProducts _value;
+  // ignore: unused_field
+  final $Res Function(VendorProducts) _then;
+
+  @override
+  $Res call({
+    Object? product_id = freezed,
+    Object? name = freezed,
+    Object? product_sr_no = freezed,
+    Object? model = freezed,
+    Object? default_price = freezed,
+    Object? image = freezed,
+    Object? unit = freezed,
+    Object? weight = freezed,
+    Object? produce_type = freezed,
+    Object? sort_order = freezed,
+    Object? price = freezed,
+    Object? max_qty = freezed,
+    Object? min_quantity = freezed,
+    Object? left_symbol_currency = freezed,
+    Object? right_symbol_curreny = freezed,
+  }) {
+    return _then(_value.copyWith(
+      product_id: product_id == freezed
+          ? _value.product_id
+          : product_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      product_sr_no: product_sr_no == freezed
+          ? _value.product_sr_no
+          : product_sr_no // ignore: cast_nullable_to_non_nullable
+              as num?,
+      model: model == freezed
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as String?,
+      default_price: default_price == freezed
+          ? _value.default_price
+          : default_price // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      unit: unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      weight: weight == freezed
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as String?,
+      produce_type: produce_type == freezed
+          ? _value.produce_type
+          : produce_type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sort_order: sort_order == freezed
+          ? _value.sort_order
+          : sort_order // ignore: cast_nullable_to_non_nullable
+              as num?,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String?,
+      max_qty: max_qty == freezed
+          ? _value.max_qty
+          : max_qty // ignore: cast_nullable_to_non_nullable
+              as num?,
+      min_quantity: min_quantity == freezed
+          ? _value.min_quantity
+          : min_quantity // ignore: cast_nullable_to_non_nullable
+              as num?,
+      left_symbol_currency: left_symbol_currency == freezed
+          ? _value.left_symbol_currency
+          : left_symbol_currency // ignore: cast_nullable_to_non_nullable
+              as String?,
+      right_symbol_curreny: right_symbol_curreny == freezed
+          ? _value.right_symbol_curreny
+          : right_symbol_curreny // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_VendorProductsCopyWith<$Res>
+    implements $VendorProductsCopyWith<$Res> {
+  factory _$$_VendorProductsCopyWith(
+          _$_VendorProducts value, $Res Function(_$_VendorProducts) then) =
+      __$$_VendorProductsCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {int? product_id,
+      String? name,
+      num? product_sr_no,
+      String? model,
+      String? default_price,
+      String? image,
+      String? unit,
+      String? weight,
+      String? produce_type,
+      num? sort_order,
+      String? price,
+      num? max_qty,
+      num? min_quantity,
+      String? left_symbol_currency,
+      String? right_symbol_curreny});
+}
+
+/// @nodoc
+class __$$_VendorProductsCopyWithImpl<$Res>
+    extends _$VendorProductsCopyWithImpl<$Res>
+    implements _$$_VendorProductsCopyWith<$Res> {
+  __$$_VendorProductsCopyWithImpl(
+      _$_VendorProducts _value, $Res Function(_$_VendorProducts) _then)
+      : super(_value, (v) => _then(v as _$_VendorProducts));
+
+  @override
+  _$_VendorProducts get _value => super._value as _$_VendorProducts;
+
+  @override
+  $Res call({
+    Object? product_id = freezed,
+    Object? name = freezed,
+    Object? product_sr_no = freezed,
+    Object? model = freezed,
+    Object? default_price = freezed,
+    Object? image = freezed,
+    Object? unit = freezed,
+    Object? weight = freezed,
+    Object? produce_type = freezed,
+    Object? sort_order = freezed,
+    Object? price = freezed,
+    Object? max_qty = freezed,
+    Object? min_quantity = freezed,
+    Object? left_symbol_currency = freezed,
+    Object? right_symbol_curreny = freezed,
+  }) {
+    return _then(_$_VendorProducts(
+      product_id: product_id == freezed
+          ? _value.product_id
+          : product_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      product_sr_no: product_sr_no == freezed
+          ? _value.product_sr_no
+          : product_sr_no // ignore: cast_nullable_to_non_nullable
+              as num?,
+      model: model == freezed
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as String?,
+      default_price: default_price == freezed
+          ? _value.default_price
+          : default_price // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      unit: unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      weight: weight == freezed
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as String?,
+      produce_type: produce_type == freezed
+          ? _value.produce_type
+          : produce_type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sort_order: sort_order == freezed
+          ? _value.sort_order
+          : sort_order // ignore: cast_nullable_to_non_nullable
+              as num?,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String?,
+      max_qty: max_qty == freezed
+          ? _value.max_qty
+          : max_qty // ignore: cast_nullable_to_non_nullable
+              as num?,
+      min_quantity: min_quantity == freezed
+          ? _value.min_quantity
+          : min_quantity // ignore: cast_nullable_to_non_nullable
+              as num?,
+      left_symbol_currency: left_symbol_currency == freezed
+          ? _value.left_symbol_currency
+          : left_symbol_currency // ignore: cast_nullable_to_non_nullable
+              as String?,
+      right_symbol_curreny: right_symbol_curreny == freezed
+          ? _value.right_symbol_curreny
+          : right_symbol_curreny // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_VendorProducts implements _VendorProducts {
+  _$_VendorProducts(
+      {this.product_id,
+      this.name,
+      this.product_sr_no,
+      this.model,
+      this.default_price,
+      this.image,
+      this.unit,
+      this.weight,
+      this.produce_type,
+      this.sort_order,
+      this.price,
+      this.max_qty,
+      this.min_quantity,
+      this.left_symbol_currency,
+      this.right_symbol_curreny});
+
+  factory _$_VendorProducts.fromJson(Map<String, dynamic> json) =>
+      _$$_VendorProductsFromJson(json);
+
+  @override
+  final int? product_id;
+  @override
+  final String? name;
+  @override
+  final num? product_sr_no;
+  @override
+  final String? model;
+  @override
+  final String? default_price;
+  @override
+  final String? image;
+  @override
+  final String? unit;
+  @override
+  final String? weight;
+  @override
+  final String? produce_type;
+  @override
+  final num? sort_order;
+  @override
+  final String? price;
+  @override
+  final num? max_qty;
+  @override
+  final num? min_quantity;
+  @override
+  final String? left_symbol_currency;
+  @override
+  final String? right_symbol_curreny;
+
+  @override
+  String toString() {
+    return 'VendorProducts(product_id: $product_id, name: $name, product_sr_no: $product_sr_no, model: $model, default_price: $default_price, image: $image, unit: $unit, weight: $weight, produce_type: $produce_type, sort_order: $sort_order, price: $price, max_qty: $max_qty, min_quantity: $min_quantity, left_symbol_currency: $left_symbol_currency, right_symbol_curreny: $right_symbol_curreny)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_VendorProducts &&
+            const DeepCollectionEquality()
+                .equals(other.product_id, product_id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.product_sr_no, product_sr_no) &&
+            const DeepCollectionEquality().equals(other.model, model) &&
+            const DeepCollectionEquality()
+                .equals(other.default_price, default_price) &&
+            const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality().equals(other.unit, unit) &&
+            const DeepCollectionEquality().equals(other.weight, weight) &&
+            const DeepCollectionEquality()
+                .equals(other.produce_type, produce_type) &&
+            const DeepCollectionEquality()
+                .equals(other.sort_order, sort_order) &&
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality().equals(other.max_qty, max_qty) &&
+            const DeepCollectionEquality()
+                .equals(other.min_quantity, min_quantity) &&
+            const DeepCollectionEquality()
+                .equals(other.left_symbol_currency, left_symbol_currency) &&
+            const DeepCollectionEquality()
+                .equals(other.right_symbol_curreny, right_symbol_curreny));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(product_id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(product_sr_no),
+      const DeepCollectionEquality().hash(model),
+      const DeepCollectionEquality().hash(default_price),
+      const DeepCollectionEquality().hash(image),
+      const DeepCollectionEquality().hash(unit),
+      const DeepCollectionEquality().hash(weight),
+      const DeepCollectionEquality().hash(produce_type),
+      const DeepCollectionEquality().hash(sort_order),
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(max_qty),
+      const DeepCollectionEquality().hash(min_quantity),
+      const DeepCollectionEquality().hash(left_symbol_currency),
+      const DeepCollectionEquality().hash(right_symbol_curreny));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_VendorProductsCopyWith<_$_VendorProducts> get copyWith =>
+      __$$_VendorProductsCopyWithImpl<_$_VendorProducts>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_VendorProductsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _VendorProducts implements VendorProducts {
+  factory _VendorProducts(
+      {final int? product_id,
+      final String? name,
+      final num? product_sr_no,
+      final String? model,
+      final String? default_price,
+      final String? image,
+      final String? unit,
+      final String? weight,
+      final String? produce_type,
+      final num? sort_order,
+      final String? price,
+      final num? max_qty,
+      final num? min_quantity,
+      final String? left_symbol_currency,
+      final String? right_symbol_curreny}) = _$_VendorProducts;
+
+  factory _VendorProducts.fromJson(Map<String, dynamic> json) =
+      _$_VendorProducts.fromJson;
+
+  @override
+  int? get product_id;
+  @override
+  String? get name;
+  @override
+  num? get product_sr_no;
+  @override
+  String? get model;
+  @override
+  String? get default_price;
+  @override
+  String? get image;
+  @override
+  String? get unit;
+  @override
+  String? get weight;
+  @override
+  String? get produce_type;
+  @override
+  num? get sort_order;
+  @override
+  String? get price;
+  @override
+  num? get max_qty;
+  @override
+  num? get min_quantity;
+  @override
+  String? get left_symbol_currency;
+  @override
+  String? get right_symbol_curreny;
+  @override
+  @JsonKey(ignore: true)
+  _$$_VendorProductsCopyWith<_$_VendorProducts> get copyWith =>
+      throw _privateConstructorUsedError;
+}

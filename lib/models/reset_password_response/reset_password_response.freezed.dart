@@ -245,7 +245,9 @@ class _$_ResetPasswordResponse implements _ResetPasswordResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ResetPasswordResponseToJson(this);
+    return _$$_ResetPasswordResponseToJson(
+      this,
+    );
   }
 }
 
@@ -263,19 +265,19 @@ abstract class _ResetPasswordResponse implements ResetPasswordResponse {
       _$_ResetPasswordResponse.fromJson;
 
   @override
-  int? get delivery_executive_id => throw _privateConstructorUsedError;
+  int? get delivery_executive_id;
   @override
-  String? get firstname => throw _privateConstructorUsedError;
+  String? get firstname;
   @override
-  String? get lastname => throw _privateConstructorUsedError;
+  String? get lastname;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get telephone => throw _privateConstructorUsedError;
+  String? get telephone;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  String? get date_added => throw _privateConstructorUsedError;
+  String? get date_added;
   @override
   @JsonKey(ignore: true)
   _$$_ResetPasswordResponseCopyWith<_$_ResetPasswordResponse> get copyWith =>
