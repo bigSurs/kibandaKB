@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
+import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
+import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
 import 'package:quantity_input/quantity_input.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
@@ -62,23 +65,35 @@ class _MainHomePageState extends State<MainHomePage> {
                     ],
                   ),
                   Flexible(
-                      child: DropdownButtonHideUnderline(
-                          child: DropdownButton(
-                    value: _value,
-                    items: [
-                      DropdownMenuItem(
-                        child: Text("First Item"),
-                        value: 1,
-                      ),
-                      DropdownMenuItem(
-                        child: Text("Second Item"),
-                        value: 2,
-                      ),
-                      DropdownMenuItem(child: Text("Third Item"), value: 3),
-                      DropdownMenuItem(child: Text("Fourth Item"), value: 4)
-                    ],
-                    onChanged: (int? value) {},
-                  ))),
+                      child: BlocBuilder<KibandalistCubit, KibandalistState>(
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                          loading: () => const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                          success: ((kibandaskistores) =>
+                              DropdownButtonHideUnderline(
+                                  child: DropdownButton<num?>(
+                                value: _value,
+                                items: kibandaskistores!
+                                    .map((e) => DropdownMenuItem(
+                                        value: e.customer_id,
+                                        child: Text(
+                                            e.firstname! + " " + e.lastname!)))
+                                    .toList(),
+                                onChanged: (val) {
+                                  /// This [val] is the value of the selected item (Customer ID)
+                                  context
+                                      .read<VendorProductsCubit>()
+                                      .getVendorProductsByAllCategories(
+                                          customerId: val as int);
+                                },
+                              ))),
+                          orElse: () {
+                            return Container();
+                          });
+                    },
+                  )),
                 ],
               ),
             ),
