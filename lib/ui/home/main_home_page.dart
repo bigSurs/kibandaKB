@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
@@ -19,7 +20,7 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   final _image1 =
       'https://www.kindacode.com/wp-content/uploads/2021/08/face.png';
-  int _value = 1;
+  // int _value = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,21 +50,21 @@ class _MainHomePageState extends State<MainHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: const [
-                      Text(
-                        'Pick your Kibanda here ',
-                        style: TextStyle(
-                          fontFamily: 'Red Hat Display-BoldItalic',
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      Icon(
-                        Boxicons.bx_arrow_from_left,
-                        size: 14,
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   children: const [
+                  //     Text(
+                  //       'Pick your Kibanda here ',
+                  //       style: TextStyle(
+                  //         fontFamily: 'Red Hat Display-BoldItalic',
+                  //         fontStyle: FontStyle.italic,
+                  //       ),
+                  //     ),
+                  //     Icon(
+                  //       Boxicons.bx_arrow_from_left,
+                  //       size: 14,
+                  //     ),
+                  //   ],
+                  // ),
                   Flexible(
                       child: BlocBuilder<KibandalistCubit, KibandalistState>(
                     builder: (context, state) {
@@ -71,15 +72,17 @@ class _MainHomePageState extends State<MainHomePage> {
                           loading: () => const Center(
                                 child: CircularProgressIndicator(),
                               ),
-                          success: ((kibandaskistores) =>
-                              DropdownButtonHideUnderline(
-                                  child: DropdownButton<num?>(
-                                value: _value,
+                          success: ((kibandaskistores) => FormBuilderDropdown(
+                                decoration: const InputDecoration(
+                                    labelText: 'select a kibanda'),
+                                name: 'name',
                                 items: kibandaskistores!
                                     .map((e) => DropdownMenuItem(
                                         value: e.customer_id,
                                         child: Text(
-                                            e.firstname! + " " + e.lastname!)))
+                                          e.firstname! + " " + e.lastname!,
+                                          style: TextStyle(),
+                                        )))
                                     .toList(),
                                 onChanged: (val) {
                                   /// This [val] is the value of the selected item (Customer ID)
@@ -88,7 +91,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                       .getVendorProductsByAllCategories(
                                           customerId: val as int);
                                 },
-                              ))),
+                              )),
                           orElse: () {
                             return Container();
                           });
