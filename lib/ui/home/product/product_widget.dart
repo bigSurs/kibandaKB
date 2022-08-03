@@ -463,9 +463,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                             )
                           : CupertinoButton(
                               onPressed: () {
-                                context
-                                    .read<CartCubit>()
-                                    .addToCart(product: widget.product);
+                                context.read<CartCubit>().addToCart(
+                                    product: widget.product,
+                                    variation: widget.product.variations![0]);
                                 if (widget.isDialog) {
                                   Navigator.pop(context);
                                 }

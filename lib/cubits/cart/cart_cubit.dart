@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
+import 'package:collection/collection.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
@@ -14,15 +15,13 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
     for (int i = 0; i < state.length; i++) {
       data.addAll({
         'product[$i][product_store_id]': cartProductMetadataCubit.state
-            .where((element) =>
-                element.product_id == state[i].product_id!)
+            .where((element) => element.product_id == state[i].product_id!)
             .first
             .variation['variant_id']
             .toString(),
         'product[$i][store_id]': state[i].store_id.toString(),
         'product[$i][quantity]': cartProductMetadataCubit.state
-            .where((element) =>
-                element.product_id == state[i].product_id!)
+            .where((element) => element.product_id == state[i].product_id!)
             .first
             .amount
             .toString(),
@@ -31,8 +30,8 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
             .indexWhere((element) =>
                 element['variant_id'] ==
                 cartProductMetadataCubit.state
-                    .where((element) =>
-                        element.product_id == state[i].product_id!)
+                    .where(
+                        (element) => element.product_id == state[i].product_id!)
                     .first
                     .variation['variant_id'])
             .toString()
@@ -47,13 +46,11 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
 
     for (var i = 0; i < state.length; i++) {
       var amount = (cartProductMetadataCubit.state
-          .where((element) =>
-              element.product_id == state[i].product_id! as int)
+          .where((element) => element.product_id == state[i].product_id! as int)
           .first
           .amount);
       var variationPrice = (cartProductMetadataCubit.state
-          .where((element) =>
-              element.product_id == state[i].product_id! as int)
+          .where((element) => element.product_id == state[i].product_id! as int)
           .first
           .variation['special']);
       sum += ((num.parse(variationPrice)) * amount);
@@ -66,8 +63,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
 
     for (var i = 0; i < state.length; i++) {
       var amount = (cartProductMetadataCubit.state
-          .where((element) =>
-              element.product_id == state[i].product_id!)
+          .where((element) => element.product_id == state[i].product_id!)
           .first
           .amount);
       sum += ((state[i].tax_amount ?? 0) * amount);
@@ -75,20 +71,18 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
     return sum;
   }
 
-  addToCart({required VendorProducts product, int amount = 1, Map<String, dynamic>? variation}) async {
+  addToCart(
+      {required VendorProducts product,
+      int amount = 1,
+      required Map<String, dynamic> variation}) async {
     if (!state.contains(product)) {
-    
-
       var items = [...state, product];
       //Record the quantity
       cartProductMetadataCubit.addProduct(
           amount: amount,
           product: product,
-          variation: variation??product.variations!
-                .where((element) =>
-                    element['variant_id'] == product.product_store_id)
-                .first,
-          store_id:product.store_id as int ?? 75,
+          variation: variation!,
+          store_id: product.store_id as int ?? 75,
           store_product_variation_id: 0,
           product_store_id: product.product_store_id as int);
       emit(items);
@@ -106,8 +100,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
           store_product_variation_id: 0,
           product_store_id: product.product_store_id! as int,
           amount: cartProductMetadataCubit.state
-              .where((element) =>
-                  element.product_id == product.product_id!)
+              .where((element) => element.product_id == product.product_id!)
               .first
               .amount);
       state.remove(product);

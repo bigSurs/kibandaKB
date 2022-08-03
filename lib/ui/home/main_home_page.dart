@@ -1,8 +1,10 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
@@ -38,7 +40,18 @@ class _MainHomePageState extends State<MainHomePage> {
             // color: Palette.orangeColor,
           ),
         ),
-        actions: [Icon(Icons.shopping_cart_checkout_rounded)],
+        actions: [
+          Badge(
+            badgeContent: Text(
+              '${context.watch<CartCubit>().state.length}',
+              style: TextStyle(color: Colors.white),
+            ),
+            child: Icon(Icons.shopping_cart),
+          ),
+          SizedBox(
+            width: 20,
+          )
+        ],
       ),
       body: Column(
         children: [
