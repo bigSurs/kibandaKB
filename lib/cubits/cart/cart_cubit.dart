@@ -17,7 +17,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
             .where((element) =>
                 element.product_id == state[i].product_id!)
             .first
-            .variation['variation_id']
+            .variation['variant_id']
             .toString(),
         'product[$i][store_id]': state[i].store_id.toString(),
         'product[$i][quantity]': cartProductMetadataCubit.state
@@ -29,12 +29,12 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
         'product[$i][store_product_variation_id]': state[i]
             .variations!
             .indexWhere((element) =>
-                element['variation_id'] ==
+                element['variant_id'] ==
                 cartProductMetadataCubit.state
                     .where((element) =>
                         element.product_id == state[i].product_id!)
                     .first
-                    .variation['variation_id'])
+                    .variation['variant_id'])
             .toString()
       });
     }
@@ -86,7 +86,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
           product: product,
           variation: variation??product.variations!
                 .where((element) =>
-                    element['variation_id'] == product.product_store_id)
+                    element['variant_id'] == product.product_store_id)
                 .first,
           store_id:product.store_id as int ?? 75,
           store_product_variation_id: 0,
