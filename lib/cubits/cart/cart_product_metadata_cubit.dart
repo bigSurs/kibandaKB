@@ -1,26 +1,21 @@
-import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:get_it/get_it.dart';
+import 'package:flutter/services.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
 
+class CartProductMetadataCubit
+    extends HydratedCubit<List<CartProductMetaData>> {
+  CartProductMetadataCubit(List<CartProductMetaData> state) : super(state);
 
-class CartProductMetaDataCubit
- extends HydratedCubit<List<CartProductMetaData>> {
-  CartProductMetaDataCubit(List<CartProductMetaData> state) : super(state);
-  
-
-   addProduct(
-      {required VendorProducts vendorproducts,
+  addProduct(
+      {required VendorProducts product,
       required num amount,
-      required int product_id,
-      // required int store_product_variation_id,
-      // required int store_id,
-      //TODO:PICK FROM HERE 
+      required int product_store_id,
+      required int store_product_variation_id,
+      required int store_id,
       required Map<String, dynamic> variation 
       }) {
     if (state.contains(CartProductMetaData(
-        product_id: int.parse(product.product_id!),
+        product_id: product.product_id!,
         amount: amount,
         product_note: '',
         variation: variation,
@@ -32,7 +27,7 @@ class CartProductMetaDataCubit
       emit([
         ...state,
         CartProductMetaData(
-            product_id: int.parse(product.product_id!),
+            product_id: product.product_id!,
             product_note: '',
             amount: amount,
             variation: variation,
@@ -42,12 +37,100 @@ class CartProductMetaDataCubit
       ]);
     }
   }
-  
+
+  removeProduct(
+      {required VendorProducts product,
+      required num amount,
+      required int product_store_id,
+      required int store_product_variation_id,
+      required int store_id}) {
+    if (state.contains(CartProductMetaData(
+        product_id: product.product_id!,
+        amount: amount,
+        variation: product.variations!
+            .where((element) =>
+                element['variation_id'] == product.product_store_id)
+            .first,
+        product_store_id: product_store_id,
+        store_product_variation_id: store_product_variation_id,
+        store_id: store_id))) {
+      var currentState = state;
+      currentState.removeWhere(
+          (element) => element.product_id == product.product_id!);
+    } else {
+      HapticFeedback.lightImpact();
+    }
+  }
+
+  addProductQuantity({
+    required VendorProducts product,
+  }) {
+    var currentState = state;
+
+    currentState
+        .where(
+            (element) => element.product_id == product.product_id!)
+        .first
+        .add();
+    emit(currentState);
+  }
+
+  setVariation({
+    required VendorProducts product,
+    required Map<String, dynamic> vary,
+  }) {
+    var currentState = state;
+
+    currentState
+        .where(
+            (element) => element.product_id == product.product_id!)
+        .first
+        .setVariation(vary: vary);
+    emit(currentState);
+  }
+
+  setNotes({
+    required VendorProducts product,
+    required String? notes,
+  }) {
+    var currentState = state;
+
+    currentState
+        .where(
+            (element) => element.product_id == product.product_id!)
+        .first
+        .setNote(note: notes!);
+    emit(currentState);
+  }
+
+  removeProductQuantity({
+    required VendorProducts product,
+  }) {
+    var currentState = state;
+
+    currentState
+        .where(
+            (element) => element.product_id == product.product_id!)
+        .first
+        .remove();
+    emit(currentState);
+  }
+
+  setProductQuantity({required VendorProducts product, required num quantity}) {
+    var currentState = state;
+
+    currentState
+        .where(
+            (element) => element.product_id == product.product_id!)
+        .first
+        .set(quantity);
+    emit(currentState);
+  }
+
   @override
   List<CartProductMetaData>? fromJson(Map<String, dynamic> json) {
-    // TODO: implement fromJson
     List val = json['value'];
-     return List.generate(
+    return List.generate(
         val.length,
         (index) => CartProductMetaData(
             product_id: val[index]['product_id'],
@@ -58,13 +141,11 @@ class CartProductMetaDataCubit
             variation: val[index]['variation'],
             store_product_variation_id: val[index]
                 ['store_product_variation_id']));
-    throw UnimplementedError();
   }
-  
+
   @override
   Map<String, dynamic>? toJson(List<CartProductMetaData> state) {
-    // TODO: implement toJson
-     return {
+    return {
       'value': List.generate(
           state.length,
           (index) => {
@@ -77,14 +158,11 @@ class CartProductMetaDataCubit
                     state[index].store_product_variation_id,
               })
     };
-    throw UnimplementedError();
   }
-
 }
 
 class CartProductMetaData {
-}
-final int product_id;
+  final int product_id;
   final int product_store_id;
   final int store_id;
   final int store_product_variation_id;
@@ -93,7 +171,7 @@ final int product_id;
 
   num amount;
 
-  class CartProductMetaData({
+  CartProductMetaData({
     required this.product_id,
     required this.amount,
     required this.store_id,
@@ -134,3 +212,4 @@ final int product_id;
       HapticFeedback.lightImpact();
     }
   }
+}

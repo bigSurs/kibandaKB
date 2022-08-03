@@ -33,6 +33,13 @@ mixin _$VendorProducts {
   String? get price => throw _privateConstructorUsedError;
   num? get max_qty => throw _privateConstructorUsedError;
   num? get min_quantity => throw _privateConstructorUsedError;
+  num? get store_id => throw _privateConstructorUsedError;
+  num? get product_store_id => throw _privateConstructorUsedError;
+  String? get special => throw _privateConstructorUsedError;
+  num? get tax_amount => throw _privateConstructorUsedError;
+  String? get tax_percentage => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>>? get variations =>
+      throw _privateConstructorUsedError;
   String? get left_symbol_currency => throw _privateConstructorUsedError;
   String? get right_symbol_curreny => throw _privateConstructorUsedError;
 
@@ -61,6 +68,12 @@ abstract class $VendorProductsCopyWith<$Res> {
       String? price,
       num? max_qty,
       num? min_quantity,
+      num? store_id,
+      num? product_store_id,
+      String? special,
+      num? tax_amount,
+      String? tax_percentage,
+      List<Map<String, dynamic>>? variations,
       String? left_symbol_currency,
       String? right_symbol_curreny});
 }
@@ -89,6 +102,12 @@ class _$VendorProductsCopyWithImpl<$Res>
     Object? price = freezed,
     Object? max_qty = freezed,
     Object? min_quantity = freezed,
+    Object? store_id = freezed,
+    Object? product_store_id = freezed,
+    Object? special = freezed,
+    Object? tax_amount = freezed,
+    Object? tax_percentage = freezed,
+    Object? variations = freezed,
     Object? left_symbol_currency = freezed,
     Object? right_symbol_curreny = freezed,
   }) {
@@ -145,6 +164,30 @@ class _$VendorProductsCopyWithImpl<$Res>
           ? _value.min_quantity
           : min_quantity // ignore: cast_nullable_to_non_nullable
               as num?,
+      store_id: store_id == freezed
+          ? _value.store_id
+          : store_id // ignore: cast_nullable_to_non_nullable
+              as num?,
+      product_store_id: product_store_id == freezed
+          ? _value.product_store_id
+          : product_store_id // ignore: cast_nullable_to_non_nullable
+              as num?,
+      special: special == freezed
+          ? _value.special
+          : special // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tax_amount: tax_amount == freezed
+          ? _value.tax_amount
+          : tax_amount // ignore: cast_nullable_to_non_nullable
+              as num?,
+      tax_percentage: tax_percentage == freezed
+          ? _value.tax_percentage
+          : tax_percentage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      variations: variations == freezed
+          ? _value.variations
+          : variations // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>?,
       left_symbol_currency: left_symbol_currency == freezed
           ? _value.left_symbol_currency
           : left_symbol_currency // ignore: cast_nullable_to_non_nullable
@@ -178,6 +221,12 @@ abstract class _$$_VendorProductsCopyWith<$Res>
       String? price,
       num? max_qty,
       num? min_quantity,
+      num? store_id,
+      num? product_store_id,
+      String? special,
+      num? tax_amount,
+      String? tax_percentage,
+      List<Map<String, dynamic>>? variations,
       String? left_symbol_currency,
       String? right_symbol_curreny});
 }
@@ -208,6 +257,12 @@ class __$$_VendorProductsCopyWithImpl<$Res>
     Object? price = freezed,
     Object? max_qty = freezed,
     Object? min_quantity = freezed,
+    Object? store_id = freezed,
+    Object? product_store_id = freezed,
+    Object? special = freezed,
+    Object? tax_amount = freezed,
+    Object? tax_percentage = freezed,
+    Object? variations = freezed,
     Object? left_symbol_currency = freezed,
     Object? right_symbol_curreny = freezed,
   }) {
@@ -264,6 +319,30 @@ class __$$_VendorProductsCopyWithImpl<$Res>
           ? _value.min_quantity
           : min_quantity // ignore: cast_nullable_to_non_nullable
               as num?,
+      store_id: store_id == freezed
+          ? _value.store_id
+          : store_id // ignore: cast_nullable_to_non_nullable
+              as num?,
+      product_store_id: product_store_id == freezed
+          ? _value.product_store_id
+          : product_store_id // ignore: cast_nullable_to_non_nullable
+              as num?,
+      special: special == freezed
+          ? _value.special
+          : special // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tax_amount: tax_amount == freezed
+          ? _value.tax_amount
+          : tax_amount // ignore: cast_nullable_to_non_nullable
+              as num?,
+      tax_percentage: tax_percentage == freezed
+          ? _value.tax_percentage
+          : tax_percentage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      variations: variations == freezed
+          ? _value._variations
+          : variations // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>?,
       left_symbol_currency: left_symbol_currency == freezed
           ? _value.left_symbol_currency
           : left_symbol_currency // ignore: cast_nullable_to_non_nullable
@@ -293,8 +372,15 @@ class _$_VendorProducts implements _VendorProducts {
       this.price,
       this.max_qty,
       this.min_quantity,
+      this.store_id,
+      this.product_store_id,
+      this.special,
+      this.tax_amount,
+      this.tax_percentage,
+      final List<Map<String, dynamic>>? variations,
       this.left_symbol_currency,
-      this.right_symbol_curreny});
+      this.right_symbol_curreny})
+      : _variations = variations;
 
   factory _$_VendorProducts.fromJson(Map<String, dynamic> json) =>
       _$$_VendorProductsFromJson(json);
@@ -326,13 +412,32 @@ class _$_VendorProducts implements _VendorProducts {
   @override
   final num? min_quantity;
   @override
+  final num? store_id;
+  @override
+  final num? product_store_id;
+  @override
+  final String? special;
+  @override
+  final num? tax_amount;
+  @override
+  final String? tax_percentage;
+  final List<Map<String, dynamic>>? _variations;
+  @override
+  List<Map<String, dynamic>>? get variations {
+    final value = _variations;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
   final String? left_symbol_currency;
   @override
   final String? right_symbol_curreny;
 
   @override
   String toString() {
-    return 'VendorProducts(product_id: $product_id, name: $name, product_sr_no: $product_sr_no, model: $model, default_price: $default_price, image: $image, unit: $unit, weight: $weight, produce_type: $produce_type, sort_order: $sort_order, price: $price, max_qty: $max_qty, min_quantity: $min_quantity, left_symbol_currency: $left_symbol_currency, right_symbol_curreny: $right_symbol_curreny)';
+    return 'VendorProducts(product_id: $product_id, name: $name, product_sr_no: $product_sr_no, model: $model, default_price: $default_price, image: $image, unit: $unit, weight: $weight, produce_type: $produce_type, sort_order: $sort_order, price: $price, max_qty: $max_qty, min_quantity: $min_quantity, store_id: $store_id, product_store_id: $product_store_id, special: $special, tax_amount: $tax_amount, tax_percentage: $tax_percentage, variations: $variations, left_symbol_currency: $left_symbol_currency, right_symbol_curreny: $right_symbol_curreny)';
   }
 
   @override
@@ -359,6 +464,16 @@ class _$_VendorProducts implements _VendorProducts {
             const DeepCollectionEquality().equals(other.max_qty, max_qty) &&
             const DeepCollectionEquality()
                 .equals(other.min_quantity, min_quantity) &&
+            const DeepCollectionEquality().equals(other.store_id, store_id) &&
+            const DeepCollectionEquality()
+                .equals(other.product_store_id, product_store_id) &&
+            const DeepCollectionEquality().equals(other.special, special) &&
+            const DeepCollectionEquality()
+                .equals(other.tax_amount, tax_amount) &&
+            const DeepCollectionEquality()
+                .equals(other.tax_percentage, tax_percentage) &&
+            const DeepCollectionEquality()
+                .equals(other._variations, _variations) &&
             const DeepCollectionEquality()
                 .equals(other.left_symbol_currency, left_symbol_currency) &&
             const DeepCollectionEquality()
@@ -367,23 +482,30 @@ class _$_VendorProducts implements _VendorProducts {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(product_id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(product_sr_no),
-      const DeepCollectionEquality().hash(model),
-      const DeepCollectionEquality().hash(default_price),
-      const DeepCollectionEquality().hash(image),
-      const DeepCollectionEquality().hash(unit),
-      const DeepCollectionEquality().hash(weight),
-      const DeepCollectionEquality().hash(produce_type),
-      const DeepCollectionEquality().hash(sort_order),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(max_qty),
-      const DeepCollectionEquality().hash(min_quantity),
-      const DeepCollectionEquality().hash(left_symbol_currency),
-      const DeepCollectionEquality().hash(right_symbol_curreny));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(product_id),
+        const DeepCollectionEquality().hash(name),
+        const DeepCollectionEquality().hash(product_sr_no),
+        const DeepCollectionEquality().hash(model),
+        const DeepCollectionEquality().hash(default_price),
+        const DeepCollectionEquality().hash(image),
+        const DeepCollectionEquality().hash(unit),
+        const DeepCollectionEquality().hash(weight),
+        const DeepCollectionEquality().hash(produce_type),
+        const DeepCollectionEquality().hash(sort_order),
+        const DeepCollectionEquality().hash(price),
+        const DeepCollectionEquality().hash(max_qty),
+        const DeepCollectionEquality().hash(min_quantity),
+        const DeepCollectionEquality().hash(store_id),
+        const DeepCollectionEquality().hash(product_store_id),
+        const DeepCollectionEquality().hash(special),
+        const DeepCollectionEquality().hash(tax_amount),
+        const DeepCollectionEquality().hash(tax_percentage),
+        const DeepCollectionEquality().hash(_variations),
+        const DeepCollectionEquality().hash(left_symbol_currency),
+        const DeepCollectionEquality().hash(right_symbol_curreny)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -413,6 +535,12 @@ abstract class _VendorProducts implements VendorProducts {
       final String? price,
       final num? max_qty,
       final num? min_quantity,
+      final num? store_id,
+      final num? product_store_id,
+      final String? special,
+      final num? tax_amount,
+      final String? tax_percentage,
+      final List<Map<String, dynamic>>? variations,
       final String? left_symbol_currency,
       final String? right_symbol_curreny}) = _$_VendorProducts;
 
@@ -445,6 +573,18 @@ abstract class _VendorProducts implements VendorProducts {
   num? get max_qty;
   @override
   num? get min_quantity;
+  @override
+  num? get store_id;
+  @override
+  num? get product_store_id;
+  @override
+  String? get special;
+  @override
+  num? get tax_amount;
+  @override
+  String? get tax_percentage;
+  @override
+  List<Map<String, dynamic>>? get variations;
   @override
   String? get left_symbol_currency;
   @override

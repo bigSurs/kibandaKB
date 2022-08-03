@@ -21,6 +21,14 @@ _$_VendorProducts _$$_VendorProductsFromJson(Map<String, dynamic> json) =>
       price: json['price'] as String?,
       max_qty: json['max_qty'] as num?,
       min_quantity: json['min_quantity'] as num?,
+      store_id: json['store_id'] as num?,
+      product_store_id: json['product_store_id'] as num?,
+      special: json['special'] as String?,
+      tax_amount: json['tax_amount'] as num?,
+      tax_percentage: json['tax_percentage'] as String?,
+      variations: (json['variations'] as List<dynamic>?)
+          ?.map((e) => e as Map<String, dynamic>)
+          .toList(),
       left_symbol_currency: json['left_symbol_currency'] as String?,
       right_symbol_curreny: json['right_symbol_curreny'] as String?,
     );
@@ -40,6 +48,12 @@ Map<String, dynamic> _$$_VendorProductsToJson(_$_VendorProducts instance) =>
       'price': instance.price,
       'max_qty': instance.max_qty,
       'min_quantity': instance.min_quantity,
+      'store_id': instance.store_id,
+      'product_store_id': instance.product_store_id,
+      'special': instance.special,
+      'tax_amount': instance.tax_amount,
+      'tax_percentage': instance.tax_percentage,
+      'variations': instance.variations,
       'left_symbol_currency': instance.left_symbol_currency,
       'right_symbol_curreny': instance.right_symbol_curreny,
     };
