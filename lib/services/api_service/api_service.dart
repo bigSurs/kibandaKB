@@ -29,6 +29,27 @@ class ApiService {
     }
   }
 
+
+///This method posts data to the API via the [Dio] in the [restClient]
+  ///Returns a dynamic
+  static Future<dynamic> postCustomer(
+      {required data,
+      required String path,
+      Options? options,
+      Map? queryParameters}) async {
+    try {
+      ///Get the response after posting
+      var response = await restClient.dio!
+          .post('${restClient.customerURL}$path', data: data, options: options);
+      return response.data;
+    }
+
+    /// Throw the dio error
+    on DioError catch (e) {
+      ApiResponse apiResponse = ApiResponse.fromJson(e.response!.data);
+      throw apiResponse.message!;
+    }
+  }
   ///This method gets data from the API via the [Dio] in the [restClient]
   ///Returns a dynamic based on the API Response
   static Future<dynamic> get(
