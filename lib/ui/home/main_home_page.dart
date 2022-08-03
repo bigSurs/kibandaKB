@@ -101,12 +101,31 @@ class _MainHomePageState extends State<MainHomePage> {
               ),
             ),
           ),
-          Stack(
-            // Row()
-            children: [
-              CardWidget(),
-            ],
-          )
+          Expanded(
+            child: BlocBuilder<VendorProductsCubit, VendorProductsState>(
+              builder: (context, state) {
+                return state.maybeWhen(loading: () {
+                  return const Center(
+                    child:
+                        CupertinoActivityIndicator(color: Palette.greenColor),
+                  );
+                }, success: (productList) {
+                  return ListView.builder(
+                    itemCount: productList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CardWidget(vendorProducts: productList[index]);
+                    },
+
+                    // children: productList
+                    //     .map((e) => CardWidget(vendorProducts: e))
+                    //     .toList(),
+                  );
+                }, orElse: () {
+                  return Container();
+                });
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -114,7 +133,8 @@ class _MainHomePageState extends State<MainHomePage> {
 }
 
 class CardWidget extends StatefulWidget {
-  const CardWidget({Key? key}) : super(key: key);
+  final VendorProducts vendorProducts;
+  const CardWidget({Key? key, required this.vendorProducts}) : super(key: key);
 
   @override
   State<CardWidget> createState() => _CardWidgetState();
@@ -131,203 +151,207 @@ class _CardWidgetState extends State<CardWidget> {
     Size size = MediaQuery.of(context).size;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return FittedBox(
+    return Flexible(
+      child: FittedBox(
+          child: Container(
+        margin: const EdgeInsets.all(30.0),
+        decoration: BoxDecoration(
+            // color: Palette.orangeBackgroundColor,
+            borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(10.0),
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
+                topLeft: Radius.circular(10.0)),
+            border: Border.all(width: 1, color: Palette.greenColor)),
+        constraints: const BoxConstraints(
+          maxHeight: double.infinity,
+        ),
         child: Container(
-      margin: const EdgeInsets.all(30.0),
-      decoration: BoxDecoration(
-          // color: Palette.orangeBackgroundColor,
-          borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(10.0),
-              bottomLeft: Radius.circular(10.0),
-              bottomRight: Radius.circular(10.0),
-              topLeft: Radius.circular(10.0)),
-          border: Border.all(width: 1, color: Palette.greenColor)),
-      constraints: const BoxConstraints(
-        maxHeight: double.infinity,
-      ),
-      child: Container(
-        // height: height / 6,
-        width: width,
-        height: 250,
-        padding: const EdgeInsets.all(8),
-        child: Row(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
+          // height: height / 6,
+          width: width,
+          height: 250,
+          padding: const EdgeInsets.all(8),
+          child: Flexible(
+            child: Row(
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Expanded(
-                    child: CircleAvatar(
-                      child: CachedNetworkImage(
-                        width: double.infinity,
-                        height: 200,
-                        fit: BoxFit.scaleDown,
-                        imageUrl: _image1,
-                        progressIndicatorBuilder:
-                            (context, url, downloadProgress) =>
-                                CircularProgressIndicator(
-                                    value: downloadProgress.progress),
-                        errorWidget: (context, url, error) => const Icon(
-                          Icons.error,
-                          size: 100,
-                          color: Colors.red,
+                  Column(
+                    children: [
+                      Expanded(
+                        child: CircleAvatar(
+                          child: CachedNetworkImage(
+                            width: double.infinity,
+                            height: 200,
+                            fit: BoxFit.scaleDown,
+                            imageUrl: widget.vendorProducts.image!,
+                            // progressIndicatorBuilder:
+                            //     (context, url, downloadProgress) =>
+                            //         CircularProgressIndicator(
+                            //             value: downloadProgress.progress),
+                            // errorWidget: (context, url, error) => const Icon(
+                            //   Icons.error,
+                            //   size: 100,
+                            //   color: Colors.red,
+                            // ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-              Column(children: [
-                Row(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
-                  // mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Text(
-                      "Order Id",
-                      style: TextStyle(
-                        fontFamily: 'Red Hat Display',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Palette.orangeColor,
-                      ),
+                  Column(children: [
+                    Row(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      // mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Text(
+                          "Product Name",
+                          style: TextStyle(
+                            fontFamily: 'Red Hat Display',
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Palette.orangeColor,
+                          ),
+                        ),
+                        SizedBox(width: width * 0.01),
+                        Text(
+                          widget.vendorProducts.name!,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Palette.placeholderGrey,
+                            // color: Colors.orange,
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: width * 0.01),
-                    const Text(
-                      '12',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Palette.placeholderGrey,
-                        // color: Colors.orange,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: height * 0.02),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Kibanda",
-                      style: TextStyle(
-                          fontFamily: 'Red Hat Display',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Palette.orangeColor),
-                    ),
-                    SizedBox(width: width * 0.01),
-                    Text(
-                      '1123',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Palette.placeholderGrey,
-                      ),
-                    ),
-                  ],
-                ),
-              ]),
-              const SizedBox(width: 30),
-              Column(
-                children: [
-                  Row(
-                    children: [
+                    SizedBox(height: height * 0.02),
+                    Row(children: [
                       const Text(
-                        'Date of Delivery',
+                        "Product Id",
                         style: TextStyle(
                           fontSize: 20,
+                          fontFamily: 'Red Hat Display',
                           fontWeight: FontWeight.bold,
                           color: Palette.orangeColor,
-                          fontFamily: 'Red Hat Display',
                         ),
                       ),
                       SizedBox(width: width * 0.01),
                       Text(
-                        // order.delivery_date!,
-                        // CalendarTime(DateTime.parse(
-                        //         orderde.delivery_date!))
+                        widget.vendorProducts.product_id.toString(),
+                        // orderde.delivery_timeslot!,
+                        // CalendarTime(DateTime.parse(order.delivery_timeslot!))
                         //     .toHuman,
-                        '12/12/12',
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Palette.placeholderGrey,
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: height * 0.02),
-                  Row(children: [
-                    const Text(
-                      "Time of Delivery",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Red Hat Display',
-                        fontWeight: FontWeight.bold,
-                        color: Palette.orangeColor,
                       ),
-                    ),
-                    SizedBox(width: width * 0.01),
-                    Text(
-                      '12:30 PM',
-                      // orderde.delivery_timeslot!,
-                      // CalendarTime(DateTime.parse(order.delivery_timeslot!))
-                      //     .toHuman,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Palette.placeholderGrey,
-                      ),
-                    ),
+                    ]),
                   ]),
-                  Spacer(),
+                  const SizedBox(width: 30),
                   Column(
                     children: [
                       Row(
                         children: [
                           const Text(
-                            'Qty',
-                            style: TextStyle(fontSize: 12),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          QuantityInput(
-                              value: simpleIntInput,
-                              onChanged: (value) => setState(() =>
-                                  simpleIntInput =
-                                      int.parse(value.replaceAll(',', '')))),
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: CupertinoButton.filled(
-                          // style: ElevatedButton.styleFrom(
-                          //   // primary: Colors.black,
-                          //   minimumSize: const Size.fromHeight(50), // NEW
-                          // ),
-                          onPressed: () {
-                            // AutoRouter.of(context)
-                            //     .push(DirectionsToAddress(
-                            //   orderId: orderde.order_id!,
-                            // ));
-                          },
-                          child: const Text(
-                            'Add to Cart',
+                            'Unit',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
+                              color: Palette.orangeColor,
+                              fontFamily: 'Red Hat Display',
                             ),
                           ),
-                        ),
+                          SizedBox(width: width * 0.01),
+                          Text(
+                            // order.delivery_date!,
+                            // CalendarTime(DateTime.parse(
+                            //         orderde.delivery_date!))
+                            //     .toHuman,
+                            widget.vendorProducts.unit!,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Palette.placeholderGrey,
+                            ),
+                          )
+                        ],
                       ),
+                      SizedBox(height: height * 0.02),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Weight',
+                            style: TextStyle(
+                                fontFamily: 'Red Hat Display',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Palette.orangeColor),
+                          ),
+                          SizedBox(width: width * 0.01),
+                          Text(
+                            widget.vendorProducts.weight!,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Palette.placeholderGrey,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer(),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              const Text(
+                                'Qty',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              QuantityInput(
+                                  value: simpleIntInput,
+                                  onChanged: (value) => setState(() =>
+                                      simpleIntInput = int.parse(
+                                          value.replaceAll(',', '')))),
+                            ],
+                          ),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: CupertinoButton.filled(
+                              // style: ElevatedButton.styleFrom(
+                              //   // primary: Colors.black,
+                              //   minimumSize: const Size.fromHeight(50), // NEW
+                              // ),
+                              onPressed: () {
+                                // AutoRouter.of(context)
+                                //     .push(DirectionsToAddress(
+                                //   orderId: orderde.order_id!,
+                                // ));
+                              },
+                              child: const Text(
+                                'Add to Cart',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
                     ],
-                  )
-                ],
-              ),
-            ]),
-      ),
-    ));
+                  ),
+                ]),
+          ),
+        ),
+      )),
+    );
   }
 }

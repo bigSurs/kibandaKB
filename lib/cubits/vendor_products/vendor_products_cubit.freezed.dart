@@ -20,7 +20,7 @@ mixin _$VendorProductsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<VendorProducts> vendorproducts) success,
     required TResult Function(String error) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$VendorProductsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> vendorproducts)? success,
     TResult Function(String error)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$VendorProductsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> vendorproducts)? success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) =>
@@ -127,7 +127,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<VendorProducts> vendorproducts) success,
     required TResult Function(String error) failed,
   }) {
     return initial();
@@ -138,7 +138,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> vendorproducts)? success,
     TResult Function(String error)? failed,
   }) {
     return initial?.call();
@@ -149,7 +149,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> vendorproducts)? success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -243,7 +243,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<VendorProducts> vendorproducts) success,
     required TResult Function(String error) failed,
   }) {
     return loading();
@@ -254,7 +254,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> vendorproducts)? success,
     TResult Function(String error)? failed,
   }) {
     return loading?.call();
@@ -265,7 +265,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> vendorproducts)? success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -322,6 +322,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
+  $Res call({List<VendorProducts> vendorproducts});
 }
 
 /// @nodoc
@@ -333,36 +334,65 @@ class __$$_SuccessCopyWithImpl<$Res>
 
   @override
   _$_Success get _value => super._value as _$_Success;
+
+  @override
+  $Res call({
+    Object? vendorproducts = freezed,
+  }) {
+    return _then(_$_Success(
+      vendorproducts: vendorproducts == freezed
+          ? _value._vendorproducts
+          : vendorproducts // ignore: cast_nullable_to_non_nullable
+              as List<VendorProducts>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success();
+  const _$_Success({required final List<VendorProducts> vendorproducts})
+      : _vendorproducts = vendorproducts;
+
+  final List<VendorProducts> _vendorproducts;
+  @override
+  List<VendorProducts> get vendorproducts {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_vendorproducts);
+  }
 
   @override
   String toString() {
-    return 'VendorProductsState.success()';
+    return 'VendorProductsState.success(vendorproducts: $vendorproducts)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Success);
+        (other.runtimeType == runtimeType &&
+            other is _$_Success &&
+            const DeepCollectionEquality()
+                .equals(other._vendorproducts, _vendorproducts));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_vendorproducts));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<VendorProducts> vendorproducts) success,
     required TResult Function(String error) failed,
   }) {
-    return success();
+    return success(vendorproducts);
   }
 
   @override
@@ -370,10 +400,10 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> vendorproducts)? success,
     TResult Function(String error)? failed,
   }) {
-    return success?.call();
+    return success?.call(vendorproducts);
   }
 
   @override
@@ -381,12 +411,12 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> vendorproducts)? success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(vendorproducts);
     }
     return orElse();
   }
@@ -430,7 +460,13 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements VendorProductsState {
-  const factory _Success() = _$_Success;
+  const factory _Success({required final List<VendorProducts> vendorproducts}) =
+      _$_Success;
+
+  List<VendorProducts> get vendorproducts;
+  @JsonKey(ignore: true)
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -498,7 +534,7 @@ class _$_Failed implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<VendorProducts> vendorproducts) success,
     required TResult Function(String error) failed,
   }) {
     return failed(error);
@@ -509,7 +545,7 @@ class _$_Failed implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> vendorproducts)? success,
     TResult Function(String error)? failed,
   }) {
     return failed?.call(error);
@@ -520,7 +556,7 @@ class _$_Failed implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> vendorproducts)? success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {

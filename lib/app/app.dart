@@ -7,6 +7,7 @@ import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/login_cubit/login_cubit.dart';
+import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:kibanda_kb/routes/router.dart';
@@ -30,7 +31,8 @@ class KwikBasketKibandaApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => TokenCubit('')),
-        BlocProvider(create: (context) => KibandalistCubit()..getVibandas())
+        BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
+        BlocProvider(create: (context) => VendorProductsCubit()),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(
