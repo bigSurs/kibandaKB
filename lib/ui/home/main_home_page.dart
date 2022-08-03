@@ -6,6 +6,7 @@ import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
+import 'package:kibanda_kb/ui/home/product/product_tile.dart';
 import 'package:quantity_input/quantity_input.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
@@ -113,7 +114,7 @@ class _MainHomePageState extends State<MainHomePage> {
                   return ListView.builder(
                     itemCount: productList.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return CardWidget(vendorProducts: productList[index]);
+                      return ProductTile(product: productList[index]);
                     },
 
                     // children: productList

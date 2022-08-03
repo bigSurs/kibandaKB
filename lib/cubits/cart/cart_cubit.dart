@@ -89,7 +89,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
                     element['variation_id'] == product.product_store_id)
                 .first,
           store_id:product.store_id as int ?? 75,
-          store_product_variation_id: product.store_product_variation_id ?? 0,
+          store_product_variation_id: 0,
           product_store_id: product.product_store_id as int);
       emit(items);
       updateCart();
@@ -103,7 +103,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
       cartProductMetadataCubit.removeProduct(
           product: product,
           store_id: product.store_id as int ?? 75,
-          store_product_variation_id: product.store_product_variation_id!,
+          store_product_variation_id: 0,
           product_store_id: product.product_store_id! as int,
           amount: cartProductMetadataCubit.state
               .where((element) =>

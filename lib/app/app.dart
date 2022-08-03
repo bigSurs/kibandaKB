@@ -5,10 +5,13 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
+import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/login_cubit/login_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
+import 'package:kibanda_kb/ui/home/product/product_widget.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:kibanda_kb/routes/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -33,6 +36,9 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => TokenCubit('')),
         BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
         BlocProvider(create: (context) => VendorProductsCubit()),
+        BlocProvider(create: (context) => CartCubit([])),
+        BlocProvider(create: (context) => CartProductMetadataCubit([])),
+        BlocProvider(create: (context) => SelectedVariationCubit()),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(
