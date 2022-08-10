@@ -11,6 +11,7 @@ class VendorProducts with _$VendorProducts {
     num? product_sr_no,
     String? model,
     String? default_price,
+    int? qty_in_cart,
     String? image,
     String? unit,
     String? weight,

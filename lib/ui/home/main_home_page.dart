@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
+import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/ui/home/product/product_tile.dart';
 import 'package:quantity_input/quantity_input.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -41,12 +43,17 @@ class _MainHomePageState extends State<MainHomePage> {
           ),
         ),
         actions: [
-          Badge(
-            badgeContent: Text(
-              '${context.watch<CartCubit>().state.length}',
-              style: TextStyle(color: Colors.white),
+          CupertinoButton(
+            onPressed: () {
+              AutoRouter.of(context).push(CartRoute());
+            },
+            child: Badge(
+              badgeContent: Text(
+                '${context.watch<CartCubit>().state.length}',
+                style: TextStyle(color: Colors.white),
+              ),
+              child: Icon(Icons.shopping_cart),
             ),
-            child: Icon(Icons.shopping_cart),
           ),
           SizedBox(
             width: 20,

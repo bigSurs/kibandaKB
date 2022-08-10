@@ -7,11 +7,16 @@ import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/save_to_basket_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/validate_order_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/wishlist_cubit.dart';
+import 'package:kibanda_kb/cubits/customer_address/customer_address_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/login_cubit/login_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
-import 'package:kibanda_kb/ui/home/product/product_widget.dart';
+import 'package:kibanda_kb/ui/home/product/expanded_product_widget.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:kibanda_kb/routes/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -39,6 +44,12 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => CartCubit([])),
         BlocProvider(create: (context) => CartProductMetadataCubit([])),
         BlocProvider(create: (context) => SelectedVariationCubit()),
+        BlocProvider(create: (context) => FeaturedProductCubit()),
+         BlocProvider(create: (context) => SaveToBasketCubit()),
+          BlocProvider(create: (context) => ValidateOrderCubit()),
+           BlocProvider(create: (context) => WishlistCubit()),
+           BlocProvider(create: (context) => CustomerAddressCubit ()),
+            BlocProvider(create: (context) => FeaturedProductCubit()),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(

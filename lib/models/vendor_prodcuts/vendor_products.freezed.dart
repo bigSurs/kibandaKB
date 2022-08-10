@@ -25,6 +25,7 @@ mixin _$VendorProducts {
   num? get product_sr_no => throw _privateConstructorUsedError;
   String? get model => throw _privateConstructorUsedError;
   String? get default_price => throw _privateConstructorUsedError;
+  int? get qty_in_cart => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get unit => throw _privateConstructorUsedError;
   String? get weight => throw _privateConstructorUsedError;
@@ -60,6 +61,7 @@ abstract class $VendorProductsCopyWith<$Res> {
       num? product_sr_no,
       String? model,
       String? default_price,
+      int? qty_in_cart,
       String? image,
       String? unit,
       String? weight,
@@ -94,6 +96,7 @@ class _$VendorProductsCopyWithImpl<$Res>
     Object? product_sr_no = freezed,
     Object? model = freezed,
     Object? default_price = freezed,
+    Object? qty_in_cart = freezed,
     Object? image = freezed,
     Object? unit = freezed,
     Object? weight = freezed,
@@ -132,6 +135,10 @@ class _$VendorProductsCopyWithImpl<$Res>
           ? _value.default_price
           : default_price // ignore: cast_nullable_to_non_nullable
               as String?,
+      qty_in_cart: qty_in_cart == freezed
+          ? _value.qty_in_cart
+          : qty_in_cart // ignore: cast_nullable_to_non_nullable
+              as int?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -213,6 +220,7 @@ abstract class _$$_VendorProductsCopyWith<$Res>
       num? product_sr_no,
       String? model,
       String? default_price,
+      int? qty_in_cart,
       String? image,
       String? unit,
       String? weight,
@@ -249,6 +257,7 @@ class __$$_VendorProductsCopyWithImpl<$Res>
     Object? product_sr_no = freezed,
     Object? model = freezed,
     Object? default_price = freezed,
+    Object? qty_in_cart = freezed,
     Object? image = freezed,
     Object? unit = freezed,
     Object? weight = freezed,
@@ -287,6 +296,10 @@ class __$$_VendorProductsCopyWithImpl<$Res>
           ? _value.default_price
           : default_price // ignore: cast_nullable_to_non_nullable
               as String?,
+      qty_in_cart: qty_in_cart == freezed
+          ? _value.qty_in_cart
+          : qty_in_cart // ignore: cast_nullable_to_non_nullable
+              as int?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -364,6 +377,7 @@ class _$_VendorProducts implements _VendorProducts {
       this.product_sr_no,
       this.model,
       this.default_price,
+      this.qty_in_cart,
       this.image,
       this.unit,
       this.weight,
@@ -395,6 +409,8 @@ class _$_VendorProducts implements _VendorProducts {
   final String? model;
   @override
   final String? default_price;
+  @override
+  final int? qty_in_cart;
   @override
   final String? image;
   @override
@@ -437,7 +453,7 @@ class _$_VendorProducts implements _VendorProducts {
 
   @override
   String toString() {
-    return 'VendorProducts(product_id: $product_id, name: $name, product_sr_no: $product_sr_no, model: $model, default_price: $default_price, image: $image, unit: $unit, weight: $weight, produce_type: $produce_type, sort_order: $sort_order, price: $price, max_qty: $max_qty, min_quantity: $min_quantity, store_id: $store_id, product_store_id: $product_store_id, special: $special, tax_amount: $tax_amount, tax_percentage: $tax_percentage, variations: $variations, left_symbol_currency: $left_symbol_currency, right_symbol_curreny: $right_symbol_curreny)';
+    return 'VendorProducts(product_id: $product_id, name: $name, product_sr_no: $product_sr_no, model: $model, default_price: $default_price, qty_in_cart: $qty_in_cart, image: $image, unit: $unit, weight: $weight, produce_type: $produce_type, sort_order: $sort_order, price: $price, max_qty: $max_qty, min_quantity: $min_quantity, store_id: $store_id, product_store_id: $product_store_id, special: $special, tax_amount: $tax_amount, tax_percentage: $tax_percentage, variations: $variations, left_symbol_currency: $left_symbol_currency, right_symbol_curreny: $right_symbol_curreny)';
   }
 
   @override
@@ -453,6 +469,8 @@ class _$_VendorProducts implements _VendorProducts {
             const DeepCollectionEquality().equals(other.model, model) &&
             const DeepCollectionEquality()
                 .equals(other.default_price, default_price) &&
+            const DeepCollectionEquality()
+                .equals(other.qty_in_cart, qty_in_cart) &&
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other.unit, unit) &&
             const DeepCollectionEquality().equals(other.weight, weight) &&
@@ -489,6 +507,7 @@ class _$_VendorProducts implements _VendorProducts {
         const DeepCollectionEquality().hash(product_sr_no),
         const DeepCollectionEquality().hash(model),
         const DeepCollectionEquality().hash(default_price),
+        const DeepCollectionEquality().hash(qty_in_cart),
         const DeepCollectionEquality().hash(image),
         const DeepCollectionEquality().hash(unit),
         const DeepCollectionEquality().hash(weight),
@@ -527,6 +546,7 @@ abstract class _VendorProducts implements VendorProducts {
       final num? product_sr_no,
       final String? model,
       final String? default_price,
+      final int? qty_in_cart,
       final String? image,
       final String? unit,
       final String? weight,
@@ -557,6 +577,8 @@ abstract class _VendorProducts implements VendorProducts {
   String? get model;
   @override
   String? get default_price;
+  @override
+  int? get qty_in_cart;
   @override
   String? get image;
   @override
