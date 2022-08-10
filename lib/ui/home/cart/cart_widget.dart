@@ -12,6 +12,7 @@ import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/place_order_cubit/place_order_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/save_to_basket_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/validate_order_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/wishlist_cubit.dart';
@@ -19,7 +20,6 @@ import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/ui/home/cart/cart_product_list.dart';
 import 'package:kibanda_kb/ui/home/featured_widget/fearured_widget.dart';
 import 'package:kibanda_kb/utilities/toast/toast.dart';
-
 
 class CartWidget extends StatefulWidget {
   const CartWidget({Key? key}) : super(key: key);
@@ -486,35 +486,78 @@ class CheckoutWidget extends StatelessWidget {
                     flex: 4,
                     child: SizedBox(
                       height: 30,
-                      child: CupertinoButton(
-                        color: Palette.orangeColor,
-                        onPressed: () {
-                          Map<String, dynamic> data = {};
-                          var productListData =
-                              context.read<CartProductMetadataCubit>().state;
-                          for (int i = 0; i < productListData.length; i++) {
-                            data.addAll({
-                              'products[$i][quantity]':
-                                  productListData[i].amount.toString(),
-                              'products[$i][product_store_id]':
-                                  productListData[i]
-                                      .product_store_id
-                                      .toString(),
-                              'products[$i][store_id]':
-                                  productListData[i].store_id.toString(),
-                            });
-                          }
-
-                          context
-                              .read<ValidateOrderCubit>()
-                              .validateOrder(data: data);
+                      child: BlocConsumer<PlaceOrderCubit, PlaceOrderState>(
+                        listener: (context, state) {
+                          // TODO: implement listener
+                          state.maybeWhen(
+                              orElse: () {},
+                              success: () {
+                                // if (context.read<HybridSelectedCubit>().state) {
+                                //   if (context.read<HybridTypeCubit>().state == 'mpesa') {
+                                //     AutoRouter.of(context).replace(MpesaPaymentRoute(
+                                //         orderReference:
+                                //             orderData['order_reference_number']));
+                                //   } else {
+                                //     AutoRouter.of(context).push(OrderSuccessRoute());
+                                //     context.read<CartCubit>().emit([]);
+                                //     context.read<CartProductMetadataCubit>().emit([]);
+                                //   }
+                                // } else {
+                                // if (context
+                                //         .read<SelectedPaymentMethodCubit>()
+                                //         .state!
+                                //         .code ==
+                                //     'mpesa') {
+                                //   AutoRouter.of(context).replace(MpesaPaymentRoute(
+                                //       orderReference:
+                                //           orderData['order_reference_number']));
+                                // } else {
+                                AutoRouter.of(context)
+                                    .push(OrderSuccessRoute());
+                                context.read<CartCubit>().emit([]);
+                                context
+                                    .read<CartProductMetadataCubit>()
+                                    .emit([]);
+                                // }
+                              },
+                              failed: (e) {
+                                AppToast.showToast(message: e, isError: true);
+                              });
                         },
-                        padding: EdgeInsets.all(2),
-                        child: Text(
-                          'Checkout',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
+                        builder: (context, state) {
+                          return CupertinoButton(
+                            color: Palette.orangeColor,
+                            onPressed: () {
+                              Map<String, dynamic> data = {};
+                              var productListData = context
+                                  .read<CartProductMetadataCubit>()
+                                  .state;
+                              for (int i = 0; i < productListData.length; i++) {
+                                data.addAll({
+                                  'products[$i][quantity]':
+                                      productListData[i].amount.toString(),
+                                  'products[][product_store_id]':
+                                      productListData[i]
+                                          .product_store_id
+                                          .toString(),
+                                  'products[][store_id]':
+                                      productListData[i].store_id.toString(),
+                                });
+                              }
+
+                              context
+                                  .read<ValidateOrderCubit>()
+                                  .validateOrder(data: data);
+                            },
+                            padding: EdgeInsets.all(2),
+                            child: Text(
+                              'Checkout',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),

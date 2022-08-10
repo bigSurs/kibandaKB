@@ -8,6 +8,7 @@ import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/place_order_cubit/place_order_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/save_to_basket_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/validate_order_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/wishlist_cubit.dart';
@@ -45,11 +46,12 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => CartProductMetadataCubit([])),
         BlocProvider(create: (context) => SelectedVariationCubit()),
         BlocProvider(create: (context) => FeaturedProductCubit()),
-         BlocProvider(create: (context) => SaveToBasketCubit()),
-          BlocProvider(create: (context) => ValidateOrderCubit()),
-           BlocProvider(create: (context) => WishlistCubit()),
-           BlocProvider(create: (context) => CustomerAddressCubit ()),
-            BlocProvider(create: (context) => FeaturedProductCubit()),
+        BlocProvider(create: (context) => SaveToBasketCubit()),
+        BlocProvider(create: (context) => ValidateOrderCubit()),
+        BlocProvider(create: (context) => WishlistCubit()),
+        BlocProvider(create: (context) => CustomerAddressCubit()),
+        BlocProvider(create: (context) => FeaturedProductCubit()),
+        BlocProvider(create: (context) => PlaceOrderCubit()),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(
