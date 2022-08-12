@@ -35,11 +35,13 @@ class ApiService {
     required String path,
   }) async {
     try {
-      var response = await restClient.dio!.post('${restClient.baseURL}$path',
-          data: data,
-          options: Options(headers: {
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          }));
+      var response =
+          await restClient.dio!.post('${restClient.customerURL}$path',
+              data: data,
+              options: Options(headers: {
+                'Content-Type':
+                    'application/x-www-form-urlencoded; charset=UTF-8',
+              }));
       return response.data;
     } on DioError catch (error) {
       try {

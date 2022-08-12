@@ -61,6 +61,8 @@ dependencies:
   cached_network_image: ^3.2.1
   star_menu: ^2.2.0
   flutter_svg: ^1.1.3
+  dropdown_search: ^5.0.2
+  form_builder_extra_fields: ^8.3.0
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -545,9 +546,7 @@ class CheckoutWidget extends StatelessWidget {
                                 });
                               }
 
-                              context
-                                  .read<ValidateOrderCubit>()
-                                  .validateOrder(data: data);
+                              context.read<PlaceOrderCubit>().placeOrder(data);
                             },
                             padding: EdgeInsets.all(2),
                             child: Text(

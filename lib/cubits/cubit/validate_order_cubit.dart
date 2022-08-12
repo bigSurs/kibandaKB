@@ -13,7 +13,7 @@ class ValidateOrderCubit extends Cubit<ValidateOrderState> {
     emit(ValidateOrderState.loading());
     try {
       var response = await ApiService.postData(
-          data: data, path: '/customer/order/validateOrder');
+          data: data, path: 'customer/order/validateOrder');
       if (response["status"] == 200) {
         emit(ValidateOrderState.success());
       } else {

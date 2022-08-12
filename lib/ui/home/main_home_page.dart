@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:badges/badges.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_extra_fields/form_builder_extra_fields.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
@@ -93,24 +95,46 @@ class _MainHomePageState extends State<MainHomePage> {
                           loading: () => const Center(
                                 child: CircularProgressIndicator(),
                               ),
-                          success: ((kibandaskistores) => FormBuilderDropdown(
+                          success: ((kibandaskistores) =>
+                              FormBuilderSearchableDropdown<String>(
+                                // dropdownDecoratorProps:
+                                //     const DropDownDecoratorProps(
+                                //   dropdownSearchDecoration: InputDecoration(
+                                //     disabledBorder: InputBorder.none,
+                                //     hintText: 'Select a Kibanda',
+                                //     hintStyle: TextStyle(
+                                //       color: Colors.black,
+                                //       fontSize: 12,
+                                //     ),
+                                //   ),
+                                // ),
+
+                                name: '',
                                 decoration: const InputDecoration(
-                                    labelText: 'select a kibanda'),
-                                name: 'name',
+                                  labelText: 'Select Kibanda',
+                                ),
+                                popupProps: PopupProps.menu(
+                                    showSearchBox: true,
+                                    title: Text('Search Kibanda')),
                                 items: kibandaskistores!
-                                    .map((e) => DropdownMenuItem(
-                                        value: e.customer_id,
-                                        child: Text(
-                                          e.firstname! + " " + e.lastname!,
-                                          style: TextStyle(),
-                                        )))
+                                    .map(
+                                        (e) => e.firstname! + ' ' + e.lastname!)
                                     .toList(),
                                 onChanged: (val) {
+                                  var x = kibandaskistores!
+                                      .where((element) =>
+                                          element.firstname! +
+                                              ' ' +
+                                              element.lastname! ==
+                                          val)
+                                      .first
+                                      .customer_id!;
+
                                   /// This [val] is the value of the selected item (Customer ID)
                                   context
                                       .read<VendorProductsCubit>()
                                       .getVendorProductsByAllCategories(
-                                          customerId: val as int);
+                                          customerId: x as int);
                                 },
                               )),
                           orElse: () {
