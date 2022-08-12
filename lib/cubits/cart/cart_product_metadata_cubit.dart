@@ -12,8 +12,7 @@ class CartProductMetadataCubit
       required int product_store_id,
       required int store_product_variation_id,
       required int store_id,
-      required Map<String, dynamic> variation 
-      }) {
+      required Map<String, dynamic> variation}) {
     if (state.contains(CartProductMetaData(
         product_id: product.product_id!,
         amount: amount,
@@ -48,15 +47,15 @@ class CartProductMetadataCubit
         product_id: product.product_id!,
         amount: amount,
         variation: product.variations!
-            .where((element) =>
-                element['variation_id'] == product.product_store_id)
+            .where(
+                (element) => element['variant_id'] == product.product_store_id)
             .first,
         product_store_id: product_store_id,
         store_product_variation_id: store_product_variation_id,
         store_id: store_id))) {
       var currentState = state;
-      currentState.removeWhere(
-          (element) => element.product_id == product.product_id!);
+      currentState
+          .removeWhere((element) => element.product_id == product.product_id!);
     } else {
       HapticFeedback.lightImpact();
     }
@@ -68,8 +67,7 @@ class CartProductMetadataCubit
     var currentState = state;
 
     currentState
-        .where(
-            (element) => element.product_id == product.product_id!)
+        .where((element) => element.product_id == product.product_id!)
         .first
         .add();
     emit(currentState);
@@ -82,8 +80,7 @@ class CartProductMetadataCubit
     var currentState = state;
 
     currentState
-        .where(
-            (element) => element.product_id == product.product_id!)
+        .where((element) => element.product_id == product.product_id!)
         .first
         .setVariation(vary: vary);
     emit(currentState);
@@ -96,8 +93,7 @@ class CartProductMetadataCubit
     var currentState = state;
 
     currentState
-        .where(
-            (element) => element.product_id == product.product_id!)
+        .where((element) => element.product_id == product.product_id!)
         .first
         .setNote(note: notes!);
     emit(currentState);
@@ -109,8 +105,7 @@ class CartProductMetadataCubit
     var currentState = state;
 
     currentState
-        .where(
-            (element) => element.product_id == product.product_id!)
+        .where((element) => element.product_id == product.product_id!)
         .first
         .remove();
     emit(currentState);
@@ -120,8 +115,7 @@ class CartProductMetadataCubit
     var currentState = state;
 
     currentState
-        .where(
-            (element) => element.product_id == product.product_id!)
+        .where((element) => element.product_id == product.product_id!)
         .first
         .set(quantity);
     emit(currentState);
@@ -182,7 +176,7 @@ class CartProductMetaData {
   });
 
   setNote({required String note}) {
-    this.product_note=note;
+    this.product_note = note;
   }
 
   setVariation({required Map<String, dynamic> vary}) {

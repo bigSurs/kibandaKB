@@ -18,10 +18,12 @@ class ExpandedCategoriesProductWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ExpandedCategoriesProductWidget> createState() => _ExpandedCategoriesProductWidget();
+  State<ExpandedCategoriesProductWidget> createState() =>
+      _ExpandedCategoriesProductWidget();
 }
 
-class _ExpandedCategoriesProductWidget extends State<ExpandedCategoriesProductWidget> {
+class _ExpandedCategoriesProductWidget
+    extends State<ExpandedCategoriesProductWidget> {
   @override
   Widget build(BuildContext context) {
     final bool inCart = context.watch<CartCubit>().state.any((pr) {
@@ -277,7 +279,7 @@ class _ExpandedCategoriesProductWidget extends State<ExpandedCategoriesProductWi
                                               .isNotEmpty
                                           ? widget.product.variations!
                                               .where((element) =>
-                                                  element['variation_id'] ==
+                                                  element['variant_id'] ==
                                                   context
                                                       .watch<
                                                           SelectedVariationCubit>()
@@ -310,7 +312,7 @@ class _ExpandedCategoriesProductWidget extends State<ExpandedCategoriesProductWi
                                                     widget.product.variations!
                                                         .where((element) =>
                                                             element[
-                                                                'variation_id'] ==
+                                                                'variant_id'] ==
                                                             context
                                                                 .watch<
                                                                     SelectedVariationCubit>()

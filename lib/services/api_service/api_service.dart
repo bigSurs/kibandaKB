@@ -41,6 +41,7 @@ class ApiService {
               options: Options(headers: {
                 'Content-Type':
                     'application/x-www-form-urlencoded; charset=UTF-8',
+                'x-user': 'Customer'
               }));
       return response.data;
     } on DioError catch (error) {

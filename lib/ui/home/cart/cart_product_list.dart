@@ -410,7 +410,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                       SizedBox(
                         height: 36,
                         width: 140,
-                        child: DropdownButtonFormField<String>(
+                        child: DropdownButtonFormField<int>(
                             onChanged: (val) {
                               context
                                   .read<CartProductMetadataCubit>()
@@ -419,7 +419,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                       vary: widget
                                           .product.variations!
                                           .where((element) =>
-                                              element['variation_id'] == val)
+                                              element['variant_id'] == val)
                                           .first);
                               widget.refresh();
                               setState(() {});
@@ -434,8 +434,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                     element.product_id ==
                                     widget.product.product_id!)
                                 .first
-                                .product_store_id
-                                .toString(),
+                                .variation['variant_id'],
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding:
@@ -444,7 +443,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                 widget.product.variations!.length,
                                 (index) => DropdownMenuItem(
                                     value: widget.product.variations![index]
-                                        ['variation_id'],
+                                        ['variant_id'],
                                     child: Text('Per ' +
                                         widget.product.variations![index]
                                             ['unit']))),
@@ -470,8 +469,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                         .state
                                         .where((element) =>
                                             element.product_id ==
-                                           
-                                                widget.product.product_id!)
+                                            widget.product.product_id!)
                                         .first
                                         .amount ==
                                     1) {

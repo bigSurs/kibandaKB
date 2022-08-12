@@ -13,7 +13,7 @@ class ProductWidget extends StatefulWidget {
 
   const ProductWidget({
     Key? key,
-    required this.product, 
+    required this.product,
   }) : super(key: key);
 
   @override
@@ -68,12 +68,12 @@ class _ProductWidgetState extends State<ProductWidget> {
                   : SizedBox(
                       height: 36,
                       width: 140,
-                      child: DropdownButtonFormField<String>(
+                      child: DropdownButtonFormField<int>(
                           onChanged: (val) {
                             setState(() {
                               selectedVariation = widget.product.variations!
-                                  .where((element) =>
-                                      element['variation_id'] == val)
+                                  .where(
+                                      (element) => element['variant_id'] == val)
                                   .first;
                             });
 
@@ -85,13 +85,13 @@ class _ProductWidgetState extends State<ProductWidget> {
                               border: OutlineInputBorder(),
                               contentPadding:
                                   EdgeInsets.only(left: 12, right: 12)),
-                          value: selectedVariation['variation_id'],
+                          value: selectedVariation['variant_id'],
                           items: List.generate(
                               widget.product.variations!.length,
                               (index) => DropdownMenuItem(
                                   onTap: () {},
                                   value: widget.product.variations![index]
-                                      ['variation_id'],
+                                      ['variant_id'],
                                   child: Text('Per ' +
                                       widget.product.variations![index]
                                           ['unit'])))),
@@ -150,7 +150,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                       .state
                                       .where((element) =>
                                           element.product_id ==
-                                        widget.product.product_id!)
+                                          widget.product.product_id!)
                                       .first
                                       .amount ==
                                   1) {
@@ -236,7 +236,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                   ? SizedBox(
                       height: 36,
                       width: 140,
-                      child: DropdownButtonFormField<String>(
+                      child: DropdownButtonFormField<int>(
                           onChanged: (val) {
                             context
                                 .read<CartProductMetadataCubit>()
@@ -244,7 +244,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                     product: widget.product,
                                     vary: widget.product.variations!
                                         .where((element) =>
-                                            element['variation_id'] == val)
+                                            element['variant_id'] == val)
                                         .first);
                             setState(() {});
                             context.read<CartCubit>().updateCart();
@@ -258,8 +258,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                   element.product_id ==
                                   widget.product.product_id!)
                               .first
-                              .product_store_id
-                              .toString(),
+                              .variation['variant_id'],
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               contentPadding:
@@ -268,7 +267,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                               widget.product.variations!.length,
                               (index) => DropdownMenuItem(
                                   value: widget.product.variations![index]
-                                      ['variation_id'],
+                                      ['variant_id'],
                                   child: Text('Per ' +
                                       widget.product.variations![index]
                                           ['unit'])))),
