@@ -41,7 +41,6 @@ class ApiService {
               options: Options(headers: {
                 'Content-Type':
                     'application/x-www-form-urlencoded; charset=UTF-8',
-                'x-user': 'Customer'
               }));
       return response.data;
     } on DioError catch (error) {
@@ -50,21 +49,6 @@ class ApiService {
       } catch (e) {
         throw error.message;
       }
-    } catch (e) {
-      throw e.toString();
-    }
-  }
-
-  static Future<dynamic> getData(
-      {required String path,
-      Options? options,
-      Map<String, dynamic>? queries}) async {
-    try {
-      var response = await restClient.dio!.get('${restClient.baseURL}$path',
-          options: options, queryParameters: queries);
-      return response.data;
-    } on DioError catch (error) {
-      throw error.message;
     } catch (e) {
       throw e.toString();
     }
@@ -79,8 +63,14 @@ class ApiService {
       Map? queryParameters}) async {
     try {
       ///Get the response after posting
-      var response = await restClient.dio!
-          .post('${restClient.customerURL}$path', data: data, options: options);
+      var response =
+          await restClient.dio!.post('${restClient.customerURL}$path',
+              data: data,
+              options: Options(headers: {
+                'x-user': 'Customer',
+                'Content-Type':
+                    'application/x-www-form-urlencoded; charset=UTF-8',
+              }));
       return response.data;
     }
 
@@ -108,6 +98,29 @@ class ApiService {
     on DioError catch (e) {
       ApiResponse apiResponse = ApiResponse.fromJson(e.response!.data);
       throw apiResponse.message!;
+    }
+  }
+
+  static Future<dynamic> getData(
+      {required String path,
+      Options? options,
+      Map<String, dynamic>? queries}) async {
+    try {
+      var response = await restClient.dio!.get('${restClient.baseURL}$path',
+          options: Options(headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'x-user': 'Customer',
+            'Connection': 'keep-alive',
+            'Accept-encoding': 'gzip, deflate, br',
+            'Accept': '*/*',
+            'User-Agent': 'PostmanRuntime/7.29.2',
+          }),
+          queryParameters: queries);
+      return response.data;
+    } on DioError catch (error) {
+      throw error.message;
+    } catch (e) {
+      throw e.toString();
     }
   }
 }
