@@ -19,6 +19,7 @@ import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/login_cubit/login_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
+import 'package:kibanda_kb/ui/home/main_home_page.dart';
 import 'package:kibanda_kb/ui/home/product/expanded_product_widget.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:kibanda_kb/routes/router.dart';
@@ -56,6 +57,7 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => PlaceOrderCubit()),
         BlocProvider(create: (context) => DeliveryTimeslotCubit()),
         BlocProvider(create: (context) => DeliveryAddressSelectionCubit(null)),
+        BlocProvider(create: (context) => SelectedKibandaCubit()),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(

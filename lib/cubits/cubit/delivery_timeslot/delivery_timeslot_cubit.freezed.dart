@@ -20,8 +20,7 @@ mixin _$DeliveryTimeslotState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)
+    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots)
         success,
     required TResult Function(String erroe) failed,
   }) =>
@@ -30,9 +29,7 @@ mixin _$DeliveryTimeslotState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)?
-        success,
+    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
     TResult Function(String erroe)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,9 +37,7 @@ mixin _$DeliveryTimeslotState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)?
-        success,
+    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
     TResult Function(String erroe)? failed,
     required TResult orElse(),
   }) =>
@@ -133,8 +128,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)
+    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots)
         success,
     required TResult Function(String erroe) failed,
   }) {
@@ -146,9 +140,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)?
-        success,
+    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
     TResult Function(String erroe)? failed,
   }) {
     return initial?.call();
@@ -159,9 +151,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)?
-        success,
+    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
     TResult Function(String erroe)? failed,
     required TResult orElse(),
   }) {
@@ -255,8 +245,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)
+    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots)
         success,
     required TResult Function(String erroe) failed,
   }) {
@@ -268,9 +257,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)?
-        success,
+    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
     TResult Function(String erroe)? failed,
   }) {
     return loading?.call();
@@ -281,9 +268,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)?
-        success,
+    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
     TResult Function(String erroe)? failed,
     required TResult orElse(),
   }) {
@@ -340,10 +325,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
-  $Res call(
-      {List<dynamic> dates,
-      Map<String, dynamic> slots,
-      List<dynamic> disabledSlots});
+  $Res call({List<dynamic> dates, Map<String, dynamic> slots});
 }
 
 /// @nodoc
@@ -360,7 +342,6 @@ class __$$_SuccessCopyWithImpl<$Res>
   $Res call({
     Object? dates = freezed,
     Object? slots = freezed,
-    Object? disabledSlots = freezed,
   }) {
     return _then(_$_Success(
       dates: dates == freezed
@@ -371,10 +352,6 @@ class __$$_SuccessCopyWithImpl<$Res>
           ? _value._slots
           : slots // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      disabledSlots: disabledSlots == freezed
-          ? _value._disabledSlots
-          : disabledSlots // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
     ));
   }
 }
@@ -384,11 +361,9 @@ class __$$_SuccessCopyWithImpl<$Res>
 class _$_Success implements _Success {
   const _$_Success(
       {required final List<dynamic> dates,
-      required final Map<String, dynamic> slots,
-      required final List<dynamic> disabledSlots})
+      required final Map<String, dynamic> slots})
       : _dates = dates,
-        _slots = slots,
-        _disabledSlots = disabledSlots;
+        _slots = slots;
 
   final List<dynamic> _dates;
   @override
@@ -404,16 +379,9 @@ class _$_Success implements _Success {
     return EqualUnmodifiableMapView(_slots);
   }
 
-  final List<dynamic> _disabledSlots;
-  @override
-  List<dynamic> get disabledSlots {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_disabledSlots);
-  }
-
   @override
   String toString() {
-    return 'DeliveryTimeslotState.success(dates: $dates, slots: $slots, disabledSlots: $disabledSlots)';
+    return 'DeliveryTimeslotState.success(dates: $dates, slots: $slots)';
   }
 
   @override
@@ -422,17 +390,14 @@ class _$_Success implements _Success {
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
             const DeepCollectionEquality().equals(other._dates, _dates) &&
-            const DeepCollectionEquality().equals(other._slots, _slots) &&
-            const DeepCollectionEquality()
-                .equals(other._disabledSlots, _disabledSlots));
+            const DeepCollectionEquality().equals(other._slots, _slots));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_dates),
-      const DeepCollectionEquality().hash(_slots),
-      const DeepCollectionEquality().hash(_disabledSlots));
+      const DeepCollectionEquality().hash(_slots));
 
   @JsonKey(ignore: true)
   @override
@@ -444,12 +409,11 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)
+    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots)
         success,
     required TResult Function(String erroe) failed,
   }) {
-    return success(dates, slots, disabledSlots);
+    return success(dates, slots);
   }
 
   @override
@@ -457,12 +421,10 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)?
-        success,
+    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
     TResult Function(String erroe)? failed,
   }) {
-    return success?.call(dates, slots, disabledSlots);
+    return success?.call(dates, slots);
   }
 
   @override
@@ -470,14 +432,12 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)?
-        success,
+    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
     TResult Function(String erroe)? failed,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(dates, slots, disabledSlots);
+      return success(dates, slots);
     }
     return orElse();
   }
@@ -523,12 +483,10 @@ class _$_Success implements _Success {
 abstract class _Success implements DeliveryTimeslotState {
   const factory _Success(
       {required final List<dynamic> dates,
-      required final Map<String, dynamic> slots,
-      required final List<dynamic> disabledSlots}) = _$_Success;
+      required final Map<String, dynamic> slots}) = _$_Success;
 
   List<dynamic> get dates;
   Map<String, dynamic> get slots;
-  List<dynamic> get disabledSlots;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -599,8 +557,7 @@ class _$_Failed implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)
+    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots)
         success,
     required TResult Function(String erroe) failed,
   }) {
@@ -612,9 +569,7 @@ class _$_Failed implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)?
-        success,
+    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
     TResult Function(String erroe)? failed,
   }) {
     return failed?.call(erroe);
@@ -625,9 +580,7 @@ class _$_Failed implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots,
-            List<dynamic> disabledSlots)?
-        success,
+    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
     TResult Function(String erroe)? failed,
     required TResult orElse(),
   }) {

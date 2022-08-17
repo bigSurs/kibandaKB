@@ -32,6 +32,7 @@ mixin _$Kibanda {
   String? get salt => throw _privateConstructorUsedError;
   String? get cart => throw _privateConstructorUsedError;
   String? get payment_terms => throw _privateConstructorUsedError;
+  int? get address_id => throw _privateConstructorUsedError;
   String? get company_name => throw _privateConstructorUsedError;
   String? get company_address => throw _privateConstructorUsedError;
   String? get customer_category => throw _privateConstructorUsedError;
@@ -58,6 +59,7 @@ abstract class $KibandaCopyWith<$Res> {
       String? salt,
       String? cart,
       String? payment_terms,
+      int? address_id,
       String? company_name,
       String? company_address,
       String? customer_category});
@@ -85,6 +87,7 @@ class _$KibandaCopyWithImpl<$Res> implements $KibandaCopyWith<$Res> {
     Object? salt = freezed,
     Object? cart = freezed,
     Object? payment_terms = freezed,
+    Object? address_id = freezed,
     Object? company_name = freezed,
     Object? company_address = freezed,
     Object? customer_category = freezed,
@@ -138,6 +141,10 @@ class _$KibandaCopyWithImpl<$Res> implements $KibandaCopyWith<$Res> {
           ? _value.payment_terms
           : payment_terms // ignore: cast_nullable_to_non_nullable
               as String?,
+      address_id: address_id == freezed
+          ? _value.address_id
+          : address_id // ignore: cast_nullable_to_non_nullable
+              as int?,
       company_name: company_name == freezed
           ? _value.company_name
           : company_name // ignore: cast_nullable_to_non_nullable
@@ -173,6 +180,7 @@ abstract class _$$_KibandaCopyWith<$Res> implements $KibandaCopyWith<$Res> {
       String? salt,
       String? cart,
       String? payment_terms,
+      int? address_id,
       String? company_name,
       String? company_address,
       String? customer_category});
@@ -201,6 +209,7 @@ class __$$_KibandaCopyWithImpl<$Res> extends _$KibandaCopyWithImpl<$Res>
     Object? salt = freezed,
     Object? cart = freezed,
     Object? payment_terms = freezed,
+    Object? address_id = freezed,
     Object? company_name = freezed,
     Object? company_address = freezed,
     Object? customer_category = freezed,
@@ -254,6 +263,10 @@ class __$$_KibandaCopyWithImpl<$Res> extends _$KibandaCopyWithImpl<$Res>
           ? _value.payment_terms
           : payment_terms // ignore: cast_nullable_to_non_nullable
               as String?,
+      address_id: address_id == freezed
+          ? _value.address_id
+          : address_id // ignore: cast_nullable_to_non_nullable
+              as int?,
       company_name: company_name == freezed
           ? _value.company_name
           : company_name // ignore: cast_nullable_to_non_nullable
@@ -286,6 +299,7 @@ class _$_Kibanda implements _Kibanda {
       this.salt,
       this.cart,
       this.payment_terms,
+      this.address_id,
       this.company_name,
       this.company_address,
       this.customer_category});
@@ -318,6 +332,8 @@ class _$_Kibanda implements _Kibanda {
   @override
   final String? payment_terms;
   @override
+  final int? address_id;
+  @override
   final String? company_name;
   @override
   final String? company_address;
@@ -326,7 +342,7 @@ class _$_Kibanda implements _Kibanda {
 
   @override
   String toString() {
-    return 'Kibanda(customer_id: $customer_id, customer_group_id: $customer_group_id, store_id: $store_id, firstname: $firstname, lastname: $lastname, email: $email, telephone: $telephone, fax: $fax, password: $password, salt: $salt, cart: $cart, payment_terms: $payment_terms, company_name: $company_name, company_address: $company_address, customer_category: $customer_category)';
+    return 'Kibanda(customer_id: $customer_id, customer_group_id: $customer_group_id, store_id: $store_id, firstname: $firstname, lastname: $lastname, email: $email, telephone: $telephone, fax: $fax, password: $password, salt: $salt, cart: $cart, payment_terms: $payment_terms, address_id: $address_id, company_name: $company_name, company_address: $company_address, customer_category: $customer_category)';
   }
 
   @override
@@ -349,6 +365,8 @@ class _$_Kibanda implements _Kibanda {
             const DeepCollectionEquality().equals(other.cart, cart) &&
             const DeepCollectionEquality()
                 .equals(other.payment_terms, payment_terms) &&
+            const DeepCollectionEquality()
+                .equals(other.address_id, address_id) &&
             const DeepCollectionEquality()
                 .equals(other.company_name, company_name) &&
             const DeepCollectionEquality()
@@ -373,6 +391,7 @@ class _$_Kibanda implements _Kibanda {
       const DeepCollectionEquality().hash(salt),
       const DeepCollectionEquality().hash(cart),
       const DeepCollectionEquality().hash(payment_terms),
+      const DeepCollectionEquality().hash(address_id),
       const DeepCollectionEquality().hash(company_name),
       const DeepCollectionEquality().hash(company_address),
       const DeepCollectionEquality().hash(customer_category));
@@ -404,6 +423,7 @@ abstract class _Kibanda implements Kibanda {
       final String? salt,
       final String? cart,
       final String? payment_terms,
+      final int? address_id,
       final String? company_name,
       final String? company_address,
       final String? customer_category}) = _$_Kibanda;
@@ -434,6 +454,8 @@ abstract class _Kibanda implements Kibanda {
   String? get cart;
   @override
   String? get payment_terms;
+  @override
+  int? get address_id;
   @override
   String? get company_name;
   @override

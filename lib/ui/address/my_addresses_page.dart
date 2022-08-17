@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/cubits/address/delivery_address_selection_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
+import 'package:kibanda_kb/routes/router.gr.dart';
+import 'package:kibanda_kb/utilities/toast/toast.dart';
 import 'package:star_menu/star_menu.dart';
 
 class MyAddressesPage extends StatelessWidget {
@@ -161,15 +164,15 @@ class MyAddressesPage extends StatelessWidget {
                 child: CupertinoButton(
                   color: Palette.orangeColor,
                   onPressed: () {
-                    // if (context.read<DeliveryAddressSelectionCubit>().state !=
-                    //     null) {
-                    //   AutoRouter.of(context).push(DeliveryDetailsRoute());
-                    // } else {
-                    //   AppToast.showToast(
-                    //       message:
-                    //           'Select your delivery address or add a new one',
-                    //       isError: true);
-                    // }
+                     if (context.read<DeliveryAddressSelectionCubit>().state !=
+                        null) {
+                      AutoRouter.of(context).push(DeliveryDetailsRoute());
+                    } else {
+                      AppToast.showToast(
+                          message:
+                              'Select your delivery address or add a new one',
+                          isError: true);
+                    }
                   },
                   padding: EdgeInsets.all(0),
                   child: Row(

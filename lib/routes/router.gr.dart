@@ -72,6 +72,7 @@ class AppRouter extends _i9.RootStackRouter {
             path: '/expanded-categories-page'),
         _i9.RouteConfig(OrderSuccessRoute.name, path: '/order-success-page'),
         _i9.RouteConfig(CartRoute.name, path: '/cart-page'),
+        _i9.RouteConfig(MyAddressesRoute.name, path: '/my-addresses-page'),
         _i9.RouteConfig(DeliveryDetailsRoute.name,
             path: '/delivery-details-page')
       ];

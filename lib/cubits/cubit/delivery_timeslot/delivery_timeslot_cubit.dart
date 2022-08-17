@@ -19,14 +19,14 @@ class DeliveryTimeslotCubit extends Cubit<DeliveryTimeslotState> {
             'shipping_method': 'store_delivery.store_delivery'
           });
       //Over here
-      List dates = response['data']['dates']['timeslots'];
+      List dates = response['data']['dates'];
       Map<String, dynamic> timeslots = response['data']['timeslots'];
-      List disabledslots = response['data']['disabled_slot'];
+
       emit(DeliveryTimeslotState.success(
-          //TODO: REPLACE WITH ACTUAL MODEL CLASS
-          dates: dates,
-          slots: timeslots,
-          disabledSlots: disabledslots));
+        //TODO: REPLACE WITH ACTUAL MODEL CLASS
+        dates: dates,
+        slots: timeslots,
+      ));
     } catch (e) {
       emit(DeliveryTimeslotState.failed(e.toString()));
     }

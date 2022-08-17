@@ -106,10 +106,10 @@ class ApiService {
       Options? options,
       Map<String, dynamic>? queries}) async {
     try {
-      var response = await restClient.dio!.get('${restClient.baseURL}$path',
+      var response = await restClient.dio!.get('${restClient.customerURL}$path',
           options: Options(headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'x-user': 'Customer',
+            'X-user': 'customer',
             'Connection': 'keep-alive',
             'Accept-encoding': 'gzip, deflate, br',
             'Accept': '*/*',

@@ -16,6 +16,7 @@ import 'package:kibanda_kb/ui/splash_screen.dart';
   AutoRoute(page: ExpandedCategoriesPage),
   AutoRoute(page: OrderSuccessPage),
   AutoRoute(page: CartPage),
+  AutoRoute(page: MyAddressesPage),
   AutoRoute(page: DeliveryDetailsPage)
 ])
 class $AppRouter {}

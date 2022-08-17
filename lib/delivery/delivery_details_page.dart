@@ -14,6 +14,7 @@ import 'package:kibanda_kb/cubits/cubit/delivery_timeslot/delivery_timeslot_cubi
 import 'package:kibanda_kb/cubits/select_date_timeslot/select_date_cubit.dart';
 import 'package:kibanda_kb/cubits/select_date_timeslot/select_timeslot_cubit.dart';
 import 'package:kibanda_kb/cubits/standard_express_delivery_mode_cubit.dart';
+import 'package:kibanda_kb/ui/home/main_home_page.dart';
 import 'package:kibanda_kb/utilities/toast/toast.dart';
 import 'package:intl/intl.dart';
 
@@ -23,8 +24,7 @@ class DeliveryDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<DeliveryTimeslotCubit>().getDeliveryTimeslots(
-        address_id: int.parse(
-            context.read<DeliveryAddressSelectionCubit>().state!.address_id!));
+        address_id: context.read<SelectedKibandaCubit>().state!.address_id!);
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),

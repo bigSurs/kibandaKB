@@ -10,6 +10,7 @@ import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
+import 'package:kibanda_kb/models/kibanda_model/kibanda.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/ui/home/product/product_tile.dart';
@@ -121,20 +122,23 @@ class _MainHomePageState extends State<MainHomePage> {
                                         (e) => e.firstname! + ' ' + e.lastname!)
                                     .toList(),
                                 onChanged: (val) {
-                                  var x = kibandaskistores!
+                                  var selectedKibanda = kibandaskistores!
                                       .where((element) =>
                                           element.firstname! +
                                               ' ' +
                                               element.lastname! ==
                                           val)
-                                      .first
-                                      .customer_id!;
+                                      .first;
+                                  context
+                                      .read<SelectedKibandaCubit>()
+                                      .save(selectedKibanda);
 
                                   /// This [val] is the value of the selected item (Customer ID)
                                   context
                                       .read<VendorProductsCubit>()
                                       .getVendorProductsByAllCategories(
-                                          customerId: x as int);
+                                          customerId: selectedKibanda
+                                              .customer_id as int);
                                 },
                               )),
                           orElse: () {
@@ -398,5 +402,12 @@ class _CardWidgetState extends State<CardWidget> {
         ),
       )),
     );
+  }
+}
+
+class SelectedKibandaCubit extends Cubit<Kibanda?> {
+  SelectedKibandaCubit() : super(null);
+  save(Kibanda? kibanda) {
+    emit(kibanda);
   }
 }
