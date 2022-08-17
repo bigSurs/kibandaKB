@@ -19,6 +19,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
             .first
             .variation['variant_id']
             .toString(),
+        
         'product[$i][store_id]': state[i].store_id.toString(),
         'product[$i][quantity]': cartProductMetadataCubit.state
             .where((element) => element.product_id == state[i].product_id!)

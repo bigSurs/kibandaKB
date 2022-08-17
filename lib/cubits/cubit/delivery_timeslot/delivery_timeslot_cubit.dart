@@ -13,7 +13,7 @@ class DeliveryTimeslotCubit extends Cubit<DeliveryTimeslotState> {
     emit(DeliveryTimeslotState.loading());
     try {
       var response = await ApiService.getData(
-          path: 'deliverytimeslots/deliverytimeslot',
+          path: 'customer/checkout/deliverytimeslot',
           queries: {
             'store_id': 75,
             'shipping_method': 'store_delivery.store_delivery'

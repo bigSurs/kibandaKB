@@ -5,8 +5,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/cubits/address/delivery_address_selection_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/delivery_timeslot/delivery_timeslot_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/place_order_cubit/place_order_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/save_to_basket_cubit.dart';
@@ -52,6 +54,8 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => CustomerAddressCubit()),
         BlocProvider(create: (context) => FeaturedProductCubit()),
         BlocProvider(create: (context) => PlaceOrderCubit()),
+        BlocProvider(create: (context) => DeliveryTimeslotCubit()),
+        BlocProvider(create: (context) => DeliveryAddressSelectionCubit(null)),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(

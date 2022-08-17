@@ -486,79 +486,38 @@ class CheckoutWidget extends StatelessWidget {
                   Expanded(
                     flex: 4,
                     child: SizedBox(
-                      height: 30,
-                      child: BlocConsumer<PlaceOrderCubit, PlaceOrderState>(
-                        listener: (context, state) {
-                          // TODO: implement listener
-                          state.maybeWhen(
-                              orElse: () {},
-                              success: () {
-                                // if (context.read<HybridSelectedCubit>().state) {
-                                //   if (context.read<HybridTypeCubit>().state == 'mpesa') {
-                                //     AutoRouter.of(context).replace(MpesaPaymentRoute(
-                                //         orderReference:
-                                //             orderData['order_reference_number']));
-                                //   } else {
-                                //     AutoRouter.of(context).push(OrderSuccessRoute());
-                                //     context.read<CartCubit>().emit([]);
-                                //     context.read<CartProductMetadataCubit>().emit([]);
-                                //   }
-                                // } else {
-                                // if (context
-                                //         .read<SelectedPaymentMethodCubit>()
-                                //         .state!
-                                //         .code ==
-                                //     'mpesa') {
-                                //   AutoRouter.of(context).replace(MpesaPaymentRoute(
-                                //       orderReference:
-                                //           orderData['order_reference_number']));
-                                // } else {
-                                AutoRouter.of(context)
-                                    .push(OrderSuccessRoute());
-                                context.read<CartCubit>().emit([]);
-                                context
-                                    .read<CartProductMetadataCubit>()
-                                    .emit([]);
-                                // }
-                              },
-                              failed: (e) {
-                                AppToast.showToast(message: e, isError: true);
-                              });
-                        },
-                        builder: (context, state) {
-                          return CupertinoButton(
-                            color: Palette.orangeColor,
-                            onPressed: () {
-                              Map<String, dynamic> data = {};
-                              var productListData = context
-                                  .read<CartProductMetadataCubit>()
-                                  .state;
-                              for (int i = 0; i < productListData.length; i++) {
-                                data.addAll({
-                                  'products[$i][quantity]':
-                                      productListData[i].amount.toString(),
-                                  'products[][product_store_id]':
-                                      productListData[i]
-                                          .product_store_id
-                                          .toString(),
-                                  'products[][store_id]':
-                                      productListData[i].store_id.toString(),
-                                });
-                              }
+                        height: 30,
+                        child: CupertinoButton(
+                          color: Palette.orangeColor,
+                          onPressed: () {
+                            AutoRouter.of(context).push(DeliveryDetailsRoute());
+                            // Map<String, dynamic> data = {};
+                            // var productListData = context
+                            //     .read<CartProductMetadataCubit>()
+                            //     .state;
+                            // for (int i = 0; i < productListData.length; i++) {
+                            //   data.addAll({
+                            //     'products[$i][quantity]':
+                            //         productListData[i].amount.toString(),
+                            //     'products[][product_store_id]':
+                            //         productListData[i]
+                            //             .product_store_id
+                            //             .toString(),
+                            //     'products[][store_id]':
+                            //         productListData[i].store_id.toString(),
+                            //   });
+                            // }
 
-                              context.read<PlaceOrderCubit>().placeOrder(data);
-                            },
-                            padding: EdgeInsets.all(2),
-                            child: Text(
-                              'Checkout',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                            // context.read<PlaceOrderCubit>().placeOrder(data);
+                          },
+                          padding: EdgeInsets.all(2),
+                          child: Text(
+                            'Checkout',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )),
                   ),
                 ],
               ),
