@@ -17,6 +17,8 @@ import 'package:kibanda_kb/cubits/cubit/wishlist_cubit.dart';
 import 'package:kibanda_kb/cubits/customer_address/customer_address_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/login_cubit/login_cubit.dart';
+import 'package:kibanda_kb/cubits/select_date_timeslot/select_date_cubit.dart';
+import 'package:kibanda_kb/cubits/select_date_timeslot/select_timeslot_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/ui/home/main_home_page.dart';
@@ -58,6 +60,8 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => DeliveryTimeslotCubit()),
         BlocProvider(create: (context) => DeliveryAddressSelectionCubit(null)),
         BlocProvider(create: (context) => SelectedKibandaCubit()),
+        BlocProvider(create: (context) => SelectDeliveryDateCubit()),
+        BlocProvider(create: (context) => SelectTimeslotCubit('')),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(

@@ -42,15 +42,16 @@ class ExpandedCategoriesPage extends StatelessWidget {
                       // AutoRouter.of(context).push(SearchRoute(searchQuery: ''));
                     }),
                 CupertinoButton(
+                    // ignore: sort_child_properties_last
                     child: Badge(
                       badgeContent: Text(
                         context.watch<CartCubit>().state.length.toString(),
                         style: TextStyle(color: Colors.white),
                       ),
                       badgeColor: Palette.greenColor,
-                      child: Icon(
+                      child: const Icon(
                         CupertinoIcons.cart,
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                     padding: EdgeInsets.all(0),
@@ -60,163 +61,163 @@ class ExpandedCategoriesPage extends StatelessWidget {
               ],
             ),
           ),
-        //   SliverFillRemaining(
-        //     child: BlocConsumer<ProductCategoryCubit, ProductCategoryState>(
-        //       listener: (context, state) {
-        //         state.maybeWhen(
-        //             orElse: () {},
-        //             failed: (e) {
-        //               AppToast.showToast(message: e, isError: true);
-        //             });
-        //       },
-        //       builder: (context, state) {
-        //         return state.maybeWhen(
-        //             loading: () {
-        //               return Center(
-        //                 child: SpinKitSpinningLines(
-        //                   color: Palette.greenColor,
-        //                 ),
-        //               );
-        //             },
-        //             success: (categories) {
-        //               var pageController = PageController();
-        //               var scrollController = ScrollController();
-        //               return DefaultTabController(
-        //                 length: categories.length,
-        //                 child: Padding(
-        //                   padding: const EdgeInsets.symmetric(horizontal: 16),
-        //                   child: Column(
-        //                     children: [
-        //                       Container(
-        //                         height: 40,
-        //                         child: ListView(
-        //                             scrollDirection: Axis.horizontal,
-        //                             controller: scrollController,
-        //                             physics: BouncingScrollPhysics(),
+          //   SliverFillRemaining(
+          //     child: BlocConsumer<ProductCategoryCubit, ProductCategoryState>(
+          //       listener: (context, state) {
+          //         state.maybeWhen(
+          //             orElse: () {},
+          //             failed: (e) {
+          //               AppToast.showToast(message: e, isError: true);
+          //             });
+          //       },
+          //       builder: (context, state) {
+          //         return state.maybeWhen(
+          //             loading: () {
+          //               return Center(
+          //                 child: SpinKitSpinningLines(
+          //                   color: Palette.greenColor,
+          //                 ),
+          //               );
+          //             },
+          //             success: (categories) {
+          //               var pageController = PageController();
+          //               var scrollController = ScrollController();
+          //               return DefaultTabController(
+          //                 length: categories.length,
+          //                 child: Padding(
+          //                   padding: const EdgeInsets.symmetric(horizontal: 16),
+          //                   child: Column(
+          //                     children: [
+          //                       Container(
+          //                         height: 40,
+          //                         child: ListView(
+          //                             scrollDirection: Axis.horizontal,
+          //                             controller: scrollController,
+          //                             physics: BouncingScrollPhysics(),
 
-        //                             // onTap: (index) {
-        //                             //   context
-        //                             //       .read<CategoryProductsCubit>()
-        //                             //       .getCategoryProducts(
-        //                             //           categoryId: int.parse(
-        //                             //               categories[index]
-        //                             //                   .category_id!));
-        //                             // },
-        //                             children: List.generate(
-        //                                 categories.length,
-        //                                 (index) => Padding(
-        //                                       padding: const EdgeInsets.only(
-        //                                           right: 8),
-        //                                       child: GestureDetector(
-        //                                         onTap: () {
-        //                                           context
-        //                                               .read<
-        //                                                   CategoriesTabIndexCubit>()
-        //                                               .change(index);
-        //                                           pageController.animateToPage(
-        //                                               index,
-        //                                               duration: Duration(
-        //                                                   milliseconds: 300),
-        //                                               curve: Curves.bounceIn);
-        //                                         },
-        //                                         child: Container(
-        //                                           height: 20,
-        //                                           padding: EdgeInsets.symmetric(
-        //                                               horizontal: 8),
-        //                                           decoration: BoxDecoration(
-        //                                               borderRadius:
-        //                                                   BorderRadius.circular(
-        //                                                       8),
-        //                                               color: context
-        //                                                           .watch<
-        //                                                               CategoriesTabIndexCubit>()
-        //                                                           .state ==
-        //                                                       index
-        //                                                   ? Palette
-        //                                                       .limeGreenColor
-        //                                                   : Palette
-        //                                                       .orangeColor),
-        //                                           child: Center(
-        //                                             child: Text(
-        //                                                 categories[index].name!,
-        //                                                 style: TextStyle(
-        //                                                     fontSize: 12,
-        //                                                     color: context
-        //                                                                 .watch<
-        //                                                                     CategoriesTabIndexCubit>()
-        //                                                                 .state ==
-        //                                                             index
-        //                                                         ? Palette
-        //                                                             .placeholderGrey
-        //                                                         : Colors
-        //                                                             .white)),
-        //                                           ),
-        //                                         ),
-        //                                       ),
-        //                                     ))),
-        //                       ),
-        //                       Expanded(
-        //                         child: PageView(
-        //                             physics: BouncingScrollPhysics(),
-        //                             controller: pageController,
-        //                             onPageChanged: (val) {
-        //                               context
-        //                                   .read<CategoriesTabIndexCubit>()
-        //                                   .change(val);
-        //                               context
-        //                                   .read<CategoryProductsCubit>()
-        //                                   .getCategoryProducts(
-        //                                       customerId: int.parse(context
-        //                                           .read<UserInfoCubit>()
-        //                                           .state
-        //                                           .customer_id!),
-        //                                       page: 1,
-        //                                       categoryId: int.parse(
-        //                                           categories[val]
-        //                                               .category_id!));
-        //                             },
-        //                             children: List.generate(
-        //                                 categories.length,
-        //                                 (index) => BlocConsumer<
-        //                                         CategoryProductsCubit,
-        //                                         CategoryProductsState>(
-        //                                       listener: (context, state) {
-        //                                         state.maybeWhen(
-        //                                             orElse: () {},
-        //                                             failed: (e) {
-        //                                               AppToast.showToast(
-        //                                                   message: e,
-        //                                                   isError: true);
-        //                                             });
-        //                                       },
-        //                                       builder: (context, state) {
-        //                                         return state.maybeWhen(loading:
-        //                                             () {
-        //                                           return Center(
-        //                                             child: SpinKitSpinningLines(
-        //                                               color: Palette.greenColor,
-        //                                             ),
-        //                                           );
-        //                                         }, success:
-        //                                             (products, page, isLast) {
-        //                                           return CategoryProductsWidget(
-        //                                             products: products,
-        //                                           );
-        //                                         }, orElse: () {
-        //                                           return Container();
-        //                                         });
-        //                                       },
-        //                                     ))),
-        //                       )
-        //                     ],
-        //                   ),
-        //                 ),
-        //               );
-        //             },
-        //             orElse: () => Container());
-        //       },
-        //     ),
-        //   )
+          //                             // onTap: (index) {
+          //                             //   context
+          //                             //       .read<CategoryProductsCubit>()
+          //                             //       .getCategoryProducts(
+          //                             //           categoryId: int.parse(
+          //                             //               categories[index]
+          //                             //                   .category_id!));
+          //                             // },
+          //                             children: List.generate(
+          //                                 categories.length,
+          //                                 (index) => Padding(
+          //                                       padding: const EdgeInsets.only(
+          //                                           right: 8),
+          //                                       child: GestureDetector(
+          //                                         onTap: () {
+          //                                           context
+          //                                               .read<
+          //                                                   CategoriesTabIndexCubit>()
+          //                                               .change(index);
+          //                                           pageController.animateToPage(
+          //                                               index,
+          //                                               duration: Duration(
+          //                                                   milliseconds: 300),
+          //                                               curve: Curves.bounceIn);
+          //                                         },
+          //                                         child: Container(
+          //                                           height: 20,
+          //                                           padding: EdgeInsets.symmetric(
+          //                                               horizontal: 8),
+          //                                           decoration: BoxDecoration(
+          //                                               borderRadius:
+          //                                                   BorderRadius.circular(
+          //                                                       8),
+          //                                               color: context
+          //                                                           .watch<
+          //                                                               CategoriesTabIndexCubit>()
+          //                                                           .state ==
+          //                                                       index
+          //                                                   ? Palette
+          //                                                       .limeGreenColor
+          //                                                   : Palette
+          //                                                       .orangeColor),
+          //                                           child: Center(
+          //                                             child: Text(
+          //                                                 categories[index].name!,
+          //                                                 style: TextStyle(
+          //                                                     fontSize: 12,
+          //                                                     color: context
+          //                                                                 .watch<
+          //                                                                     CategoriesTabIndexCubit>()
+          //                                                                 .state ==
+          //                                                             index
+          //                                                         ? Palette
+          //                                                             .placeholderGrey
+          //                                                         : Colors
+          //                                                             .white)),
+          //                                           ),
+          //                                         ),
+          //                                       ),
+          //                                     ))),
+          //                       ),
+          //                       Expanded(
+          //                         child: PageView(
+          //                             physics: BouncingScrollPhysics(),
+          //                             controller: pageController,
+          //                             onPageChanged: (val) {
+          //                               context
+          //                                   .read<CategoriesTabIndexCubit>()
+          //                                   .change(val);
+          //                               context
+          //                                   .read<CategoryProductsCubit>()
+          //                                   .getCategoryProducts(
+          //                                       customerId: int.parse(context
+          //                                           .read<UserInfoCubit>()
+          //                                           .state
+          //                                           .customer_id!),
+          //                                       page: 1,
+          //                                       categoryId: int.parse(
+          //                                           categories[val]
+          //                                               .category_id!));
+          //                             },
+          //                             children: List.generate(
+          //                                 categories.length,
+          //                                 (index) => BlocConsumer<
+          //                                         CategoryProductsCubit,
+          //                                         CategoryProductsState>(
+          //                                       listener: (context, state) {
+          //                                         state.maybeWhen(
+          //                                             orElse: () {},
+          //                                             failed: (e) {
+          //                                               AppToast.showToast(
+          //                                                   message: e,
+          //                                                   isError: true);
+          //                                             });
+          //                                       },
+          //                                       builder: (context, state) {
+          //                                         return state.maybeWhen(loading:
+          //                                             () {
+          //                                           return Center(
+          //                                             child: SpinKitSpinningLines(
+          //                                               color: Palette.greenColor,
+          //                                             ),
+          //                                           );
+          //                                         }, success:
+          //                                             (products, page, isLast) {
+          //                                           return CategoryProductsWidget(
+          //                                             products: products,
+          //                                           );
+          //                                         }, orElse: () {
+          //                                           return Container();
+          //                                         });
+          //                                       },
+          //                                     ))),
+          //                       )
+          //                     ],
+          //                   ),
+          //                 ),
+          //               );
+          //             },
+          //             orElse: () => Container());
+          //       },
+          //     ),
+          //   )
         ],
       ),
     );

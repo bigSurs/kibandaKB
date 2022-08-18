@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +49,7 @@ class DeliveryDetailsPage extends StatelessWidget {
             return Center(
               child: SpinKitSpinningLines(color: Palette.greenColor),
             );
-          }, success: (dates, timeslots, disabled) {
+          }, success: (dates, timeslots) {
             return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Column(
@@ -194,8 +193,8 @@ class DeliveryDetailsPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
-                      padding: EdgeInsets.all(8),
+                      duration: const Duration(milliseconds: 300),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         border: Border.all(color: Palette.greyColor),
                       ),
@@ -206,9 +205,10 @@ class DeliveryDetailsPage extends StatelessWidget {
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         physics: BouncingScrollPhysics(),
-                        itemCount: timeslots[
-                                context.read<SelectDeliveryDateCubit>().state ??
-                                    dates[0]]
+                        itemCount: timeslots[context
+                                    .watch<SelectDeliveryDateCubit>()
+                                    .state ??
+                                dates[0]]
                             .length,
                         itemBuilder: (context, index) => DeliveryTimeSlotWidget(
                           timeslot: timeslots[
@@ -303,14 +303,14 @@ class DeliveryDetailsPage extends StatelessWidget {
                               context.read<CartCubit>().state[i].store_id,
                           'products[$i][name]':
                               context.read<CartCubit>().state[i].name,
-                          'products[$i][store_product_variation_id]': '0'
-,                          'products[$i][product_type]':[],
+                          'products[$i][store_product_variation_id]': '0',
+                          'products[$i][product_type]': [],
                           'products[$i][download]': 0,
                           'products[$i][minimum]': 0,
                           'products[$i][subtract]': 0,
                           'products[$i][reward]': 0,
-                          'products[$i][product_type]':[],
-                          'products[$i][store_product_variation_id]':'0',
+                          'products[$i][product_type]': [],
+                          'products[$i][store_product_variation_id]': '0',
                           'coupon': '0',
                           'total': context.read<CartCubit>().getBalance(),
                           'sub_total': context.read<CartCubit>().getBalance(),
