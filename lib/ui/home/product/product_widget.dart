@@ -28,7 +28,7 @@ class _ProductWidgetState extends State<ProductWidget> {
     });
     var selectedVariation = widget.product.variations![0];
     return SizedBox(
-      width: 200,
+      width: 300,
       child: Container(
         padding: EdgeInsets.all(4),
         decoration: BoxDecoration(
@@ -67,34 +67,43 @@ class _ProductWidgetState extends State<ProductWidget> {
                   //
                   : SizedBox(
                       height: 36,
-                      width: 140,
-                      child: DropdownButtonFormField<int>(
-                          onChanged: (val) {
-                            setState(() {
-                              selectedVariation = widget.product.variations!
-                                  .where(
-                                      (element) => element['variant_id'] == val)
-                                  .first;
-                            });
+                      // width: 140,
+                      child: Expanded(
+                        child: Column(
+                          children: [
+                            Flexible(
+                              child: DropdownButtonFormField<int>(
+                                  onChanged: (val) {
+                                    setState(() {
+                                      selectedVariation = widget
+                                          .product.variations!
+                                          .where((element) =>
+                                              element['variant_id'] == val)
+                                          .first;
+                                    });
 
-                            context.read<CartCubit>().updateCart();
+                                    context.read<CartCubit>().updateCart();
 
-                            print(val);
-                          },
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              contentPadding:
-                                  EdgeInsets.only(left: 12, right: 12)),
-                          value: selectedVariation['variant_id'],
-                          items: List.generate(
-                              widget.product.variations!.length,
-                              (index) => DropdownMenuItem(
-                                  onTap: () {},
-                                  value: widget.product.variations![index]
-                                      ['variant_id'],
-                                  child: Text('Per ' +
-                                      widget.product.variations![index]
-                                          ['unit'])))),
+                                    print(val);
+                                  },
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      contentPadding:
+                                          EdgeInsets.only(left: 12, right: 12)),
+                                  value: selectedVariation['variant_id'],
+                                  items: List.generate(
+                                      widget.product.variations!.length,
+                                      (index) => DropdownMenuItem(
+                                          onTap: () {},
+                                          value: widget.product
+                                              .variations![index]['variant_id'],
+                                          child: Text('Per ' +
+                                              widget.product.variations![index]
+                                                  ['unit'])))),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
               SizedBox(
                 height: 12,
@@ -235,7 +244,7 @@ class _ProductWidgetState extends State<ProductWidget> {
               inCart
                   ? SizedBox(
                       height: 36,
-                      width: 140,
+                      // width: 140,
                       child: DropdownButtonFormField<int>(
                           onChanged: (val) {
                             context

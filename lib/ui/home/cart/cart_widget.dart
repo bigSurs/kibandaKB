@@ -490,7 +490,7 @@ class CheckoutWidget extends StatelessWidget {
                         child: CupertinoButton(
                           color: Palette.orangeColor,
                           onPressed: () {
-                            AutoRouter.of(context).push(DeliveryDetailsRoute());
+                            AutoRouter.of(context).push(DeliveryDetailsRoute(orderData: {}));
                             // Map<String, dynamic> data = {};
                             // var productListData = context
                             //     .read<CartProductMetadataCubit>()

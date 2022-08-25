@@ -11,6 +11,7 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i9;
+import 'package:flutter/cupertino.dart' as _i11;
 import 'package:flutter/material.dart' as _i10;
 
 import '../delivery/delivery_details_page.dart' as _i8;
@@ -57,8 +58,11 @@ class AppRouter extends _i9.RootStackRouter {
           routeData: routeData, child: const _i7.CartPage());
     },
     DeliveryDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<DeliveryDetailsRouteArgs>();
       return _i9.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.DeliveryDetailsPage());
+          routeData: routeData,
+          child: _i8.DeliveryDetailsPage(
+              key: args.key, orderData: args.orderData));
     }
   };
 
@@ -139,9 +143,24 @@ class CartRoute extends _i9.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.DeliveryDetailsPage]
-class DeliveryDetailsRoute extends _i9.PageRouteInfo<void> {
-  const DeliveryDetailsRoute()
-      : super(DeliveryDetailsRoute.name, path: '/delivery-details-page');
+class DeliveryDetailsRoute extends _i9.PageRouteInfo<DeliveryDetailsRouteArgs> {
+  DeliveryDetailsRoute({_i11.Key? key, required Map<String, dynamic> orderData})
+      : super(DeliveryDetailsRoute.name,
+            path: '/delivery-details-page',
+            args: DeliveryDetailsRouteArgs(key: key, orderData: orderData));
 
   static const String name = 'DeliveryDetailsRoute';
+}
+
+class DeliveryDetailsRouteArgs {
+  const DeliveryDetailsRouteArgs({this.key, required this.orderData});
+
+  final _i11.Key? key;
+
+  final Map<String, dynamic> orderData;
+
+  @override
+  String toString() {
+    return 'DeliveryDetailsRouteArgs{key: $key, orderData: $orderData}';
+  }
 }

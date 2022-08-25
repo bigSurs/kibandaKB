@@ -21,7 +21,9 @@ import 'package:kibanda_kb/utilities/toast/toast.dart';
 import 'package:intl/intl.dart';
 
 class DeliveryDetailsPage extends StatelessWidget {
-  const DeliveryDetailsPage({Key? key}) : super(key: key);
+  final Map<String, dynamic> orderData;
+  const DeliveryDetailsPage({Key? key, required this.orderData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -311,6 +313,7 @@ class DeliveryDetailsPage extends StatelessWidget {
                               isError: true);
                         } else {
                           Map<String, dynamic> data = {};
+                          var dataorder = orderData;
                           var x = generateRandomString(12);
                           for (int i = 0;
                               i < context.read<CartCubit>().state.length;
@@ -415,6 +418,7 @@ class DeliveryDetailsPage extends StatelessWidget {
                               'order_reference_number': x,
                             });
                           }
+                          context.read<PlaceOrderCubit>().placeOrder(dataorder);
                           //TODO:
                           // AutoRouter.of(context)
                           //     .push((orderData: data));

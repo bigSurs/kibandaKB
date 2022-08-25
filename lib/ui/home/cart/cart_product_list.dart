@@ -408,47 +408,56 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                     fontSize: 12, fontWeight: FontWeight.w400))
                           ])),
                       SizedBox(
-                        height: 36,
-                        width: 140,
-                        child: DropdownButtonFormField<int>(
-                            onChanged: (val) {
-                              context
-                                  .read<CartProductMetadataCubit>()
-                                  .setVariation(
-                                      product: widget.product,
-                                      vary: widget
-                                          .product.variations!
-                                          .where((element) =>
-                                              element['variant_id'] == val)
-                                          .first);
-                              widget.refresh();
-                              setState(() {});
-                              context.read<CartCubit>().updateCart();
+                        height: 45,
+                        // width: 140,
+                        child: Expanded(
+                          child: Column(
+                            children: [
+                              Flexible(
+                                child: DropdownButtonFormField<int>(
+                                    isExpanded: true,
+                                    onChanged: (val) {
+                                      context
+                                          .read<CartProductMetadataCubit>()
+                                          .setVariation(
+                                              product: widget.product,
+                                              vary: widget.product.variations!
+                                                  .where((element) =>
+                                                      element['variant_id'] ==
+                                                      val)
+                                                  .first);
+                                      widget.refresh();
+                                      setState(() {});
+                                      context.read<CartCubit>().updateCart();
 
-                              print(val);
-                            },
-                            value: context
-                                .read<CartProductMetadataCubit>()
-                                .state
-                                .where((element) =>
-                                    element.product_id ==
-                                    widget.product.product_id!)
-                                .first
-                                .variation['variant_id'],
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding:
-                                    EdgeInsets.only(left: 12, right: 12)),
-                            items: List.generate(
-                                widget.product.variations!.length,
-                                (index) => DropdownMenuItem(
-                                    value: widget.product.variations![index]
-                                        ['variant_id'],
-                                    child: Text('Per ' +
-                                        widget.product.variations![index]
-                                            ['unit']))),
-                            style:
-                                TextStyle(fontSize: 14, color: Colors.black)),
+                                      print(val);
+                                    },
+                                    value: context
+                                        .read<CartProductMetadataCubit>()
+                                        .state
+                                        .where((element) =>
+                                            element.product_id ==
+                                            widget.product.product_id!)
+                                        .first
+                                        .variation['variant_id'],
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        contentPadding: EdgeInsets.only(
+                                            left: 12, right: 12)),
+                                    items: List.generate(
+                                        widget.product.variations!.length,
+                                        (index) => DropdownMenuItem(
+                                            value: widget.product.variations![index]
+                                                ['variant_id'],
+                                            child: Text('Per ' +
+                                                widget.product.variations![index]
+                                                    ['unit']))),
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.black)),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 12,

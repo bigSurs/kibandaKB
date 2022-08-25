@@ -41,6 +41,7 @@ class ApiService {
               options: Options(headers: {
                 'Content-Type':
                     'application/x-www-form-urlencoded; charset=UTF-8',
+                'X-user': 'customer',
               }));
       return response.data;
     } on DioError catch (error) {
@@ -67,7 +68,7 @@ class ApiService {
           await restClient.dio!.post('${restClient.customerURL}$path',
               data: data,
               options: Options(headers: {
-                'x-user': 'Customer',
+                'X-user': 'customer',
                 'Content-Type':
                     'application/x-www-form-urlencoded; charset=UTF-8',
               }));

@@ -166,7 +166,7 @@ class MyAddressesPage extends StatelessWidget {
                   onPressed: () {
                      if (context.read<DeliveryAddressSelectionCubit>().state !=
                         null) {
-                      AutoRouter.of(context).push(DeliveryDetailsRoute());
+                      AutoRouter.of(context).push(DeliveryDetailsRoute(orderData: {}));
                     } else {
                       AppToast.showToast(
                           message:
