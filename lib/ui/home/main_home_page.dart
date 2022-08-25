@@ -55,7 +55,10 @@ class _MainHomePageState extends State<MainHomePage> {
                 '${context.watch<CartCubit>().state.length}',
                 style: TextStyle(color: Colors.white),
               ),
-              child: Icon(Icons.shopping_cart),
+              child: Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
             ),
           ),
           SizedBox(
