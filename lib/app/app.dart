@@ -76,7 +76,7 @@ class KwikBasketKibandaApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
           ],
           theme: ThemeData(
-              textTheme: GoogleFonts.poppinsTextTheme(),
+              textTheme: GoogleFonts.poppinsTextTheme().copyWith(),
               primaryColor: Palette.greenColor,
               colorScheme: const ColorScheme(
                   primary: Palette.greenColor,
