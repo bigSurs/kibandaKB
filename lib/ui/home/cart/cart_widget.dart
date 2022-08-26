@@ -490,25 +490,23 @@ class CheckoutWidget extends StatelessWidget {
                         child: CupertinoButton(
                           color: Palette.orangeColor,
                           onPressed: () {
-                            AutoRouter.of(context).push(DeliveryDetailsRoute(orderData: {}));
-                            // Map<String, dynamic> data = {};
-                            // var productListData = context
-                            //     .read<CartProductMetadataCubit>()
-                            //     .state;
-                            // for (int i = 0; i < productListData.length; i++) {
-                            //   data.addAll({
-                            //     'products[$i][quantity]':
-                            //         productListData[i].amount.toString(),
-                            //     'products[][product_store_id]':
-                            //         productListData[i]
-                            //             .product_store_id
-                            //             .toString(),
-                            //     'products[][store_id]':
-                            //         productListData[i].store_id.toString(),
-                            //   });
-                            // }
-
-                            // context.read<PlaceOrderCubit>().placeOrder(data);
+                            Map<String, dynamic> data = {};
+                            var productListData =
+                                context.read<CartProductMetadataCubit>().state;
+                            for (int i = 0; i < productListData.length; i++) {
+                              data.addAll({
+                                'products[$i][quantity]':
+                                    productListData[i].amount.toString(),
+                                'products[$i][product_store_id]':
+                                    productListData[i]
+                                        .product_store_id
+                                        .toString(),
+                                'products[$i][store_id]':
+                                    productListData[i].store_id.toString(),
+                              });
+                            }
+                            AutoRouter.of(context)
+                                .push(DeliveryDetailsRoute(orderData: data));
                           },
                           padding: EdgeInsets.all(2),
                           child: Text(
