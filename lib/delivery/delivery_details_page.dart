@@ -323,6 +323,7 @@ class DeliveryDetailsPage extends StatelessWidget {
                               //     .read<DeliveryAddressSelectionCubit>()
                               //     .state!
                               //     .address_id,
+
                               'products[$i][product_store_id]': context
                                   .read<CartProductMetadataCubit>()
                                   .state
@@ -340,6 +341,8 @@ class DeliveryDetailsPage extends StatelessWidget {
                                   context.read<CartCubit>().state[i].unit,
                               'products[][model]':
                                   context.read<CartCubit>().state[i].model,
+                              'payment_method': 'mPesa on delivery',
+                              "payment_method_code": "mod",
                               'products[][weight]': '0',
                               'products[][store_id]': '75',
                               'products[][store_id]':

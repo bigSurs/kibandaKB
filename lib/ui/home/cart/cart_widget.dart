@@ -490,6 +490,8 @@ class CheckoutWidget extends StatelessWidget {
                         child: CupertinoButton(
                           color: Palette.orangeColor,
                           onPressed: () {
+                            AutoRouter.of(context)
+                                .push(DeliveryDetailsRoute(orderData: {}));
                             Map<String, dynamic> data = {};
                             var productListData =
                                 context.read<CartProductMetadataCubit>().state;
@@ -497,16 +499,16 @@ class CheckoutWidget extends StatelessWidget {
                               data.addAll({
                                 'products[$i][quantity]':
                                     productListData[i].amount.toString(),
-                                'products[$i][product_store_id]':
+                                'products[][product_store_id]':
                                     productListData[i]
                                         .product_store_id
                                         .toString(),
-                                'products[$i][store_id]':
+                                'products[][store_id]':
                                     productListData[i].store_id.toString(),
                               });
                             }
-                            AutoRouter.of(context)
-                                .push(DeliveryDetailsRoute(orderData: data));
+
+                            // context.read<PlaceOrderCubit>().placeOrder(data);
                           },
                           padding: EdgeInsets.all(2),
                           child: Text(

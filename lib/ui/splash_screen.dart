@@ -4,6 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
@@ -43,9 +44,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     TokenCubit tokenCubit = BlocProvider.of<TokenCubit>(context);
+    CustomerTokenCubit customertokenCubit =
+        BlocProvider.of<CustomerTokenCubit>(context);
     CartProductMetadataCubit cartProductMetadataCubit =
         BlocProvider.of<CartProductMetadataCubit>(context);
     GetIt.I.registerSingleton(tokenCubit);
+    GetIt.I.registerSingleton(customertokenCubit);
     GetIt.I.registerSingleton(cartProductMetadataCubit);
     return Scaffold(
         body: Stack(

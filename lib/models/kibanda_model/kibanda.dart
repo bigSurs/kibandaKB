@@ -9,6 +9,7 @@ class Kibanda with _$Kibanda {
       {num? customer_id,
       num? customer_group_id,
       num? store_id,
+      String? token,
       String? firstname,
       String? lastname,
       String? email,

@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/models/api_response/api_response.dart';
 import 'package:kibanda_kb/utilities/rest_client/rest_client.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class ApiService {
   ///Retrieves the [RestClient] from the service locator
@@ -43,6 +45,40 @@ class ApiService {
                     'application/x-www-form-urlencoded; charset=UTF-8',
                 'X-user': 'customer',
               }));
+      return response.data;
+    } on DioError catch (error) {
+      try {
+        throw error.response!.data['message'][0]['body'];
+      } catch (e) {
+        throw error.message;
+      }
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  static Future<Map<String, dynamic>> postDataOrder({
+    required Map<String, dynamic> data,
+    required String path,
+  }) async {
+    try {
+      Dio dio = Dio();
+      dio.interceptors.add(PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: true,
+          error: true,
+          compact: true,
+          maxWidth: 90));
+      var x = GetIt.I<CustomerTokenCubit>().state;
+      var response = await dio.post('${restClient.customerURL}$path',
+          data: data,
+          options: Options(headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'x-user': 'customer',
+            'authorization': 'Bearer $x'
+          }));
       return response.data;
     } on DioError catch (error) {
       try {

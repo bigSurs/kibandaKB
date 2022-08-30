@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/address/delivery_address_selection_cubit.dart';
@@ -62,6 +63,7 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => SelectedKibandaCubit()),
         BlocProvider(create: (context) => SelectDeliveryDateCubit()),
         BlocProvider(create: (context) => SelectTimeslotCubit('')),
+        BlocProvider(create: (context) => CustomerTokenCubit('')),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(
