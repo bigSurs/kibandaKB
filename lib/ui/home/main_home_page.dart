@@ -48,20 +48,20 @@ class _MainHomePageState extends State<MainHomePage> {
         actions: [
           CupertinoButton(
             onPressed: () {
-              AutoRouter.of(context).push(CartRoute());
+              AutoRouter.of(context).push(const CartRoute());
             },
             child: Badge(
               badgeContent: Text(
                 '${context.watch<CartCubit>().state.length}',
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.shopping_cart,
                 color: Colors.white,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           )
         ],
