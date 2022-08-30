@@ -312,120 +312,125 @@ class DeliveryDetailsPage extends StatelessWidget {
                                   'Please select your preferred delivery date and time',
                               isError: true);
                         } else {
-                          Map<String, dynamic> data = {};
-                          var dataorder = orderData;
-                          var x = generateRandomString(12);
                           for (int i = 0;
                               i < context.read<CartCubit>().state.length;
                               i++) {
-                            data.addAll({
-                              // 'shipping_address_id': context
-                              //     .read<DeliveryAddressSelectionCubit>()
-                              //     .state!
-                              //     .address_id,
-
-                              'products[$i][product_store_id]': context
-                                  .read<CartProductMetadataCubit>()
-                                  .state
-                                  .where((element) =>
-                                      element.product_id ==
-                                      context
-                                          .read<CartCubit>()
-                                          .state[i]
-                                          .product_id!)
-                                  .first
-                                  .variation['variation_id'],
-                              'products[][product_id]':
-                                  context.read<CartCubit>().state[i].product_id,
-                              'products[][unit]':
-                                  context.read<CartCubit>().state[i].unit,
-                              'products[][model]':
-                                  context.read<CartCubit>().state[i].model,
-                              'payment_method': 'mPesa on delivery',
-                              "payment_method_code": "mod",
-                              'products[][weight]': '0',
-                              'products[][store_id]': '75',
-                              'products[][store_id]':
-                                  context.read<CartCubit>().state[i].store_id,
-                              'products[][name]':
-                                  context.read<CartCubit>().state[i].name,
-                              'products[][store_product_variation_id]': '0',
-                              'products[][product_type]': [],
-                              'products[][download]': 0,
-                              'products[][minimum]': 0,
-                              'products[][subtract]': 0,
-                              'products[][reward]': 0,
-                              'products[][product_type]': [],
-                              'products[][store_product_variation_id]': '0',
-                              'coupon': '0',
-                              'total': context.read<CartCubit>().getBalance(),
-                              'sub_total':
-                                  context.read<CartCubit>().getBalance(),
-                              'reward': 0,
-                              'products[][total]':
-                                  context.read<CartCubit>().getBalance(),
-                              'products[][product_note]': context
-                                  .read<CartProductMetadataCubit>()
-                                  .state
-                                  .where((element) =>
-                                      element.product_id ==
-                                      context
-                                          .read<CartCubit>()
-                                          .state[i]
-                                          .product_id!)
-                                  .first
-                                  .product_note
-                                  .toString(),
-                              'products[][quantity]': context
-                                  .read<CartProductMetadataCubit>()
-                                  .state
-                                  .where((element) =>
-                                      element.product_id ==
-                                      context
-                                          .read<CartCubit>()
-                                          .state[i]
-                                          .product_id!)
-                                  .first
-                                  .amount
-                                  .toString(),
-                              'products[][price]': context
-                                  .read<CartCubit>()
-                                  .state[i]
-                                  .special
-                                  .toString(),
-                              //Store info
-                              'stores[${context.read<CartCubit>().state[i].store_id}][store_id]':
-                                  context.read<CartCubit>().state[i].store_id,
-                              'stores[${context.read<CartCubit>().state[i].store_id}][timeslot]':
-                                  context.read<SelectTimeslotCubit>().state,
-                              'stores[${context.read<CartCubit>().state[i].store_id}][timeslot_selected]':
-                                  context.read<SelectTimeslotCubit>().state,
-                              'stores[${context.read<CartCubit>().state[i].store_id}][shipping_code]':
-                                  'store_delivery.store_delivery',
-                              'stores[${context.read<CartCubit>().state[i].store_id}][shipping_method]':
-                                  'Standard Delivery',
-                              'stores[${context.read<CartCubit>().state[i].store_id}][dates]':
-                                  context.read<SelectDeliveryDateCubit>().state,
-                              'stores[${context.read<CartCubit>().state[i].store_id}][comment]':
-                                  '',
-                              'stores[${context.read<CartCubit>().state[i].store_id}][delivery_date]':
-                                  context.read<SelectDeliveryDateCubit>().state,
-                              'stores[${context.read<CartCubit>().state[i].store_id}][total]':
-                                  context.read<CartCubit>().getBalance(),
-                              'stores[${context.read<CartCubit>().state[i].store_id}][sub_total]':
-                                  context.read<CartCubit>().getBalance(),
-                              'stores[${context.read<CartCubit>().state[i].store_id}][weight]':
-                                  '0',
-                              'stores[${context.read<CartCubit>().state[i].store_id}][order_reference_number]':
-                                  x,
-                              'order_reference_number': x,
-                            });
+                            Map<String, dynamic> data = {
+                              'payment_method': 'mPesa on Delivery',
+                              'payment_method_code': 'mod'
+                            };
+                            var x = generateRandomString(12);
+                            for (int i = 0;
+                                i < context.read<CartCubit>().state.length;
+                                i++) {
+                              data.addAll({
+                                'shipping_address_id': context
+                                    .read<SelectedKibandaCubit>()
+                                    .state!
+                                    .address_id!,
+                                'products[$i][product_store_id]': context
+                                    .read<CartProductMetadataCubit>()
+                                    .state
+                                    .where((element) =>
+                                        element.product_id ==
+                                        context
+                                            .read<CartCubit>()
+                                            .state[i]
+                                            .product_id!)
+                                    .first
+                                    .variation['variation_id'],
+                                'products[$i][product_id]': context
+                                    .read<CartCubit>()
+                                    .state[i]
+                                    .product_id,
+                                'products[$i][unit]':
+                                    context.read<CartCubit>().state[i].unit,
+                                'products[$i][model]':
+                                    context.read<CartCubit>().state[i].model,
+                                'products[$i][weight]': '0',
+                                'products[$i][store_id]': '75',
+                                'products[$i][store_id]':
+                                    context.read<CartCubit>().state[i].store_id,
+                                'products[$i][name]':
+                                    context.read<CartCubit>().state[i].name,
+                                'products[$i][store_product_variation_id]': '0',
+                                'products[$i][product_type]': 'replaceable',
+                                'products[$i][download]': '0',
+                                'products[$i][minimum]': 0,
+                                'products[$i][subtract]': 0,
+                                'products[$i][reward]': 0,
+                                'products[$i][product_type]': 'replaceable',
+                                'products[$i][store_product_variation_id]': '0',
+                                'coupon': 0,
+                                'total': context.read<CartCubit>().getBalance(),
+                                'sub_total':
+                                    context.read<CartCubit>().getBalance(),
+                                'reward': 0,
+                                'products[$i][total]':
+                                    context.read<CartCubit>().getBalance(),
+                                'products[$i][product_note]': context
+                                    .read<CartProductMetadataCubit>()
+                                    .state
+                                    .where((element) =>
+                                        element.product_id ==
+                                        context
+                                            .read<CartCubit>()
+                                            .state[i]
+                                            .product_id!)
+                                    .first
+                                    .product_note
+                                    .toString(),
+                                'products[$i][quantity]': context
+                                    .read<CartProductMetadataCubit>()
+                                    .state
+                                    .where((element) =>
+                                        element.product_id ==
+                                        context
+                                            .read<CartCubit>()
+                                            .state[i]
+                                            .product_id!)
+                                    .first
+                                    .amount
+                                    .toString(),
+                                'products[$i][price]': context
+                                    .read<CartCubit>()
+                                    .state[i]
+                                    .special
+                                    .toString(),
+                                //Store info
+                                'stores[${context.read<CartCubit>().state[i].store_id}][store_id]':
+                                    context.read<CartCubit>().state[i].store_id,
+                                'stores[${context.read<CartCubit>().state[i].store_id}][timeslot]':
+                                    context.read<SelectTimeslotCubit>().state,
+                                'stores[${context.read<CartCubit>().state[i].store_id}][timeslot_selected]':
+                                    context.read<SelectTimeslotCubit>().state,
+                                'stores[${context.read<CartCubit>().state[i].store_id}][shipping_code]':
+                                    'store_delivery.store_delivery',
+                                'stores[${context.read<CartCubit>().state[i].store_id}][shipping_method]':
+                                    'Standard Delivery',
+                                'stores[${context.read<CartCubit>().state[i].store_id}][dates]':
+                                    context
+                                        .read<SelectDeliveryDateCubit>()
+                                        .state,
+                                'stores[${context.read<CartCubit>().state[i].store_id}][comment]':
+                                    '',
+                                'stores[${context.read<CartCubit>().state[i].store_id}][delivery_date]':
+                                    context
+                                        .read<SelectDeliveryDateCubit>()
+                                        .state,
+                                'stores[${context.read<CartCubit>().state[i].store_id}][total]':
+                                    context.read<CartCubit>().getBalance(),
+                                'stores[${context.read<CartCubit>().state[i].store_id}][sub_total]':
+                                    context.read<CartCubit>().getBalance(),
+                                'stores[${context.read<CartCubit>().state[i].store_id}][weight]':
+                                    '0',
+                                'stores[${context.read<CartCubit>().state[i].store_id}][order_reference_number]':
+                                    x,
+                                'order_reference_number': x,
+                              });
+                            }
+                            context.read<PlaceOrderCubit>().placeOrder(data);
                           }
-                          context.read<PlaceOrderCubit>().placeOrder(dataorder);
-                          //TODO:
-                          // AutoRouter.of(context)
-                          //     .push((orderData: data));
-
                         }
                       },
                       padding: EdgeInsets.all(0),

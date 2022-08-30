@@ -34,7 +34,7 @@ dependencies:
   get_it: ^7.2.0
   rest_client: ^2.1.4+7
   path_provider: ^2.0.1
-  hydrated_bloc: ^8.0.0
+  hydrated_bloc: 9.0.0-dev.1
   flutter_bloc: ^8.0.1
   overlay_support: ^2.0.1
   flutter_spinkit: ^5.1.0

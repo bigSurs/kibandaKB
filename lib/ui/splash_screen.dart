@@ -23,34 +23,25 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 5), () {
-      AutoRouter.of(context).replace(LoginRoute());
-      // await startKioskMode();
-
-      // TokenCubit tokenCubit = GetIt.I.get<TokenCubit>();
-
-      // // IsDeCubit isDeCubit = GetIt.I.get<IsDeCubit>();
-      // tokenCubit.state.isEmpty
-      //     ? AutoRouter.of(context).replace(const LoginRoute())
-      //     : AutoRouter.of(context).replace(const MainHomeRoute());
-
-      // tokenCubit.state.isEmpty
-      //     ? AutoRouter.of(context).replace(LoginRoute())
-      //     : isDeCubit.state
-      //         ? AutoRouter.of(context).replace(MainHomeDeliveryExecutiveRoute())
-      //         : AutoRouter.of(context).replace(const MainHomeRoute());
+      //
+      TokenCubit tokenCubit = BlocProvider.of<TokenCubit>(context);
+      CustomerTokenCubit customertokenCubit =
+          BlocProvider.of<CustomerTokenCubit>(context);
+      CartProductMetadataCubit cartProductMetadataCubit =
+          BlocProvider.of<CartProductMetadataCubit>(context);
+      GetIt.I.registerSingleton(tokenCubit);
+      GetIt.I.registerSingleton(customertokenCubit);
+      GetIt.I.registerSingleton(cartProductMetadataCubit);
+      if (tokenCubit.state.isNotEmpty) {
+        AutoRouter.of(context).replace(const MainHomeRoute());
+      } else {
+        AutoRouter.of(context).replace(const LoginRoute());
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    TokenCubit tokenCubit = BlocProvider.of<TokenCubit>(context);
-    CustomerTokenCubit customertokenCubit =
-        BlocProvider.of<CustomerTokenCubit>(context);
-    CartProductMetadataCubit cartProductMetadataCubit =
-        BlocProvider.of<CartProductMetadataCubit>(context);
-    GetIt.I.registerSingleton(tokenCubit);
-    GetIt.I.registerSingleton(customertokenCubit);
-    GetIt.I.registerSingleton(cartProductMetadataCubit);
     return Scaffold(
         body: Stack(
       children: [
