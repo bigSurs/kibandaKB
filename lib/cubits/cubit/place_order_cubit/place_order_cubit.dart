@@ -10,7 +10,7 @@ class PlaceOrderCubit extends Cubit<PlaceOrderState> {
   placeOrder(data) async {
     emit(PlaceOrderState.loading());
     try {
-      var response = await ApiService.postData(
+      var response = await ApiService.postDataOrder(
           data: data, path: 'customer/order/ordernew');
       if (response['data']['status']) {
         /// Log the event

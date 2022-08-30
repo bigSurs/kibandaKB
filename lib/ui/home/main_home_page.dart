@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_extra_fields/form_builder_extra_fields.dart';
+import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
@@ -13,6 +14,7 @@ import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/models/kibanda_model/kibanda.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
+import 'package:kibanda_kb/services/api_service/api_service.dart';
 import 'package:kibanda_kb/ui/home/product/product_tile.dart';
 import 'package:quantity_input/quantity_input.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -124,7 +126,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                     .map(
                                         (e) => e.firstname! + ' ' + e.lastname!)
                                     .toList(),
-                                onChanged: (val) {
+                                onChanged: (val) async {
                                   var selectedKibanda = kibandaskistores!
                                       .where((element) =>
                                           element.firstname! +
@@ -135,6 +137,14 @@ class _MainHomePageState extends State<MainHomePage> {
                                   context
                                       .read<SelectedKibandaCubit>()
                                       .save(selectedKibanda);
+                                  var response = await ApiService.postCustomer(
+                                      data: {
+                                        'telephone': selectedKibanda.telephone
+                                      },
+                                      path: 'customer/login/loginascustomer');
+                                  context
+                                      .read<CustomerTokenCubit>()
+                                      .emit(response['token']);
 
                                   /// This [val] is the value of the selected item (Customer ID)
                                   context

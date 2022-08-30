@@ -23,6 +23,7 @@ mixin _$Kibanda {
   num? get customer_id => throw _privateConstructorUsedError;
   num? get customer_group_id => throw _privateConstructorUsedError;
   num? get store_id => throw _privateConstructorUsedError;
+  String? get token => throw _privateConstructorUsedError;
   String? get firstname => throw _privateConstructorUsedError;
   String? get lastname => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $KibandaCopyWith<$Res> {
       {num? customer_id,
       num? customer_group_id,
       num? store_id,
+      String? token,
       String? firstname,
       String? lastname,
       String? email,
@@ -78,6 +80,7 @@ class _$KibandaCopyWithImpl<$Res> implements $KibandaCopyWith<$Res> {
     Object? customer_id = freezed,
     Object? customer_group_id = freezed,
     Object? store_id = freezed,
+    Object? token = freezed,
     Object? firstname = freezed,
     Object? lastname = freezed,
     Object? email = freezed,
@@ -105,6 +108,10 @@ class _$KibandaCopyWithImpl<$Res> implements $KibandaCopyWith<$Res> {
           ? _value.store_id
           : store_id // ignore: cast_nullable_to_non_nullable
               as num?,
+      token: token == freezed
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
       firstname: firstname == freezed
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
@@ -171,6 +178,7 @@ abstract class _$$_KibandaCopyWith<$Res> implements $KibandaCopyWith<$Res> {
       {num? customer_id,
       num? customer_group_id,
       num? store_id,
+      String? token,
       String? firstname,
       String? lastname,
       String? email,
@@ -200,6 +208,7 @@ class __$$_KibandaCopyWithImpl<$Res> extends _$KibandaCopyWithImpl<$Res>
     Object? customer_id = freezed,
     Object? customer_group_id = freezed,
     Object? store_id = freezed,
+    Object? token = freezed,
     Object? firstname = freezed,
     Object? lastname = freezed,
     Object? email = freezed,
@@ -227,6 +236,10 @@ class __$$_KibandaCopyWithImpl<$Res> extends _$KibandaCopyWithImpl<$Res>
           ? _value.store_id
           : store_id // ignore: cast_nullable_to_non_nullable
               as num?,
+      token: token == freezed
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
       firstname: firstname == freezed
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
@@ -290,6 +303,7 @@ class _$_Kibanda implements _Kibanda {
       {this.customer_id,
       this.customer_group_id,
       this.store_id,
+      this.token,
       this.firstname,
       this.lastname,
       this.email,
@@ -313,6 +327,8 @@ class _$_Kibanda implements _Kibanda {
   final num? customer_group_id;
   @override
   final num? store_id;
+  @override
+  final String? token;
   @override
   final String? firstname;
   @override
@@ -342,7 +358,7 @@ class _$_Kibanda implements _Kibanda {
 
   @override
   String toString() {
-    return 'Kibanda(customer_id: $customer_id, customer_group_id: $customer_group_id, store_id: $store_id, firstname: $firstname, lastname: $lastname, email: $email, telephone: $telephone, fax: $fax, password: $password, salt: $salt, cart: $cart, payment_terms: $payment_terms, address_id: $address_id, company_name: $company_name, company_address: $company_address, customer_category: $customer_category)';
+    return 'Kibanda(customer_id: $customer_id, customer_group_id: $customer_group_id, store_id: $store_id, token: $token, firstname: $firstname, lastname: $lastname, email: $email, telephone: $telephone, fax: $fax, password: $password, salt: $salt, cart: $cart, payment_terms: $payment_terms, address_id: $address_id, company_name: $company_name, company_address: $company_address, customer_category: $customer_category)';
   }
 
   @override
@@ -355,6 +371,7 @@ class _$_Kibanda implements _Kibanda {
             const DeepCollectionEquality()
                 .equals(other.customer_group_id, customer_group_id) &&
             const DeepCollectionEquality().equals(other.store_id, store_id) &&
+            const DeepCollectionEquality().equals(other.token, token) &&
             const DeepCollectionEquality().equals(other.firstname, firstname) &&
             const DeepCollectionEquality().equals(other.lastname, lastname) &&
             const DeepCollectionEquality().equals(other.email, email) &&
@@ -382,6 +399,7 @@ class _$_Kibanda implements _Kibanda {
       const DeepCollectionEquality().hash(customer_id),
       const DeepCollectionEquality().hash(customer_group_id),
       const DeepCollectionEquality().hash(store_id),
+      const DeepCollectionEquality().hash(token),
       const DeepCollectionEquality().hash(firstname),
       const DeepCollectionEquality().hash(lastname),
       const DeepCollectionEquality().hash(email),
@@ -414,6 +432,7 @@ abstract class _Kibanda implements Kibanda {
       {final num? customer_id,
       final num? customer_group_id,
       final num? store_id,
+      final String? token,
       final String? firstname,
       final String? lastname,
       final String? email,
@@ -436,6 +455,8 @@ abstract class _Kibanda implements Kibanda {
   num? get customer_group_id;
   @override
   num? get store_id;
+  @override
+  String? get token;
   @override
   String? get firstname;
   @override
