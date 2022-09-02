@@ -13,7 +13,7 @@ class FeaturedProductCubit extends Cubit<FeaturedProductState> {
   getFeaturedProducts() async {
     emit(FeaturedProductState.loading());
     try {
-      var response = await ApiService.getData(
+      var response = await ApiService.getDataKibanda(
           path: '/customer/products/productsearch',
           queries: {
             'store_id': 75,

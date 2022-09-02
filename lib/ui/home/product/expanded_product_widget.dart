@@ -279,7 +279,7 @@ class _ExpandedCategoriesProductWidget
                                               .isNotEmpty
                                           ? widget.product.variations!
                                               .where((element) =>
-                                                  element['variant_id'] ==
+                                                  element['variation_id'] ==
                                                   context
                                                       .watch<
                                                           SelectedVariationCubit>()
@@ -312,7 +312,7 @@ class _ExpandedCategoriesProductWidget
                                                     widget.product.variations!
                                                         .where((element) =>
                                                             element[
-                                                                'variant_id'] ==
+                                                                'variation_id'] ==
                                                             context
                                                                 .watch<
                                                                     SelectedVariationCubit>()

@@ -349,8 +349,7 @@ class DeliveryDetailsPage extends StatelessWidget {
                                     context.read<CartCubit>().state[i].model,
                                 'products[$i][weight]': '0',
                                 'products[$i][store_id]': '75',
-                                'products[$i][store_id]':
-                                    context.read<CartCubit>().state[i].store_id,
+                                'products[$i][store_id]': '75',
                                 'products[$i][name]':
                                     context.read<CartCubit>().state[i].name,
                                 'products[$i][store_product_variation_id]': '0',
@@ -398,34 +397,28 @@ class DeliveryDetailsPage extends StatelessWidget {
                                     .special
                                     .toString(),
                                 //Store info
-                                'stores[${context.read<CartCubit>().state[i].store_id}][store_id]':
-                                    context.read<CartCubit>().state[i].store_id,
-                                'stores[${context.read<CartCubit>().state[i].store_id}][timeslot]':
+                                'stores[75][store_id]': '75',
+                                'stores[75][timeslot]':
                                     context.read<SelectTimeslotCubit>().state,
-                                'stores[${context.read<CartCubit>().state[i].store_id}][timeslot_selected]':
+                                'stores[75][timeslot_selected]':
                                     context.read<SelectTimeslotCubit>().state,
-                                'stores[${context.read<CartCubit>().state[i].store_id}][shipping_code]':
+                                'stores[75][shipping_code]':
                                     'store_delivery.store_delivery',
-                                'stores[${context.read<CartCubit>().state[i].store_id}][shipping_method]':
+                                'stores[75][shipping_method]':
                                     'Standard Delivery',
-                                'stores[${context.read<CartCubit>().state[i].store_id}][dates]':
-                                    context
-                                        .read<SelectDeliveryDateCubit>()
-                                        .state,
-                                'stores[${context.read<CartCubit>().state[i].store_id}][comment]':
-                                    '',
-                                'stores[${context.read<CartCubit>().state[i].store_id}][delivery_date]':
-                                    context
-                                        .read<SelectDeliveryDateCubit>()
-                                        .state,
-                                'stores[${context.read<CartCubit>().state[i].store_id}][total]':
+                                'stores[75][dates]': context
+                                    .read<SelectDeliveryDateCubit>()
+                                    .state,
+                                'stores[75][comment]': '',
+                                'stores[75][delivery_date]': context
+                                    .read<SelectDeliveryDateCubit>()
+                                    .state,
+                                'stores[75][total]':
                                     context.read<CartCubit>().getBalance(),
-                                'stores[${context.read<CartCubit>().state[i].store_id}][sub_total]':
+                                'stores[75][sub_total]':
                                     context.read<CartCubit>().getBalance(),
-                                'stores[${context.read<CartCubit>().state[i].store_id}][weight]':
-                                    '0',
-                                'stores[${context.read<CartCubit>().state[i].store_id}][order_reference_number]':
-                                    x,
+                                'stores[75][weight]': '0',
+                                'stores[75][order_reference_number]': x,
                                 'order_reference_number': x,
                               });
                             }

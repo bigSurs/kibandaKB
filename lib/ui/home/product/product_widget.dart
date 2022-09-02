@@ -59,7 +59,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                 ),
               ),
               CachedNetworkImage(
-                imageUrl: widget.product.image!,
+                imageUrl: widget.product.thumb!,
                 height: 100,
               ),
               inCart
@@ -78,7 +78,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                       selectedVariation = widget
                                           .product.variations!
                                           .where((element) =>
-                                              element['variant_id'] == val)
+                                              element['variation_id'] == val)
                                           .first;
                                     });
 
@@ -90,13 +90,14 @@ class _ProductWidgetState extends State<ProductWidget> {
                                       border: OutlineInputBorder(),
                                       contentPadding:
                                           EdgeInsets.only(left: 12, right: 12)),
-                                  value: selectedVariation['variant_id'],
+                                  value: selectedVariation['variation_id'],
                                   items: List.generate(
                                       widget.product.variations!.length,
                                       (index) => DropdownMenuItem(
                                           onTap: () {},
-                                          value: widget.product
-                                              .variations![index]['variant_id'],
+                                          value:
+                                              widget.product.variations![index]
+                                                  ['variation_id'],
                                           child: Text('Per ' +
                                               widget.product.variations![index]
                                                   ['unit'])))),
@@ -253,7 +254,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                     product: widget.product,
                                     vary: widget.product.variations!
                                         .where((element) =>
-                                            element['variant_id'] == val)
+                                            element['variation_id'] == val)
                                         .first);
                             setState(() {});
                             context.read<CartCubit>().updateCart();
@@ -267,7 +268,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                   element.product_id ==
                                   widget.product.product_id!)
                               .first
-                              .variation['variant_id'],
+                              .variation['variation_id'],
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               contentPadding:
@@ -276,7 +277,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                               widget.product.variations!.length,
                               (index) => DropdownMenuItem(
                                   value: widget.product.variations![index]
-                                      ['variant_id'],
+                                      ['variation_id'],
                                   child: Text('Per ' +
                                       widget.product.variations![index]
                                           ['unit'])))),

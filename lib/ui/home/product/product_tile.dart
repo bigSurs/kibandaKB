@@ -59,7 +59,7 @@ class ProductTile extends StatelessWidget {
                 });
           },
           child: CachedNetworkImage(
-            imageUrl: product.image!,
+            imageUrl: product.thumb!,
           ),
         ),
       ),

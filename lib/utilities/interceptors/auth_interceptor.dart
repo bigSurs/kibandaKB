@@ -15,9 +15,13 @@ class AuthInterceptor extends Interceptor {
 
     /// Add the bearer token header to all requests except the login request
     if (!options.path.contains('login') ||
-        !options.path.endsWith('ordernew')) {
+        !options.path.endsWith('ordernew') ||
+        !options.path.endsWith('productsearch')) {
       options.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
-    } 
+    } else if (options.path.endsWith('productsearch')) {
+      options.headers[HttpHeaders.authorizationHeader] =
+          'Bearer ${customerTokenCubit.state}';
+    }
 
     options.headers[HttpHeaders.acceptHeader] = 'application/json';
     handler.next(options);

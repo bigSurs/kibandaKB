@@ -423,7 +423,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                               product: widget.product,
                                               vary: widget.product.variations!
                                                   .where((element) =>
-                                                      element['variant_id'] ==
+                                                      element['variation_id'] ==
                                                       val)
                                                   .first);
                                       widget.refresh();
@@ -439,7 +439,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                             element.product_id ==
                                             widget.product.product_id!)
                                         .first
-                                        .variation['variant_id'],
+                                        .variation['variation_id'],
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         contentPadding: EdgeInsets.only(
@@ -448,7 +448,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                         widget.product.variations!.length,
                                         (index) => DropdownMenuItem(
                                             value: widget.product.variations![index]
-                                                ['variant_id'],
+                                                ['variation_id'],
                                             child: Text('Per ' +
                                                 widget.product.variations![index]
                                                     ['unit']))),

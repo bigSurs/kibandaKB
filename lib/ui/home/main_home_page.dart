@@ -9,6 +9,7 @@ import 'package:form_builder_extra_fields/form_builder_extra_fields.dart';
 import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/models/kibanda_model/kibanda.dart';
@@ -147,11 +148,14 @@ class _MainHomePageState extends State<MainHomePage> {
                                       .emit(response['token']);
 
                                   /// This [val] is the value of the selected item (Customer ID)
+                                  // context
+                                  //     .read<VendorProductsCubit>()
+                                  //     .getVendorProductsByAllCategories(
+                                  //         customerId: selectedKibanda
+                                  //             .customer_id as int);
                                   context
-                                      .read<VendorProductsCubit>()
-                                      .getVendorProductsByAllCategories(
-                                          customerId: selectedKibanda
-                                              .customer_id as int);
+                                      .read<FeaturedProductCubit>()
+                                      .getFeaturedProducts();
                                 },
                               )),
                           orElse: () {
@@ -164,7 +168,7 @@ class _MainHomePageState extends State<MainHomePage> {
             ),
           ),
           Expanded(
-            child: BlocBuilder<VendorProductsCubit, VendorProductsState>(
+            child: BlocBuilder<FeaturedProductCubit, FeaturedProductState>(
               builder: (context, state) {
                 return state.maybeWhen(loading: () {
                   return const Center(

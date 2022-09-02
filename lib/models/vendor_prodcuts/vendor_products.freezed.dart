@@ -20,22 +20,19 @@ VendorProducts _$VendorProductsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VendorProducts {
-  int? get product_id => throw _privateConstructorUsedError;
+  String? get product_id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   num? get product_sr_no => throw _privateConstructorUsedError;
   String? get model => throw _privateConstructorUsedError;
   String? get default_price => throw _privateConstructorUsedError;
-  int? get qty_in_cart => throw _privateConstructorUsedError;
+  String? get thumb => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get unit => throw _privateConstructorUsedError;
   String? get weight => throw _privateConstructorUsedError;
   String? get produce_type => throw _privateConstructorUsedError;
   num? get sort_order => throw _privateConstructorUsedError;
   String? get price => throw _privateConstructorUsedError;
-  num? get max_qty => throw _privateConstructorUsedError;
-  num? get min_quantity => throw _privateConstructorUsedError;
-  num? get store_id => throw _privateConstructorUsedError;
-  num? get product_store_id => throw _privateConstructorUsedError;
+  String? get product_store_id => throw _privateConstructorUsedError;
   String? get special => throw _privateConstructorUsedError;
   num? get tax_amount => throw _privateConstructorUsedError;
   String? get tax_percentage => throw _privateConstructorUsedError;
@@ -56,22 +53,19 @@ abstract class $VendorProductsCopyWith<$Res> {
           VendorProducts value, $Res Function(VendorProducts) then) =
       _$VendorProductsCopyWithImpl<$Res>;
   $Res call(
-      {int? product_id,
+      {String? product_id,
       String? name,
       num? product_sr_no,
       String? model,
       String? default_price,
-      int? qty_in_cart,
+      String? thumb,
       String? image,
       String? unit,
       String? weight,
       String? produce_type,
       num? sort_order,
       String? price,
-      num? max_qty,
-      num? min_quantity,
-      num? store_id,
-      num? product_store_id,
+      String? product_store_id,
       String? special,
       num? tax_amount,
       String? tax_percentage,
@@ -96,16 +90,13 @@ class _$VendorProductsCopyWithImpl<$Res>
     Object? product_sr_no = freezed,
     Object? model = freezed,
     Object? default_price = freezed,
-    Object? qty_in_cart = freezed,
+    Object? thumb = freezed,
     Object? image = freezed,
     Object? unit = freezed,
     Object? weight = freezed,
     Object? produce_type = freezed,
     Object? sort_order = freezed,
     Object? price = freezed,
-    Object? max_qty = freezed,
-    Object? min_quantity = freezed,
-    Object? store_id = freezed,
     Object? product_store_id = freezed,
     Object? special = freezed,
     Object? tax_amount = freezed,
@@ -118,7 +109,7 @@ class _$VendorProductsCopyWithImpl<$Res>
       product_id: product_id == freezed
           ? _value.product_id
           : product_id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -135,10 +126,10 @@ class _$VendorProductsCopyWithImpl<$Res>
           ? _value.default_price
           : default_price // ignore: cast_nullable_to_non_nullable
               as String?,
-      qty_in_cart: qty_in_cart == freezed
-          ? _value.qty_in_cart
-          : qty_in_cart // ignore: cast_nullable_to_non_nullable
-              as int?,
+      thumb: thumb == freezed
+          ? _value.thumb
+          : thumb // ignore: cast_nullable_to_non_nullable
+              as String?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -163,22 +154,10 @@ class _$VendorProductsCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String?,
-      max_qty: max_qty == freezed
-          ? _value.max_qty
-          : max_qty // ignore: cast_nullable_to_non_nullable
-              as num?,
-      min_quantity: min_quantity == freezed
-          ? _value.min_quantity
-          : min_quantity // ignore: cast_nullable_to_non_nullable
-              as num?,
-      store_id: store_id == freezed
-          ? _value.store_id
-          : store_id // ignore: cast_nullable_to_non_nullable
-              as num?,
       product_store_id: product_store_id == freezed
           ? _value.product_store_id
           : product_store_id // ignore: cast_nullable_to_non_nullable
-              as num?,
+              as String?,
       special: special == freezed
           ? _value.special
           : special // ignore: cast_nullable_to_non_nullable
@@ -215,22 +194,19 @@ abstract class _$$_VendorProductsCopyWith<$Res>
       __$$_VendorProductsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? product_id,
+      {String? product_id,
       String? name,
       num? product_sr_no,
       String? model,
       String? default_price,
-      int? qty_in_cart,
+      String? thumb,
       String? image,
       String? unit,
       String? weight,
       String? produce_type,
       num? sort_order,
       String? price,
-      num? max_qty,
-      num? min_quantity,
-      num? store_id,
-      num? product_store_id,
+      String? product_store_id,
       String? special,
       num? tax_amount,
       String? tax_percentage,
@@ -257,16 +233,13 @@ class __$$_VendorProductsCopyWithImpl<$Res>
     Object? product_sr_no = freezed,
     Object? model = freezed,
     Object? default_price = freezed,
-    Object? qty_in_cart = freezed,
+    Object? thumb = freezed,
     Object? image = freezed,
     Object? unit = freezed,
     Object? weight = freezed,
     Object? produce_type = freezed,
     Object? sort_order = freezed,
     Object? price = freezed,
-    Object? max_qty = freezed,
-    Object? min_quantity = freezed,
-    Object? store_id = freezed,
     Object? product_store_id = freezed,
     Object? special = freezed,
     Object? tax_amount = freezed,
@@ -279,7 +252,7 @@ class __$$_VendorProductsCopyWithImpl<$Res>
       product_id: product_id == freezed
           ? _value.product_id
           : product_id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -296,10 +269,10 @@ class __$$_VendorProductsCopyWithImpl<$Res>
           ? _value.default_price
           : default_price // ignore: cast_nullable_to_non_nullable
               as String?,
-      qty_in_cart: qty_in_cart == freezed
-          ? _value.qty_in_cart
-          : qty_in_cart // ignore: cast_nullable_to_non_nullable
-              as int?,
+      thumb: thumb == freezed
+          ? _value.thumb
+          : thumb // ignore: cast_nullable_to_non_nullable
+              as String?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -324,22 +297,10 @@ class __$$_VendorProductsCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String?,
-      max_qty: max_qty == freezed
-          ? _value.max_qty
-          : max_qty // ignore: cast_nullable_to_non_nullable
-              as num?,
-      min_quantity: min_quantity == freezed
-          ? _value.min_quantity
-          : min_quantity // ignore: cast_nullable_to_non_nullable
-              as num?,
-      store_id: store_id == freezed
-          ? _value.store_id
-          : store_id // ignore: cast_nullable_to_non_nullable
-              as num?,
       product_store_id: product_store_id == freezed
           ? _value.product_store_id
           : product_store_id // ignore: cast_nullable_to_non_nullable
-              as num?,
+              as String?,
       special: special == freezed
           ? _value.special
           : special // ignore: cast_nullable_to_non_nullable
@@ -377,16 +338,13 @@ class _$_VendorProducts implements _VendorProducts {
       this.product_sr_no,
       this.model,
       this.default_price,
-      this.qty_in_cart,
+      this.thumb,
       this.image,
       this.unit,
       this.weight,
       this.produce_type,
       this.sort_order,
       this.price,
-      this.max_qty,
-      this.min_quantity,
-      this.store_id,
       this.product_store_id,
       this.special,
       this.tax_amount,
@@ -400,7 +358,7 @@ class _$_VendorProducts implements _VendorProducts {
       _$$_VendorProductsFromJson(json);
 
   @override
-  final int? product_id;
+  final String? product_id;
   @override
   final String? name;
   @override
@@ -410,7 +368,7 @@ class _$_VendorProducts implements _VendorProducts {
   @override
   final String? default_price;
   @override
-  final int? qty_in_cart;
+  final String? thumb;
   @override
   final String? image;
   @override
@@ -424,13 +382,7 @@ class _$_VendorProducts implements _VendorProducts {
   @override
   final String? price;
   @override
-  final num? max_qty;
-  @override
-  final num? min_quantity;
-  @override
-  final num? store_id;
-  @override
-  final num? product_store_id;
+  final String? product_store_id;
   @override
   final String? special;
   @override
@@ -453,7 +405,7 @@ class _$_VendorProducts implements _VendorProducts {
 
   @override
   String toString() {
-    return 'VendorProducts(product_id: $product_id, name: $name, product_sr_no: $product_sr_no, model: $model, default_price: $default_price, qty_in_cart: $qty_in_cart, image: $image, unit: $unit, weight: $weight, produce_type: $produce_type, sort_order: $sort_order, price: $price, max_qty: $max_qty, min_quantity: $min_quantity, store_id: $store_id, product_store_id: $product_store_id, special: $special, tax_amount: $tax_amount, tax_percentage: $tax_percentage, variations: $variations, left_symbol_currency: $left_symbol_currency, right_symbol_curreny: $right_symbol_curreny)';
+    return 'VendorProducts(product_id: $product_id, name: $name, product_sr_no: $product_sr_no, model: $model, default_price: $default_price, thumb: $thumb, image: $image, unit: $unit, weight: $weight, produce_type: $produce_type, sort_order: $sort_order, price: $price, product_store_id: $product_store_id, special: $special, tax_amount: $tax_amount, tax_percentage: $tax_percentage, variations: $variations, left_symbol_currency: $left_symbol_currency, right_symbol_curreny: $right_symbol_curreny)';
   }
 
   @override
@@ -469,8 +421,7 @@ class _$_VendorProducts implements _VendorProducts {
             const DeepCollectionEquality().equals(other.model, model) &&
             const DeepCollectionEquality()
                 .equals(other.default_price, default_price) &&
-            const DeepCollectionEquality()
-                .equals(other.qty_in_cart, qty_in_cart) &&
+            const DeepCollectionEquality().equals(other.thumb, thumb) &&
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other.unit, unit) &&
             const DeepCollectionEquality().equals(other.weight, weight) &&
@@ -479,10 +430,6 @@ class _$_VendorProducts implements _VendorProducts {
             const DeepCollectionEquality()
                 .equals(other.sort_order, sort_order) &&
             const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.max_qty, max_qty) &&
-            const DeepCollectionEquality()
-                .equals(other.min_quantity, min_quantity) &&
-            const DeepCollectionEquality().equals(other.store_id, store_id) &&
             const DeepCollectionEquality()
                 .equals(other.product_store_id, product_store_id) &&
             const DeepCollectionEquality().equals(other.special, special) &&
@@ -507,16 +454,13 @@ class _$_VendorProducts implements _VendorProducts {
         const DeepCollectionEquality().hash(product_sr_no),
         const DeepCollectionEquality().hash(model),
         const DeepCollectionEquality().hash(default_price),
-        const DeepCollectionEquality().hash(qty_in_cart),
+        const DeepCollectionEquality().hash(thumb),
         const DeepCollectionEquality().hash(image),
         const DeepCollectionEquality().hash(unit),
         const DeepCollectionEquality().hash(weight),
         const DeepCollectionEquality().hash(produce_type),
         const DeepCollectionEquality().hash(sort_order),
         const DeepCollectionEquality().hash(price),
-        const DeepCollectionEquality().hash(max_qty),
-        const DeepCollectionEquality().hash(min_quantity),
-        const DeepCollectionEquality().hash(store_id),
         const DeepCollectionEquality().hash(product_store_id),
         const DeepCollectionEquality().hash(special),
         const DeepCollectionEquality().hash(tax_amount),
@@ -541,22 +485,19 @@ class _$_VendorProducts implements _VendorProducts {
 
 abstract class _VendorProducts implements VendorProducts {
   factory _VendorProducts(
-      {final int? product_id,
+      {final String? product_id,
       final String? name,
       final num? product_sr_no,
       final String? model,
       final String? default_price,
-      final int? qty_in_cart,
+      final String? thumb,
       final String? image,
       final String? unit,
       final String? weight,
       final String? produce_type,
       final num? sort_order,
       final String? price,
-      final num? max_qty,
-      final num? min_quantity,
-      final num? store_id,
-      final num? product_store_id,
+      final String? product_store_id,
       final String? special,
       final num? tax_amount,
       final String? tax_percentage,
@@ -568,7 +509,7 @@ abstract class _VendorProducts implements VendorProducts {
       _$_VendorProducts.fromJson;
 
   @override
-  int? get product_id;
+  String? get product_id;
   @override
   String? get name;
   @override
@@ -578,7 +519,7 @@ abstract class _VendorProducts implements VendorProducts {
   @override
   String? get default_price;
   @override
-  int? get qty_in_cart;
+  String? get thumb;
   @override
   String? get image;
   @override
@@ -592,13 +533,7 @@ abstract class _VendorProducts implements VendorProducts {
   @override
   String? get price;
   @override
-  num? get max_qty;
-  @override
-  num? get min_quantity;
-  @override
-  num? get store_id;
-  @override
-  num? get product_store_id;
+  String? get product_store_id;
   @override
   String? get special;
   @override

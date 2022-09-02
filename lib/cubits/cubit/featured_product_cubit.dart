@@ -6,7 +6,6 @@ import 'package:kibanda_kb/services/api_service/api_service.dart';
 part 'featured_product_state.dart';
 part 'featured_product_cubit.freezed.dart';
 
-
 class FeaturedProductCubit extends Cubit<FeaturedProductState> {
   FeaturedProductCubit() : super(FeaturedProductState.initial());
 
@@ -14,15 +13,15 @@ class FeaturedProductCubit extends Cubit<FeaturedProductState> {
     emit(FeaturedProductState.loading());
     try {
       var response = await ApiService.getData(
-          path: '/customer/products/productsearch',
+          path: 'customer/products/productsearch',
           queries: {
             'store_id': 75,
             'search': '',
           });
       List products = response['data']['products'];
       emit(FeaturedProductState.success(
-          products: List.generate(
-              products.length, (index) => VendorProducts.fromJson(products[index]))));
+          products: List.generate(products.length,
+              (index) => VendorProducts.fromJson(products[index]))));
     } catch (e) {
       emit(FeaturedProductState.failed(e.toString()));
     }

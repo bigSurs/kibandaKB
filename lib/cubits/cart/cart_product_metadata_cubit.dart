@@ -14,7 +14,7 @@ class CartProductMetadataCubit
       required int store_id,
       required Map<String, dynamic> variation}) {
     if (state.contains(CartProductMetaData(
-        product_id: product.product_id!,
+        product_id: int.parse(product.product_id!),
         amount: amount,
         product_note: '',
         variation: variation,
@@ -26,7 +26,7 @@ class CartProductMetadataCubit
       emit([
         ...state,
         CartProductMetaData(
-            product_id: product.product_id!,
+            product_id: int.parse(product.product_id!),
             product_note: '',
             amount: amount,
             variation: variation,
@@ -44,11 +44,11 @@ class CartProductMetadataCubit
       required int store_product_variation_id,
       required int store_id}) {
     if (state.contains(CartProductMetaData(
-        product_id: product.product_id!,
+        product_id: int.parse(product.product_id!),
         amount: amount,
         variation: product.variations!
-            .where(
-                (element) => element['variant_id'] == product.product_store_id)
+            .where((element) =>
+                element['variation_id'] == product.product_store_id)
             .first,
         product_store_id: product_store_id,
         store_product_variation_id: store_product_variation_id,

@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
-import 'package:collection/collection.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
@@ -24,9 +23,9 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
         'product[$i][product_store_id]': cartProductMetadataCubit.state
             .where((element) => element.product_id == state[i].product_id!)
             .first
-            .variation['variant_id']
+            .variation['variation_id']
             .toString(),
-        'product[$i][store_id]': state[i].store_id.toString(),
+        'product[$i][store_id]': '75',
         'product[$i][quantity]': cartProductMetadataCubit.state
             .where((element) => element.product_id == state[i].product_id!)
             .first
@@ -35,12 +34,12 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
         'product[$i][store_product_variation_id]': state[i]
             .variations!
             .indexWhere((element) =>
-                element['variant_id'] ==
+                element['variation_id'] ==
                 cartProductMetadataCubit.state
                     .where(
                         (element) => element.product_id == state[i].product_id!)
                     .first
-                    .variation['variant_id'])
+                    .variation['variation_id'])
             .toString()
       });
     }
@@ -90,7 +89,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
           amount: amount,
           product: product,
           variation: variation!,
-          store_id: product.store_id as int ?? 75,
+          store_id: 75,
           store_product_variation_id: 0,
           product_store_id: product.product_store_id as int);
       emit(items);
@@ -104,7 +103,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
     if (state.contains(product)) {
       cartProductMetadataCubit.removeProduct(
           product: product,
-          store_id: product.store_id as int ?? 75,
+          store_id: 75,
           store_product_variation_id: 0,
           product_store_id: product.product_store_id! as int,
           amount: cartProductMetadataCubit.state
