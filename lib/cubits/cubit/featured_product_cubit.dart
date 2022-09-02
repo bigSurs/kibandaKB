@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
 import 'package:kibanda_kb/services/api_service/api_service.dart';
@@ -7,12 +7,12 @@ part 'featured_product_state.dart';
 part 'featured_product_cubit.freezed.dart';
 
 class FeaturedProductCubit extends Cubit<FeaturedProductState> {
-  FeaturedProductCubit() : super(FeaturedProductState.initial());
+  FeaturedProductCubit() : super(const FeaturedProductState.initial());
 
   getFeaturedProducts() async {
-    emit(FeaturedProductState.loading());
+    emit(const FeaturedProductState.loading());
     try {
-      var response = await ApiService.getData(
+      var response = await ApiService.getDataKibanda(
           path: 'customer/products/productsearch',
           queries: {
             'store_id': 75,

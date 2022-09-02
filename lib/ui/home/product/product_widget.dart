@@ -90,7 +90,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                                       border: OutlineInputBorder(),
                                       contentPadding:
                                           EdgeInsets.only(left: 12, right: 12)),
-                                  value: selectedVariation['variation_id'],
+                                  value: int.parse(
+                                      selectedVariation['variation_id']),
                                   items: List.generate(
                                       widget.product.variations!.length,
                                       (index) => DropdownMenuItem(

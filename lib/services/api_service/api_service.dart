@@ -166,7 +166,16 @@ class ApiService {
       Options? options,
       Map<String, dynamic>? queries}) async {
     try {
-      var response = await restClient.dio!.get('${restClient.customerURL}$path',
+      Dio dio = Dio();
+      dio.interceptors.add(PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: true,
+          error: true,
+          compact: true,
+          maxWidth: 90));
+      var response = await dio.get('${restClient.customerURL}$path',
           options: Options(headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'X-user': 'customer',
@@ -174,7 +183,7 @@ class ApiService {
             'Accept-encoding': 'gzip, deflate, br',
             'Accept': '*/*',
             'User-Agent': 'PostmanRuntime/7.29.2',
-            'Authorization': GetIt.I<CustomerTokenCubit>().state
+            'Authorization': 'Bearer ${GetIt.I<CustomerTokenCubit>().state}'
           }),
           queryParameters: queries);
       return response.data;
