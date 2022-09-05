@@ -64,6 +64,7 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => SelectDeliveryDateCubit()),
         BlocProvider(create: (context) => SelectTimeslotCubit('')),
         BlocProvider(create: (context) => CustomerTokenCubit('')),
+        BlocProvider(create: (context)=>FeaturedProductCubit())
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(

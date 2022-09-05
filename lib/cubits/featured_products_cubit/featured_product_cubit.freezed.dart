@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'cart_sync_cubit.dart';
+part of 'featured_product_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$CartSyncState {
+mixin _$FeaturedProductState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<VendorProducts> products) success,
     required TResult Function(String error) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$CartSyncState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> products)? success,
     TResult Function(String error)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$CartSyncState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> products)? success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) =>
@@ -69,20 +69,20 @@ mixin _$CartSyncState {
 }
 
 /// @nodoc
-abstract class $CartSyncStateCopyWith<$Res> {
-  factory $CartSyncStateCopyWith(
-          CartSyncState value, $Res Function(CartSyncState) then) =
-      _$CartSyncStateCopyWithImpl<$Res>;
+abstract class $FeaturedProductStateCopyWith<$Res> {
+  factory $FeaturedProductStateCopyWith(FeaturedProductState value,
+          $Res Function(FeaturedProductState) then) =
+      _$FeaturedProductStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CartSyncStateCopyWithImpl<$Res>
-    implements $CartSyncStateCopyWith<$Res> {
-  _$CartSyncStateCopyWithImpl(this._value, this._then);
+class _$FeaturedProductStateCopyWithImpl<$Res>
+    implements $FeaturedProductStateCopyWith<$Res> {
+  _$FeaturedProductStateCopyWithImpl(this._value, this._then);
 
-  final CartSyncState _value;
+  final FeaturedProductState _value;
   // ignore: unused_field
-  final $Res Function(CartSyncState) _then;
+  final $Res Function(FeaturedProductState) _then;
 }
 
 /// @nodoc
@@ -93,7 +93,8 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$CartSyncStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$FeaturedProductStateCopyWithImpl<$Res>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, (v) => _then(v as _$_Initial));
@@ -109,7 +110,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'CartSyncState.initial()';
+    return 'FeaturedProductState.initial()';
   }
 
   @override
@@ -126,7 +127,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<VendorProducts> products) success,
     required TResult Function(String error) failed,
   }) {
     return initial();
@@ -137,7 +138,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> products)? success,
     TResult Function(String error)? failed,
   }) {
     return initial?.call();
@@ -148,7 +149,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> products)? success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -196,7 +197,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements CartSyncState {
+abstract class _Initial implements FeaturedProductState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -208,7 +209,8 @@ abstract class _$$_LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$CartSyncStateCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$FeaturedProductStateCopyWithImpl<$Res>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, (v) => _then(v as _$_Loading));
@@ -224,7 +226,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'CartSyncState.loading()';
+    return 'FeaturedProductState.loading()';
   }
 
   @override
@@ -241,7 +243,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<VendorProducts> products) success,
     required TResult Function(String error) failed,
   }) {
     return loading();
@@ -252,7 +254,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> products)? success,
     TResult Function(String error)? failed,
   }) {
     return loading?.call();
@@ -263,7 +265,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> products)? success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -311,7 +313,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements CartSyncState {
+abstract class _Loading implements FeaturedProductState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -320,46 +322,76 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
+  $Res call({List<VendorProducts> products});
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res> extends _$CartSyncStateCopyWithImpl<$Res>
+class __$$_SuccessCopyWithImpl<$Res>
+    extends _$FeaturedProductStateCopyWithImpl<$Res>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, (v) => _then(v as _$_Success));
 
   @override
   _$_Success get _value => super._value as _$_Success;
+
+  @override
+  $Res call({
+    Object? products = freezed,
+  }) {
+    return _then(_$_Success(
+      products: products == freezed
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<VendorProducts>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success();
+  const _$_Success({required final List<VendorProducts> products})
+      : _products = products;
+
+  final List<VendorProducts> _products;
+  @override
+  List<VendorProducts> get products {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
 
   @override
   String toString() {
-    return 'CartSyncState.success()';
+    return 'FeaturedProductState.success(products: $products)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Success);
+        (other.runtimeType == runtimeType &&
+            other is _$_Success &&
+            const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<VendorProducts> products) success,
     required TResult Function(String error) failed,
   }) {
-    return success();
+    return success(products);
   }
 
   @override
@@ -367,10 +399,10 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> products)? success,
     TResult Function(String error)? failed,
   }) {
-    return success?.call();
+    return success?.call(products);
   }
 
   @override
@@ -378,12 +410,12 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> products)? success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(products);
     }
     return orElse();
   }
@@ -426,8 +458,14 @@ class _$_Success implements _Success {
   }
 }
 
-abstract class _Success implements CartSyncState {
-  const factory _Success() = _$_Success;
+abstract class _Success implements FeaturedProductState {
+  const factory _Success({required final List<VendorProducts> products}) =
+      _$_Success;
+
+  List<VendorProducts> get products;
+  @JsonKey(ignore: true)
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -438,7 +476,8 @@ abstract class _$$_FailedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FailedCopyWithImpl<$Res> extends _$CartSyncStateCopyWithImpl<$Res>
+class __$$_FailedCopyWithImpl<$Res>
+    extends _$FeaturedProductStateCopyWithImpl<$Res>
     implements _$$_FailedCopyWith<$Res> {
   __$$_FailedCopyWithImpl(_$_Failed _value, $Res Function(_$_Failed) _then)
       : super(_value, (v) => _then(v as _$_Failed));
@@ -469,7 +508,7 @@ class _$_Failed implements _Failed {
 
   @override
   String toString() {
-    return 'CartSyncState.failed(error: $error)';
+    return 'FeaturedProductState.failed(error: $error)';
   }
 
   @override
@@ -494,7 +533,7 @@ class _$_Failed implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<VendorProducts> products) success,
     required TResult Function(String error) failed,
   }) {
     return failed(error);
@@ -505,7 +544,7 @@ class _$_Failed implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> products)? success,
     TResult Function(String error)? failed,
   }) {
     return failed?.call(error);
@@ -516,7 +555,7 @@ class _$_Failed implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<VendorProducts> products)? success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -564,7 +603,7 @@ class _$_Failed implements _Failed {
   }
 }
 
-abstract class _Failed implements CartSyncState {
+abstract class _Failed implements FeaturedProductState {
   const factory _Failed(final String error) = _$_Failed;
 
   String get error;
