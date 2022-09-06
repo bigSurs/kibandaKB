@@ -333,10 +333,10 @@ class DeliveryDetailsPage extends StatelessWidget {
                                     .state
                                     .where((element) =>
                                         element.product_id ==
-                                        context
+                                        int.parse(context
                                             .read<CartCubit>()
                                             .state[i]
-                                            .product_id!)
+                                            .product_id!))
                                     .first
                                     .variation['variation_id'],
                                 'products[$i][product_id]': context
@@ -372,10 +372,10 @@ class DeliveryDetailsPage extends StatelessWidget {
                                     .state
                                     .where((element) =>
                                         element.product_id ==
-                                        context
+                                        int.parse(context
                                             .read<CartCubit>()
                                             .state[i]
-                                            .product_id!)
+                                            .product_id!))
                                     .first
                                     .product_note
                                     .toString(),
@@ -384,10 +384,10 @@ class DeliveryDetailsPage extends StatelessWidget {
                                     .state
                                     .where((element) =>
                                         element.product_id ==
-                                        context
+                                        int.parse(context
                                             .read<CartCubit>()
                                             .state[i]
-                                            .product_id!)
+                                            .product_id!))
                                     .first
                                     .amount
                                     .toString(),

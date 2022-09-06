@@ -7,6 +7,7 @@ import 'package:kibanda_kb/configuration/configuration.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
+import 'package:collection/collection.dart';
 
 class ProductWidget extends StatefulWidget {
   final VendorProducts product;
@@ -77,9 +78,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                                     setState(() {
                                       selectedVariation = widget
                                           .product.variations!
-                                          .where((element) =>
-                                              element['variation_id'] == val)
-                                          .first;
+                                          .firstWhere((element) =>
+                                              element['variation_id'] == val);
                                     });
 
                                     context.read<CartCubit>().updateCart();
@@ -96,9 +96,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                                       widget.product.variations!.length,
                                       (index) => DropdownMenuItem(
                                           onTap: () {},
-                                          value:
+                                          value: int.parse(
                                               widget.product.variations![index]
-                                                  ['variation_id'],
+                                                  ['variation_id']),
                                           child: Text('Per ' +
                                               widget.product.variations![index]
                                                   ['unit'])))),
@@ -113,13 +113,13 @@ class _ProductWidgetState extends State<ProductWidget> {
               inCart
                   ? Text.rich(TextSpan(
                       text:
-                          '${widget.product.left_symbol_currency} ${(context.watch<CartProductMetadataCubit>().state.where((element) => element.product_id == widget.product.product_id!).first.variation['special'])} ',
+                          '${widget.product.left_symbol_currency} ${(context.watch<CartProductMetadataCubit>().state.firstWhereOrNull((element) => element.product_id == int.parse(widget.product.product_id!))!.variation['special'])} ',
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
                       children: [
                           TextSpan(
                               text:
-                                  'per ${(context.watch<CartProductMetadataCubit>().state.where((element) => element.product_id == widget.product.product_id!).first.variation['unit'])}',
+                                  'per ${(context.watch<CartProductMetadataCubit>().state.where((element) => element.product_id == int.parse(widget.product.product_id!)).first.variation['unit'])}',
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w400))
                         ]))
@@ -161,7 +161,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                       .state
                                       .where((element) =>
                                           element.product_id ==
-                                          widget.product.product_id!)
+                                          int.parse(widget.product.product_id!))
                                       .first
                                       .amount ==
                                   1) {
@@ -191,7 +191,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                                     .state
                                     .where((element) =>
                                         element.product_id ==
-                                        widget.product.product_id!)
+                                        int.parse(widget.product.product_id!))
                                     .first
                                     .amount
                                     .toString(),
@@ -262,14 +262,14 @@ class _ProductWidgetState extends State<ProductWidget> {
 
                             print(val);
                           },
-                          value: context
+                          value: int.parse(context
                               .read<CartProductMetadataCubit>()
                               .state
                               .where((element) =>
                                   element.product_id ==
-                                  widget.product.product_id!)
+                                  int.parse(widget.product.product_id!))
                               .first
-                              .variation['variation_id'],
+                              .variation['variation_id']),
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               contentPadding:
@@ -277,11 +277,10 @@ class _ProductWidgetState extends State<ProductWidget> {
                           items: List.generate(
                               widget.product.variations!.length,
                               (index) => DropdownMenuItem(
-                                  value: widget.product.variations![index]
-                                      ['variation_id'],
+                                  value: int.parse(widget.product.variations![index]
+                                      ['variation_id']),
                                   child: Text('Per ' +
-                                      widget.product.variations![index]
-                                          ['unit'])))),
+                                      widget.product.variations![index]['unit'])))),
                     )
                   : Container(),
               SizedBox(

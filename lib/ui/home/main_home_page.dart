@@ -129,12 +129,11 @@ class _MainHomePageState extends State<MainHomePage> {
                                     .toList(),
                                 onChanged: (val) async {
                                   var selectedKibanda = kibandaskistores!
-                                      .where((element) =>
+                                      .firstWhere((element) =>
                                           element.firstname! +
                                               ' ' +
                                               element.lastname! ==
-                                          val)
-                                      .first;
+                                          val);
                                   context
                                       .read<SelectedKibandaCubit>()
                                       .save(selectedKibanda);
@@ -143,9 +142,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                         'telephone': selectedKibanda.telephone
                                       },
                                       path: 'customer/login/loginascustomer');
-                                  context
-                                      .read<CustomerTokenCubit>()
-                                      .emit(response['token']);
+                                  var data = response['token'];
+                                  context.read<CustomerTokenCubit>().emit(data);
 
                                   /// This [val] is the value of the selected item (Customer ID)
                                   // context

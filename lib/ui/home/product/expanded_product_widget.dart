@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -275,7 +277,8 @@ class _ExpandedCategoriesProductWidget
                                               .entries
                                               .where((element) =>
                                                   element.key ==
-                                                  widget.product.product_id!)
+                                                  int.parse(widget
+                                                      .product.product_id!))
                                               .isNotEmpty
                                           ? widget.product.variations!
                                               .where((element) =>
@@ -287,8 +290,9 @@ class _ExpandedCategoriesProductWidget
                                                       .entries
                                                       .where((element) =>
                                                           element.key ==
-                                                          widget.product
-                                                              .product_id!)
+                                                          int.parse(widget
+                                                              .product
+                                                              .product_id!))
                                                       .first
                                                       .value)
                                               .first['special']
@@ -305,32 +309,27 @@ class _ExpandedCategoriesProductWidget
                                                     .entries
                                                     .where((element) =>
                                                         element.key ==
-                                                        widget.product
-                                                            .product_id!)
+                                                        int.parse(widget.product
+                                                            .product_id!))
                                                     .isNotEmpty
                                                 ? ' per ' +
                                                     widget.product.variations!
                                                         .where((element) =>
-                                                            element[
-                                                                'variation_id'] ==
+                                                            element['variation_id'] ==
                                                             context
                                                                 .watch<
                                                                     SelectedVariationCubit>()
                                                                 .state
                                                                 .entries
                                                                 .where((element) =>
-                                                                    element
-                                                                        .key ==
-                                                                    widget
-                                                                        .product
-                                                                        .product_id!)
+                                                                    element.key ==
+                                                                    int.parse(
+                                                                        widget.product.product_id!))
                                                                 .first
                                                                 .value)
                                                         .first['unit']
                                                 : ' per ${selectedVariation['unit']}',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w400))
+                                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400))
                                       ]),
                                 ])),
                       inCart
@@ -403,7 +402,8 @@ class _ExpandedCategoriesProductWidget
                                               .state
                                               .where((element) =>
                                                   element.product_id ==
-                                                  widget.product.product_id!)
+                                                  int.parse(widget
+                                                      .product.product_id!))
                                               .first
                                               .amount ==
                                           1) {

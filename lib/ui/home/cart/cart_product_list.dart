@@ -380,7 +380,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
               children: [
                 Expanded(
                   child: CachedNetworkImage(
-                    imageUrl: widget.product.image!,
+                    imageUrl: widget.product.thumb!,
                     height: 150,
                   ),
                 ),
@@ -397,13 +397,13 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                       ///From Here
                       Text.rich(TextSpan(
                           text:
-                              '${widget.product.left_symbol_currency} ${(context.watch<CartProductMetadataCubit>().state.where((element) => element.product_id == widget.product.product_id!).first.variation['special'])} ',
+                              '${widget.product.left_symbol_currency} ${(context.watch<CartProductMetadataCubit>().state.where((element) => element.product_id == int.parse(widget.product.product_id!)).first.variation['special'])} ',
                           style: TextStyle(
                               fontSize: 13, fontWeight: FontWeight.w700),
                           children: [
                             TextSpan(
                                 text:
-                                    'per ${(context.watch<CartProductMetadataCubit>().state.where((element) => element.product_id == widget.product.product_id!).first.variation['unit'])}',
+                                    'per ${(context.watch<CartProductMetadataCubit>().state.where((element) => element.product_id == int.parse(widget.product.product_id!)).first.variation['unit'])}',
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.w400))
                           ])),
@@ -432,14 +432,15 @@ class _CartProductWidgetState extends State<CartProductWidget> {
 
                                       print(val);
                                     },
-                                    value: context
+                                    value: int.parse(context
                                         .read<CartProductMetadataCubit>()
                                         .state
                                         .where((element) =>
                                             element.product_id ==
-                                            widget.product.product_id!)
+                                            int.parse(
+                                                widget.product.product_id!))
                                         .first
-                                        .variation['variation_id'],
+                                        .variation['variation_id']),
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         contentPadding: EdgeInsets.only(
@@ -447,13 +448,12 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                     items: List.generate(
                                         widget.product.variations!.length,
                                         (index) => DropdownMenuItem(
-                                            value: widget.product.variations![index]
-                                                ['variation_id'],
-                                            child: Text('Per ' +
+                                            value: int.parse(
                                                 widget.product.variations![index]
-                                                    ['unit']))),
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.black)),
+                                                    ['variation_id']),
+                                            child:
+                                                Text('Per ' + widget.product.variations![index]['unit']))),
+                                    style: TextStyle(fontSize: 14, color: Colors.black)),
                               ),
                             ],
                           ),
@@ -478,7 +478,8 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                         .state
                                         .where((element) =>
                                             element.product_id ==
-                                            widget.product.product_id!)
+                                            int.parse(
+                                                widget.product.product_id!))
                                         .first
                                         .amount ==
                                     1) {
@@ -510,7 +511,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                       .state
                                       .where((element) =>
                                           element.product_id ==
-                                          widget.product.product_id!)
+                                          int.parse(widget.product.product_id!))
                                       .first
                                       .amount
                                       .toString(),

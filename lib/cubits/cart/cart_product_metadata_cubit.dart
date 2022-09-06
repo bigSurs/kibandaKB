@@ -54,8 +54,8 @@ class CartProductMetadataCubit
         store_product_variation_id: store_product_variation_id,
         store_id: store_id))) {
       var currentState = state;
-      currentState
-          .removeWhere((element) => element.product_id == product.product_id!);
+      currentState.removeWhere(
+          (element) => element.product_id == int.parse(product.product_id!));
     } else {
       HapticFeedback.lightImpact();
     }
@@ -67,7 +67,8 @@ class CartProductMetadataCubit
     var currentState = state;
 
     currentState
-        .where((element) => element.product_id == product.product_id!)
+        .where(
+            (element) => element.product_id == int.parse(product.product_id!))
         .first
         .add();
     emit(currentState);
@@ -80,7 +81,8 @@ class CartProductMetadataCubit
     var currentState = state;
 
     currentState
-        .where((element) => element.product_id == product.product_id!)
+        .where(
+            (element) => element.product_id == int.parse(product.product_id!))
         .first
         .setVariation(vary: vary);
     emit(currentState);
@@ -93,7 +95,8 @@ class CartProductMetadataCubit
     var currentState = state;
 
     currentState
-        .where((element) => element.product_id == product.product_id!)
+        .where(
+            (element) => element.product_id == int.parse(product.product_id!))
         .first
         .setNote(note: notes!);
     emit(currentState);
@@ -105,7 +108,8 @@ class CartProductMetadataCubit
     var currentState = state;
 
     currentState
-        .where((element) => element.product_id == product.product_id!)
+        .where(
+            (element) => element.product_id == int.parse(product.product_id!))
         .first
         .remove();
     emit(currentState);
@@ -115,7 +119,8 @@ class CartProductMetadataCubit
     var currentState = state;
 
     currentState
-        .where((element) => element.product_id == product.product_id!)
+        .where(
+            (element) => element.product_id == int.parse(product.product_id!))
         .first
         .set(quantity);
     emit(currentState);
