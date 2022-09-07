@@ -71,7 +71,7 @@ class ApiService {
           error: true,
           compact: true,
           maxWidth: 90));
-      var x = GetIt.I<CustomerTokenCubit>().token;
+      var x = GetIt.I<CustomerTokenCubit>().state;
       var response = await dio.post('${restClient.customerURL}$path',
           data: data,
           options: Options(headers: {
@@ -183,7 +183,7 @@ class ApiService {
             'Accept-encoding': 'gzip, deflate, br',
             'Accept': '*/*',
             'User-Agent': 'PostmanRuntime/7.29.2',
-            'Authorization': 'Bearer ${GetIt.I<CustomerTokenCubit>().token}'
+            'Authorization': 'Bearer ${GetIt.I<CustomerTokenCubit>().state}'
           }),
           queryParameters: queries);
       return response.data;
