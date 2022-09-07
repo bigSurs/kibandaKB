@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
-import 'package:kibanda_kb/services/api_service/api_service.dart';
+import 'package:kibanda_kb/services/api_service/rest_service.dart';
 
 class CartCubit extends HydratedCubit<List<VendorProducts>> {
   CartCubit(List<VendorProducts> state) : super(state);
@@ -24,8 +24,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
             .where((element) =>
                 element.product_id == int.parse(state[i].product_id!))
             .first
-            .variation['variation_id']
-            .toString(),
+            .product_store_id,
         'product[$i][store_id]': '75',
         'product[$i][quantity]': cartProductMetadataCubit.state
             .where((element) =>
@@ -46,8 +45,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
       });
     }
 
-    await ApiService.postDataOrder(
-        data: data, path: 'customer/cart/cartproduct');
+    await RestService().postData(data: data, path: 'customer/cart/cartproduct');
   }
 
   num getBalance() {

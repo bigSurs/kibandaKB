@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_extra_fields/form_builder_extra_fields.dart';
+import 'package:get_it/get_it.dart';
 import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
+import 'package:kibanda_kb/models/customer_token_model.dart';
 import 'package:kibanda_kb/models/kibanda_model/kibanda.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
@@ -120,7 +122,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                 decoration: const InputDecoration(
                                   labelText: 'Select Kibanda',
                                 ),
-                                popupProps: PopupProps.menu(
+                                popupProps: const PopupProps.menu(
                                     showSearchBox: true,
                                     title: Text('Search Kibanda')),
                                 items: kibandaskistores!
@@ -143,7 +145,12 @@ class _MainHomePageState extends State<MainHomePage> {
                                       },
                                       path: 'customer/login/loginascustomer');
                                   var data = response['token'];
+                                  var cookieData = response['cookie'];
                                   context.read<CustomerTokenCubit>().emit(data);
+
+                                  GetIt.I.registerSingleton<CustomerTokenModel>(
+                                      CustomerTokenModel(
+                                          token: data, cookie: cookieData));
 
                                   /// This [val] is the value of the selected item (Customer ID)
                                   // context
@@ -153,7 +160,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                   //             .customer_id as int);
                                   context
                                       .read<FeaturedProductCubit>()
-                                      .getFeaturedProducts();
+                                      .getFeaturedProducts(context);
                                 },
                               )),
                           orElse: () {
