@@ -270,6 +270,9 @@ class DeliveryDetailsPage extends StatelessWidget {
                     state.maybeWhen(
                         orElse: () {},
                         success: () {
+                          AppToast.showToast(
+                              message: 'Order Placed successfully',
+                              isError: false);
                           // if (context.read<HybridSelectedCubit>().state) {
                           //   if (context.read<HybridTypeCubit>().state == 'mpesa') {
                           //     AutoRouter.of(context).replace(MpesaPaymentRoute(
@@ -290,7 +293,7 @@ class DeliveryDetailsPage extends StatelessWidget {
                           //       orderReference:
                           //           orderData['order_reference_number']));
                           // } else {
-                          AutoRouter.of(context).push(MainHomeRoute());
+                          AutoRouter.of(context).push(OrderSuccessRoute());
                           context.read<CartCubit>().emit([]);
                           context.read<CartProductMetadataCubit>().emit([]);
                           // }
