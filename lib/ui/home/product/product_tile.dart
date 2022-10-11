@@ -34,7 +34,6 @@ class ProductTile extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: ProductWidget(
                           product: product,
-                          
                         ),
                       ),
                     ),
@@ -63,20 +62,63 @@ class ProductTile extends StatelessWidget {
           ),
         ),
       ),
-      title: Row(
+      title: Column(
         children: [
-          Expanded(
-            child: Text(
-              product.name!,
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  product.name!,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                ),
+              ),
+              inCart
+                  ? Icon(
+                      CupertinoIcons.cart,
+                      color: Palette.orangeColor,
+                    )
+                  : Container()
+            ],
           ),
-          inCart
-              ? Icon(
-                  CupertinoIcons.cart,
-                  color: Palette.orangeColor,
-                )
-              : Container()
+          Row(
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    Text(
+                      'Kshs',
+                      style:
+                          TextStyle(fontSize: 10, fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      product.price!,
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'per',
+                      style:
+                          TextStyle(fontSize: 10, fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(width: 5),
+                    Text(
+                      product.unit!,
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+              ),
+              inCart
+                  ? Icon(
+                      CupertinoIcons.cart,
+                      color: Palette.orangeColor,
+                    )
+                  : Container()
+            ],
+          ),
         ],
       ),
     );

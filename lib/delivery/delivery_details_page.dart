@@ -215,12 +215,28 @@ class DeliveryDetailsPage extends StatelessWidget {
                                     .state ??
                                 dates[0]]
                             .length,
-                        itemBuilder: (context, index) => DeliveryTimeSlotWidget(
-                          timeslot: timeslots[
-                              context.read<SelectDeliveryDateCubit>().state ??
+                        itemBuilder: (context, index) {
+                          if (timeslots[context
+                                          .read<SelectDeliveryDateCubit>()
+                                          .state ??
+                                      dates[0]][index]['timeslot'] ==
+                                  '06:00am - 08:00am' ||
+                              timeslots[context
+                                          .read<SelectDeliveryDateCubit>()
+                                          .state ??
+                                      dates[0]][index]['timeslot'] ==
+                                  '08:00am - 10:00am') {
+                            return DeliveryTimeSlotWidget(
+                              timeslot: timeslots[context
+                                      .read<SelectDeliveryDateCubit>()
+                                      .state ??
                                   dates[0]][index],
-                          index: index,
-                        ),
+                              index: index,
+                            );
+                          } else {
+                            return Container();
+                          }
+                        },
                         separatorBuilder: (context, index) => SizedBox(
                           width: 10,
                         ),
@@ -269,6 +285,10 @@ class DeliveryDetailsPage extends StatelessWidget {
                   listener: (context, state) {
                     state.maybeWhen(
                         orElse: () {},
+                        loading: () {
+                          return const CircularProgressIndicator(
+                              color: Palette.greenColor);
+                        },
                         success: () {
                           AppToast.showToast(
                               message: 'Order Placed successfully',
