@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:badges/badges.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +10,7 @@ import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
 import 'package:collection/collection.dart';
+import 'package:kibanda_kb/routes/router.gr.dart';
 
 class ProductWidget extends StatefulWidget {
   final VendorProducts product;
@@ -47,15 +50,36 @@ class _ProductWidgetState extends State<ProductWidget> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    inCart
-                        ? Padding(
-                            padding: const EdgeInsets.all(4.0),
+                    // inCart
+                    //     ? Padding(
+                    //         padding: const EdgeInsets.all(4.0),
+                    //         child: Icon(
+                    //           CupertinoIcons.cart,
+                    //           color: Colors.red,
+                    //         ),
+                    //       )
+                    //     : Container(),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: InkWell(
+                        onTap: () {
+                          AutoRouter.of(context).push(const CartRoute());
+                        },
+                        child: Badge(
+                          badgeContent: Text(
+                            '${context.watch<CartCubit>().state.length}',
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          child: const Tooltip(
+                            message: 'Proceed to checkout',
                             child: Icon(
-                              CupertinoIcons.cart,
-                              color: Colors.red,
+                              Icons.shopping_cart,
+                              color: Palette.orangeColor,
                             ),
-                          )
-                        : Container()
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

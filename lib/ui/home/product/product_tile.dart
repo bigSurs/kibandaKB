@@ -111,12 +111,6 @@ class ProductTile extends StatelessWidget {
                   ],
                 ),
               ),
-              inCart
-                  ? Icon(
-                      CupertinoIcons.cart,
-                      color: Palette.orangeColor,
-                    )
-                  : Container()
             ],
           ),
         ],
