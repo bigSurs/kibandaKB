@@ -479,7 +479,7 @@ class _ExpandedCategoriesProductWidget
                                       borderRadius: BorderRadius.circular(8)),
                                   height: 32,
                                   width: 140,
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       'Add to Cart',
                                       style: TextStyle(
@@ -489,7 +489,7 @@ class _ExpandedCategoriesProductWidget
                                     ),
                                   )),
                             ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       )
                     ],

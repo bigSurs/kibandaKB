@@ -161,6 +161,36 @@ class ApiService {
     }
   }
 
+  static Future<dynamic> getPaymentData(
+      {required String path,
+      Options? options,
+      Map<String, dynamic>? queries}) async {
+    try {
+      var response = await restClient.dio!.get('${restClient.customerURL}$path',
+          options: options, queryParameters: queries);
+      return response.data;
+    } on DioError catch (error) {
+      throw error.message;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  static Future<dynamic> getDataPayments(
+      {required String path,
+      Options? options,
+      Map<String, dynamic>? queries}) async {
+    try {
+      var response = await restClient.dio!.get('${restClient.customerURL}$path',
+          options: options, queryParameters: queries);
+      return response.data;
+    } on DioError catch (error) {
+      throw error.message;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
   static Future<dynamic> getDataKibanda(
       {required String path,
       Options? options,

@@ -6,9 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:kibanda_kb/app/app.dart';
+import 'package:event_bus/event_bus.dart';
 import 'package:kibanda_kb/utilities/rest_client/rest_client.dart';
 import 'package:path_provider/path_provider.dart';
 
+EventBus eventBus = EventBus();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   LicenseRegistry.addLicense(() async* {
@@ -28,14 +30,6 @@ void main() async {
   /// Initialize hydrated storage for all state persists storage
   final storage =
       await HydratedStorage.build(storageDirectory: storageDirectory);
-  HydratedBlocOverrides.runZoned(
-    () => runApp(KwikBasketKibandaApp()),
-    createStorage: () async {
-      return HydratedStorage.build(
-        storageDirectory: kIsWeb
-            ? HydratedStorage.webStorageDirectory
-            : await getTemporaryDirectory(),
-      );
-    },
-  );
+  HydratedBlocOverrides.runZoned(() => runApp(KwikBasketKibandaApp()),
+      storage: storage);
 }

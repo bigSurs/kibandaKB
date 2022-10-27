@@ -65,10 +65,10 @@ class _CartProductWidgetState extends State<CartProductWidget> {
               children: [
                 Expanded(child: Container()),
                 StarMenu(
-                  params: StarMenuParameters(
-                      onItemTapped: (index, controller) async {
-                    controller.closeMenu();
-                  }),
+                  // params: StarMenuParameters(
+                  //     onItemTapped: (index, controller) async {
+                  //   controller.closeMenu();
+                  // }),
                   child: Icon(Icons.more_vert),
                   items: [
                     Container(
@@ -410,53 +410,50 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                       SizedBox(
                         height: 45,
                         // width: 140,
-                        child: Expanded(
-                          child: Column(
-                            children: [
-                              Flexible(
-                                child: DropdownButtonFormField<int>(
-                                    isExpanded: true,
-                                    onChanged: (val) {
-                                      context
-                                          .read<CartProductMetadataCubit>()
-                                          .setVariation(
-                                              product: widget.product,
-                                              vary: widget.product.variations!
-                                                  .where((element) =>
-                                                      element['variation_id'] ==
-                                                      val)
-                                                  .first);
-                                      widget.refresh();
-                                      setState(() {});
-                                      context.read<CartCubit>().updateCart();
-
-                                      print(val);
-                                    },
-                                    value: int.parse(context
+                        child: Column(
+                          children: [
+                            Flexible(
+                              child: DropdownButtonFormField<int>(
+                                  isExpanded: true,
+                                  onChanged: (val) {
+                                    context
                                         .read<CartProductMetadataCubit>()
-                                        .state
-                                        .where((element) =>
-                                            element.product_id ==
-                                            int.parse(
-                                                widget.product.product_id!))
-                                        .first
-                                        .variation['variation_id']),
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        contentPadding: EdgeInsets.only(
-                                            left: 12, right: 12)),
-                                    items: List.generate(
-                                        widget.product.variations!.length,
-                                        (index) => DropdownMenuItem(
-                                            value: int.parse(
-                                                widget.product.variations![index]
-                                                    ['variation_id']),
-                                            child:
-                                                Text('Per ' + widget.product.variations![index]['unit']))),
-                                    style: TextStyle(fontSize: 14, color: Colors.black)),
-                              ),
-                            ],
-                          ),
+                                        .setVariation(
+                                            product: widget.product,
+                                            vary: widget.product.variations!
+                                                .where((element) =>
+                                                    element['variation_id'] ==
+                                                    val)
+                                                .first);
+                                    widget.refresh();
+                                    setState(() {});
+                                    context.read<CartCubit>().updateCart();
+
+                                    print(val);
+                                  },
+                                  value: int.parse(context
+                                      .read<CartProductMetadataCubit>()
+                                      .state
+                                      .where((element) =>
+                                          element.product_id ==
+                                          int.parse(widget.product.product_id!))
+                                      .first
+                                      .variation['variation_id']),
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      contentPadding:
+                                          EdgeInsets.only(left: 12, right: 12)),
+                                  items: List.generate(
+                                      widget.product.variations!.length,
+                                      (index) => DropdownMenuItem(
+                                          value: int.parse(
+                                              widget.product.variations![index]
+                                                  ['variation_id']),
+                                          child: Text(
+                                              'Per ' + widget.product.variations![index]['unit']))),
+                                  style: TextStyle(fontSize: 14, color: Colors.black)),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(
