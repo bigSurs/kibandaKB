@@ -20,7 +20,7 @@ class AuthInterceptor extends Interceptor {
       options.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
     } else if (options.path.contains('products/productsearch')) {
       options.headers[HttpHeaders.authorizationHeader] =
-          'Bearer ${customerTokenCubit.token}';
+          'Bearer ${customerTokenCubit.state}';
     }
 
     options.headers[HttpHeaders.acceptHeader] = 'application/json';
