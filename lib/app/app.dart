@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kibanda_kb/authentication/customer_cookie_cubit.dart';
 import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
@@ -48,9 +49,12 @@ class KwikBasketKibandaApp extends StatelessWidget {
     ]);
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => FeaturedProductCubit()),
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => TokenCubit('')),
         BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
+        BlocProvider(create: (context) => CustomerCookieCubit('')),
+        BlocProvider(create: (context) => CustomerTokenCubit('')),
         BlocProvider(create: (context) => VendorProductsCubit()),
         BlocProvider(create: (context) => CartCubit([])),
         BlocProvider(create: (context) => CartProductMetadataCubit([])),
@@ -74,9 +78,6 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => SelectedKibandaCubit()),
         BlocProvider(create: (context) => SelectDeliveryDateCubit()),
         BlocProvider(create: (context) => SelectTimeslotCubit('')),
-        BlocProvider(create: (context) => CustomerTokenCubit('')),
-        BlocProvider(create: (context) => FeaturedProductCubit()),
-        BlocProvider(create: (context) => TokenCubit('')),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(

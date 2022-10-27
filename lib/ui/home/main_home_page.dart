@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:auto_route/auto_route.dart';
 import 'package:badges/badges.dart';
 import 'package:dropdown_search/dropdown_search.dart';
@@ -23,6 +25,8 @@ import 'package:kibanda_kb/ui/home/product/product_tile.dart';
 import 'package:quantity_input/quantity_input.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
+
+import '../../authentication/customer_cookie_cubit.dart';
 
 class MainHomePage extends StatefulWidget {
   const MainHomePage({Key? key}) : super(key: key);
@@ -272,7 +276,14 @@ class _MainHomePageState extends State<MainHomePage> {
                                   var data = response['token'];
                                   var cookieData = response['cookie'];
                                   context.read<CustomerTokenCubit>().emit(data);
-
+                                  // context.read<TokenCubit>().emit(data);
+                                  context
+                                      .read<CustomerCookieCubit>()
+                                      .emit(cookieData);
+                                  CustomerCookieCubit cookieCubit =
+                                      BlocProvider.of<CustomerCookieCubit>(
+                                          context);
+                                  GetIt.I.registerSingleton(cookieCubit);
                                   GetIt.I.registerSingleton<CustomerTokenModel>(
                                       CustomerTokenModel(
                                           token: data, cookie: cookieData));
