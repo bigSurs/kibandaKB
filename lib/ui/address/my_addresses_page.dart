@@ -271,10 +271,10 @@ class SingleAddressWidget extends StatelessWidget {
             Column(
               children: [
                 StarMenu(
-                  params: StarMenuParameters(
-                      onItemTapped: (index, controller) async {
-                    controller.closeMenu();
-                  }),
+                  // params: StarMenuParameters(
+                  //     onItemTapped: (index, controller) async {
+                  //   controller.closeMenu();
+                  // }),
                   child: Icon(Icons.more_vert),
                   items: [
                     Container(

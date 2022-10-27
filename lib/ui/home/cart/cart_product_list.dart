@@ -65,10 +65,10 @@ class _CartProductWidgetState extends State<CartProductWidget> {
               children: [
                 Expanded(child: Container()),
                 StarMenu(
-                  params: StarMenuParameters(
-                      onItemTapped: (index, controller) async {
-                    controller.closeMenu();
-                  }),
+                  // params: StarMenuParameters(
+                  //     onItemTapped: (index, controller) async {
+                  //   controller.closeMenu();
+                  // }),
                   child: Icon(Icons.more_vert),
                   items: [
                     Container(

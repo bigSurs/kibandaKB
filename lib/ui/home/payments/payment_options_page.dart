@@ -10,9 +10,8 @@ import 'package:kibanda_kb/configuration/configuration.dart';
 import 'package:kibanda_kb/cubits/address/delivery_address_selection_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
-import 'package:kibanda_kb/cubits/cubit/payment_method_cubit/hybrid_selected_cubit.dart';
-import 'package:kibanda_kb/cubits/cubit/payment_method_cubit/payment_method_cubit.dart';
-import 'package:kibanda_kb/cubits/cubit/payment_method_cubit/selected_payment_method_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/payment_method_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/selected_payment_method_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/place_order_cubit/place_order_cubit.dart';
 import 'package:kibanda_kb/models/payment_method/payment_method.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
@@ -706,4 +705,11 @@ class CorporateTab extends StatelessWidget {
 
 class HybridTypeCubit extends Cubit<String> {
   HybridTypeCubit() : super('mpesa');
+}
+
+class HybridSelectedCubit extends Cubit<bool> {
+  HybridSelectedCubit() : super(false);
+  toggle() {
+    emit(!state);
+  }
 }
