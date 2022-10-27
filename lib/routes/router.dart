@@ -5,6 +5,8 @@ import 'package:kibanda_kb/ui/home/cart/cart_page.dart';
 import 'package:kibanda_kb/ui/home/cart/order_success_page.dart';
 import 'package:kibanda_kb/ui/home/expanded_categories_page.dart';
 import 'package:kibanda_kb/ui/home/main_home_page.dart';
+import 'package:kibanda_kb/ui/home/payments/mpesa_payment_page.dart';
+import 'package:kibanda_kb/ui/home/payments/payment_options_page.dart';
 import 'package:kibanda_kb/ui/login_page.dart';
 import 'package:kibanda_kb/ui/splash_screen.dart';
 
@@ -15,8 +17,10 @@ import 'package:kibanda_kb/ui/splash_screen.dart';
   AutoRoute(page: MyAddressesPage),
   AutoRoute(page: ExpandedCategoriesPage),
   AutoRoute(page: OrderSuccessPage),
+  AutoRoute(page: PaymentOPtionsPage),
   AutoRoute(page: CartPage),
   AutoRoute(page: MyAddressesPage),
+  AutoRoute(page: MpesaPaymentPage),
   AutoRoute(page: DeliveryDetailsPage)
 ])
 class $AppRouter {}

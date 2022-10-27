@@ -93,42 +93,40 @@ class _ProductWidgetState extends State<ProductWidget> {
                   : SizedBox(
                       height: 36,
                       // width: 140,
-                      child: Expanded(
-                        child: Column(
-                          children: [
-                            Flexible(
-                              child: DropdownButtonFormField<int>(
-                                  onChanged: (val) {
-                                    setState(() {
-                                      selectedVariation = widget
-                                          .product.variations!
-                                          .firstWhere((element) =>
-                                              element['variation_id'] == val);
-                                    });
+                      child: Column(
+                        children: [
+                          Flexible(
+                            child: DropdownButtonFormField<int>(
+                                onChanged: (val) {
+                                  setState(() {
+                                    selectedVariation = widget
+                                        .product.variations!
+                                        .firstWhere((element) =>
+                                            element['variation_id'] == val);
+                                  });
 
-                                    context.read<CartCubit>().updateCart();
+                                  context.read<CartCubit>().updateCart();
 
-                                    print(val);
-                                  },
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      contentPadding:
-                                          EdgeInsets.only(left: 12, right: 12)),
-                                  value: int.parse(
-                                      selectedVariation['variation_id']),
-                                  items: List.generate(
-                                      widget.product.variations!.length,
-                                      (index) => DropdownMenuItem(
-                                          onTap: () {},
-                                          value: int.parse(
-                                              widget.product.variations![index]
-                                                  ['variation_id']),
-                                          child: Text('Per ' +
-                                              widget.product.variations![index]
-                                                  ['unit'])))),
-                            ),
-                          ],
-                        ),
+                                  print(val);
+                                },
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    contentPadding:
+                                        EdgeInsets.only(left: 12, right: 12)),
+                                value: int.parse(
+                                    selectedVariation['variation_id']),
+                                items: List.generate(
+                                    widget.product.variations!.length,
+                                    (index) => DropdownMenuItem(
+                                        onTap: () {},
+                                        value: int.parse(
+                                            widget.product.variations![index]
+                                                ['variation_id']),
+                                        child: Text('Per ' +
+                                            widget.product.variations![index]
+                                                ['unit'])))),
+                          ),
+                        ],
                       ),
                     ),
               SizedBox(

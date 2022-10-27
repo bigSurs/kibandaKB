@@ -10,6 +10,7 @@ import 'package:get_it/get_it.dart';
 import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/authentication/token_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
@@ -38,6 +39,130 @@ class _MainHomePageState extends State<MainHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: SizedBox(
+          height: 10,
+          child: CupertinoButton(
+              onPressed: () {
+                showCupertinoModalPopup(
+                    context: context,
+                    builder: (context) => Center(
+                            child: SizedBox(
+                          // height: 100/,
+                          width: 300,
+                          child: Card(
+                            elevation: 0,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                const CircleAvatar(
+                                  radius: 58,
+                                  backgroundColor: Palette.orangeColor,
+                                  child: CircleAvatar(
+                                    radius: 54,
+                                    backgroundColor: Colors.white,
+                                    child: CircleAvatar(
+                                      radius: 50,
+                                      backgroundImage: NetworkImage(
+                                          'https://th.bing.com/th/id/R.a5758d6fb64904904ec75fd1f083e3fb?rik=QVwaYy2Fd7Xi%2fA&pid=ImgRaw&r=0'),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                const Text('Stalluri'),
+                                const Text('stalluri@gmail.com'),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                ListTile(
+                                  onTap: () {},
+                                  leading: const Icon(Icons.history),
+                                  title: const Text('Order history'),
+                                  trailing: const Icon(CupertinoIcons.forward),
+                                  subtitle: const Text('View order history'),
+                                ),
+                                ListTile(
+                                  onTap: () {
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //       builder: (context) =>
+                                    //           SettingsPage()),
+                                    // );
+                                  },
+                                  leading: const Icon(CupertinoIcons.settings),
+                                  title: const Text('About'),
+                                  trailing: const Icon(CupertinoIcons.forward),
+                                  subtitle: const Text(
+                                      'More about this appplication'),
+                                ),
+                                ListTile(
+                                  onTap: () {
+                                    // Clear the token
+                                    context.read<TokenCubit>().clear();
+                                    AutoRouter.of(context)
+                                        .replace(SplashScreen());
+                                  },
+                                  leading: const Icon(
+                                    Icons.logout_outlined,
+                                    color: Palette.greenColor,
+                                  ),
+                                  title: const Text(
+                                    'Logout',
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                  trailing: const Icon(
+                                    CupertinoIcons.forward,
+                                    color: Palette.greenColor,
+                                  ),
+                                  subtitle: const Text(
+                                    'Logout of this application',
+                                  ),
+                                ),
+                                ListTile(
+                                  onTap: () {
+                                    showAboutDialog(
+                                      context: context,
+                                      applicationIcon: Image.asset(
+                                          'assets/logo.png',
+                                          height: 30),
+                                    );
+                                  },
+                                  leading: const Icon(
+                                    CupertinoIcons.info,
+                                    color: Palette.greenColor,
+                                  ),
+                                  title: const Text(
+                                    "T & C(s)",
+                                    style: TextStyle(color: Palette.greenColor),
+                                  ),
+                                  trailing: const Icon(
+                                    CupertinoIcons.forward,
+                                    color: Palette.greenColor,
+                                  ),
+                                  subtitle: const Text(
+                                    'Licenses and terms',
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                )
+                              ],
+                            ),
+                          ),
+                        )));
+              },
+              child: const Center(
+                  child: Icon(
+                Icons.dehaze,
+                size: 40,
+                color: Palette.orangeColor,
+              ))),
+        ),
         bottomOpacity: 0.9,
         automaticallyImplyLeading: false,
         title: const Text(

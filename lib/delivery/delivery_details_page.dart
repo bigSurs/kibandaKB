@@ -313,7 +313,9 @@ class DeliveryDetailsPage extends StatelessWidget {
                           //       orderReference:
                           //           orderData['order_reference_number']));
                           // } else {
-                          AutoRouter.of(context).push(OrderSuccessRoute());
+                          // AutoRouter.of(context).push(OrderSuccessRoute());
+                          AutoRouter.of(context)
+                              .push(PaymentOPtionsRoute(orderData: {}));
                           context.read<CartCubit>().emit([]);
                           context.read<CartProductMetadataCubit>().emit([]);
                           // }
@@ -454,9 +456,10 @@ class DeliveryDetailsPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Place order ',
+                            'Proceed to Checkout',
                             style: TextStyle(
                                 color: Palette.orangeColor,
+                                fontSize: 12,
                                 fontWeight: FontWeight.bold),
                           ),
                           Icon(
