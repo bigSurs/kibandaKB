@@ -5,9 +5,13 @@ import 'package:kibanda_kb/models/api_response/api_response.dart';
 import 'package:kibanda_kb/utilities/rest_client/rest_client.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../../utilities/rest_client/rest_client_customer.dart';
+
 class ApiService {
   ///Retrieves the [RestClient] from the service locator
   static RestClient restClient = GetIt.I<RestClient>();
+
+  static RestClientCustomer restClientCustomer = GetIt.I<RestClientCustomer>();
 
   ///This method posts data to the API via the [Dio] in the [restClient]
   ///Returns a dynamic
@@ -190,6 +194,42 @@ class ApiService {
       throw e.toString();
     }
   }
+
+  /// Use this to authenticate an API only to the user
+  /// This should work as expected with all our previous implementation
+  static Future<dynamic> getDataWithCustomerAuth(
+      {required String path,
+      Options? options,
+      Map<String, dynamic>? queries}) async {
+    try {
+      var response = await restClientCustomer.dio!.get(
+          '${restClient.customerURL}$path',
+          options: options,
+          queryParameters: queries);
+      return response.data;
+    } on DioError catch (error) {
+      throw error.message;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  ///
+
+  // static Future<dynamic> getDataPayments(
+  //     {required String path,
+  //     Options? options,
+  //     Map<String, dynamic>? queries}) async {
+  //   try {
+  //     var response = await restClient.dio!.get('${restClient.customerURL}$path',
+  //         options: options, queryParameters: queries);
+  //     return response.data;
+  //   } on DioError catch (error) {
+  //     throw error.message;
+  //   } catch (e) {
+  //     throw e.toString();
+  //   }
+  // }
 
   static Future<dynamic> getDataKibanda(
       {required String path,

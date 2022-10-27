@@ -6,11 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:kibanda_kb/app/app.dart';
-import 'package:event_bus/event_bus.dart';
 import 'package:kibanda_kb/utilities/rest_client/rest_client.dart';
+import 'package:kibanda_kb/utilities/rest_client/rest_client_customer.dart';
 import 'package:path_provider/path_provider.dart';
 
-EventBus eventBus = EventBus();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   LicenseRegistry.addLicense(() async* {
@@ -23,6 +22,8 @@ void main() async {
 
   ///Register the rest client to be accessible throughout the app {DI}
   GetIt.I.registerSingleton<RestClient>(RestClient());
+
+  GetIt.I.registerSingleton<RestClientCustomer>(RestClientCustomer());
 
   ///Get directory to store all state persists (Securely 😊😊)
   Directory storageDirectory = await getApplicationDocumentsDirectory();
