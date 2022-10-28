@@ -35,7 +35,8 @@ mixin _$ApiResponse {
 abstract class $ApiResponseCopyWith<$Res> {
   factory $ApiResponseCopyWith(
           ApiResponse value, $Res Function(ApiResponse) then) =
-      _$ApiResponseCopyWithImpl<$Res>;
+      _$ApiResponseCopyWithImpl<$Res, ApiResponse>;
+  @useResult
   $Res call(
       {bool? success,
       int? status,
@@ -44,13 +45,16 @@ abstract class $ApiResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ApiResponseCopyWithImpl<$Res> implements $ApiResponseCopyWith<$Res> {
+class _$ApiResponseCopyWithImpl<$Res, $Val extends ApiResponse>
+    implements $ApiResponseCopyWith<$Res> {
   _$ApiResponseCopyWithImpl(this._value, this._then);
 
-  final ApiResponse _value;
   // ignore: unused_field
-  final $Res Function(ApiResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? success = freezed,
@@ -59,23 +63,23 @@ class _$ApiResponseCopyWithImpl<$Res> implements $ApiResponseCopyWith<$Res> {
     Object? data = freezed,
   }) {
     return _then(_value.copyWith(
-      success: success == freezed
+      success: freezed == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
               as bool?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      message: message == freezed
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: data == freezed
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -86,6 +90,7 @@ abstract class _$$_ApiResponseCopyWith<$Res>
           _$_ApiResponse value, $Res Function(_$_ApiResponse) then) =
       __$$_ApiResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool? success,
       int? status,
@@ -94,15 +99,14 @@ abstract class _$$_ApiResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ApiResponseCopyWithImpl<$Res> extends _$ApiResponseCopyWithImpl<$Res>
+class __$$_ApiResponseCopyWithImpl<$Res>
+    extends _$ApiResponseCopyWithImpl<$Res, _$_ApiResponse>
     implements _$$_ApiResponseCopyWith<$Res> {
   __$$_ApiResponseCopyWithImpl(
       _$_ApiResponse _value, $Res Function(_$_ApiResponse) _then)
-      : super(_value, (v) => _then(v as _$_ApiResponse));
+      : super(_value, _then);
 
-  @override
-  _$_ApiResponse get _value => super._value as _$_ApiResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? success = freezed,
@@ -111,19 +115,19 @@ class __$$_ApiResponseCopyWithImpl<$Res> extends _$ApiResponseCopyWithImpl<$Res>
     Object? data = freezed,
   }) {
     return _then(_$_ApiResponse(
-      success: success == freezed
+      success: freezed == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
               as bool?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      message: message == freezed
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      data: data == freezed
+      data: freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
@@ -169,23 +173,20 @@ class _$_ApiResponse implements _ApiResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApiResponse &&
-            const DeepCollectionEquality().equals(other.success, success) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.message, message) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(success),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(message),
+  int get hashCode => Object.hash(runtimeType, success, status, message,
       const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ApiResponseCopyWith<_$_ApiResponse> get copyWith =>
       __$$_ApiResponseCopyWithImpl<_$_ApiResponse>(this, _$identity);
 

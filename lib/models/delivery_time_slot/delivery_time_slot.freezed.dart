@@ -27,17 +27,18 @@ mixin _$DeliveryTimeSlot {
 abstract class $DeliveryTimeSlotCopyWith<$Res> {
   factory $DeliveryTimeSlotCopyWith(
           DeliveryTimeSlot value, $Res Function(DeliveryTimeSlot) then) =
-      _$DeliveryTimeSlotCopyWithImpl<$Res>;
+      _$DeliveryTimeSlotCopyWithImpl<$Res, DeliveryTimeSlot>;
 }
 
 /// @nodoc
-class _$DeliveryTimeSlotCopyWithImpl<$Res>
+class _$DeliveryTimeSlotCopyWithImpl<$Res, $Val extends DeliveryTimeSlot>
     implements $DeliveryTimeSlotCopyWith<$Res> {
   _$DeliveryTimeSlotCopyWithImpl(this._value, this._then);
 
-  final DeliveryTimeSlot _value;
   // ignore: unused_field
-  final $Res Function(DeliveryTimeSlot) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -49,14 +50,11 @@ abstract class _$$_DeliveryTimeSlotCopyWith<$Res> {
 
 /// @nodoc
 class __$$_DeliveryTimeSlotCopyWithImpl<$Res>
-    extends _$DeliveryTimeSlotCopyWithImpl<$Res>
+    extends _$DeliveryTimeSlotCopyWithImpl<$Res, _$_DeliveryTimeSlot>
     implements _$$_DeliveryTimeSlotCopyWith<$Res> {
   __$$_DeliveryTimeSlotCopyWithImpl(
       _$_DeliveryTimeSlot _value, $Res Function(_$_DeliveryTimeSlot) _then)
-      : super(_value, (v) => _then(v as _$_DeliveryTimeSlot));
-
-  @override
-  _$_DeliveryTimeSlot get _value => super._value as _$_DeliveryTimeSlot;
+      : super(_value, _then);
 }
 
 /// @nodoc

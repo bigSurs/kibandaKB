@@ -61,7 +61,8 @@ mixin _$Product {
 /// @nodoc
 abstract class $ProductCopyWith<$Res> {
   factory $ProductCopyWith(Product value, $Res Function(Product) then) =
-      _$ProductCopyWithImpl<$Res>;
+      _$ProductCopyWithImpl<$Res, Product>;
+  @useResult
   $Res call(
       {String? key,
       int? qty_in_cart,
@@ -96,13 +97,16 @@ abstract class $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
+class _$ProductCopyWithImpl<$Res, $Val extends Product>
+    implements $ProductCopyWith<$Res> {
   _$ProductCopyWithImpl(this._value, this._then);
 
-  final Product _value;
   // ignore: unused_field
-  final $Res Function(Product) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? key = freezed,
@@ -137,127 +141,127 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? product_type = freezed,
   }) {
     return _then(_value.copyWith(
-      key: key == freezed
+      key: freezed == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as String?,
-      qty_in_cart: qty_in_cart == freezed
+      qty_in_cart: freezed == qty_in_cart
           ? _value.qty_in_cart
           : qty_in_cart // ignore: cast_nullable_to_non_nullable
               as int?,
-      variations: variations == freezed
+      variations: freezed == variations
           ? _value.variations
           : variations // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>?,
-      store_product_variation_id: store_product_variation_id == freezed
+      store_product_variation_id: freezed == store_product_variation_id
           ? _value.store_product_variation_id
           : store_product_variation_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      product_id: product_id == freezed
+      product_id: freezed == product_id
           ? _value.product_id
           : product_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      model: model == freezed
+      model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
               as String?,
-      product_store_id: product_store_id == freezed
+      product_store_id: freezed == product_store_id
           ? _value.product_store_id
           : product_store_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      store_id: store_id == freezed
+      store_id: freezed == store_id
           ? _value.store_id
           : store_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      product_info: product_info == freezed
+      product_info: freezed == product_info
           ? _value.product_info
           : product_info // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      default_variation_name: default_variation_name == freezed
+      default_variation_name: freezed == default_variation_name
           ? _value.default_variation_name
           : default_variation_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      thumb: thumb == freezed
+      thumb: freezed == thumb
           ? _value.thumb
           : thumb // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      quantity: quantity == freezed
+      quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as String?,
-      unit: unit == freezed
+      unit: freezed == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String?,
-      special: special == freezed
+      special: freezed == special
           ? _value.special
           : special // ignore: cast_nullable_to_non_nullable
               as String?,
-      percent_off: percent_off == freezed
+      percent_off: freezed == percent_off
           ? _value.percent_off
           : percent_off // ignore: cast_nullable_to_non_nullable
               as String?,
-      left_symbol_currency: left_symbol_currency == freezed
+      left_symbol_currency: freezed == left_symbol_currency
           ? _value.left_symbol_currency
           : left_symbol_currency // ignore: cast_nullable_to_non_nullable
               as String?,
-      right_symbol_currency: right_symbol_currency == freezed
+      right_symbol_currency: freezed == right_symbol_currency
           ? _value.right_symbol_currency
           : right_symbol_currency // ignore: cast_nullable_to_non_nullable
               as String?,
-      tax: tax == freezed
+      tax: freezed == tax
           ? _value.tax
           : tax // ignore: cast_nullable_to_non_nullable
               as String?,
-      tax_class_id: tax_class_id == freezed
+      tax_class_id: freezed == tax_class_id
           ? _value.tax_class_id
           : tax_class_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      tax_amount: tax_amount == freezed
+      tax_amount: freezed == tax_amount
           ? _value.tax_amount
           : tax_amount // ignore: cast_nullable_to_non_nullable
               as num?,
-      tax_name: tax_name == freezed
+      tax_name: freezed == tax_name
           ? _value.tax_name
           : tax_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      max_qty: max_qty == freezed
+      max_qty: freezed == max_qty
           ? _value.max_qty
           : max_qty // ignore: cast_nullable_to_non_nullable
               as String?,
-      rating: rating == freezed
+      rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as int?,
-      href: href == freezed
+      href: freezed == href
           ? _value.href
           : href // ignore: cast_nullable_to_non_nullable
               as String?,
-      category_name: category_name == freezed
+      category_name: freezed == category_name
           ? _value.category_name
           : category_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      product_type: product_type == freezed
+      product_type: freezed == product_type
           ? _value.product_type
           : product_type // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -267,6 +271,7 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
           _$_Product value, $Res Function(_$_Product) then) =
       __$$_ProductCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? key,
       int? qty_in_cart,
@@ -301,14 +306,13 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
+class __$$_ProductCopyWithImpl<$Res>
+    extends _$ProductCopyWithImpl<$Res, _$_Product>
     implements _$$_ProductCopyWith<$Res> {
   __$$_ProductCopyWithImpl(_$_Product _value, $Res Function(_$_Product) _then)
-      : super(_value, (v) => _then(v as _$_Product));
+      : super(_value, _then);
 
-  @override
-  _$_Product get _value => super._value as _$_Product;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? key = freezed,
@@ -343,123 +347,123 @@ class __$$_ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? product_type = freezed,
   }) {
     return _then(_$_Product(
-      key: key == freezed
+      key: freezed == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as String?,
-      qty_in_cart: qty_in_cart == freezed
+      qty_in_cart: freezed == qty_in_cart
           ? _value.qty_in_cart
           : qty_in_cart // ignore: cast_nullable_to_non_nullable
               as int?,
-      variations: variations == freezed
+      variations: freezed == variations
           ? _value._variations
           : variations // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>?,
-      store_product_variation_id: store_product_variation_id == freezed
+      store_product_variation_id: freezed == store_product_variation_id
           ? _value.store_product_variation_id
           : store_product_variation_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      product_id: product_id == freezed
+      product_id: freezed == product_id
           ? _value.product_id
           : product_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      model: model == freezed
+      model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
               as String?,
-      product_store_id: product_store_id == freezed
+      product_store_id: freezed == product_store_id
           ? _value.product_store_id
           : product_store_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      store_id: store_id == freezed
+      store_id: freezed == store_id
           ? _value.store_id
           : store_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      product_info: product_info == freezed
+      product_info: freezed == product_info
           ? _value._product_info
           : product_info // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      default_variation_name: default_variation_name == freezed
+      default_variation_name: freezed == default_variation_name
           ? _value.default_variation_name
           : default_variation_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      thumb: thumb == freezed
+      thumb: freezed == thumb
           ? _value.thumb
           : thumb // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      quantity: quantity == freezed
+      quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as String?,
-      unit: unit == freezed
+      unit: freezed == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String?,
-      special: special == freezed
+      special: freezed == special
           ? _value.special
           : special // ignore: cast_nullable_to_non_nullable
               as String?,
-      percent_off: percent_off == freezed
+      percent_off: freezed == percent_off
           ? _value.percent_off
           : percent_off // ignore: cast_nullable_to_non_nullable
               as String?,
-      left_symbol_currency: left_symbol_currency == freezed
+      left_symbol_currency: freezed == left_symbol_currency
           ? _value.left_symbol_currency
           : left_symbol_currency // ignore: cast_nullable_to_non_nullable
               as String?,
-      right_symbol_currency: right_symbol_currency == freezed
+      right_symbol_currency: freezed == right_symbol_currency
           ? _value.right_symbol_currency
           : right_symbol_currency // ignore: cast_nullable_to_non_nullable
               as String?,
-      tax: tax == freezed
+      tax: freezed == tax
           ? _value.tax
           : tax // ignore: cast_nullable_to_non_nullable
               as String?,
-      tax_class_id: tax_class_id == freezed
+      tax_class_id: freezed == tax_class_id
           ? _value.tax_class_id
           : tax_class_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      tax_amount: tax_amount == freezed
+      tax_amount: freezed == tax_amount
           ? _value.tax_amount
           : tax_amount // ignore: cast_nullable_to_non_nullable
               as num?,
-      tax_name: tax_name == freezed
+      tax_name: freezed == tax_name
           ? _value.tax_name
           : tax_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      max_qty: max_qty == freezed
+      max_qty: freezed == max_qty
           ? _value.max_qty
           : max_qty // ignore: cast_nullable_to_non_nullable
               as String?,
-      rating: rating == freezed
+      rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as int?,
-      href: href == freezed
+      href: freezed == href
           ? _value.href
           : href // ignore: cast_nullable_to_non_nullable
               as String?,
-      category_name: category_name == freezed
+      category_name: freezed == category_name
           ? _value.category_name
           : category_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      product_type: product_type == freezed
+      product_type: freezed == product_type
           ? _value.product_type
           : product_type // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -593,91 +597,97 @@ class _$_Product implements _Product {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Product &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.qty_in_cart, qty_in_cart) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.qty_in_cart, qty_in_cart) ||
+                other.qty_in_cart == qty_in_cart) &&
             const DeepCollectionEquality()
                 .equals(other._variations, _variations) &&
-            const DeepCollectionEquality().equals(
-                other.store_product_variation_id, store_product_variation_id) &&
-            const DeepCollectionEquality()
-                .equals(other.product_id, product_id) &&
-            const DeepCollectionEquality().equals(other.model, model) &&
-            const DeepCollectionEquality()
-                .equals(other.product_store_id, product_store_id) &&
-            const DeepCollectionEquality().equals(other.store_id, store_id) &&
+            (identical(other.store_product_variation_id,
+                    store_product_variation_id) ||
+                other.store_product_variation_id ==
+                    store_product_variation_id) &&
+            (identical(other.product_id, product_id) ||
+                other.product_id == product_id) &&
+            (identical(other.model, model) || other.model == model) &&
+            (identical(other.product_store_id, product_store_id) ||
+                other.product_store_id == product_store_id) &&
+            (identical(other.store_id, store_id) ||
+                other.store_id == store_id) &&
             const DeepCollectionEquality()
                 .equals(other._product_info, _product_info) &&
-            const DeepCollectionEquality().equals(other.image, image) &&
-            const DeepCollectionEquality()
-                .equals(other.default_variation_name, default_variation_name) &&
-            const DeepCollectionEquality().equals(other.thumb, thumb) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.quantity, quantity) &&
-            const DeepCollectionEquality().equals(other.unit, unit) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.special, special) &&
-            const DeepCollectionEquality()
-                .equals(other.percent_off, percent_off) &&
-            const DeepCollectionEquality()
-                .equals(other.left_symbol_currency, left_symbol_currency) &&
-            const DeepCollectionEquality()
-                .equals(other.right_symbol_currency, right_symbol_currency) &&
-            const DeepCollectionEquality().equals(other.tax, tax) &&
-            const DeepCollectionEquality()
-                .equals(other.tax_class_id, tax_class_id) &&
-            const DeepCollectionEquality()
-                .equals(other.tax_amount, tax_amount) &&
-            const DeepCollectionEquality().equals(other.tax_name, tax_name) &&
-            const DeepCollectionEquality().equals(other.max_qty, max_qty) &&
-            const DeepCollectionEquality().equals(other.rating, rating) &&
-            const DeepCollectionEquality().equals(other.href, href) &&
-            const DeepCollectionEquality()
-                .equals(other.category_name, category_name) &&
-            const DeepCollectionEquality()
-                .equals(other.product_type, product_type));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.default_variation_name, default_variation_name) ||
+                other.default_variation_name == default_variation_name) &&
+            (identical(other.thumb, thumb) || other.thumb == thumb) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
+            (identical(other.unit, unit) || other.unit == unit) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.special, special) || other.special == special) &&
+            (identical(other.percent_off, percent_off) ||
+                other.percent_off == percent_off) &&
+            (identical(other.left_symbol_currency, left_symbol_currency) ||
+                other.left_symbol_currency == left_symbol_currency) &&
+            (identical(other.right_symbol_currency, right_symbol_currency) ||
+                other.right_symbol_currency == right_symbol_currency) &&
+            (identical(other.tax, tax) || other.tax == tax) &&
+            (identical(other.tax_class_id, tax_class_id) ||
+                other.tax_class_id == tax_class_id) &&
+            (identical(other.tax_amount, tax_amount) ||
+                other.tax_amount == tax_amount) &&
+            (identical(other.tax_name, tax_name) ||
+                other.tax_name == tax_name) &&
+            (identical(other.max_qty, max_qty) || other.max_qty == max_qty) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.href, href) || other.href == href) &&
+            (identical(other.category_name, category_name) ||
+                other.category_name == category_name) &&
+            (identical(other.product_type, product_type) ||
+                other.product_type == product_type));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(key),
-        const DeepCollectionEquality().hash(qty_in_cart),
+        key,
+        qty_in_cart,
         const DeepCollectionEquality().hash(_variations),
-        const DeepCollectionEquality().hash(store_product_variation_id),
-        const DeepCollectionEquality().hash(product_id),
-        const DeepCollectionEquality().hash(model),
-        const DeepCollectionEquality().hash(product_store_id),
-        const DeepCollectionEquality().hash(store_id),
+        store_product_variation_id,
+        product_id,
+        model,
+        product_store_id,
+        store_id,
         const DeepCollectionEquality().hash(_product_info),
-        const DeepCollectionEquality().hash(image),
-        const DeepCollectionEquality().hash(default_variation_name),
-        const DeepCollectionEquality().hash(thumb),
-        const DeepCollectionEquality().hash(name),
-        const DeepCollectionEquality().hash(quantity),
-        const DeepCollectionEquality().hash(unit),
-        const DeepCollectionEquality().hash(description),
-        const DeepCollectionEquality().hash(price),
-        const DeepCollectionEquality().hash(special),
-        const DeepCollectionEquality().hash(percent_off),
-        const DeepCollectionEquality().hash(left_symbol_currency),
-        const DeepCollectionEquality().hash(right_symbol_currency),
-        const DeepCollectionEquality().hash(tax),
-        const DeepCollectionEquality().hash(tax_class_id),
-        const DeepCollectionEquality().hash(tax_amount),
-        const DeepCollectionEquality().hash(tax_name),
-        const DeepCollectionEquality().hash(max_qty),
-        const DeepCollectionEquality().hash(rating),
-        const DeepCollectionEquality().hash(href),
-        const DeepCollectionEquality().hash(category_name),
-        const DeepCollectionEquality().hash(product_type)
+        image,
+        default_variation_name,
+        thumb,
+        name,
+        quantity,
+        unit,
+        description,
+        price,
+        special,
+        percent_off,
+        left_symbol_currency,
+        right_symbol_currency,
+        tax,
+        tax_class_id,
+        tax_amount,
+        tax_name,
+        max_qty,
+        rating,
+        href,
+        category_name,
+        product_type
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ProductCopyWith<_$_Product> get copyWith =>
       __$$_ProductCopyWithImpl<_$_Product>(this, _$identity);
 

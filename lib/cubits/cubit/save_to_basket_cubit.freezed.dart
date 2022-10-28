@@ -26,10 +26,10 @@ mixin _$SaveToBasketState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? success,
-    TResult Function()? loading,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(String e)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,10 +51,10 @@ mixin _$SaveToBasketState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Loasding value)? loading,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Loasding value)? loading,
+    TResult? Function(_Failed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,17 +72,18 @@ mixin _$SaveToBasketState {
 abstract class $SaveToBasketStateCopyWith<$Res> {
   factory $SaveToBasketStateCopyWith(
           SaveToBasketState value, $Res Function(SaveToBasketState) then) =
-      _$SaveToBasketStateCopyWithImpl<$Res>;
+      _$SaveToBasketStateCopyWithImpl<$Res, SaveToBasketState>;
 }
 
 /// @nodoc
-class _$SaveToBasketStateCopyWithImpl<$Res>
+class _$SaveToBasketStateCopyWithImpl<$Res, $Val extends SaveToBasketState>
     implements $SaveToBasketStateCopyWith<$Res> {
   _$SaveToBasketStateCopyWithImpl(this._value, this._then);
 
-  final SaveToBasketState _value;
   // ignore: unused_field
-  final $Res Function(SaveToBasketState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -94,13 +95,10 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$SaveToBasketStateCopyWithImpl<$Res>
+    extends _$SaveToBasketStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -136,10 +134,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? success,
-    TResult Function()? loading,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(String e)? failed,
   }) {
     return initial?.call();
   }
@@ -173,10 +171,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Loasding value)? loading,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Loasding value)? loading,
+    TResult? Function(_Failed value)? failed,
   }) {
     return initial?.call(this);
   }
@@ -210,13 +208,10 @@ abstract class _$$_SuccessCopyWith<$Res> {
 
 /// @nodoc
 class __$$_SuccessCopyWithImpl<$Res>
-    extends _$SaveToBasketStateCopyWithImpl<$Res>
+    extends _$SaveToBasketStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
-      : super(_value, (v) => _then(v as _$_Success));
-
-  @override
-  _$_Success get _value => super._value as _$_Success;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -252,10 +247,10 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? success,
-    TResult Function()? loading,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(String e)? failed,
   }) {
     return success?.call();
   }
@@ -289,10 +284,10 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Loasding value)? loading,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Loasding value)? loading,
+    TResult? Function(_Failed value)? failed,
   }) {
     return success?.call(this);
   }
@@ -326,14 +321,11 @@ abstract class _$$_LoasdingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoasdingCopyWithImpl<$Res>
-    extends _$SaveToBasketStateCopyWithImpl<$Res>
+    extends _$SaveToBasketStateCopyWithImpl<$Res, _$_Loasding>
     implements _$$_LoasdingCopyWith<$Res> {
   __$$_LoasdingCopyWithImpl(
       _$_Loasding _value, $Res Function(_$_Loasding) _then)
-      : super(_value, (v) => _then(v as _$_Loasding));
-
-  @override
-  _$_Loasding get _value => super._value as _$_Loasding;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -369,10 +361,10 @@ class _$_Loasding implements _Loasding {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? success,
-    TResult Function()? loading,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(String e)? failed,
   }) {
     return loading?.call();
   }
@@ -406,10 +398,10 @@ class _$_Loasding implements _Loasding {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Loasding value)? loading,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Loasding value)? loading,
+    TResult? Function(_Failed value)? failed,
   }) {
     return loading?.call(this);
   }
@@ -438,25 +430,24 @@ abstract class _Loasding implements SaveToBasketState {
 abstract class _$$_FailedCopyWith<$Res> {
   factory _$$_FailedCopyWith(_$_Failed value, $Res Function(_$_Failed) then) =
       __$$_FailedCopyWithImpl<$Res>;
+  @useResult
   $Res call({String e});
 }
 
 /// @nodoc
 class __$$_FailedCopyWithImpl<$Res>
-    extends _$SaveToBasketStateCopyWithImpl<$Res>
+    extends _$SaveToBasketStateCopyWithImpl<$Res, _$_Failed>
     implements _$$_FailedCopyWith<$Res> {
   __$$_FailedCopyWithImpl(_$_Failed _value, $Res Function(_$_Failed) _then)
-      : super(_value, (v) => _then(v as _$_Failed));
+      : super(_value, _then);
 
-  @override
-  _$_Failed get _value => super._value as _$_Failed;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? e = freezed,
+    Object? e = null,
   }) {
     return _then(_$_Failed(
-      e == freezed
+      null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String,
@@ -482,15 +473,15 @@ class _$_Failed implements _Failed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Failed &&
-            const DeepCollectionEquality().equals(other.e, e));
+            (identical(other.e, e) || other.e == e));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(e));
+  int get hashCode => Object.hash(runtimeType, e);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FailedCopyWith<_$_Failed> get copyWith =>
       __$$_FailedCopyWithImpl<_$_Failed>(this, _$identity);
 
@@ -508,10 +499,10 @@ class _$_Failed implements _Failed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? success,
-    TResult Function()? loading,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(String e)? failed,
   }) {
     return failed?.call(e);
   }
@@ -545,10 +536,10 @@ class _$_Failed implements _Failed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Success value)? success,
-    TResult Function(_Loasding value)? loading,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Loasding value)? loading,
+    TResult? Function(_Failed value)? failed,
   }) {
     return failed?.call(this);
   }

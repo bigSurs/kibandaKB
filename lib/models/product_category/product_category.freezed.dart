@@ -42,7 +42,8 @@ mixin _$ProductCategory {
 abstract class $ProductCategoryCopyWith<$Res> {
   factory $ProductCategoryCopyWith(
           ProductCategory value, $Res Function(ProductCategory) then) =
-      _$ProductCategoryCopyWithImpl<$Res>;
+      _$ProductCategoryCopyWithImpl<$Res, ProductCategory>;
+  @useResult
   $Res call(
       {String? category_id,
       String? image,
@@ -58,14 +59,16 @@ abstract class $ProductCategoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductCategoryCopyWithImpl<$Res>
+class _$ProductCategoryCopyWithImpl<$Res, $Val extends ProductCategory>
     implements $ProductCategoryCopyWith<$Res> {
   _$ProductCategoryCopyWithImpl(this._value, this._then);
 
-  final ProductCategory _value;
   // ignore: unused_field
-  final $Res Function(ProductCategory) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? category_id = freezed,
@@ -81,51 +84,51 @@ class _$ProductCategoryCopyWithImpl<$Res>
     Object? products_count = freezed,
   }) {
     return _then(_value.copyWith(
-      category_id: category_id == freezed
+      category_id: freezed == category_id
           ? _value.category_id
           : category_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      meta_description: meta_description == freezed
+      meta_description: freezed == meta_description
           ? _value.meta_description
           : meta_description // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      parent_id: parent_id == freezed
+      parent_id: freezed == parent_id
           ? _value.parent_id
           : parent_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      sort_order: sort_order == freezed
+      sort_order: freezed == sort_order
           ? _value.sort_order
           : sort_order // ignore: cast_nullable_to_non_nullable
               as String?,
-      thumb: thumb == freezed
+      thumb: freezed == thumb
           ? _value.thumb
           : thumb // ignore: cast_nullable_to_non_nullable
               as String?,
-      thumb_two: thumb_two == freezed
+      thumb_two: freezed == thumb_two
           ? _value.thumb_two
           : thumb_two // ignore: cast_nullable_to_non_nullable
               as String?,
-      products_count: products_count == freezed
+      products_count: freezed == products_count
           ? _value.products_count
           : products_count // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -136,6 +139,7 @@ abstract class _$$_ProductCategoryCopyWith<$Res>
           _$_ProductCategory value, $Res Function(_$_ProductCategory) then) =
       __$$_ProductCategoryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? category_id,
       String? image,
@@ -152,15 +156,13 @@ abstract class _$$_ProductCategoryCopyWith<$Res>
 
 /// @nodoc
 class __$$_ProductCategoryCopyWithImpl<$Res>
-    extends _$ProductCategoryCopyWithImpl<$Res>
+    extends _$ProductCategoryCopyWithImpl<$Res, _$_ProductCategory>
     implements _$$_ProductCategoryCopyWith<$Res> {
   __$$_ProductCategoryCopyWithImpl(
       _$_ProductCategory _value, $Res Function(_$_ProductCategory) _then)
-      : super(_value, (v) => _then(v as _$_ProductCategory));
+      : super(_value, _then);
 
-  @override
-  _$_ProductCategory get _value => super._value as _$_ProductCategory;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? category_id = freezed,
@@ -176,47 +178,47 @@ class __$$_ProductCategoryCopyWithImpl<$Res>
     Object? products_count = freezed,
   }) {
     return _then(_$_ProductCategory(
-      category_id: category_id == freezed
+      category_id: freezed == category_id
           ? _value.category_id
           : category_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      meta_description: meta_description == freezed
+      meta_description: freezed == meta_description
           ? _value.meta_description
           : meta_description // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      parent_id: parent_id == freezed
+      parent_id: freezed == parent_id
           ? _value.parent_id
           : parent_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      sort_order: sort_order == freezed
+      sort_order: freezed == sort_order
           ? _value.sort_order
           : sort_order // ignore: cast_nullable_to_non_nullable
               as String?,
-      thumb: thumb == freezed
+      thumb: freezed == thumb
           ? _value.thumb
           : thumb // ignore: cast_nullable_to_non_nullable
               as String?,
-      thumb_two: thumb_two == freezed
+      thumb_two: freezed == thumb_two
           ? _value.thumb_two
           : thumb_two // ignore: cast_nullable_to_non_nullable
               as String?,
-      products_count: products_count == freezed
+      products_count: freezed == products_count
           ? _value.products_count
           : products_count // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -276,42 +278,45 @@ class _$_ProductCategory implements _ProductCategory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProductCategory &&
-            const DeepCollectionEquality()
-                .equals(other.category_id, category_id) &&
-            const DeepCollectionEquality().equals(other.image, image) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality()
-                .equals(other.meta_description, meta_description) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.parent_id, parent_id) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.sort_order, sort_order) &&
-            const DeepCollectionEquality().equals(other.thumb, thumb) &&
-            const DeepCollectionEquality().equals(other.thumb_two, thumb_two) &&
-            const DeepCollectionEquality()
-                .equals(other.products_count, products_count));
+            (identical(other.category_id, category_id) ||
+                other.category_id == category_id) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.meta_description, meta_description) ||
+                other.meta_description == meta_description) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.parent_id, parent_id) ||
+                other.parent_id == parent_id) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.sort_order, sort_order) ||
+                other.sort_order == sort_order) &&
+            (identical(other.thumb, thumb) || other.thumb == thumb) &&
+            (identical(other.thumb_two, thumb_two) ||
+                other.thumb_two == thumb_two) &&
+            (identical(other.products_count, products_count) ||
+                other.products_count == products_count));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(category_id),
-      const DeepCollectionEquality().hash(image),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(meta_description),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(parent_id),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(sort_order),
-      const DeepCollectionEquality().hash(thumb),
-      const DeepCollectionEquality().hash(thumb_two),
-      const DeepCollectionEquality().hash(products_count));
+      category_id,
+      image,
+      description,
+      meta_description,
+      name,
+      parent_id,
+      status,
+      sort_order,
+      thumb,
+      thumb_two,
+      products_count);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ProductCategoryCopyWith<_$_ProductCategory> get copyWith =>
       __$$_ProductCategoryCopyWithImpl<_$_ProductCategory>(this, _$identity);
 

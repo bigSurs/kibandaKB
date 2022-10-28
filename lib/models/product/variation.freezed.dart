@@ -39,7 +39,8 @@ mixin _$Variation {
 /// @nodoc
 abstract class $VariationCopyWith<$Res> {
   factory $VariationCopyWith(Variation value, $Res Function(Variation) then) =
-      _$VariationCopyWithImpl<$Res>;
+      _$VariationCopyWithImpl<$Res, Variation>;
+  @useResult
   $Res call(
       {String? product_store_id,
       String? product_id,
@@ -53,13 +54,16 @@ abstract class $VariationCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VariationCopyWithImpl<$Res> implements $VariationCopyWith<$Res> {
+class _$VariationCopyWithImpl<$Res, $Val extends Variation>
+    implements $VariationCopyWith<$Res> {
   _$VariationCopyWithImpl(this._value, this._then);
 
-  final Variation _value;
   // ignore: unused_field
-  final $Res Function(Variation) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? product_store_id = freezed,
@@ -73,43 +77,43 @@ class _$VariationCopyWithImpl<$Res> implements $VariationCopyWith<$Res> {
     Object? variation_id = freezed,
   }) {
     return _then(_value.copyWith(
-      product_store_id: product_store_id == freezed
+      product_store_id: freezed == product_store_id
           ? _value.product_store_id
           : product_store_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      product_id: product_id == freezed
+      product_id: freezed == product_id
           ? _value.product_id
           : product_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      store_id: store_id == freezed
+      store_id: freezed == store_id
           ? _value.store_id
           : store_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String?,
-      tax_percentage: tax_percentage == freezed
+      tax_percentage: freezed == tax_percentage
           ? _value.tax_percentage
           : tax_percentage // ignore: cast_nullable_to_non_nullable
               as String?,
-      subtract_quantity: subtract_quantity == freezed
+      subtract_quantity: freezed == subtract_quantity
           ? _value.subtract_quantity
           : subtract_quantity // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      unit: unit == freezed
+      unit: freezed == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as String?,
-      variation_id: variation_id == freezed
+      variation_id: freezed == variation_id
           ? _value.variation_id
           : variation_id // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -119,6 +123,7 @@ abstract class _$$_VariationCopyWith<$Res> implements $VariationCopyWith<$Res> {
           _$_Variation value, $Res Function(_$_Variation) then) =
       __$$_VariationCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? product_store_id,
       String? product_id,
@@ -132,15 +137,14 @@ abstract class _$$_VariationCopyWith<$Res> implements $VariationCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_VariationCopyWithImpl<$Res> extends _$VariationCopyWithImpl<$Res>
+class __$$_VariationCopyWithImpl<$Res>
+    extends _$VariationCopyWithImpl<$Res, _$_Variation>
     implements _$$_VariationCopyWith<$Res> {
   __$$_VariationCopyWithImpl(
       _$_Variation _value, $Res Function(_$_Variation) _then)
-      : super(_value, (v) => _then(v as _$_Variation));
+      : super(_value, _then);
 
-  @override
-  _$_Variation get _value => super._value as _$_Variation;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? product_store_id = freezed,
@@ -154,39 +158,39 @@ class __$$_VariationCopyWithImpl<$Res> extends _$VariationCopyWithImpl<$Res>
     Object? variation_id = freezed,
   }) {
     return _then(_$_Variation(
-      product_store_id: product_store_id == freezed
+      product_store_id: freezed == product_store_id
           ? _value.product_store_id
           : product_store_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      product_id: product_id == freezed
+      product_id: freezed == product_id
           ? _value.product_id
           : product_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      store_id: store_id == freezed
+      store_id: freezed == store_id
           ? _value.store_id
           : store_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String?,
-      tax_percentage: tax_percentage == freezed
+      tax_percentage: freezed == tax_percentage
           ? _value.tax_percentage
           : tax_percentage // ignore: cast_nullable_to_non_nullable
               as String?,
-      subtract_quantity: subtract_quantity == freezed
+      subtract_quantity: freezed == subtract_quantity
           ? _value.subtract_quantity
           : subtract_quantity // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      unit: unit == freezed
+      unit: freezed == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as String?,
-      variation_id: variation_id == freezed
+      variation_id: freezed == variation_id
           ? _value.variation_id
           : variation_id // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -240,38 +244,40 @@ class _$_Variation implements _Variation {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Variation &&
-            const DeepCollectionEquality()
-                .equals(other.product_store_id, product_store_id) &&
-            const DeepCollectionEquality()
-                .equals(other.product_id, product_id) &&
-            const DeepCollectionEquality().equals(other.store_id, store_id) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality()
-                .equals(other.tax_percentage, tax_percentage) &&
-            const DeepCollectionEquality()
-                .equals(other.subtract_quantity, subtract_quantity) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.unit, unit) &&
-            const DeepCollectionEquality()
-                .equals(other.variation_id, variation_id));
+            (identical(other.product_store_id, product_store_id) ||
+                other.product_store_id == product_store_id) &&
+            (identical(other.product_id, product_id) ||
+                other.product_id == product_id) &&
+            (identical(other.store_id, store_id) ||
+                other.store_id == store_id) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.tax_percentage, tax_percentage) ||
+                other.tax_percentage == tax_percentage) &&
+            (identical(other.subtract_quantity, subtract_quantity) ||
+                other.subtract_quantity == subtract_quantity) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.unit, unit) || other.unit == unit) &&
+            (identical(other.variation_id, variation_id) ||
+                other.variation_id == variation_id));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(product_store_id),
-      const DeepCollectionEquality().hash(product_id),
-      const DeepCollectionEquality().hash(store_id),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(tax_percentage),
-      const DeepCollectionEquality().hash(subtract_quantity),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(unit),
-      const DeepCollectionEquality().hash(variation_id));
+      product_store_id,
+      product_id,
+      store_id,
+      price,
+      tax_percentage,
+      subtract_quantity,
+      name,
+      unit,
+      variation_id);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VariationCopyWith<_$_Variation> get copyWith =>
       __$$_VariationCopyWithImpl<_$_Variation>(this, _$identity);
 

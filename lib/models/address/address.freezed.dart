@@ -44,7 +44,8 @@ mixin _$Address {
 /// @nodoc
 abstract class $AddressCopyWith<$Res> {
   factory $AddressCopyWith(Address value, $Res Function(Address) then) =
-      _$AddressCopyWithImpl<$Res>;
+      _$AddressCopyWithImpl<$Res, Address>;
+  @useResult
   $Res call(
       {String? address_id,
       String? name,
@@ -64,13 +65,16 @@ abstract class $AddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddressCopyWithImpl<$Res> implements $AddressCopyWith<$Res> {
+class _$AddressCopyWithImpl<$Res, $Val extends Address>
+    implements $AddressCopyWith<$Res> {
   _$AddressCopyWithImpl(this._value, this._then);
 
-  final Address _value;
   // ignore: unused_field
-  final $Res Function(Address) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? address_id = freezed,
@@ -90,67 +94,67 @@ class _$AddressCopyWithImpl<$Res> implements $AddressCopyWith<$Res> {
     Object? delete = freezed,
   }) {
     return _then(_value.copyWith(
-      address_id: address_id == freezed
+      address_id: freezed == address_id
           ? _value.address_id
           : address_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      contact_no: contact_no == freezed
+      contact_no: freezed == contact_no
           ? _value.contact_no
           : contact_no // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      city_id: city_id == freezed
+      city_id: freezed == city_id
           ? _value.city_id
           : city_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      flat_number: flat_number == freezed
+      flat_number: freezed == flat_number
           ? _value.flat_number
           : flat_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: latitude == freezed
+      latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as String?,
-      longitude: longitude == freezed
+      longitude: freezed == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as String?,
-      building_name: building_name == freezed
+      building_name: freezed == building_name
           ? _value.building_name
           : building_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      landmark: landmark == freezed
+      landmark: freezed == landmark
           ? _value.landmark
           : landmark // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      zipcode: zipcode == freezed
+      zipcode: freezed == zipcode
           ? _value.zipcode
           : zipcode // ignore: cast_nullable_to_non_nullable
               as String?,
-      address_type: address_type == freezed
+      address_type: freezed == address_type
           ? _value.address_type
           : address_type // ignore: cast_nullable_to_non_nullable
               as String?,
-      update: update == freezed
+      update: freezed == update
           ? _value.update
           : update // ignore: cast_nullable_to_non_nullable
               as String?,
-      delete: delete == freezed
+      delete: freezed == delete
           ? _value.delete
           : delete // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -160,6 +164,7 @@ abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
           _$_Address value, $Res Function(_$_Address) then) =
       __$$_AddressCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? address_id,
       String? name,
@@ -179,14 +184,13 @@ abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
+class __$$_AddressCopyWithImpl<$Res>
+    extends _$AddressCopyWithImpl<$Res, _$_Address>
     implements _$$_AddressCopyWith<$Res> {
   __$$_AddressCopyWithImpl(_$_Address _value, $Res Function(_$_Address) _then)
-      : super(_value, (v) => _then(v as _$_Address));
+      : super(_value, _then);
 
-  @override
-  _$_Address get _value => super._value as _$_Address;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? address_id = freezed,
@@ -206,63 +210,63 @@ class __$$_AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
     Object? delete = freezed,
   }) {
     return _then(_$_Address(
-      address_id: address_id == freezed
+      address_id: freezed == address_id
           ? _value.address_id
           : address_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      contact_no: contact_no == freezed
+      contact_no: freezed == contact_no
           ? _value.contact_no
           : contact_no // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      city_id: city_id == freezed
+      city_id: freezed == city_id
           ? _value.city_id
           : city_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      flat_number: flat_number == freezed
+      flat_number: freezed == flat_number
           ? _value.flat_number
           : flat_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: latitude == freezed
+      latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as String?,
-      longitude: longitude == freezed
+      longitude: freezed == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as String?,
-      building_name: building_name == freezed
+      building_name: freezed == building_name
           ? _value.building_name
           : building_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      landmark: landmark == freezed
+      landmark: freezed == landmark
           ? _value.landmark
           : landmark // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      zipcode: zipcode == freezed
+      zipcode: freezed == zipcode
           ? _value.zipcode
           : zipcode // ignore: cast_nullable_to_non_nullable
               as String?,
-      address_type: address_type == freezed
+      address_type: freezed == address_type
           ? _value.address_type
           : address_type // ignore: cast_nullable_to_non_nullable
               as String?,
-      update: update == freezed
+      update: freezed == update
           ? _value.update
           : update // ignore: cast_nullable_to_non_nullable
               as String?,
-      delete: delete == freezed
+      delete: freezed == delete
           ? _value.delete
           : delete // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -334,50 +338,54 @@ class _$_Address implements _Address {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Address &&
-            const DeepCollectionEquality()
-                .equals(other.address_id, address_id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.contact_no, contact_no) &&
-            const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality().equals(other.city_id, city_id) &&
-            const DeepCollectionEquality()
-                .equals(other.flat_number, flat_number) &&
-            const DeepCollectionEquality().equals(other.latitude, latitude) &&
-            const DeepCollectionEquality().equals(other.longitude, longitude) &&
-            const DeepCollectionEquality()
-                .equals(other.building_name, building_name) &&
-            const DeepCollectionEquality().equals(other.landmark, landmark) &&
-            const DeepCollectionEquality().equals(other.city, city) &&
-            const DeepCollectionEquality().equals(other.zipcode, zipcode) &&
-            const DeepCollectionEquality()
-                .equals(other.address_type, address_type) &&
-            const DeepCollectionEquality().equals(other.update, update) &&
-            const DeepCollectionEquality().equals(other.delete, delete));
+            (identical(other.address_id, address_id) ||
+                other.address_id == address_id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.contact_no, contact_no) ||
+                other.contact_no == contact_no) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.city_id, city_id) || other.city_id == city_id) &&
+            (identical(other.flat_number, flat_number) ||
+                other.flat_number == flat_number) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
+            (identical(other.building_name, building_name) ||
+                other.building_name == building_name) &&
+            (identical(other.landmark, landmark) ||
+                other.landmark == landmark) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.zipcode, zipcode) || other.zipcode == zipcode) &&
+            (identical(other.address_type, address_type) ||
+                other.address_type == address_type) &&
+            (identical(other.update, update) || other.update == update) &&
+            (identical(other.delete, delete) || other.delete == delete));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(address_id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(contact_no),
-      const DeepCollectionEquality().hash(address),
-      const DeepCollectionEquality().hash(city_id),
-      const DeepCollectionEquality().hash(flat_number),
-      const DeepCollectionEquality().hash(latitude),
-      const DeepCollectionEquality().hash(longitude),
-      const DeepCollectionEquality().hash(building_name),
-      const DeepCollectionEquality().hash(landmark),
-      const DeepCollectionEquality().hash(city),
-      const DeepCollectionEquality().hash(zipcode),
-      const DeepCollectionEquality().hash(address_type),
-      const DeepCollectionEquality().hash(update),
-      const DeepCollectionEquality().hash(delete));
+      address_id,
+      name,
+      contact_no,
+      address,
+      city_id,
+      flat_number,
+      latitude,
+      longitude,
+      building_name,
+      landmark,
+      city,
+      zipcode,
+      address_type,
+      update,
+      delete);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AddressCopyWith<_$_Address> get copyWith =>
       __$$_AddressCopyWithImpl<_$_Address>(this, _$identity);
 

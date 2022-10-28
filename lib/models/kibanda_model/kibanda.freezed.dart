@@ -46,7 +46,8 @@ mixin _$Kibanda {
 /// @nodoc
 abstract class $KibandaCopyWith<$Res> {
   factory $KibandaCopyWith(Kibanda value, $Res Function(Kibanda) then) =
-      _$KibandaCopyWithImpl<$Res>;
+      _$KibandaCopyWithImpl<$Res, Kibanda>;
+  @useResult
   $Res call(
       {num? customer_id,
       num? customer_group_id,
@@ -68,13 +69,16 @@ abstract class $KibandaCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$KibandaCopyWithImpl<$Res> implements $KibandaCopyWith<$Res> {
+class _$KibandaCopyWithImpl<$Res, $Val extends Kibanda>
+    implements $KibandaCopyWith<$Res> {
   _$KibandaCopyWithImpl(this._value, this._then);
 
-  final Kibanda _value;
   // ignore: unused_field
-  final $Res Function(Kibanda) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? customer_id = freezed,
@@ -96,75 +100,75 @@ class _$KibandaCopyWithImpl<$Res> implements $KibandaCopyWith<$Res> {
     Object? customer_category = freezed,
   }) {
     return _then(_value.copyWith(
-      customer_id: customer_id == freezed
+      customer_id: freezed == customer_id
           ? _value.customer_id
           : customer_id // ignore: cast_nullable_to_non_nullable
               as num?,
-      customer_group_id: customer_group_id == freezed
+      customer_group_id: freezed == customer_group_id
           ? _value.customer_group_id
           : customer_group_id // ignore: cast_nullable_to_non_nullable
               as num?,
-      store_id: store_id == freezed
+      store_id: freezed == store_id
           ? _value.store_id
           : store_id // ignore: cast_nullable_to_non_nullable
               as num?,
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstname: firstname == freezed
+      firstname: freezed == firstname
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastname: lastname == freezed
+      lastname: freezed == lastname
           ? _value.lastname
           : lastname // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      telephone: telephone == freezed
+      telephone: freezed == telephone
           ? _value.telephone
           : telephone // ignore: cast_nullable_to_non_nullable
               as String?,
-      fax: fax == freezed
+      fax: freezed == fax
           ? _value.fax
           : fax // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: password == freezed
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
-      salt: salt == freezed
+      salt: freezed == salt
           ? _value.salt
           : salt // ignore: cast_nullable_to_non_nullable
               as String?,
-      cart: cart == freezed
+      cart: freezed == cart
           ? _value.cart
           : cart // ignore: cast_nullable_to_non_nullable
               as String?,
-      payment_terms: payment_terms == freezed
+      payment_terms: freezed == payment_terms
           ? _value.payment_terms
           : payment_terms // ignore: cast_nullable_to_non_nullable
               as String?,
-      address_id: address_id == freezed
+      address_id: freezed == address_id
           ? _value.address_id
           : address_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      company_name: company_name == freezed
+      company_name: freezed == company_name
           ? _value.company_name
           : company_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      company_address: company_address == freezed
+      company_address: freezed == company_address
           ? _value.company_address
           : company_address // ignore: cast_nullable_to_non_nullable
               as String?,
-      customer_category: customer_category == freezed
+      customer_category: freezed == customer_category
           ? _value.customer_category
           : customer_category // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -174,6 +178,7 @@ abstract class _$$_KibandaCopyWith<$Res> implements $KibandaCopyWith<$Res> {
           _$_Kibanda value, $Res Function(_$_Kibanda) then) =
       __$$_KibandaCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {num? customer_id,
       num? customer_group_id,
@@ -195,14 +200,13 @@ abstract class _$$_KibandaCopyWith<$Res> implements $KibandaCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_KibandaCopyWithImpl<$Res> extends _$KibandaCopyWithImpl<$Res>
+class __$$_KibandaCopyWithImpl<$Res>
+    extends _$KibandaCopyWithImpl<$Res, _$_Kibanda>
     implements _$$_KibandaCopyWith<$Res> {
   __$$_KibandaCopyWithImpl(_$_Kibanda _value, $Res Function(_$_Kibanda) _then)
-      : super(_value, (v) => _then(v as _$_Kibanda));
+      : super(_value, _then);
 
-  @override
-  _$_Kibanda get _value => super._value as _$_Kibanda;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? customer_id = freezed,
@@ -224,71 +228,71 @@ class __$$_KibandaCopyWithImpl<$Res> extends _$KibandaCopyWithImpl<$Res>
     Object? customer_category = freezed,
   }) {
     return _then(_$_Kibanda(
-      customer_id: customer_id == freezed
+      customer_id: freezed == customer_id
           ? _value.customer_id
           : customer_id // ignore: cast_nullable_to_non_nullable
               as num?,
-      customer_group_id: customer_group_id == freezed
+      customer_group_id: freezed == customer_group_id
           ? _value.customer_group_id
           : customer_group_id // ignore: cast_nullable_to_non_nullable
               as num?,
-      store_id: store_id == freezed
+      store_id: freezed == store_id
           ? _value.store_id
           : store_id // ignore: cast_nullable_to_non_nullable
               as num?,
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstname: firstname == freezed
+      firstname: freezed == firstname
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastname: lastname == freezed
+      lastname: freezed == lastname
           ? _value.lastname
           : lastname // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      telephone: telephone == freezed
+      telephone: freezed == telephone
           ? _value.telephone
           : telephone // ignore: cast_nullable_to_non_nullable
               as String?,
-      fax: fax == freezed
+      fax: freezed == fax
           ? _value.fax
           : fax // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: password == freezed
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
-      salt: salt == freezed
+      salt: freezed == salt
           ? _value.salt
           : salt // ignore: cast_nullable_to_non_nullable
               as String?,
-      cart: cart == freezed
+      cart: freezed == cart
           ? _value.cart
           : cart // ignore: cast_nullable_to_non_nullable
               as String?,
-      payment_terms: payment_terms == freezed
+      payment_terms: freezed == payment_terms
           ? _value.payment_terms
           : payment_terms // ignore: cast_nullable_to_non_nullable
               as String?,
-      address_id: address_id == freezed
+      address_id: freezed == address_id
           ? _value.address_id
           : address_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      company_name: company_name == freezed
+      company_name: freezed == company_name
           ? _value.company_name
           : company_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      company_address: company_address == freezed
+      company_address: freezed == company_address
           ? _value.company_address
           : company_address // ignore: cast_nullable_to_non_nullable
               as String?,
-      customer_category: customer_category == freezed
+      customer_category: freezed == customer_category
           ? _value.customer_category
           : customer_category // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -366,56 +370,62 @@ class _$_Kibanda implements _Kibanda {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Kibanda &&
-            const DeepCollectionEquality()
-                .equals(other.customer_id, customer_id) &&
-            const DeepCollectionEquality()
-                .equals(other.customer_group_id, customer_group_id) &&
-            const DeepCollectionEquality().equals(other.store_id, store_id) &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality().equals(other.firstname, firstname) &&
-            const DeepCollectionEquality().equals(other.lastname, lastname) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.telephone, telephone) &&
-            const DeepCollectionEquality().equals(other.fax, fax) &&
-            const DeepCollectionEquality().equals(other.password, password) &&
-            const DeepCollectionEquality().equals(other.salt, salt) &&
-            const DeepCollectionEquality().equals(other.cart, cart) &&
-            const DeepCollectionEquality()
-                .equals(other.payment_terms, payment_terms) &&
-            const DeepCollectionEquality()
-                .equals(other.address_id, address_id) &&
-            const DeepCollectionEquality()
-                .equals(other.company_name, company_name) &&
-            const DeepCollectionEquality()
-                .equals(other.company_address, company_address) &&
-            const DeepCollectionEquality()
-                .equals(other.customer_category, customer_category));
+            (identical(other.customer_id, customer_id) ||
+                other.customer_id == customer_id) &&
+            (identical(other.customer_group_id, customer_group_id) ||
+                other.customer_group_id == customer_group_id) &&
+            (identical(other.store_id, store_id) ||
+                other.store_id == store_id) &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.firstname, firstname) ||
+                other.firstname == firstname) &&
+            (identical(other.lastname, lastname) ||
+                other.lastname == lastname) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.telephone, telephone) ||
+                other.telephone == telephone) &&
+            (identical(other.fax, fax) || other.fax == fax) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.salt, salt) || other.salt == salt) &&
+            (identical(other.cart, cart) || other.cart == cart) &&
+            (identical(other.payment_terms, payment_terms) ||
+                other.payment_terms == payment_terms) &&
+            (identical(other.address_id, address_id) ||
+                other.address_id == address_id) &&
+            (identical(other.company_name, company_name) ||
+                other.company_name == company_name) &&
+            (identical(other.company_address, company_address) ||
+                other.company_address == company_address) &&
+            (identical(other.customer_category, customer_category) ||
+                other.customer_category == customer_category));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(customer_id),
-      const DeepCollectionEquality().hash(customer_group_id),
-      const DeepCollectionEquality().hash(store_id),
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(firstname),
-      const DeepCollectionEquality().hash(lastname),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(telephone),
-      const DeepCollectionEquality().hash(fax),
-      const DeepCollectionEquality().hash(password),
-      const DeepCollectionEquality().hash(salt),
-      const DeepCollectionEquality().hash(cart),
-      const DeepCollectionEquality().hash(payment_terms),
-      const DeepCollectionEquality().hash(address_id),
-      const DeepCollectionEquality().hash(company_name),
-      const DeepCollectionEquality().hash(company_address),
-      const DeepCollectionEquality().hash(customer_category));
+      customer_id,
+      customer_group_id,
+      store_id,
+      token,
+      firstname,
+      lastname,
+      email,
+      telephone,
+      fax,
+      password,
+      salt,
+      cart,
+      payment_terms,
+      address_id,
+      company_name,
+      company_address,
+      customer_category);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_KibandaCopyWith<_$_Kibanda> get copyWith =>
       __$$_KibandaCopyWithImpl<_$_Kibanda>(this, _$identity);
 

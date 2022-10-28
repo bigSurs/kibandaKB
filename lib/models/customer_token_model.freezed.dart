@@ -28,34 +28,37 @@ mixin _$CustomerTokenModel {
 abstract class $CustomerTokenModelCopyWith<$Res> {
   factory $CustomerTokenModelCopyWith(
           CustomerTokenModel value, $Res Function(CustomerTokenModel) then) =
-      _$CustomerTokenModelCopyWithImpl<$Res>;
+      _$CustomerTokenModelCopyWithImpl<$Res, CustomerTokenModel>;
+  @useResult
   $Res call({String token, String cookie});
 }
 
 /// @nodoc
-class _$CustomerTokenModelCopyWithImpl<$Res>
+class _$CustomerTokenModelCopyWithImpl<$Res, $Val extends CustomerTokenModel>
     implements $CustomerTokenModelCopyWith<$Res> {
   _$CustomerTokenModelCopyWithImpl(this._value, this._then);
 
-  final CustomerTokenModel _value;
   // ignore: unused_field
-  final $Res Function(CustomerTokenModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = freezed,
-    Object? cookie = freezed,
+    Object? token = null,
+    Object? cookie = null,
   }) {
     return _then(_value.copyWith(
-      token: token == freezed
+      token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
-      cookie: cookie == freezed
+      cookie: null == cookie
           ? _value.cookie
           : cookie // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,31 +69,30 @@ abstract class _$$_CustomerTokenModelCopyWith<$Res>
           $Res Function(_$_CustomerTokenModel) then) =
       __$$_CustomerTokenModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String token, String cookie});
 }
 
 /// @nodoc
 class __$$_CustomerTokenModelCopyWithImpl<$Res>
-    extends _$CustomerTokenModelCopyWithImpl<$Res>
+    extends _$CustomerTokenModelCopyWithImpl<$Res, _$_CustomerTokenModel>
     implements _$$_CustomerTokenModelCopyWith<$Res> {
   __$$_CustomerTokenModelCopyWithImpl(
       _$_CustomerTokenModel _value, $Res Function(_$_CustomerTokenModel) _then)
-      : super(_value, (v) => _then(v as _$_CustomerTokenModel));
+      : super(_value, _then);
 
-  @override
-  _$_CustomerTokenModel get _value => super._value as _$_CustomerTokenModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = freezed,
-    Object? cookie = freezed,
+    Object? token = null,
+    Object? cookie = null,
   }) {
     return _then(_$_CustomerTokenModel(
-      token: token == freezed
+      token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
-      cookie: cookie == freezed
+      cookie: null == cookie
           ? _value.cookie
           : cookie // ignore: cast_nullable_to_non_nullable
               as String,
@@ -118,18 +120,16 @@ class _$_CustomerTokenModel implements _CustomerTokenModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CustomerTokenModel &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality().equals(other.cookie, cookie));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.cookie, cookie) || other.cookie == cookie));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(cookie));
+  int get hashCode => Object.hash(runtimeType, token, cookie);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CustomerTokenModelCopyWith<_$_CustomerTokenModel> get copyWith =>
       __$$_CustomerTokenModelCopyWithImpl<_$_CustomerTokenModel>(
           this, _$identity);

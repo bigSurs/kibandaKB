@@ -23,6 +23,7 @@ import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/services/api_service/api_service.dart';
 import 'package:kibanda_kb/ui/home/cart/cart_page.dart';
+import 'package:kibanda_kb/ui/home/home_pages/basket_widget.dart';
 import 'package:kibanda_kb/ui/home/home_pages/home_widget.dart';
 import 'package:kibanda_kb/ui/home/home_pages/more_widget.dart';
 import 'package:kibanda_kb/ui/home/product/product_tile.dart';
@@ -45,7 +46,12 @@ class _MainHomePageState extends State<MainHomePage> {
   // int _value = 1;
   @override
   Widget build(BuildContext context) {
-    List<Widget> pages = [HomeWidget(), CartPage(), MoreWidget()];
+    List<Widget> pages = [
+      HomeWidget(),
+      // BasketWidget(),
+      CartPage(),
+      MoreWidget()
+    ];
     return Scaffold(
       body: pages[context.watch<HomeBottomIndexCubit>().state],
       // Column(
@@ -199,8 +205,8 @@ class _MainHomePageState extends State<MainHomePage> {
                 CupertinoIcons.home,
               ),
               label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.bag), label: 'Baskets'),
+          // BottomNavigationBarItem(
+          //     icon: Icon(CupertinoIcons.bag), label: 'Baskets'),
           BottomNavigationBarItem(
               icon: Badge(
                 badgeColor: Palette.greenColor,

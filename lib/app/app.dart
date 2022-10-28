@@ -23,6 +23,7 @@ import 'package:kibanda_kb/cubits/cubit/wishlist_cubit.dart';
 import 'package:kibanda_kb/cubits/customer_address/customer_address_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/login_cubit/login_cubit.dart';
+import 'package:kibanda_kb/cubits/my_orders_cubit/my_orders_cubit.dart';
 import 'package:kibanda_kb/cubits/select_date_timeslot/select_date_cubit.dart';
 import 'package:kibanda_kb/cubits/select_date_timeslot/select_timeslot_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
@@ -54,9 +55,6 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => TokenCubit('')),
         BlocProvider(create: (context) => HomeBottomIndexCubit(0)),
         BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
-        BlocProvider(
-          create: (context) => FeaturedProductCubit()..getFeaturedProducts(),
-        ),
         BlocProvider(create: (context) => CustomerCookieCubit('')),
         BlocProvider(create: (context) => CustomerTokenCubit('')),
         BlocProvider(create: (context) => VendorProductsCubit()),
@@ -75,8 +73,12 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => WishlistCubit()),
         BlocProvider(create: (context) => CustomerAddressCubit()),
         BlocProvider(create: (context) => FeaturedProductCubit()),
+        // BlocProvider(create: (context) => FeaturedProductCubit()),
         BlocProvider(create: (context) => PlaceOrderCubit()),
         BlocProvider(create: (context) => DeliveryTimeslotCubit()),
+         BlocProvider(
+          create: (context) => MyOrdersCubit()..getMyOrders(),
+        ),
         BlocProvider(create: (context) => DeliveryAddressSelectionCubit(null)),
         BlocProvider(create: (context) => SelectedKibandaCubit()),
         BlocProvider(create: (context) => SelectDeliveryDateCubit()),

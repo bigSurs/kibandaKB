@@ -36,7 +36,8 @@ mixin _$PaymentMethod {
 abstract class $PaymentMethodCopyWith<$Res> {
   factory $PaymentMethodCopyWith(
           PaymentMethod value, $Res Function(PaymentMethod) then) =
-      _$PaymentMethodCopyWithImpl<$Res>;
+      _$PaymentMethodCopyWithImpl<$Res, PaymentMethod>;
+  @useResult
   $Res call(
       {String? code,
       String? terms,
@@ -46,14 +47,16 @@ abstract class $PaymentMethodCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentMethodCopyWithImpl<$Res>
+class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     implements $PaymentMethodCopyWith<$Res> {
   _$PaymentMethodCopyWithImpl(this._value, this._then);
 
-  final PaymentMethod _value;
   // ignore: unused_field
-  final $Res Function(PaymentMethod) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? code = freezed,
@@ -63,27 +66,27 @@ class _$PaymentMethodCopyWithImpl<$Res>
     Object? title = freezed,
   }) {
     return _then(_value.copyWith(
-      code: code == freezed
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String?,
-      terms: terms == freezed
+      terms: freezed == terms
           ? _value.terms
           : terms // ignore: cast_nullable_to_non_nullable
               as String?,
-      terms1: terms1 == freezed
+      terms1: freezed == terms1
           ? _value.terms1
           : terms1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      sort_order: sort_order == freezed
+      sort_order: freezed == sort_order
           ? _value.sort_order
           : sort_order // ignore: cast_nullable_to_non_nullable
               as String?,
-      title: title == freezed
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -94,6 +97,7 @@ abstract class _$$_PaymentMethodCopyWith<$Res>
           _$_PaymentMethod value, $Res Function(_$_PaymentMethod) then) =
       __$$_PaymentMethodCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? code,
       String? terms,
@@ -104,15 +108,13 @@ abstract class _$$_PaymentMethodCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentMethodCopyWithImpl<$Res>
-    extends _$PaymentMethodCopyWithImpl<$Res>
+    extends _$PaymentMethodCopyWithImpl<$Res, _$_PaymentMethod>
     implements _$$_PaymentMethodCopyWith<$Res> {
   __$$_PaymentMethodCopyWithImpl(
       _$_PaymentMethod _value, $Res Function(_$_PaymentMethod) _then)
-      : super(_value, (v) => _then(v as _$_PaymentMethod));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentMethod get _value => super._value as _$_PaymentMethod;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? code = freezed,
@@ -122,23 +124,23 @@ class __$$_PaymentMethodCopyWithImpl<$Res>
     Object? title = freezed,
   }) {
     return _then(_$_PaymentMethod(
-      code: code == freezed
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String?,
-      terms: terms == freezed
+      terms: freezed == terms
           ? _value.terms
           : terms // ignore: cast_nullable_to_non_nullable
               as String?,
-      terms1: terms1 == freezed
+      terms1: freezed == terms1
           ? _value.terms1
           : terms1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      sort_order: sort_order == freezed
+      sort_order: freezed == sort_order
           ? _value.sort_order
           : sort_order // ignore: cast_nullable_to_non_nullable
               as String?,
-      title: title == freezed
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -176,26 +178,22 @@ class _$_PaymentMethod implements _PaymentMethod {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentMethod &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.terms, terms) &&
-            const DeepCollectionEquality().equals(other.terms1, terms1) &&
-            const DeepCollectionEquality()
-                .equals(other.sort_order, sort_order) &&
-            const DeepCollectionEquality().equals(other.title, title));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.terms, terms) || other.terms == terms) &&
+            (identical(other.terms1, terms1) || other.terms1 == terms1) &&
+            (identical(other.sort_order, sort_order) ||
+                other.sort_order == sort_order) &&
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(terms),
-      const DeepCollectionEquality().hash(terms1),
-      const DeepCollectionEquality().hash(sort_order),
-      const DeepCollectionEquality().hash(title));
+  int get hashCode =>
+      Object.hash(runtimeType, code, terms, terms1, sort_order, title);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentMethodCopyWith<_$_PaymentMethod> get copyWith =>
       __$$_PaymentMethodCopyWithImpl<_$_PaymentMethod>(this, _$identity);
 

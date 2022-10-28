@@ -27,10 +27,10 @@ mixin _$DeliveryTimeslotState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult Function(String erroe)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
+    TResult? Function(String erroe)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,10 +52,10 @@ mixin _$DeliveryTimeslotState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,17 +73,19 @@ mixin _$DeliveryTimeslotState {
 abstract class $DeliveryTimeslotStateCopyWith<$Res> {
   factory $DeliveryTimeslotStateCopyWith(DeliveryTimeslotState value,
           $Res Function(DeliveryTimeslotState) then) =
-      _$DeliveryTimeslotStateCopyWithImpl<$Res>;
+      _$DeliveryTimeslotStateCopyWithImpl<$Res, DeliveryTimeslotState>;
 }
 
 /// @nodoc
-class _$DeliveryTimeslotStateCopyWithImpl<$Res>
+class _$DeliveryTimeslotStateCopyWithImpl<$Res,
+        $Val extends DeliveryTimeslotState>
     implements $DeliveryTimeslotStateCopyWith<$Res> {
   _$DeliveryTimeslotStateCopyWithImpl(this._value, this._then);
 
-  final DeliveryTimeslotState _value;
   // ignore: unused_field
-  final $Res Function(DeliveryTimeslotState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -95,13 +97,10 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$DeliveryTimeslotStateCopyWithImpl<$Res>
+    extends _$DeliveryTimeslotStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -138,10 +137,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult Function(String erroe)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
+    TResult? Function(String erroe)? failed,
   }) {
     return initial?.call();
   }
@@ -175,10 +174,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failed value)? failed,
   }) {
     return initial?.call(this);
   }
@@ -212,13 +211,10 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$DeliveryTimeslotStateCopyWithImpl<$Res>
+    extends _$DeliveryTimeslotStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -255,10 +251,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult Function(String erroe)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
+    TResult? Function(String erroe)? failed,
   }) {
     return loading?.call();
   }
@@ -292,10 +288,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failed value)? failed,
   }) {
     return loading?.call(this);
   }
@@ -325,30 +321,29 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<dynamic> dates, Map<String, dynamic> slots});
 }
 
 /// @nodoc
 class __$$_SuccessCopyWithImpl<$Res>
-    extends _$DeliveryTimeslotStateCopyWithImpl<$Res>
+    extends _$DeliveryTimeslotStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
-      : super(_value, (v) => _then(v as _$_Success));
+      : super(_value, _then);
 
-  @override
-  _$_Success get _value => super._value as _$_Success;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dates = freezed,
-    Object? slots = freezed,
+    Object? dates = null,
+    Object? slots = null,
   }) {
     return _then(_$_Success(
-      dates: dates == freezed
+      dates: null == dates
           ? _value._dates
           : dates // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      slots: slots == freezed
+      slots: null == slots
           ? _value._slots
           : slots // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
@@ -401,6 +396,7 @@ class _$_Success implements _Success {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
@@ -419,10 +415,10 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult Function(String erroe)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
+    TResult? Function(String erroe)? failed,
   }) {
     return success?.call(dates, slots);
   }
@@ -456,10 +452,10 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failed value)? failed,
   }) {
     return success?.call(this);
   }
@@ -496,25 +492,24 @@ abstract class _Success implements DeliveryTimeslotState {
 abstract class _$$_FailedCopyWith<$Res> {
   factory _$$_FailedCopyWith(_$_Failed value, $Res Function(_$_Failed) then) =
       __$$_FailedCopyWithImpl<$Res>;
+  @useResult
   $Res call({String erroe});
 }
 
 /// @nodoc
 class __$$_FailedCopyWithImpl<$Res>
-    extends _$DeliveryTimeslotStateCopyWithImpl<$Res>
+    extends _$DeliveryTimeslotStateCopyWithImpl<$Res, _$_Failed>
     implements _$$_FailedCopyWith<$Res> {
   __$$_FailedCopyWithImpl(_$_Failed _value, $Res Function(_$_Failed) _then)
-      : super(_value, (v) => _then(v as _$_Failed));
+      : super(_value, _then);
 
-  @override
-  _$_Failed get _value => super._value as _$_Failed;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? erroe = freezed,
+    Object? erroe = null,
   }) {
     return _then(_$_Failed(
-      erroe == freezed
+      null == erroe
           ? _value.erroe
           : erroe // ignore: cast_nullable_to_non_nullable
               as String,
@@ -540,15 +535,15 @@ class _$_Failed implements _Failed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Failed &&
-            const DeepCollectionEquality().equals(other.erroe, erroe));
+            (identical(other.erroe, erroe) || other.erroe == erroe));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(erroe));
+  int get hashCode => Object.hash(runtimeType, erroe);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FailedCopyWith<_$_Failed> get copyWith =>
       __$$_FailedCopyWithImpl<_$_Failed>(this, _$identity);
 
@@ -567,10 +562,10 @@ class _$_Failed implements _Failed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult Function(String erroe)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
+    TResult? Function(String erroe)? failed,
   }) {
     return failed?.call(erroe);
   }
@@ -604,10 +599,10 @@ class _$_Failed implements _Failed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failed value)? failed,
   }) {
     return failed?.call(this);
   }

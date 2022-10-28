@@ -28,12 +28,12 @@ mixin _$LipaNaMpesaState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? requesting,
-    TResult Function()? requested,
-    TResult Function()? confirming,
-    TResult Function()? confirmed,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? requesting,
+    TResult? Function()? requested,
+    TResult? Function()? confirming,
+    TResult? Function()? confirmed,
+    TResult? Function(String e)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,12 +59,12 @@ mixin _$LipaNaMpesaState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Requesting value)? requesting,
-    TResult Function(_Requested value)? requested,
-    TResult Function(_Confirming value)? confirming,
-    TResult Function(_Confirmed value)? confirmed,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Requesting value)? requesting,
+    TResult? Function(_Requested value)? requested,
+    TResult? Function(_Confirming value)? confirming,
+    TResult? Function(_Confirmed value)? confirmed,
+    TResult? Function(_Failed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,17 +84,18 @@ mixin _$LipaNaMpesaState {
 abstract class $LipaNaMpesaStateCopyWith<$Res> {
   factory $LipaNaMpesaStateCopyWith(
           LipaNaMpesaState value, $Res Function(LipaNaMpesaState) then) =
-      _$LipaNaMpesaStateCopyWithImpl<$Res>;
+      _$LipaNaMpesaStateCopyWithImpl<$Res, LipaNaMpesaState>;
 }
 
 /// @nodoc
-class _$LipaNaMpesaStateCopyWithImpl<$Res>
+class _$LipaNaMpesaStateCopyWithImpl<$Res, $Val extends LipaNaMpesaState>
     implements $LipaNaMpesaStateCopyWith<$Res> {
   _$LipaNaMpesaStateCopyWithImpl(this._value, this._then);
 
-  final LipaNaMpesaState _value;
   // ignore: unused_field
-  final $Res Function(LipaNaMpesaState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -106,13 +107,10 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$LipaNaMpesaStateCopyWithImpl<$Res>
+    extends _$LipaNaMpesaStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -150,12 +148,12 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? requesting,
-    TResult Function()? requested,
-    TResult Function()? confirming,
-    TResult Function()? confirmed,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? requesting,
+    TResult? Function()? requested,
+    TResult? Function()? confirming,
+    TResult? Function()? confirmed,
+    TResult? Function(String e)? failed,
   }) {
     return initial?.call();
   }
@@ -193,12 +191,12 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Requesting value)? requesting,
-    TResult Function(_Requested value)? requested,
-    TResult Function(_Confirming value)? confirming,
-    TResult Function(_Confirmed value)? confirmed,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Requesting value)? requesting,
+    TResult? Function(_Requested value)? requested,
+    TResult? Function(_Confirming value)? confirming,
+    TResult? Function(_Confirmed value)? confirmed,
+    TResult? Function(_Failed value)? failed,
   }) {
     return initial?.call(this);
   }
@@ -234,14 +232,11 @@ abstract class _$$_RequestingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_RequestingCopyWithImpl<$Res>
-    extends _$LipaNaMpesaStateCopyWithImpl<$Res>
+    extends _$LipaNaMpesaStateCopyWithImpl<$Res, _$_Requesting>
     implements _$$_RequestingCopyWith<$Res> {
   __$$_RequestingCopyWithImpl(
       _$_Requesting _value, $Res Function(_$_Requesting) _then)
-      : super(_value, (v) => _then(v as _$_Requesting));
-
-  @override
-  _$_Requesting get _value => super._value as _$_Requesting;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -279,12 +274,12 @@ class _$_Requesting implements _Requesting {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? requesting,
-    TResult Function()? requested,
-    TResult Function()? confirming,
-    TResult Function()? confirmed,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? requesting,
+    TResult? Function()? requested,
+    TResult? Function()? confirming,
+    TResult? Function()? confirmed,
+    TResult? Function(String e)? failed,
   }) {
     return requesting?.call();
   }
@@ -322,12 +317,12 @@ class _$_Requesting implements _Requesting {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Requesting value)? requesting,
-    TResult Function(_Requested value)? requested,
-    TResult Function(_Confirming value)? confirming,
-    TResult Function(_Confirmed value)? confirmed,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Requesting value)? requesting,
+    TResult? Function(_Requested value)? requested,
+    TResult? Function(_Confirming value)? confirming,
+    TResult? Function(_Confirmed value)? confirmed,
+    TResult? Function(_Failed value)? failed,
   }) {
     return requesting?.call(this);
   }
@@ -363,14 +358,11 @@ abstract class _$$_RequestedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_RequestedCopyWithImpl<$Res>
-    extends _$LipaNaMpesaStateCopyWithImpl<$Res>
+    extends _$LipaNaMpesaStateCopyWithImpl<$Res, _$_Requested>
     implements _$$_RequestedCopyWith<$Res> {
   __$$_RequestedCopyWithImpl(
       _$_Requested _value, $Res Function(_$_Requested) _then)
-      : super(_value, (v) => _then(v as _$_Requested));
-
-  @override
-  _$_Requested get _value => super._value as _$_Requested;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -408,12 +400,12 @@ class _$_Requested implements _Requested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? requesting,
-    TResult Function()? requested,
-    TResult Function()? confirming,
-    TResult Function()? confirmed,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? requesting,
+    TResult? Function()? requested,
+    TResult? Function()? confirming,
+    TResult? Function()? confirmed,
+    TResult? Function(String e)? failed,
   }) {
     return requested?.call();
   }
@@ -451,12 +443,12 @@ class _$_Requested implements _Requested {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Requesting value)? requesting,
-    TResult Function(_Requested value)? requested,
-    TResult Function(_Confirming value)? confirming,
-    TResult Function(_Confirmed value)? confirmed,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Requesting value)? requesting,
+    TResult? Function(_Requested value)? requested,
+    TResult? Function(_Confirming value)? confirming,
+    TResult? Function(_Confirmed value)? confirmed,
+    TResult? Function(_Failed value)? failed,
   }) {
     return requested?.call(this);
   }
@@ -492,14 +484,11 @@ abstract class _$$_ConfirmingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ConfirmingCopyWithImpl<$Res>
-    extends _$LipaNaMpesaStateCopyWithImpl<$Res>
+    extends _$LipaNaMpesaStateCopyWithImpl<$Res, _$_Confirming>
     implements _$$_ConfirmingCopyWith<$Res> {
   __$$_ConfirmingCopyWithImpl(
       _$_Confirming _value, $Res Function(_$_Confirming) _then)
-      : super(_value, (v) => _then(v as _$_Confirming));
-
-  @override
-  _$_Confirming get _value => super._value as _$_Confirming;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -537,12 +526,12 @@ class _$_Confirming implements _Confirming {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? requesting,
-    TResult Function()? requested,
-    TResult Function()? confirming,
-    TResult Function()? confirmed,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? requesting,
+    TResult? Function()? requested,
+    TResult? Function()? confirming,
+    TResult? Function()? confirmed,
+    TResult? Function(String e)? failed,
   }) {
     return confirming?.call();
   }
@@ -580,12 +569,12 @@ class _$_Confirming implements _Confirming {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Requesting value)? requesting,
-    TResult Function(_Requested value)? requested,
-    TResult Function(_Confirming value)? confirming,
-    TResult Function(_Confirmed value)? confirmed,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Requesting value)? requesting,
+    TResult? Function(_Requested value)? requested,
+    TResult? Function(_Confirming value)? confirming,
+    TResult? Function(_Confirmed value)? confirmed,
+    TResult? Function(_Failed value)? failed,
   }) {
     return confirming?.call(this);
   }
@@ -621,14 +610,11 @@ abstract class _$$_ConfirmedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ConfirmedCopyWithImpl<$Res>
-    extends _$LipaNaMpesaStateCopyWithImpl<$Res>
+    extends _$LipaNaMpesaStateCopyWithImpl<$Res, _$_Confirmed>
     implements _$$_ConfirmedCopyWith<$Res> {
   __$$_ConfirmedCopyWithImpl(
       _$_Confirmed _value, $Res Function(_$_Confirmed) _then)
-      : super(_value, (v) => _then(v as _$_Confirmed));
-
-  @override
-  _$_Confirmed get _value => super._value as _$_Confirmed;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -666,12 +652,12 @@ class _$_Confirmed implements _Confirmed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? requesting,
-    TResult Function()? requested,
-    TResult Function()? confirming,
-    TResult Function()? confirmed,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? requesting,
+    TResult? Function()? requested,
+    TResult? Function()? confirming,
+    TResult? Function()? confirmed,
+    TResult? Function(String e)? failed,
   }) {
     return confirmed?.call();
   }
@@ -709,12 +695,12 @@ class _$_Confirmed implements _Confirmed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Requesting value)? requesting,
-    TResult Function(_Requested value)? requested,
-    TResult Function(_Confirming value)? confirming,
-    TResult Function(_Confirmed value)? confirmed,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Requesting value)? requesting,
+    TResult? Function(_Requested value)? requested,
+    TResult? Function(_Confirming value)? confirming,
+    TResult? Function(_Confirmed value)? confirmed,
+    TResult? Function(_Failed value)? failed,
   }) {
     return confirmed?.call(this);
   }
@@ -745,24 +731,24 @@ abstract class _Confirmed implements LipaNaMpesaState {
 abstract class _$$_FailedCopyWith<$Res> {
   factory _$$_FailedCopyWith(_$_Failed value, $Res Function(_$_Failed) then) =
       __$$_FailedCopyWithImpl<$Res>;
+  @useResult
   $Res call({String e});
 }
 
 /// @nodoc
-class __$$_FailedCopyWithImpl<$Res> extends _$LipaNaMpesaStateCopyWithImpl<$Res>
+class __$$_FailedCopyWithImpl<$Res>
+    extends _$LipaNaMpesaStateCopyWithImpl<$Res, _$_Failed>
     implements _$$_FailedCopyWith<$Res> {
   __$$_FailedCopyWithImpl(_$_Failed _value, $Res Function(_$_Failed) _then)
-      : super(_value, (v) => _then(v as _$_Failed));
+      : super(_value, _then);
 
-  @override
-  _$_Failed get _value => super._value as _$_Failed;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? e = freezed,
+    Object? e = null,
   }) {
     return _then(_$_Failed(
-      e == freezed
+      null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String,
@@ -788,15 +774,15 @@ class _$_Failed implements _Failed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Failed &&
-            const DeepCollectionEquality().equals(other.e, e));
+            (identical(other.e, e) || other.e == e));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(e));
+  int get hashCode => Object.hash(runtimeType, e);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FailedCopyWith<_$_Failed> get copyWith =>
       __$$_FailedCopyWithImpl<_$_Failed>(this, _$identity);
 
@@ -816,12 +802,12 @@ class _$_Failed implements _Failed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? requesting,
-    TResult Function()? requested,
-    TResult Function()? confirming,
-    TResult Function()? confirmed,
-    TResult Function(String e)? failed,
+    TResult? Function()? initial,
+    TResult? Function()? requesting,
+    TResult? Function()? requested,
+    TResult? Function()? confirming,
+    TResult? Function()? confirmed,
+    TResult? Function(String e)? failed,
   }) {
     return failed?.call(e);
   }
@@ -859,12 +845,12 @@ class _$_Failed implements _Failed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Requesting value)? requesting,
-    TResult Function(_Requested value)? requested,
-    TResult Function(_Confirming value)? confirming,
-    TResult Function(_Confirmed value)? confirmed,
-    TResult Function(_Failed value)? failed,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Requesting value)? requesting,
+    TResult? Function(_Requested value)? requested,
+    TResult? Function(_Confirming value)? confirming,
+    TResult? Function(_Confirmed value)? confirmed,
+    TResult? Function(_Failed value)? failed,
   }) {
     return failed?.call(this);
   }

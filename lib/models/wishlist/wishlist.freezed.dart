@@ -35,7 +35,8 @@ mixin _$Wishlist {
 /// @nodoc
 abstract class $WishlistCopyWith<$Res> {
   factory $WishlistCopyWith(Wishlist value, $Res Function(Wishlist) then) =
-      _$WishlistCopyWithImpl<$Res>;
+      _$WishlistCopyWithImpl<$Res, Wishlist>;
+  @useResult
   $Res call(
       {String? name,
       String? wishlist_id,
@@ -45,13 +46,16 @@ abstract class $WishlistCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WishlistCopyWithImpl<$Res> implements $WishlistCopyWith<$Res> {
+class _$WishlistCopyWithImpl<$Res, $Val extends Wishlist>
+    implements $WishlistCopyWith<$Res> {
   _$WishlistCopyWithImpl(this._value, this._then);
 
-  final Wishlist _value;
   // ignore: unused_field
-  final $Res Function(Wishlist) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -61,27 +65,27 @@ class _$WishlistCopyWithImpl<$Res> implements $WishlistCopyWith<$Res> {
     Object? products = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      wishlist_id: wishlist_id == freezed
+      wishlist_id: freezed == wishlist_id
           ? _value.wishlist_id
           : wishlist_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      date_added: date_added == freezed
+      date_added: freezed == date_added
           ? _value.date_added
           : date_added // ignore: cast_nullable_to_non_nullable
               as String?,
-      product_count: product_count == freezed
+      product_count: freezed == product_count
           ? _value.product_count
           : product_count // ignore: cast_nullable_to_non_nullable
               as int?,
-      products: products == freezed
+      products: freezed == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -91,6 +95,7 @@ abstract class _$$_WishlistCopyWith<$Res> implements $WishlistCopyWith<$Res> {
           _$_Wishlist value, $Res Function(_$_Wishlist) then) =
       __$$_WishlistCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? name,
       String? wishlist_id,
@@ -100,15 +105,14 @@ abstract class _$$_WishlistCopyWith<$Res> implements $WishlistCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_WishlistCopyWithImpl<$Res> extends _$WishlistCopyWithImpl<$Res>
+class __$$_WishlistCopyWithImpl<$Res>
+    extends _$WishlistCopyWithImpl<$Res, _$_Wishlist>
     implements _$$_WishlistCopyWith<$Res> {
   __$$_WishlistCopyWithImpl(
       _$_Wishlist _value, $Res Function(_$_Wishlist) _then)
-      : super(_value, (v) => _then(v as _$_Wishlist));
+      : super(_value, _then);
 
-  @override
-  _$_Wishlist get _value => super._value as _$_Wishlist;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -118,23 +122,23 @@ class __$$_WishlistCopyWithImpl<$Res> extends _$WishlistCopyWithImpl<$Res>
     Object? products = freezed,
   }) {
     return _then(_$_Wishlist(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      wishlist_id: wishlist_id == freezed
+      wishlist_id: freezed == wishlist_id
           ? _value.wishlist_id
           : wishlist_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      date_added: date_added == freezed
+      date_added: freezed == date_added
           ? _value.date_added
           : date_added // ignore: cast_nullable_to_non_nullable
               as String?,
-      product_count: product_count == freezed
+      product_count: freezed == product_count
           ? _value.product_count
           : product_count // ignore: cast_nullable_to_non_nullable
               as int?,
-      products: products == freezed
+      products: freezed == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
@@ -183,28 +187,24 @@ class _$_Wishlist implements _Wishlist {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Wishlist &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.wishlist_id, wishlist_id) &&
-            const DeepCollectionEquality()
-                .equals(other.date_added, date_added) &&
-            const DeepCollectionEquality()
-                .equals(other.product_count, product_count) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.wishlist_id, wishlist_id) ||
+                other.wishlist_id == wishlist_id) &&
+            (identical(other.date_added, date_added) ||
+                other.date_added == date_added) &&
+            (identical(other.product_count, product_count) ||
+                other.product_count == product_count) &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(wishlist_id),
-      const DeepCollectionEquality().hash(date_added),
-      const DeepCollectionEquality().hash(product_count),
-      const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(runtimeType, name, wishlist_id, date_added,
+      product_count, const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_WishlistCopyWith<_$_Wishlist> get copyWith =>
       __$$_WishlistCopyWithImpl<_$_Wishlist>(this, _$identity);
 
