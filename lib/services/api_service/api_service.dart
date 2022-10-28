@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/models/api_response/api_response.dart';
+import 'package:kibanda_kb/models/customer_token_model.dart';
 import 'package:kibanda_kb/utilities/rest_client/rest_client.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -201,10 +202,19 @@ class ApiService {
       {required String path,
       Options? options,
       Map<String, dynamic>? queries}) async {
+    CustomerTokenModel customerTokenModel = GetIt.I<CustomerTokenModel>();
     try {
-      var response = await restClientCustomer.dio!.get(
-          '${restClient.customerURL}$path',
-          options: options,
+      var response = await restClient.dio!.get('${restClient.customerURL}$path',
+          options: Options(headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'X-user': 'customer',
+            'Connection': 'keep-alive',
+            'Accept-encoding': 'gzip, deflate, br',
+            'Accept': '*/*',
+            'User-Agent': 'PostmanRuntime/7.29.2',
+            'Authorization': 'Bearer ${GetIt.I<CustomerTokenCubit>().state}',
+            'Cookie': 'PHPSESSID=${customerTokenModel.cookie}'
+          }),
           queryParameters: queries);
       return response.data;
     } on DioError catch (error) {
@@ -245,6 +255,7 @@ class ApiService {
           error: true,
           compact: true,
           maxWidth: 90));
+
       var response = await dio.get('${restClient.customerURL}$path',
           options: Options(headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -253,7 +264,7 @@ class ApiService {
             'Accept-encoding': 'gzip, deflate, br',
             'Accept': '*/*',
             'User-Agent': 'PostmanRuntime/7.29.2',
-            'Authorization': 'Bearer ${GetIt.I<CustomerTokenCubit>().state}'
+            'Authorization': 'Bearer ${GetIt.I<CustomerTokenCubit>().state}',
           }),
           queryParameters: queries);
       return response.data;
