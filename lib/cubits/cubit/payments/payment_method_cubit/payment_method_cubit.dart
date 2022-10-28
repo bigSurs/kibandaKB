@@ -17,7 +17,7 @@ class PaymentMethodCubit extends Cubit<PaymentMethodState> {
     emit(PaymentMethodState.loading());
     try {
       var cookieCubit = GetIt.I.get<CustomerCookieCubit>();
-      var response = await ApiService.getDataPayments(
+      var response = await ApiService.getDataWithCustomerAuth(
           path: 'customer/checkout/mixedPaymentMethods',
           options: Options(headers: {
             'X-user': 'customer',

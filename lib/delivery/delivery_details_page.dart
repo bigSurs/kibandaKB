@@ -456,7 +456,7 @@ class DeliveryDetailsPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Proceed to Checkout',
+                            'Make Payment',
                             style: TextStyle(
                                 color: Palette.orangeColor,
                                 fontSize: 12,
