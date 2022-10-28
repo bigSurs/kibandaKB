@@ -19,10 +19,10 @@ class PaymentMethodCubit extends Cubit<PaymentMethodState> {
       var cookieCubit = GetIt.I.get<CustomerCookieCubit>();
       var response = await ApiService.getDataWithCustomerAuth(
           path: 'customer/checkout/mixedPaymentMethods',
-          options: Options(headers: {
-            'X-user': 'customer',
-            'cookie': 'PHPSESSID=${cookieCubit.state}'
-          }),
+          // options: Options(headers: {
+          //   'X-user': 'customer',
+          //   'cookie': 'PHPSESSID=${cookieCubit.state}'
+          // }),
           queries: {'total': total});
       Map<String, dynamic> paymentData = response['data']['payment_methods'];
       List<PaymentMethod> paymentMethods = paymentData.entries.map((e) {

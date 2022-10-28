@@ -17,6 +17,7 @@ import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/payment_me
 import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/selected_payment_method_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/place_order_cubit/place_order_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/save_to_basket_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/ui_cubits/home_bottom_index_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/validate_order_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/wishlist_cubit.dart';
 import 'package:kibanda_kb/cubits/customer_address/customer_address_cubit.dart';
@@ -49,10 +50,13 @@ class KwikBasketKibandaApp extends StatelessWidget {
     ]);
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => FeaturedProductCubit()),
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => TokenCubit('')),
+        BlocProvider(create: (context) => HomeBottomIndexCubit(0)),
         BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
+        BlocProvider(
+          create: (context) => FeaturedProductCubit()..getFeaturedProducts(),
+        ),
         BlocProvider(create: (context) => CustomerCookieCubit('')),
         BlocProvider(create: (context) => CustomerTokenCubit('')),
         BlocProvider(create: (context) => VendorProductsCubit()),
@@ -66,7 +70,6 @@ class KwikBasketKibandaApp extends StatelessWidget {
           create: (context) =>
               SelectedPaymentMethodCubit(PaymentMethod(code: 'cod')),
         ),
-        BlocProvider(create: (context) => FeaturedProductCubit()),
         BlocProvider(create: (context) => SaveToBasketCubit()),
         BlocProvider(create: (context) => ValidateOrderCubit()),
         BlocProvider(create: (context) => WishlistCubit()),

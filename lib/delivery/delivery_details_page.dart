@@ -281,196 +281,193 @@ class DeliveryDetailsPage extends StatelessWidget {
             Expanded(
               child: SizedBox(
                 height: 30,
-                child: BlocConsumer<PlaceOrderCubit, PlaceOrderState>(
-                  listener: (context, state) {
-                    state.maybeWhen(
-                        orElse: () {},
-                        loading: () {
-                          return const CircularProgressIndicator(
-                              color: Palette.greenColor);
-                        },
-                        success: () {
-                          AppToast.showToast(
-                              message: 'Order Placed successfully',
-                              isError: false);
-                          // if (context.read<HybridSelectedCubit>().state) {
-                          //   if (context.read<HybridTypeCubit>().state == 'mpesa') {
-                          //     AutoRouter.of(context).replace(MpesaPaymentRoute(
-                          //         orderReference:
-                          //             orderData['order_reference_number']));
-                          //   } else {
-                          //     AutoRouter.of(context).push(OrderSuccessRoute());
-                          //     context.read<CartCubit>().emit([]);
-                          //     context.read<CartProductMetadataCubit>().emit([]);
-                          //   }
-                          // } else {
-                          // if (context
-                          //         .read<SelectedPaymentMethodCubit>()
-                          //         .state!
-                          //         .code ==
-                          //     'mpesa') {
-                          //   AutoRouter.of(context).replace(MpesaPaymentRoute(
-                          //       orderReference:
-                          //           orderData['order_reference_number']));
-                          // } else {
-                          // AutoRouter.of(context).push(OrderSuccessRoute());
-                          AutoRouter.of(context)
-                              .push(PaymentOPtionsRoute(orderData: {}));
-                          context.read<CartCubit>().emit([]);
-                          context.read<CartProductMetadataCubit>().emit([]);
-                          // }
-                        },
-                        failed: (e) {
-                          AppToast.showToast(message: e, isError: true);
-                        });
-                    // TODO: implement listener
-                  },
-                  builder: (context, state) {
-                    return CupertinoButton(
-                      color: Colors.white,
-                      onPressed: () {
-                        if (context.read<SelectDeliveryDateCubit>().state ==
-                                null ||
-                            context.read<SelectTimeslotCubit>().state == null) {
-                          AppToast.showToast(
-                              message:
-                                  'Please select your preferred delivery date and time',
-                              isError: true);
-                        } else {
-                          for (int i = 0;
-                              i < context.read<CartCubit>().state.length;
-                              i++) {
-                            Map<String, dynamic> data = {
-                              'payment_method': 'mPesa on Delivery',
-                              'payment_method_code': 'mod'
-                            };
-                            var x = generateRandomString(12);
-                            for (int i = 0;
-                                i < context.read<CartCubit>().state.length;
-                                i++) {
-                              data.addAll({
-                                'shipping_address_id': context
-                                    .read<SelectedKibandaCubit>()
-                                    .state!
-                                    .address_id!,
-                                'products[$i][product_store_id]': context
-                                    .read<CartProductMetadataCubit>()
-                                    .state
-                                    .where((element) =>
-                                        element.product_id ==
-                                        int.parse(context
-                                            .read<CartCubit>()
-                                            .state[i]
-                                            .product_id!))
-                                    .first
-                                    .variation['variation_id'],
-                                'products[$i][product_id]': context
-                                    .read<CartCubit>()
-                                    .state[i]
-                                    .product_id,
-                                'products[$i][unit]':
-                                    context.read<CartCubit>().state[i].unit,
-                                'products[$i][model]':
-                                    context.read<CartCubit>().state[i].model,
-                                'products[$i][weight]': '0',
-                                'products[$i][store_id]': '75',
-                                'products[$i][store_id]': '75',
-                                'products[$i][name]':
-                                    context.read<CartCubit>().state[i].name,
-                                'products[$i][store_product_variation_id]': '0',
-                                'products[$i][product_type]': 'replaceable',
-                                'products[$i][download]': '0',
-                                'products[$i][minimum]': 0,
-                                'products[$i][subtract]': 0,
-                                'products[$i][reward]': 0,
-                                'products[$i][product_type]': 'replaceable',
-                                'products[$i][store_product_variation_id]': '0',
-                                'coupon': 0,
-                                'total': context.read<CartCubit>().getBalance(),
-                                'sub_total':
-                                    context.read<CartCubit>().getBalance(),
-                                'reward': 0,
-                                'products[$i][total]':
-                                    context.read<CartCubit>().getBalance(),
-                                'products[$i][product_note]': context
-                                    .read<CartProductMetadataCubit>()
-                                    .state
-                                    .where((element) =>
-                                        element.product_id ==
-                                        int.parse(context
-                                            .read<CartCubit>()
-                                            .state[i]
-                                            .product_id!))
-                                    .first
-                                    .product_note
-                                    .toString(),
-                                'products[$i][quantity]': context
-                                    .read<CartProductMetadataCubit>()
-                                    .state
-                                    .where((element) =>
-                                        element.product_id ==
-                                        int.parse(context
-                                            .read<CartCubit>()
-                                            .state[i]
-                                            .product_id!))
-                                    .first
-                                    .amount
-                                    .toString(),
-                                'products[$i][price]': context
-                                    .read<CartCubit>()
-                                    .state[i]
-                                    .special
-                                    .toString(),
-                                //Store info
-                                'stores[75][store_id]': '75',
-                                'stores[75][timeslot]':
-                                    context.read<SelectTimeslotCubit>().state,
-                                'stores[75][timeslot_selected]':
-                                    context.read<SelectTimeslotCubit>().state,
-                                'stores[75][shipping_code]':
-                                    'store_delivery.store_delivery',
-                                'stores[75][shipping_method]':
-                                    'Standard Delivery',
-                                'stores[75][dates]': context
-                                    .read<SelectDeliveryDateCubit>()
-                                    .state,
-                                'stores[75][comment]': '',
-                                'stores[75][delivery_date]': context
-                                    .read<SelectDeliveryDateCubit>()
-                                    .state,
-                                'stores[75][total]':
-                                    context.read<CartCubit>().getBalance(),
-                                'stores[75][sub_total]':
-                                    context.read<CartCubit>().getBalance(),
-                                'stores[75][weight]': '0',
-                                'stores[75][order_reference_number]': x,
-                                'order_reference_number': x,
-                              });
-                            }
-                            context.read<PlaceOrderCubit>().placeOrder(data);
-                          }
+                child:
+                    //  BlocConsumer<PlaceOrderCubit, PlaceOrderState>(
+                    //   listener: (context, state) {
+                    //     state.maybeWhen(
+                    //         orElse: () {},
+                    //         loading: () {
+                    //           return const CircularProgressIndicator(
+                    //               color: Palette.greenColor);
+                    //         },
+                    //         success: () {
+                    //           AppToast.showToast(
+                    //               message: 'Order Placed successfully',
+                    //               isError: false);
+                    //           // if (context.read<HybridSelectedCubit>().state) {
+                    //           //   if (context.read<HybridTypeCubit>().state == 'mpesa') {
+                    //           //     AutoRouter.of(context).replace(MpesaPaymentRoute(
+                    //           //         orderReference:
+                    //           //             orderData['order_reference_number']));
+                    //           //   } else {
+                    //           //     AutoRouter.of(context).push(OrderSuccessRoute());
+                    //           //     context.read<CartCubit>().emit([]);
+                    //           //     context.read<CartProductMetadataCubit>().emit([]);
+                    //           //   }
+                    //           // } else {
+                    //           // if (context
+                    //           //         .read<SelectedPaymentMethodCubit>()
+                    //           //         .state!
+                    //           //         .code ==
+                    //           //     'mpesa') {
+                    //           //   AutoRouter.of(context).replace(MpesaPaymentRoute(
+                    //           //       orderReference:
+                    //           //           orderData['order_reference_number']));
+                    //           // } else {
+                    //           // AutoRouter.of(context).push(OrderSuccessRoute());
+                    //           AutoRouter.of(context)
+                    //               .push(PaymentOPtionsRoute(orderData: {}));
+                    //           context.read<CartCubit>().emit([]);
+                    //           context.read<CartProductMetadataCubit>().emit([]);
+                    //           // }
+                    //         },
+                    //         failed: (e) {
+                    //           AppToast.showToast(message: e, isError: true);
+                    //         });
+                    //     // TODO: implement listener
+                    //   },
+                    // builder: (context, state) {
+                    // return
+                    CupertinoButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    if (context.read<SelectDeliveryDateCubit>().state == null ||
+                        context.read<SelectTimeslotCubit>().state == null) {
+                      AppToast.showToast(
+                          message:
+                              'Please select your preferred delivery date and time',
+                          isError: true);
+                    } else {
+                      for (int i = 0;
+                          i < context.read<CartCubit>().state.length;
+                          i++) {
+                        Map<String, dynamic> data = {
+                          'payment_method': 'mPesa on Delivery',
+                          'payment_method_code': 'mod'
+                        };
+                        var x = generateRandomString(12);
+                        for (int i = 0;
+                            i < context.read<CartCubit>().state.length;
+                            i++) {
+                          data.addAll({
+                            'shipping_address_id': context
+                                .read<SelectedKibandaCubit>()
+                                .state!
+                                .address_id!,
+                            'products[$i][product_store_id]': context
+                                .read<CartProductMetadataCubit>()
+                                .state
+                                .where((element) =>
+                                    element.product_id ==
+                                    int.parse(context
+                                        .read<CartCubit>()
+                                        .state[i]
+                                        .product_id!))
+                                .first
+                                .variation['variation_id'],
+                            'products[$i][product_id]':
+                                context.read<CartCubit>().state[i].product_id,
+                            'products[$i][unit]':
+                                context.read<CartCubit>().state[i].unit,
+                            'products[$i][model]':
+                                context.read<CartCubit>().state[i].model,
+                            'products[$i][weight]': '0',
+                            'products[$i][store_id]': '75',
+                            'products[$i][store_id]': '75',
+                            'products[$i][name]':
+                                context.read<CartCubit>().state[i].name,
+                            'products[$i][store_product_variation_id]': '0',
+                            'products[$i][product_type]': 'replaceable',
+                            'products[$i][download]': '0',
+                            'products[$i][minimum]': 0,
+                            'products[$i][subtract]': 0,
+                            'products[$i][reward]': 0,
+                            'products[$i][product_type]': 'replaceable',
+                            'products[$i][store_product_variation_id]': '0',
+                            'coupon': 0,
+                            'total': context.read<CartCubit>().getBalance(),
+                            'sub_total': context.read<CartCubit>().getBalance(),
+                            'reward': 0,
+                            'products[$i][total]':
+                                context.read<CartCubit>().getBalance(),
+                            'products[$i][product_note]': context
+                                .read<CartProductMetadataCubit>()
+                                .state
+                                .where((element) =>
+                                    element.product_id ==
+                                    int.parse(context
+                                        .read<CartCubit>()
+                                        .state[i]
+                                        .product_id!))
+                                .first
+                                .product_note
+                                .toString(),
+                            'products[$i][quantity]': context
+                                .read<CartProductMetadataCubit>()
+                                .state
+                                .where((element) =>
+                                    element.product_id ==
+                                    int.parse(context
+                                        .read<CartCubit>()
+                                        .state[i]
+                                        .product_id!))
+                                .first
+                                .amount
+                                .toString(),
+                            'products[$i][price]': context
+                                .read<CartCubit>()
+                                .state[i]
+                                .special
+                                .toString(),
+                            //Store info
+                            'stores[75][store_id]': '75',
+                            'stores[75][timeslot]':
+                                context.read<SelectTimeslotCubit>().state,
+                            'stores[75][timeslot_selected]':
+                                context.read<SelectTimeslotCubit>().state,
+                            'stores[75][shipping_code]':
+                                'store_delivery.store_delivery',
+                            'stores[75][shipping_method]': 'Standard Delivery',
+                            'stores[75][dates]':
+                                context.read<SelectDeliveryDateCubit>().state,
+                            'stores[75][comment]': '',
+                            'stores[75][delivery_date]':
+                                context.read<SelectDeliveryDateCubit>().state,
+                            'stores[75][total]':
+                                context.read<CartCubit>().getBalance(),
+                            'stores[75][sub_total]':
+                                context.read<CartCubit>().getBalance(),
+                            'stores[75][weight]': '0',
+                            'stores[75][order_reference_number]': x,
+                            'order_reference_number': x,
+                          });
                         }
-                      },
-                      padding: EdgeInsets.all(0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Make Payment',
-                            style: TextStyle(
-                                color: Palette.orangeColor,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Icon(
-                            CupertinoIcons.chevron_forward,
-                            color: Palette.orangeColor,
-                          )
-                        ],
-                      ),
-                    );
+                        AutoRouter.of(context)
+                            .push(PaymentOPtionsRoute(orderData: data));
+                        // context.read<PlaceOrderCubit>().placeOrder(data);
+                      }
+                    }
                   },
+                  padding: EdgeInsets.all(0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Payment',
+                        style: TextStyle(
+                            color: Palette.orangeColor,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Icon(
+                        CupertinoIcons.chevron_forward,
+                        color: Palette.orangeColor,
+                      )
+                    ],
+                  ),
                 ),
+                // },
+                // ),
               ),
             ),
             SizedBox(

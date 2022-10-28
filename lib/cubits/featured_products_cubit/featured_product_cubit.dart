@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kibanda_kb/models/product/product.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
@@ -11,7 +12,7 @@ part 'featured_product_cubit.freezed.dart';
 class FeaturedProductCubit extends Cubit<FeaturedProductState> {
   FeaturedProductCubit() : super(FeaturedProductState.initial());
 
-  getFeaturedProducts() async {
+  getFeaturedProducts(BuildContext context) async {
     emit(FeaturedProductState.loading());
     try {
       var response = await RestService()

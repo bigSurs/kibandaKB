@@ -419,7 +419,7 @@ class CheckoutWidget extends StatelessWidget {
                   Expanded(child: Text('Total product rate')),
                   Expanded(
                       child: Text(
-                    "KES " + context.watch<CartCubit>().getBalance().toString(),
+                    "KES ${context.watch<CartCubit>().getBalance()}",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )),
                 ],
@@ -463,10 +463,7 @@ class CheckoutWidget extends StatelessWidget {
                   )),
                   Expanded(
                       child: Text(
-                    "KES " +
-                        (context.watch<CartCubit>().getBalance() +
-                                context.watch<CartCubit>().getTax())
-                            .toString(),
+                    "KES ${context.watch<CartCubit>().getBalance() + context.watch<CartCubit>().getTax()}",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )),
                 ],

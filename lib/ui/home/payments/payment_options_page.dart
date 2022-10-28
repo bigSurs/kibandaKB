@@ -16,6 +16,7 @@ import 'package:kibanda_kb/cubits/cubit/place_order_cubit/place_order_cubit.dart
 import 'package:kibanda_kb/models/payment_method/payment_method.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/security/app_security.dart';
+import 'package:kibanda_kb/ui/home/main_home_page.dart';
 import 'package:kibanda_kb/utilities/toast/toast.dart';
 
 class PaymentOPtionsPage extends StatefulWidget {
@@ -367,13 +368,13 @@ class _PaymentOPtionsPageState extends State<PaymentOPtionsPage> {
                               .state!
                               .code!,
                           "shipping_address_id": context
-                              .read<DeliveryAddressSelectionCubit>()
+                              .read<SelectedKibandaCubit>()
                               .state!
                               .address_id!,
-                          "shipping_city_id": context
-                              .read<DeliveryAddressSelectionCubit>()
-                              .state!
-                              .address_id!,
+                          // "shipping_city_id": context
+                          //     .read<DeliveryAddressSelectionCubit>()
+                          //     .state!
+                          //     .address_id!,
                           // 'login_latitude':
                           //     context.read<UserLocationCubit>().state.latitude,
                           // 'login_longitude':
