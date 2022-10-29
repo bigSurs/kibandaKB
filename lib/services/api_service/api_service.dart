@@ -204,19 +204,21 @@ class ApiService {
       Map<String, dynamic>? queries}) async {
     CustomerTokenModel customerTokenModel = GetIt.I<CustomerTokenModel>();
     try {
-      var x = GetIt.I<CustomerTokenCubit>().state;
-      var response = await restClient.dio!.get('${restClient.customerURL}$path',
-          options: Options(headers: {
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'X-user': 'customer',
-            'Connection': 'keep-alive',
-            'Accept-encoding': 'gzip, deflate, br',
-            'Accept': '*/*',
-            'User-Agent': 'PostmanRuntime/7.29.2',
-            'authorization': 'Bearer $x',
-            'Cookie': 'PHPSESSID=${customerTokenModel.cookie}'
-          }),
-          queryParameters: queries);
+      var response =
+          await restClientCustomer.dio!.get('${restClient.customerURL}$path',
+              options: Options(headers: {
+                'Content-Type':
+                    'application/x-www-form-urlencoded; charset=UTF-8',
+                'X-user': 'customer',
+                'Connection': 'keep-alive',
+                'Accept-encoding': 'gzip, deflate, br',
+                'Accept': '*/*',
+                'User-Agent': 'PostmanRuntime/7.29.2',
+                'Authorization':
+                    'Bearer ${GetIt.I<CustomerTokenCubit>().state}',
+                'Cookie': 'PHPSESSID=${customerTokenModel.cookie}'
+              }),
+              queryParameters: queries);
       return response.data;
     } on DioError catch (error) {
       throw error.message;
