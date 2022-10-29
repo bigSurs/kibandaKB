@@ -204,6 +204,7 @@ class ApiService {
       Map<String, dynamic>? queries}) async {
     CustomerTokenModel customerTokenModel = GetIt.I<CustomerTokenModel>();
     try {
+      var x = GetIt.I<CustomerTokenCubit>().state;
       var response = await restClient.dio!.get('${restClient.customerURL}$path',
           options: Options(headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -212,7 +213,7 @@ class ApiService {
             'Accept-encoding': 'gzip, deflate, br',
             'Accept': '*/*',
             'User-Agent': 'PostmanRuntime/7.29.2',
-            'Authorization': 'Bearer ${GetIt.I<CustomerTokenCubit>().state}',
+            'authorization': 'Bearer $x',
             'Cookie': 'PHPSESSID=${customerTokenModel.cookie}'
           }),
           queryParameters: queries);
@@ -245,6 +246,7 @@ class ApiService {
       {required String path,
       Options? options,
       Map<String, dynamic>? queries}) async {
+    CustomerTokenModel customerTokenModel = GetIt.I<CustomerTokenModel>();
     try {
       Dio dio = Dio();
       dio.interceptors.add(PrettyDioLogger(
@@ -264,7 +266,7 @@ class ApiService {
             'Accept-encoding': 'gzip, deflate, br',
             'Accept': '*/*',
             'User-Agent': 'PostmanRuntime/7.29.2',
-            'Authorization': 'Bearer ${GetIt.I<CustomerTokenCubit>().state}',
+            'Authorization': 'Bearer ${customerTokenModel.token}',
           }),
           queryParameters: queries);
       return response.data;

@@ -77,7 +77,7 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => ValidateOrderCubit()),
         BlocProvider(create: (context) => WishlistCubit()),
         BlocProvider(create: (context) => CustomerAddressCubit()),
-        BlocProvider(create: (context) => FeaturedProductCubit()),
+        // BlocProvider(create: (context) => FeaturedProductCubit()),
         BlocProvider(create: (context) => PlaceOrderCubit()),
         BlocProvider(create: (context) => DeliveryTimeslotCubit()),
         BlocProvider(
