@@ -11,7 +11,6 @@ import 'package:kibanda_kb/cubits/cubit/payments/lipa_na_mpesa_cubit/lipa_na_mpe
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/utilities/toast/toast.dart';
 
-
 import '../../../../cubits/cart/cart_cubit.dart';
 import '../../../../cubits/cart/cart_product_metadata_cubit.dart';
 
@@ -65,7 +64,7 @@ class MpesaPaymentPage extends StatelessWidget {
                     countryFilterByIsoCode: ['KE'],
                     decoration: InputDecoration(
                         labelText: 'Enter your phone number',
-                        hintText: '712345678 or 123456789',
+                        hintText: '712345678',
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Palette.greenColor)),
                         enabledBorder: OutlineInputBorder(

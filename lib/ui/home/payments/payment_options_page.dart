@@ -351,87 +351,86 @@ class _PaymentOPtionsPageState extends State<PaymentOPtionsPage> {
                 child: CupertinoButton(
                   color: Palette.orangeColor,
                   onPressed: () async {
-                    bool authenticate = await AppSecurity.authenticate(
-                        'Please authenticate to place your order');
-                    if (authenticate) {
-                      if (context.read<SelectedPaymentMethodCubit>().state !=
-                          null) {
-                        var data = widget.orderData;
-                        data.addAll({
-                          "payment_method": context
-                              .read<SelectedPaymentMethodCubit>()
-                              .state!
-                              .title!,
-                          "dropoff_notes": '',
-                          "payment_method_code": context
-                              .read<SelectedPaymentMethodCubit>()
-                              .state!
-                              .code!,
-                          "shipping_address_id": context
-                              .read<SelectedKibandaCubit>()
-                              .state!
-                              .address_id!,
-                          // "shipping_city_id": context
-                          //     .read<DeliveryAddressSelectionCubit>()
-                          //     .state!
-                          //     .address_id!,
-                          // 'login_latitude':
-                          //     context.read<UserLocationCubit>().state.latitude,
-                          // 'login_longitude':
-                          //     context.read<UserLocationCubit>().state.longitude,
-                          'login_mode': 'm',
-                          "payment_method['code']": context
-                              .read<SelectedPaymentMethodCubit>()
-                              .state!
-                              .code!,
-                          "payment_method['sort_order']": context
-                                  .read<SelectedPaymentMethodCubit>()
-                                  .state!
-                                  .sort_order ??
-                              '0',
-                          "payment_method['terms']": context
-                                  .read<SelectedPaymentMethodCubit>()
-                                  .state!
-                                  .terms ??
-                              '',
-                          "payment_method['title']": context
-                                  .read<SelectedPaymentMethodCubit>()
-                                  .state!
-                                  .title ??
-                              '',
-                        });
-                        if (context.read<HybridSelectedCubit>().state) {
-                          if (context.read<HybridTypeCubit>().state ==
-                              'mpesa') {
-                          } else {}
-                        } else {
-                          if (context
-                                  .read<SelectedPaymentMethodCubit>()
-                                  .state!
-                                  .code ==
-                              'mpesa') {
-                            data.addAll({
-                              'mpesa_refrence_id':
-                                  widget.orderData['order_reference_number']
-                            });
-                            AutoRouter.of(context).push(MpesaPaymentRoute(
-                                orderReference:
-                                    widget.orderData['order_reference_number'],
-                                data: data));
-                          } else {
-                            context.read<PlaceOrderCubit>().placeOrder(data);
-                          }
-                        }
+                    // bool authenticate = await AppSecurity.authenticate(
+                    //     'Please authenticate to place your order');
+                    // if (authenticate) {
+                    if (context.read<SelectedPaymentMethodCubit>().state !=
+                        null) {
+                      var data = widget.orderData;
+                      data.addAll({
+                        "payment_method": context
+                            .read<SelectedPaymentMethodCubit>()
+                            .state!
+                            .title!,
+                        "dropoff_notes": '',
+                        "payment_method_code": context
+                            .read<SelectedPaymentMethodCubit>()
+                            .state!
+                            .code!,
+                        "shipping_address_id": context
+                            .read<SelectedKibandaCubit>()
+                            .state!
+                            .address_id!,
+                        // "shipping_city_id": context
+                        //     .read<DeliveryAddressSelectionCubit>()
+                        //     .state!
+                        //     .address_id!,
+                        // 'login_latitude':
+                        //     context.read<UserLocationCubit>().state.latitude,
+                        // 'login_longitude':
+                        //     context.read<UserLocationCubit>().state.longitude,
+                        'login_mode': 'm',
+                        "payment_method['code']": context
+                            .read<SelectedPaymentMethodCubit>()
+                            .state!
+                            .code!,
+                        "payment_method['sort_order']": context
+                                .read<SelectedPaymentMethodCubit>()
+                                .state!
+                                .sort_order ??
+                            '0',
+                        "payment_method['terms']": context
+                                .read<SelectedPaymentMethodCubit>()
+                                .state!
+                                .terms ??
+                            '',
+                        "payment_method['title']": context
+                                .read<SelectedPaymentMethodCubit>()
+                                .state!
+                                .title ??
+                            '',
+                      });
+                      if (context.read<HybridSelectedCubit>().state) {
+                        if (context.read<HybridTypeCubit>().state == 'mpesa') {
+                        } else {}
                       } else {
-                        AppToast.showToast(
-                            message: 'Please select a payment method',
-                            isError: true);
+                        if (context
+                                .read<SelectedPaymentMethodCubit>()
+                                .state!
+                                .code ==
+                            'mpesa') {
+                          data.addAll({
+                            'mpesa_refrence_id':
+                                widget.orderData['order_reference_number']
+                          });
+                          AutoRouter.of(context).push(MpesaPaymentRoute(
+                              orderReference:
+                                  widget.orderData['order_reference_number'],
+                              data: data));
+                        } else {
+                          context.read<PlaceOrderCubit>().placeOrder(data);
+                        }
                       }
                     } else {
                       AppToast.showToast(
-                          message: 'Device authentication failed',
+                          message: 'Please select a payment method',
                           isError: true);
                     }
+                    // } else {
+                    //   AppToast.showToast(
+                    //       message: 'Device authentication failed',
+                    //       isError: true);
+                    // }
                   },
                   padding: EdgeInsets.all(0),
                   child: Row(

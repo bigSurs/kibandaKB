@@ -37,6 +37,31 @@ class ApiService {
     }
   }
 
+  static Future<Map<String, dynamic>> postDataMpesa({
+    required Map<String, dynamic> data,
+    required String path,
+  }) async {
+    try {
+      var response =
+          await restClient.dio!.post('${restClient.customerURL}$path',
+              data: data,
+              options: Options(headers: {
+                'Content-Type':
+                    'application/x-www-form-urlencoded; charset=UTF-8',
+                'X-User': 'customer',
+              }));
+      return response.data;
+    } on DioError catch (error) {
+      try {
+        throw error.response!.data['message'][0]['body'];
+      } catch (e) {
+        throw error.message;
+      }
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
   static Future<Map<String, dynamic>> postData({
     required Map<String, dynamic> data,
     required String path,
