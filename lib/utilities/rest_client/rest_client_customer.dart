@@ -14,7 +14,7 @@ class RestClientCustomer {
   String baseURL = 'https://stage.salesexecutiveapi.kwikbasket.com/api/';
   String customerURL = 'https://stage.shop.kwikbasket.com/api/';
 
-  RestClient({BaseOptions? options}) {
+  RestClientCustomer({BaseOptions? options}) {
     create(options);
   }
 
