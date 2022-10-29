@@ -53,11 +53,16 @@ class KwikBasketKibandaApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => TokenCubit('')),
-        BlocProvider(create: (context) => HomeBottomIndexCubit(0)),
         BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
         BlocProvider(create: (context) => CustomerCookieCubit('')),
         BlocProvider(create: (context) => CustomerTokenCubit('')),
         BlocProvider(create: (context) => VendorProductsCubit()),
+        BlocProvider(create: (context) => SelectedKibandaCubit()),
+        BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
+        BlocProvider(
+            create: (context) =>
+                FeaturedProductCubit()..getFeaturedProducts(context)),
+        BlocProvider(create: (context) => HomeBottomIndexCubit(0)),
         BlocProvider(create: (context) => CartCubit([])),
         BlocProvider(create: (context) => CartProductMetadataCubit([])),
         BlocProvider(create: (context) => SelectedVariationCubit()),
@@ -73,14 +78,12 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => WishlistCubit()),
         BlocProvider(create: (context) => CustomerAddressCubit()),
         BlocProvider(create: (context) => FeaturedProductCubit()),
-        // BlocProvider(create: (context) => FeaturedProductCubit()),
         BlocProvider(create: (context) => PlaceOrderCubit()),
         BlocProvider(create: (context) => DeliveryTimeslotCubit()),
-         BlocProvider(
+        BlocProvider(
           create: (context) => MyOrdersCubit()..getMyOrders(),
         ),
         BlocProvider(create: (context) => DeliveryAddressSelectionCubit(null)),
-        BlocProvider(create: (context) => SelectedKibandaCubit()),
         BlocProvider(create: (context) => SelectDeliveryDateCubit()),
         BlocProvider(create: (context) => SelectTimeslotCubit('')),
       ],

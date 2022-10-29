@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:badges/badges.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,13 @@ import 'package:kibanda_kb/cubits/cubit/authentication/token_cubit.dart';
 import 'package:kibanda_kb/cubits/featured_products_cubit/featured_product_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/models/customer_token_model.dart';
+import 'package:kibanda_kb/models/kibanda_model/kibanda.dart';
+import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/services/services.dart';
 import 'package:kibanda_kb/ui/home/main_home_page.dart';
 import 'package:kibanda_kb/ui/home/product/product_tile.dart';
+import 'package:quantity_input/quantity_input.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({Key? key}) : super(key: key);
@@ -220,18 +224,6 @@ class HomeWidget extends StatelessWidget {
                               ),
                           success: ((kibandaskistores) =>
                               FormBuilderSearchableDropdown<String>(
-                                // dropdownDecoratorProps:
-                                //     const DropDownDecoratorProps(
-                                //   dropdownSearchDecoration: InputDecoration(
-                                //     disabledBorder: InputBorder.none,
-                                //     hintText: 'Select a Kibanda',
-                                //     hintStyle: TextStyle(
-                                //       color: Colors.black,
-                                //       fontSize: 12,
-                                //     ),
-                                //   ),
-                                // ),
-
                                 name: '',
                                 decoration: const InputDecoration(
                                   labelText: 'Select Kibanda',
@@ -321,5 +313,236 @@ class HomeWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class CardWidget extends StatefulWidget {
+  final VendorProducts vendorProducts;
+  const CardWidget({Key? key, required this.vendorProducts}) : super(key: key);
+
+  @override
+  State<CardWidget> createState() => _CardWidgetState();
+}
+
+class _CardWidgetState extends State<CardWidget> {
+  //TODO:
+  //uncomment these two to use Json data
+  final _image1 =
+      'https://www.kindacode.com/wp-content/uploads/2021/08/face.png';
+  int simpleIntInput = 0;
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    return Flexible(
+      child: FittedBox(
+          child: Container(
+        margin: const EdgeInsets.all(30.0),
+        decoration: BoxDecoration(
+            // color: Palette.orangeBackgroundColor,
+            borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(10.0),
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
+                topLeft: Radius.circular(10.0)),
+            border: Border.all(width: 1, color: Palette.greenColor)),
+        constraints: const BoxConstraints(
+          maxHeight: double.infinity,
+        ),
+        child: Container(
+          // height: height / 6,
+          width: width,
+          height: 250,
+          padding: const EdgeInsets.all(8),
+          child: Flexible(
+            child: Row(
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      Expanded(
+                        child: CircleAvatar(
+                          child: CachedNetworkImage(
+                            width: double.infinity,
+                            height: 200,
+                            fit: BoxFit.scaleDown,
+                            imageUrl: widget.vendorProducts.image!,
+                            // progressIndicatorBuilder:
+                            //     (context, url, downloadProgress) =>
+                            //         CircularProgressIndicator(
+                            //             value: downloadProgress.progress),
+                            // errorWidget: (context, url, error) => const Icon(
+                            //   Icons.error,
+                            //   size: 100,
+                            //   color: Colors.red,
+                            // ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(children: [
+                    Row(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      // mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Text(
+                          "Product Name",
+                          style: TextStyle(
+                            fontFamily: 'Red Hat Display',
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Palette.orangeColor,
+                          ),
+                        ),
+                        SizedBox(width: width * 0.01),
+                        Text(
+                          widget.vendorProducts.name!,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Palette.placeholderGrey,
+                            // color: Colors.orange,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: height * 0.02),
+                    Row(children: [
+                      const Text(
+                        "Product Id",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Red Hat Display',
+                          fontWeight: FontWeight.bold,
+                          color: Palette.orangeColor,
+                        ),
+                      ),
+                      SizedBox(width: width * 0.01),
+                      Text(
+                        widget.vendorProducts.product_id.toString(),
+                        // orderde.delivery_timeslot!,
+                        // CalendarTime(DateTime.parse(order.delivery_timeslot!))
+                        //     .toHuman,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Palette.placeholderGrey,
+                        ),
+                      ),
+                    ]),
+                  ]),
+                  const SizedBox(width: 30),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          const Text(
+                            'Unit',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Palette.orangeColor,
+                              fontFamily: 'Red Hat Display',
+                            ),
+                          ),
+                          SizedBox(width: width * 0.01),
+                          Text(
+                            // order.delivery_date!,
+                            // CalendarTime(DateTime.parse(
+                            //         orderde.delivery_date!))
+                            //     .toHuman,
+                            widget.vendorProducts.unit!,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Palette.placeholderGrey,
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: height * 0.02),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Weight',
+                            style: TextStyle(
+                                fontFamily: 'Red Hat Display',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Palette.orangeColor),
+                          ),
+                          SizedBox(width: width * 0.01),
+                          Text(
+                            widget.vendorProducts.weight!,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Palette.placeholderGrey,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer(),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              const Text(
+                                'Qty',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              QuantityInput(
+                                  value: simpleIntInput,
+                                  onChanged: (value) => setState(() =>
+                                      simpleIntInput = int.parse(
+                                          value.replaceAll(',', '')))),
+                            ],
+                          ),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: CupertinoButton.filled(
+                              // style: ElevatedButton.styleFrom(
+                              //   // primary: Colors.black,
+                              //   minimumSize: const Size.fromHeight(50), // NEW
+                              // ),
+                              onPressed: () {
+                                // AutoRouter.of(context)
+                                //     .push(DirectionsToAddress(
+                                //   orderId: orderde.order_id!,
+                                // ));
+                              },
+                              child: const Text(
+                                'Add to Cart',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ]),
+          ),
+        ),
+      )),
+    );
+  }
+}
+
+class SelectedKibandaCubit extends Cubit<Kibanda?> {
+  SelectedKibandaCubit() : super(null);
+  save(Kibanda? kibanda) {
+    emit(kibanda);
   }
 }

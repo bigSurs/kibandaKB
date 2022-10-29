@@ -10,7 +10,7 @@ part 'featured_product_cubit.freezed.dart';
 class FeaturedProductCubit extends Cubit<FeaturedProductState> {
   FeaturedProductCubit() : super(const FeaturedProductState.initial());
 
-  getFeaturedProducts() async {
+  getFeaturedProducts(BuildContext context) async {
     emit(const FeaturedProductState.loading());
     try {
       var response = await RestService()
