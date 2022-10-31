@@ -6,6 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kibanda_kb/configuration/configuration.dart';
 import 'package:kibanda_kb/cubits/my_orders_cubit/my_orders_cubit.dart';
 import 'package:kibanda_kb/models/order/order.dart';
+import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/utilities/toast/toast.dart';
 
 import 'package:star_menu/star_menu.dart';
@@ -37,15 +38,15 @@ class MyOrdersPage extends StatelessWidget {
           },
           builder: (context, state) {
             return state.maybeWhen(
-                loading: () => Center(
-                      child: SpinKitSpinningLines(
+                loading: () => const Center(
+                      child: SpinKitFadingCircle(
                         color: Palette.greenColor,
                       ),
                     ),
                 success: (orders) {
                   return orders.length >= 1
                       ? CustomScrollView(
-                          physics: BouncingScrollPhysics(
+                          physics: const BouncingScrollPhysics(
                               parent: AlwaysScrollableScrollPhysics()),
                           slivers: [
                             CupertinoSliverRefreshControl(
@@ -208,8 +209,8 @@ class SingleOrderWidget extends StatelessWidget {
                               EdgeInsets.symmetric(vertical: 0, horizontal: 36),
                           color: Palette.orangeColor,
                           onPressed: () {
-                            // AutoRouter.of(context)
-                            //     .push(SingleOrderRoute(order: order));
+                            AutoRouter.of(context)
+                                .push(SingleOrderRoute(order: order));
                           }),
                     ),
                   ],

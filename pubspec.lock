@@ -1138,7 +1138,7 @@ packages:
       name: star_menu
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.0+1"
+    version: "2.2.0"
   stream_channel:
     dependency: transitive
     description:

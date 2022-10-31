@@ -12,30 +12,11 @@ part of 'user_preferences.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 UserPreferences _$UserPreferencesFromJson(Map<String, dynamic> json) {
   return _UserPreferences.fromJson(json);
 }
-
-/// @nodoc
-class _$UserPreferencesTearOff {
-  const _$UserPreferencesTearOff();
-
-  _UserPreferences call({bool? pinAuth, bool? deviceAuth}) {
-    return _UserPreferences(
-      pinAuth: pinAuth,
-      deviceAuth: deviceAuth,
-    );
-  }
-
-  UserPreferences fromJson(Map<String, Object?> json) {
-    return UserPreferences.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $UserPreferences = _$UserPreferencesTearOff();
 
 /// @nodoc
 mixin _$UserPreferences {
@@ -53,69 +34,71 @@ mixin _$UserPreferences {
 abstract class $UserPreferencesCopyWith<$Res> {
   factory $UserPreferencesCopyWith(
           UserPreferences value, $Res Function(UserPreferences) then) =
-      _$UserPreferencesCopyWithImpl<$Res>;
+      _$UserPreferencesCopyWithImpl<$Res, UserPreferences>;
+  @useResult
   $Res call({bool? pinAuth, bool? deviceAuth});
 }
 
 /// @nodoc
-class _$UserPreferencesCopyWithImpl<$Res>
+class _$UserPreferencesCopyWithImpl<$Res, $Val extends UserPreferences>
     implements $UserPreferencesCopyWith<$Res> {
   _$UserPreferencesCopyWithImpl(this._value, this._then);
 
-  final UserPreferences _value;
   // ignore: unused_field
-  final $Res Function(UserPreferences) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? pinAuth = freezed,
     Object? deviceAuth = freezed,
   }) {
     return _then(_value.copyWith(
-      pinAuth: pinAuth == freezed
+      pinAuth: freezed == pinAuth
           ? _value.pinAuth
           : pinAuth // ignore: cast_nullable_to_non_nullable
               as bool?,
-      deviceAuth: deviceAuth == freezed
+      deviceAuth: freezed == deviceAuth
           ? _value.deviceAuth
           : deviceAuth // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$UserPreferencesCopyWith<$Res>
+abstract class _$$_UserPreferencesCopyWith<$Res>
     implements $UserPreferencesCopyWith<$Res> {
-  factory _$UserPreferencesCopyWith(
-          _UserPreferences value, $Res Function(_UserPreferences) then) =
-      __$UserPreferencesCopyWithImpl<$Res>;
+  factory _$$_UserPreferencesCopyWith(
+          _$_UserPreferences value, $Res Function(_$_UserPreferences) then) =
+      __$$_UserPreferencesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({bool? pinAuth, bool? deviceAuth});
 }
 
 /// @nodoc
-class __$UserPreferencesCopyWithImpl<$Res>
-    extends _$UserPreferencesCopyWithImpl<$Res>
-    implements _$UserPreferencesCopyWith<$Res> {
-  __$UserPreferencesCopyWithImpl(
-      _UserPreferences _value, $Res Function(_UserPreferences) _then)
-      : super(_value, (v) => _then(v as _UserPreferences));
+class __$$_UserPreferencesCopyWithImpl<$Res>
+    extends _$UserPreferencesCopyWithImpl<$Res, _$_UserPreferences>
+    implements _$$_UserPreferencesCopyWith<$Res> {
+  __$$_UserPreferencesCopyWithImpl(
+      _$_UserPreferences _value, $Res Function(_$_UserPreferences) _then)
+      : super(_value, _then);
 
-  @override
-  _UserPreferences get _value => super._value as _UserPreferences;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? pinAuth = freezed,
     Object? deviceAuth = freezed,
   }) {
-    return _then(_UserPreferences(
-      pinAuth: pinAuth == freezed
+    return _then(_$_UserPreferences(
+      pinAuth: freezed == pinAuth
           ? _value.pinAuth
           : pinAuth // ignore: cast_nullable_to_non_nullable
               as bool?,
-      deviceAuth: deviceAuth == freezed
+      deviceAuth: freezed == deviceAuth
           ? _value.deviceAuth
           : deviceAuth // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -131,9 +114,11 @@ class _$_UserPreferences implements _UserPreferences {
   factory _$_UserPreferences.fromJson(Map<String, dynamic> json) =>
       _$$_UserPreferencesFromJson(json);
 
-  @override //Allow PIN Authentication
+//Allow PIN Authentication
+  @override
   final bool? pinAuth;
-  @override //Allow biometrics
+//Allow biometrics
+  @override
   final bool? deviceAuth;
 
   @override
@@ -145,31 +130,32 @@ class _$_UserPreferences implements _UserPreferences {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserPreferences &&
-            const DeepCollectionEquality().equals(other.pinAuth, pinAuth) &&
-            const DeepCollectionEquality()
-                .equals(other.deviceAuth, deviceAuth));
+            other is _$_UserPreferences &&
+            (identical(other.pinAuth, pinAuth) || other.pinAuth == pinAuth) &&
+            (identical(other.deviceAuth, deviceAuth) ||
+                other.deviceAuth == deviceAuth));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(pinAuth),
-      const DeepCollectionEquality().hash(deviceAuth));
 
   @JsonKey(ignore: true)
   @override
-  _$UserPreferencesCopyWith<_UserPreferences> get copyWith =>
-      __$UserPreferencesCopyWithImpl<_UserPreferences>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, pinAuth, deviceAuth);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserPreferencesCopyWith<_$_UserPreferences> get copyWith =>
+      __$$_UserPreferencesCopyWithImpl<_$_UserPreferences>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserPreferencesToJson(this);
+    return _$$_UserPreferencesToJson(
+      this,
+    );
   }
 }
 
 abstract class _UserPreferences implements UserPreferences {
-  factory _UserPreferences({bool? pinAuth, bool? deviceAuth}) =
+  factory _UserPreferences({final bool? pinAuth, final bool? deviceAuth}) =
       _$_UserPreferences;
 
   factory _UserPreferences.fromJson(Map<String, dynamic> json) =
@@ -181,6 +167,6 @@ abstract class _UserPreferences implements UserPreferences {
   bool? get deviceAuth;
   @override
   @JsonKey(ignore: true)
-  _$UserPreferencesCopyWith<_UserPreferences> get copyWith =>
+  _$$_UserPreferencesCopyWith<_$_UserPreferences> get copyWith =>
       throw _privateConstructorUsedError;
 }

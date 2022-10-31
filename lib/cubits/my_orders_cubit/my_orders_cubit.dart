@@ -12,7 +12,7 @@ class MyOrdersCubit extends Cubit<MyOrdersState> {
     emit(MyOrdersState.loading());
     try {
       var response = await ApiService.getDataWithCustomerAuth(
-          path: '/customer/order/orders');
+          path: 'customer/order/orders');
       List data = response['data']['orders'];
       emit(MyOrdersState.success(
           List.generate(data.length, (index) => Order.fromJson(data[index]))));

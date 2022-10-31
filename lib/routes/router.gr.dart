@@ -11,67 +11,69 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i12;
-import 'package:flutter/cupertino.dart' as _i14;
-import 'package:flutter/material.dart' as _i13;
+import 'package:auto_route/auto_route.dart' as _i13;
+import 'package:flutter/cupertino.dart' as _i15;
+import 'package:flutter/material.dart' as _i14;
 
-import '../delivery/delivery_details_page.dart' as _i11;
+import '../delivery/delivery_details_page.dart' as _i12;
+import '../models/order/order.dart' as _i16;
 import '../ui/address/my_addresses_page.dart' as _i4;
 import '../ui/home/cart/cart_page.dart' as _i8;
 import '../ui/home/cart/order_success_page.dart' as _i6;
 import '../ui/home/expanded_categories_page.dart' as _i5;
 import '../ui/home/main_home_page.dart' as _i3;
-import '../ui/home/my_orders_page.dart' as _i10;
+import '../ui/home/my_orders/my_orders_page.dart' as _i10;
+import '../ui/home/my_orders/single_order_page.dart' as _i11;
 import '../ui/home/payments/mpesa_payment_page.dart' as _i9;
 import '../ui/home/payments/payment_options_page.dart' as _i7;
 import '../ui/login_page.dart' as _i2;
 import '../ui/splash_screen.dart' as _i1;
 
-class AppRouter extends _i12.RootStackRouter {
-  AppRouter([_i13.GlobalKey<_i13.NavigatorState>? navigatorKey])
+class AppRouter extends _i13.RootStackRouter {
+  AppRouter([_i14.GlobalKey<_i14.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i12.PageFactory> pagesMap = {
+  final Map<String, _i13.PageFactory> pagesMap = {
     SplashScreen.name: (routeData) {
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.SplashScreen(),
       );
     },
     LoginRoute.name: (routeData) {
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.LoginPage(),
       );
     },
     MainHomeRoute.name: (routeData) {
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i3.MainHomePage(),
       );
     },
     MyAddressesRoute.name: (routeData) {
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i4.MyAddressesPage(),
       );
     },
     ExpandedCategoriesRoute.name: (routeData) {
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i5.ExpandedCategoriesPage(),
       );
     },
     OrderSuccessRoute.name: (routeData) {
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i6.OrderSuccessPage(),
       );
     },
     PaymentOPtionsRoute.name: (routeData) {
       final args = routeData.argsAs<PaymentOPtionsRouteArgs>();
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i7.PaymentOPtionsPage(
           key: args.key,
@@ -80,14 +82,14 @@ class AppRouter extends _i12.RootStackRouter {
       );
     },
     CartRoute.name: (routeData) {
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i8.CartPage(),
       );
     },
     MpesaPaymentRoute.name: (routeData) {
       final args = routeData.argsAs<MpesaPaymentRouteArgs>();
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i9.MpesaPaymentPage(
           key: args.key,
@@ -97,16 +99,26 @@ class AppRouter extends _i12.RootStackRouter {
       );
     },
     MyOrdersRoute.name: (routeData) {
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i10.MyOrdersPage(),
       );
     },
+    SingleOrderRoute.name: (routeData) {
+      final args = routeData.argsAs<SingleOrderRouteArgs>();
+      return _i13.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: _i11.SingleOrderPage(
+          key: args.key,
+          order: args.order,
+        ),
+      );
+    },
     DeliveryDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<DeliveryDetailsRouteArgs>();
-      return _i12.MaterialPageX<dynamic>(
+      return _i13.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i11.DeliveryDetailsPage(
+        child: _i12.DeliveryDetailsPage(
           key: args.key,
           orderData: args.orderData,
         ),
@@ -115,52 +127,56 @@ class AppRouter extends _i12.RootStackRouter {
   };
 
   @override
-  List<_i12.RouteConfig> get routes => [
-        _i12.RouteConfig(
+  List<_i13.RouteConfig> get routes => [
+        _i13.RouteConfig(
           SplashScreen.name,
           path: '/',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
           LoginRoute.name,
           path: '/login-page',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
           MainHomeRoute.name,
           path: '/main-home-page',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
           MyAddressesRoute.name,
           path: '/my-addresses-page',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
           ExpandedCategoriesRoute.name,
           path: '/expanded-categories-page',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
           OrderSuccessRoute.name,
           path: '/order-success-page',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
           PaymentOPtionsRoute.name,
           path: '/payment-options-page',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
           CartRoute.name,
           path: '/cart-page',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
           MyAddressesRoute.name,
           path: '/my-addresses-page',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
           MpesaPaymentRoute.name,
           path: '/mpesa-payment-page',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
           MyOrdersRoute.name,
           path: '/my-orders-page',
         ),
-        _i12.RouteConfig(
+        _i13.RouteConfig(
+          SingleOrderRoute.name,
+          path: '/single-order-page',
+        ),
+        _i13.RouteConfig(
           DeliveryDetailsRoute.name,
           path: '/delivery-details-page',
         ),
@@ -169,7 +185,7 @@ class AppRouter extends _i12.RootStackRouter {
 
 /// generated route for
 /// [_i1.SplashScreen]
-class SplashScreen extends _i12.PageRouteInfo<void> {
+class SplashScreen extends _i13.PageRouteInfo<void> {
   const SplashScreen()
       : super(
           SplashScreen.name,
@@ -181,7 +197,7 @@ class SplashScreen extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LoginPage]
-class LoginRoute extends _i12.PageRouteInfo<void> {
+class LoginRoute extends _i13.PageRouteInfo<void> {
   const LoginRoute()
       : super(
           LoginRoute.name,
@@ -193,7 +209,7 @@ class LoginRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.MainHomePage]
-class MainHomeRoute extends _i12.PageRouteInfo<void> {
+class MainHomeRoute extends _i13.PageRouteInfo<void> {
   const MainHomeRoute()
       : super(
           MainHomeRoute.name,
@@ -205,7 +221,7 @@ class MainHomeRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.MyAddressesPage]
-class MyAddressesRoute extends _i12.PageRouteInfo<void> {
+class MyAddressesRoute extends _i13.PageRouteInfo<void> {
   const MyAddressesRoute()
       : super(
           MyAddressesRoute.name,
@@ -217,7 +233,7 @@ class MyAddressesRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.ExpandedCategoriesPage]
-class ExpandedCategoriesRoute extends _i12.PageRouteInfo<void> {
+class ExpandedCategoriesRoute extends _i13.PageRouteInfo<void> {
   const ExpandedCategoriesRoute()
       : super(
           ExpandedCategoriesRoute.name,
@@ -229,7 +245,7 @@ class ExpandedCategoriesRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.OrderSuccessPage]
-class OrderSuccessRoute extends _i12.PageRouteInfo<void> {
+class OrderSuccessRoute extends _i13.PageRouteInfo<void> {
   const OrderSuccessRoute()
       : super(
           OrderSuccessRoute.name,
@@ -241,9 +257,9 @@ class OrderSuccessRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.PaymentOPtionsPage]
-class PaymentOPtionsRoute extends _i12.PageRouteInfo<PaymentOPtionsRouteArgs> {
+class PaymentOPtionsRoute extends _i13.PageRouteInfo<PaymentOPtionsRouteArgs> {
   PaymentOPtionsRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     required Map<String, dynamic> orderData,
   }) : super(
           PaymentOPtionsRoute.name,
@@ -263,7 +279,7 @@ class PaymentOPtionsRouteArgs {
     required this.orderData,
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final Map<String, dynamic> orderData;
 
@@ -275,7 +291,7 @@ class PaymentOPtionsRouteArgs {
 
 /// generated route for
 /// [_i8.CartPage]
-class CartRoute extends _i12.PageRouteInfo<void> {
+class CartRoute extends _i13.PageRouteInfo<void> {
   const CartRoute()
       : super(
           CartRoute.name,
@@ -287,9 +303,9 @@ class CartRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.MpesaPaymentPage]
-class MpesaPaymentRoute extends _i12.PageRouteInfo<MpesaPaymentRouteArgs> {
+class MpesaPaymentRoute extends _i13.PageRouteInfo<MpesaPaymentRouteArgs> {
   MpesaPaymentRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     required String orderReference,
     required Map<String, dynamic> data,
   }) : super(
@@ -312,7 +328,7 @@ class MpesaPaymentRouteArgs {
     required this.data,
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final String orderReference;
 
@@ -326,7 +342,7 @@ class MpesaPaymentRouteArgs {
 
 /// generated route for
 /// [_i10.MyOrdersPage]
-class MyOrdersRoute extends _i12.PageRouteInfo<void> {
+class MyOrdersRoute extends _i13.PageRouteInfo<void> {
   const MyOrdersRoute()
       : super(
           MyOrdersRoute.name,
@@ -337,11 +353,45 @@ class MyOrdersRoute extends _i12.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i11.DeliveryDetailsPage]
+/// [_i11.SingleOrderPage]
+class SingleOrderRoute extends _i13.PageRouteInfo<SingleOrderRouteArgs> {
+  SingleOrderRoute({
+    _i15.Key? key,
+    required _i16.Order order,
+  }) : super(
+          SingleOrderRoute.name,
+          path: '/single-order-page',
+          args: SingleOrderRouteArgs(
+            key: key,
+            order: order,
+          ),
+        );
+
+  static const String name = 'SingleOrderRoute';
+}
+
+class SingleOrderRouteArgs {
+  const SingleOrderRouteArgs({
+    this.key,
+    required this.order,
+  });
+
+  final _i15.Key? key;
+
+  final _i16.Order order;
+
+  @override
+  String toString() {
+    return 'SingleOrderRouteArgs{key: $key, order: $order}';
+  }
+}
+
+/// generated route for
+/// [_i12.DeliveryDetailsPage]
 class DeliveryDetailsRoute
-    extends _i12.PageRouteInfo<DeliveryDetailsRouteArgs> {
+    extends _i13.PageRouteInfo<DeliveryDetailsRouteArgs> {
   DeliveryDetailsRoute({
-    _i14.Key? key,
+    _i15.Key? key,
     required Map<String, dynamic> orderData,
   }) : super(
           DeliveryDetailsRoute.name,
@@ -361,7 +411,7 @@ class DeliveryDetailsRouteArgs {
     required this.orderData,
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
   final Map<String, dynamic> orderData;
 

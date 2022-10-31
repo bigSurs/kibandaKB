@@ -18,6 +18,8 @@ class ApiService {
   ///Returns a dynamic
   ///
   ///
+  ///
+  ///
   static Future<dynamic> post(
       {required data,
       required String path,
@@ -36,7 +38,22 @@ class ApiService {
       throw apiResponse.message!;
     }
   }
-
+  static Future<dynamic> getDataNoAuth(
+      {required String path,
+      Options? options,
+      Map<String, dynamic>? queries}) async {
+    try {
+      var response = await restClient.dioNoAuth!.get(
+          '${restClient.customerURL}$path',
+          options: options,
+          queryParameters: queries);
+      return response.data;
+    } on DioError catch (error) {
+      throw error.message;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
   static Future<Map<String, dynamic>> postDataMpesa({
     required Map<String, dynamic> data,
     required String path,
