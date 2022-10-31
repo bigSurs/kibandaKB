@@ -10,6 +10,7 @@ import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/address/delivery_address_selection_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/authentication/session_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/delivery_timeslot/delivery_timeslot_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/payments/lipa_na_mpesa_cubit/lipa_na_mpesa_cubit.dart';
@@ -55,6 +56,9 @@ class KwikBasketKibandaApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => TokenCubit('')),
+        BlocProvider(
+          create: (context) => SessionCubit(''),
+        ),
         BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
         BlocProvider(create: (context) => CustomerCookieCubit('')),
         BlocProvider(create: (context) => CustomerTokenCubit('')),
@@ -75,7 +79,7 @@ class KwikBasketKibandaApp extends StatelessWidget {
           create: (context) =>
               SelectedPaymentMethodCubit(PaymentMethod(code: 'cod')),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => LipaNaMpesaCubit(),
         ),
         BlocProvider(create: (context) => SaveToBasketCubit()),

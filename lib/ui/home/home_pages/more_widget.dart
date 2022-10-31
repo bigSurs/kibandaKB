@@ -4,7 +4,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kibanda_kb/configuration/configuration.dart';
+import 'package:kibanda_kb/cubits/cubit/authentication/session_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/authentication/token_cubit.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -25,11 +28,11 @@ class MoreWidget extends StatelessWidget {
             SizedBox(
               width: 4,
             ),
-            Text(
-              'Hi',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
-            ),
+            // Text(
+            //   'Hi',
+            //   style:
+            //       TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
+            // ),
           ],
         ),
         actions: [
@@ -101,14 +104,14 @@ class MoreWidget extends StatelessWidget {
                                       Expanded(
                                           child: CupertinoButton(
                                               onPressed: () async {
-                                                // await context
-                                                //     .read<TokenCubit>()
-                                                //     .clear();
+                                                await context
+                                                    .read<TokenCubit>()
+                                                    .clear();
                                                 // await context
                                                 //     .read<SessionCubit>()
                                                 //     .clear();
-                                                // AutoRouter.of(context)
-                                                //     .replace(SplashRoute());
+                                                AutoRouter.of(context)
+                                                    .replace(SplashScreen());
                                               },
                                               padding: const EdgeInsets.all(0),
                                               child: Text(
@@ -152,7 +155,7 @@ class MoreWidget extends StatelessWidget {
                 AutoRouter.of(context).push(MyOrdersRoute());
               },
               leading: const Icon(
-                FontAwesomeIcons.shopSlash,
+                FontAwesomeIcons.history,
                 color: Palette.orangeColor,
               ),
               title: const Text(
@@ -249,26 +252,27 @@ class MoreWidget extends StatelessWidget {
             // ),
             //
             Divider(),
-            ListTile(
-              onTap: () async {
-                await launch(
-                    "https://www.kwikbasket.com/index.php?path=common/home/about_us#:~:text=KwikBasket's%20mission%20is%20to%20bring,Fruits%20%26%20Vegetables%20to%20our%20Customers.");
-              },
-              leading: Icon(
-                CupertinoIcons.info,
-                color: Palette.placeholderGrey,
-              ),
-              title: Text(
-                'About Us',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-              ),
-              subtitle: Text(
-                'Know us better, read the T&C and policies',
-                style: TextStyle(fontSize: 12),
-              ),
-              trailing: Icon(CupertinoIcons.chevron_right,
-                  color: Palette.orangeColor),
-            ),
+            //   ListTile(
+            //     onTap: () async {
+            //       await launch(
+            //           "https://www.kwikbasket.com/index.php?path=common/home/about_us#:~:text=KwikBasket's%20mission%20is%20to%20bring,Fruits%20%26%20Vegetables%20to%20our%20Customers.");
+            //     },
+            //     leading: Icon(
+            //       CupertinoIcons.info,
+            //       color: Palette.placeholderGrey,
+            //     ),
+            //     title: Text(
+            //       'About Us',
+            //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+            //     ),
+            //     subtitle: Text(
+            //       'Know us better, read the T&C and policies',
+            //       style: TextStyle(fontSize: 12),
+            //     ),
+            //     trailing: Icon(CupertinoIcons.chevron_right,
+            //         color: Palette.orangeColor),
+            //   ),
+            // ],
           ],
         ),
       ),

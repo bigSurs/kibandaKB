@@ -1,7 +1,6 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:kibanda_kb/models/user_preferences/user_preferences.dart';
 
-
 class UserPreferencesCubit extends HydratedCubit<UserPreferences> {
   UserPreferencesCubit(UserPreferences state) : super(state);
 

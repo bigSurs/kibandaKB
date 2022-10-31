@@ -4,7 +4,7 @@ class TokenCubit extends HydratedCubit<String> {
   TokenCubit(String state) : super(state);
 
   @override
-  clear() async {
+  Future<void> clear() async {
     emit('');
   }
 
