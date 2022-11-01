@@ -5,7 +5,6 @@ import 'package:kibanda_kb/models/order/order.dart';
 import 'package:kibanda_kb/models/order/order_detail.dart';
 import 'package:kibanda_kb/services/api_service/api_service.dart';
 
-
 import '../../utilities/rest_client/rest_client.dart';
 
 part 'order_details_state.dart';
