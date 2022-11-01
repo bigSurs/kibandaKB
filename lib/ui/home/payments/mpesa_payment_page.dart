@@ -117,12 +117,9 @@ class MpesaPaymentPage extends StatelessWidget {
                             color: Palette.orangeColor,
                             onPressed: () async {
                               if (formKey.currentState!.saveAndValidate()) {
-                                await context.read<CartCubit>().updateCart();
-                                context.read<LipaNaMpesaCubit>().lipaNaMpesa({
-                                  ...formKey.currentState!.value,
-                                  'payment_method': 'mPesa Online',
-                                  'payment_method_code': 'mpesa',
-                                  'order_reference_number[75]': orderReference,
+                                AutoRouter.of(context).pop({
+                                  'mpesa_mobile_number': formKey
+                                      .currentState!.value['mpesa_phonenumber']
                                 });
                               }
                             });

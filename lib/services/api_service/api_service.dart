@@ -38,6 +38,7 @@ class ApiService {
       throw apiResponse.message!;
     }
   }
+
   static Future<dynamic> getDataNoAuth(
       {required String path,
       Options? options,
@@ -54,13 +55,14 @@ class ApiService {
       throw e.toString();
     }
   }
+
   static Future<Map<String, dynamic>> postDataMpesa({
     required Map<String, dynamic> data,
     required String path,
   }) async {
     try {
       var response =
-          await restClient.dio!.post('${restClient.customerURL}$path',
+          await restClientCustomer.dio!.post('${restClient.customerURL}$path',
               data: data,
               options: Options(headers: {
                 'Content-Type':
