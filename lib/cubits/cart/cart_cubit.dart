@@ -45,7 +45,8 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
       });
     }
 
-    await RestService().postData(data: data, path: 'customer/cart/cartproduct');
+    await RestService()
+        .postDataCustomer(data: data, path: 'customer/cart/cartproduct');
   }
 
   num getBalance() {

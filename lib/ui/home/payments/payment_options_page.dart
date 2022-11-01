@@ -413,10 +413,14 @@ class _PaymentOPtionsPageState extends State<PaymentOPtionsPage> {
                             'mpesa_refrence_id':
                                 widget.orderData['order_reference_number']
                           });
-                          AutoRouter.of(context).push(MpesaPaymentRoute(
-                              orderReference:
-                                  widget.orderData['order_reference_number'],
-                              data: data));
+                          // TODO: Add mpesa payment
+                          var phoneData = await AutoRouter.of(context).push(
+                              MpesaPaymentRoute(
+                                  orderReference: widget
+                                      .orderData['order_reference_number'],
+                                  data: data));
+                          data.addAll(phoneData as Map<String, dynamic>);
+                          context.read<PlaceOrderCubit>().placeOrderMpesa(data);
                         } else {
                           context.read<PlaceOrderCubit>().placeOrder(data);
                         }

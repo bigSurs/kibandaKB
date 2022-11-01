@@ -8,11 +8,28 @@ part 'place_order_cubit.freezed.dart';
 
 class PlaceOrderCubit extends Cubit<PlaceOrderState> {
   PlaceOrderCubit() : super(PlaceOrderState.initial());
+  placeOrderMpesa(data) async {
+    emit(PlaceOrderState.loading());
+    try {
+      var response = await RestService().postDataCustomer(
+          data: data, path: 'customer/order/mpesacheckoutnew');
+      if (response['data']['status']) {
+        /// Log the event
+        // FirebaseAnalyticsService.logPlaceOrder(totalPrice:data['total'] );
+        emit(PlaceOrderState.success());
+      } else {
+        emit(PlaceOrderState.failed('An error occured'));
+      }
+    } catch (e) {
+      emit(PlaceOrderState.failed(e.toString()));
+    }
+  }
+
   placeOrder(data) async {
     emit(PlaceOrderState.loading());
     try {
       var response = await RestService()
-          .postData(data: data, path: 'customer/order/ordernew');
+          .postDataCustomer(data: data, path: 'customer/order/ordernew');
       if (response['data']['status']) {
         /// Log the event
         // FirebaseAnalyticsService.logPlaceOrder(totalPrice:data['total'] );
