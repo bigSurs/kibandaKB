@@ -95,9 +95,14 @@ class SingleOrderPage extends StatelessWidget {
                   height: 40,
                   padding: EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white),
-                  child: Center(child: Text('Order Summary')),
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.white,
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Order Summary',
+                    style: TextStyle(color: Palette.greenColor),
+                  )),
                 ),
                 Container(
                   height: 40,
@@ -105,7 +110,11 @@ class SingleOrderPage extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.white),
-                  child: Center(child: Text('Product Details')),
+                  child: Center(
+                      child: Text(
+                    'Product Details',
+                    style: TextStyle(color: Palette.greenColor),
+                  )),
                 ),
               ]),
         ),

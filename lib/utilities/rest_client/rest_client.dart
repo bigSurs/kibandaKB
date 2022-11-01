@@ -25,6 +25,7 @@ class RestClient {
   /// Instantiate the restclient class
   void create([BaseOptions? options]) {
     _dio = Dio(options);
+    _dioNoAUth = Dio();
 
     ///Add the interceptors
     // The [AuthInterceptor] to authenticate all requests
