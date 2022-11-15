@@ -162,6 +162,7 @@ class PendingWidget extends StatelessWidget {
                         child: FadeInAnimation(
                             child: CardTwo(
                           pendingTransactions: pendingTransactions[index],
+                          //TODO: ORDER REFERENCE CHECKUP HERE
                           orderReference: '',
                           orderData: orderData,
                         ))),
@@ -556,7 +557,6 @@ class CardTwo extends StatelessWidget {
                         var phoneData = AutoRouter.of(context).push(
                             MpesaPaymentRoute(orderReference: x, data: data));
                         data.addAll(phoneData as Map<String, dynamic>);
-                        context.read<PlaceOrderCubit>().placeOrderMpesa(data);
                       },
                       child: Container(
                         padding:
