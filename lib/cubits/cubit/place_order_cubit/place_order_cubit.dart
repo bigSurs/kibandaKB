@@ -13,7 +13,7 @@ class PlaceOrderCubit extends Cubit<PlaceOrderState> {
     try {
       var response = await RestService().postDataCustomer(
           data: data, path: 'customer/order/mpesacheckoutnew');
-      if (response['data']['status']) {
+      if (response['status'] == 200) {
         /// Log the event
         // FirebaseAnalyticsService.logPlaceOrder(totalPrice:data['total'] );
         emit(PlaceOrderState.success());

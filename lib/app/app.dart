@@ -20,6 +20,7 @@ import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/selected_p
 import 'package:kibanda_kb/cubits/cubit/place_order_cubit/place_order_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/save_to_basket_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/ui_cubits/home_bottom_index_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/ui_cubits/transaction_top_index_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/validate_order_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/wishlist_cubit.dart';
 import 'package:kibanda_kb/cubits/customer_address/customer_address_cubit.dart';
@@ -29,6 +30,7 @@ import 'package:kibanda_kb/cubits/my_orders_cubit/my_orders_cubit.dart';
 import 'package:kibanda_kb/cubits/order_details_cubit/order_details_cubit.dart';
 import 'package:kibanda_kb/cubits/select_date_timeslot/select_date_cubit.dart';
 import 'package:kibanda_kb/cubits/select_date_timeslot/select_timeslot_cubit.dart';
+import 'package:kibanda_kb/cubits/transactions/transaction_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/models/payment_method/payment_method.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
@@ -70,6 +72,9 @@ class KwikBasketKibandaApp extends StatelessWidget {
             create: (context) =>
                 FeaturedProductCubit()..getFeaturedProducts(context)),
         BlocProvider(create: (context) => HomeBottomIndexCubit(0)),
+        BlocProvider(create: (context) => TransactionIndexCubit(0)),
+        BlocProvider(
+            create: (context) => TransactionCubit()..getallTransactions()),
         BlocProvider(create: (context) => CartCubit([])),
         BlocProvider(create: (context) => CartProductMetadataCubit([])),
         BlocProvider(create: (context) => SelectedVariationCubit()),

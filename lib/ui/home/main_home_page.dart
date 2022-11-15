@@ -784,6 +784,29 @@ class MoreWidget extends StatelessWidget {
                 color: Palette.orangeColor,
               ),
             ),
+            ListTile(
+              onTap: () {
+                // AutoRouter.of(context).push(TransactionsRoute());
+                //TODO: ADD required params here 
+                AutoRouter.of(context).push(TransactionRoute(orderData: {}));
+              },
+              leading: const Icon(
+                FontAwesomeIcons.moneyBillWheat,
+                color: Palette.orangeColor,
+              ),
+              title: const Text(
+                'Transactions',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+              ),
+              subtitle: const Text(
+                'Track your order payments',
+                style: TextStyle(),
+              ),
+              trailing: const Icon(
+                CupertinoIcons.chevron_right,
+                color: Palette.orangeColor,
+              ),
+            ),
 
             // ListTile(
             //   onTap: () {

@@ -1,189 +1,191 @@
-// import 'dart:convert';
-// import 'dart:io';
-// import 'dart:math';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
 
-// import 'package:connectivity/connectivity.dart';
-// import 'package:device_info/device_info.dart';
-// import 'package:flutter_downloader/flutter_downloader.dart';
-// import 'package:kwik_basket_customer/app/alert/alert.dart';
-// import 'package:kwik_basket_customer/app/constants/constants.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:intl/intl.dart';
-// import 'package:kwik_basket_customer/app/local/app_single_tone.dart';
-// import 'package:kwik_basket_customer/app/widgets/AppConstants.dart';
-// import 'package:location/location.dart' as loc;
-// import 'package:permission_handler/permission_handler.dart';
-// import 'package:path_provider/path_provider.dart';
+import 'package:connectivity/connectivity.dart';
+import 'package:device_info/device_info.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:kibanda_kb/AppConstants.dart';
+import 'package:kibanda_kb/app/alert/alert.dart';
 
-// // Date Time
-// const formatYYmd = 'dd MMM, yyyy';
-// const formatYMD = 'yyyy-MM-dd';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
+import 'package:kibanda_kb/utilities/toast/toast.dart';
 
-// String getDateByFormat(DateTime dateTime) {
-//   return DateFormat(formatYYmd).format(dateTime);
-// }
+import 'package:location/location.dart' as loc;
+import 'package:permission_handler/permission_handler.dart';
+import 'package:path_provider/path_provider.dart';
 
-// String getDate(DateTime dateTime) {
-//   return DateFormat(formatYMD).format(dateTime);
-// }
+// Date Time
+const formatYYmd = 'dd MMM, yyyy';
+const formatYMD = 'yyyy-MM-dd';
+const message_no_net = 'Network connection required to fetch data.';
 
-// DateTime getDateTime(dateTime) {
-//   return DateFormat("yyyy-MM-dd").parse(dateTime);
-// }
-// num? getNumPrice(String str) {
-//   return num.tryParse(str.toString().replaceAll(',', ''));
-// }
+String getDateByFormat(DateTime dateTime) {
+  return DateFormat(formatYYmd).format(dateTime);
+}
 
-// num? getNumPrice2(String str) {
-//   var str2 = num.tryParse(str.replaceAll('KES ', ''));
-//   return num.tryParse(str2.toString().replaceAll(',', ''));
-// }
+String getDate(DateTime dateTime) {
+  return DateFormat(formatYMD).format(dateTime);
+}
 
-// String numberFunction(number) {
-//   NumberFormat format =
-//       NumberFormat.currency(decimalDigits: 1, customPattern: "0.0");
+DateTime getDateTime(dateTime) {
+  return DateFormat("yyyy-MM-dd").parse(dateTime);
+}
 
-//   String amountString = format.format(number);
-//   return amountString;
-// }
+num? getNumPrice(String str) {
+  return num.tryParse(str.toString().replaceAll(',', ''));
+}
 
-// String numberCartFunction(number) {
-//   NumberFormat format =
-//       NumberFormat.currency(decimalDigits: 2, customPattern: "0.00");
+num? getNumPrice2(String str) {
+  var str2 = num.tryParse(str.replaceAll('KES ', ''));
+  return num.tryParse(str2.toString().replaceAll(',', ''));
+}
 
-//   String amountString = format.format(number);
-//   return amountString;
-// }
+String numberFunction(number) {
+  NumberFormat format =
+      NumberFormat.currency(decimalDigits: 1, customPattern: "0.0");
 
-// num? decimalToNum(number) {
-//   NumberFormat format = NumberFormat();
-//   format.minimumFractionDigits = 0;
+  String amountString = format.format(number);
+  return amountString;
+}
 
-//   String str = format.format(number);
-//   return num.tryParse(str);
-// }
+String numberCartFunction(number) {
+  NumberFormat format =
+      NumberFormat.currency(decimalDigits: 2, customPattern: "0.00");
 
-// // Connectivity
+  String amountString = format.format(number);
+  return amountString;
+}
 
-// Connectivity connectivity = Connectivity();
+num? decimalToNum(number) {
+  NumberFormat format = NumberFormat();
+  format.minimumFractionDigits = 0;
 
-// Future<bool> isConnectNetworkWithMessage(BuildContext context) async {
-//   var connectivityResult = await connectivity.checkConnectivity();
-//   bool isConnect = getConnectionValue(connectivityResult);
-//   if (!isConnect) {
-//     showMaterialDialogWithMessage(
-//       context,
-//       (Constants.message_no_net),
-//     );
-//   }
-//   return isConnect;
-// }
+  String str = format.format(number);
+  return num.tryParse(str);
+}
 
-// bool getConnectionValue(var connectivityResult) {
-//   bool status = false;
-//   switch (connectivityResult) {
-//     case ConnectivityResult.mobile:
-//       status = true;
-//       break;
-//     case ConnectivityResult.wifi:
-//       status = true;
-//       break;
-//     case ConnectivityResult.none:
-//       status = false;
-//       break;
-//     default:
-//       status = false;
-//       break;
-//   }
-//   return status;
-// }
+// Connectivity
 
-// Future<bool> isConnectNetwork() async {
-//   var connectivityResult = await connectivity.checkConnectivity();
-//   bool isConnect = getConnectionValue(connectivityResult);
-//   return isConnect;
-// }
+Connectivity connectivity = Connectivity();
 
-// // Keyboard
+Future<bool> isConnectNetworkWithMessage(BuildContext context) async {
+  var connectivityResult = await connectivity.checkConnectivity();
+  bool isConnect = getConnectionValue(connectivityResult);
+  if (!isConnect) {
+    AppToast.showToast(
+        message: 'Network connection required to fetch data', isError: false);
+  }
+  return isConnect;
+}
 
-// openKeyBoard(BuildContext context, FocusNode focusNode) {
-//   FocusScope.of(context).requestFocus(focusNode);
-//   // SystemChannels.textInput.invokeMethod('TextInput.hide');
-// }
+bool getConnectionValue(var connectivityResult) {
+  bool status = false;
+  switch (connectivityResult) {
+    case ConnectivityResult.mobile:
+      status = true;
+      break;
+    case ConnectivityResult.wifi:
+      status = true;
+      break;
+    case ConnectivityResult.none:
+      status = false;
+      break;
+    default:
+      status = false;
+      break;
+  }
+  return status;
+}
 
-// // Platform channel
+Future<bool> isConnectNetwork() async {
+  var connectivityResult = await connectivity.checkConnectivity();
+  bool isConnect = getConnectionValue(connectivityResult);
+  return isConnect;
+}
 
-// const platform = const MethodChannel('flutter.native/app_route');
+// Keyboard
 
-// goToMainNativePage() async {
-//   // ignore: unused_local_variable
-//   var result;
-//   try {
-//     result = await platform.invokeMethod(Constants.native_go_to_main_page);
-//   } on PlatformException catch (e) {
-//     print(e);
-//   }
-// }
+openKeyBoard(BuildContext context, FocusNode focusNode) {
+  FocusScope.of(context).requestFocus(focusNode);
+  // SystemChannels.textInput.invokeMethod('TextInput.hide');
+}
 
-// // Files
+// Platform channel
 
-// String getFileNameFromPath(String file) {
-//   String path = file;
-//   return path.substring(path.lastIndexOf("/") + 1, path.length);
-// }
+const platform = const MethodChannel('flutter.native/app_route');
 
-// Future<String> getDeviceId() async {
-//   var deviceInfo = DeviceInfoPlugin();
-//   if (Platform.isIOS) {
-//     var iosDeviceInfo = await deviceInfo.iosInfo;
-//     return iosDeviceInfo.identifierForVendor; // unique ID on iOS
-//   } else {
-//     var androidDeviceInfo = await deviceInfo.androidInfo;
-//     return androidDeviceInfo.androidId; // unique ID on Android
-//   }
-// }
+goToMainNativePage() async {
+  // ignore: unused_local_variable
+  var result;
+  try {
+    result = await platform.invokeMethod(
+        AppToast.showToast(message: 'native_go_to_main_page', isError: false));
+  } on PlatformException catch (e) {
+    print(e);
+  }
+}
 
-// Future<loc.LocationData> getLoaction() async {
-//   loc.Location location = new loc.Location();
+// Files
 
-//   bool _serviceEnabled;
+String getFileNameFromPath(String file) {
+  String path = file;
+  return path.substring(path.lastIndexOf("/") + 1, path.length);
+}
 
-//   _serviceEnabled = await location.serviceEnabled();
-//   if (!_serviceEnabled) {
-//     _serviceEnabled = await location.requestService();
-//     if (!_serviceEnabled) {
-//       throw "Service not enabled";
-//     }
-//   }
+Future<String> getDeviceId() async {
+  var deviceInfo = DeviceInfoPlugin();
+  if (Platform.isIOS) {
+    var iosDeviceInfo = await deviceInfo.iosInfo;
+    return iosDeviceInfo.identifierForVendor; // unique ID on iOS
+  } else {
+    var androidDeviceInfo = await deviceInfo.androidInfo;
+    return androidDeviceInfo.androidId; // unique ID on Android
+  }
+}
 
-//   return await location.getLocation();
-// }
+Future<loc.LocationData> getLoaction() async {
+  loc.Location location = new loc.Location();
 
-// Future<bool> isLocationPermission() async {
-//   if (await Permission.location.isGranted) {
-//     return true;
-//   }
+  bool _serviceEnabled;
 
-//   if (await Permission.location.isDenied) {
-//     return await Permission.location.request().isGranted;
-//   }
-//   return false;
-// }
+  _serviceEnabled = await location.serviceEnabled();
+  if (!_serviceEnabled) {
+    _serviceEnabled = await location.requestService();
+    if (!_serviceEnabled) {
+      throw "Service not enabled";
+    }
+  }
 
-// Future<bool> isStoragePermission() async {
-//   if (await Permission.storage.isDenied) {
-//     await Permission.storage.request();
-//   }
-//   return true;
-// }
+  return await location.getLocation();
+}
 
-// String generateRandomString(int len) {
-//   var r = Random();
-//   const _chars =
-//       'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-//   return List.generate(len, (index) => _chars[r.nextInt(_chars.length)]).join();
-// }
+Future<bool> isLocationPermission() async {
+  if (await Permission.location.isGranted) {
+    return true;
+  }
+
+  if (await Permission.location.isDenied) {
+    return await Permission.location.request().isGranted;
+  }
+  return false;
+}
+
+Future<bool> isStoragePermission() async {
+  if (await Permission.storage.isDenied) {
+    await Permission.storage.request();
+  }
+  return true;
+}
+
+String generateRandomString(int len) {
+  var r = Random();
+  const _chars =
+      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+  return List.generate(len, (index) => _chars[r.nextInt(_chars.length)]).join();
+}
 
 // void downloadFunction(url, context) async {
 //   if (await Permission.storage.isDenied) {
@@ -201,7 +203,7 @@
 //     if (!hasExisted) {
 //       savedDir.create();
 //     }
-//     var header = APIRoutes.x_user_header;
+//     var header = {'X-User': 'customer'};
 //     header.addAll({"Authorization": AppSingleTone().userToken!});
 //     await FlutterDownloader.enqueue(
 //       url: "$url",
@@ -217,8 +219,8 @@
 //   print(AppSingleTone().userToken);
 // }
 
-// extension KBStringExtensions on String {
-//   String toBase64() {
-//     return base64.encode(utf8.encode(this));
-//   }
-// }
+extension KBStringExtensions on String {
+  String toBase64() {
+    return base64.encode(utf8.encode(this));
+  }
+}

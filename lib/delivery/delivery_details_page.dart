@@ -48,7 +48,8 @@ class DeliveryDetailsPage extends StatelessWidget {
               });
         },
         builder: (context, state) {
-          return state.maybeWhen(orElse: () {
+          return state.maybeWhen(
+            orElse: () {
             return Container();
           }, loading: () {
             return const Center(
@@ -71,51 +72,6 @@ class DeliveryDetailsPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  //   child: Text(
-                  //     'Choose your mode of delivery',
-                  //     style:
-                  //         TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  //   ),
-                  // ),
-                  // SizedBox(
-                  //   height: 12,
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  //   child: Text(
-                  //     'By default, the delivery mode will be standard',
-                  //     style: TextStyle(
-                  //       fontSize: 14,
-                  //     ),
-                  //   ),
-                  // ),
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  //   child: Row(
-                  //     children: [
-                  //       ModeOfDeliveryWidget(
-                  //           express: false,
-                  //           active: context
-                  //                   .watch<StandardExpressDeliveryModeCubit>()
-                  //                   .state ==
-                  //               true),
-                  //       SizedBox(
-                  //         width: 16,
-                  //       ),
-                  //       ModeOfDeliveryWidget(
-                  //           express: true,
-                  //           active: context
-                  //                   .watch<StandardExpressDeliveryModeCubit>()
-                  //                   .state ==
-                  //               false),
-                  //     ],
-                  //   ),
-                  // ),
                   SizedBox(
                     height: 32,
                   ),
@@ -194,7 +150,6 @@ class DeliveryDetailsPage extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: AnimatedContainer(

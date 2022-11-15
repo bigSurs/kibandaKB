@@ -43,10 +43,14 @@ class MpesaPaymentPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
-                  SvgPicture.asset(
-                    'assets/svgs/mpesa_logo.svg',
+                  Image.asset(
+                    'assets/mpesa.png',
                     height: 200,
                   ),
+                  // SvgPicture.asset(
+                  //   'assets/svgs/mpesa_logo.svg',
+                  //   height: 200,
+                  // ),
                   SizedBox(
                     height: 30,
                   ),

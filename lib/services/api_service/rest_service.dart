@@ -81,7 +81,7 @@ class RestService {
         maxWidth: 90));
     try {
       var response = await dio.get('${restClient.customerURL}$path',
-          queryParameters: queries!,
+          queryParameters: queries,
           options: Options(headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'X-User': 'customer',

@@ -400,6 +400,7 @@ class _PaymentOPtionsPageState extends State<PaymentOPtionsPage> {
                                 .title ??
                             '',
                       });
+                     
                       if (context.read<HybridSelectedCubit>().state) {
                         if (context.read<HybridTypeCubit>().state == 'mpesa') {
                         } else {}
@@ -594,10 +595,14 @@ class MpesaOnlinePaymentWidget extends StatelessWidget {
         ),
         title: Row(
           children: [
-            SvgPicture.asset(
-              'assets/svgs/mpesa_logo.svg',
+            Image.asset(
+              'assets/mpesa.png',
               height: 50,
             ),
+            // SvgPicture.asset(
+            //   'assets/svgs/mpesa_logo.svg',
+            //   height: 50,
+            // ),
             Expanded(child: Container())
           ],
         ),
@@ -634,8 +639,8 @@ class MpesaOnDeliveryPaymentWidget extends StatelessWidget {
         ),
         title: Row(
           children: [
-            SvgPicture.asset(
-              'assets/svgs/mpesa_logo.svg',
+            Image.asset(
+              'assets/mpesa.png',
               height: 50,
             ),
             Expanded(child: Container())
