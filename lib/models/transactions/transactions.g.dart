@@ -8,7 +8,7 @@ part of 'transactions.dart';
 
 _$_Transactions _$$_TransactionsFromJson(Map<String, dynamic> json) =>
     _$_Transactions(
-      orderId: json['orderId'] as String?,
+      order_id: json['order_id'] as String?,
       paymentMethod: json['paymentMethod'] as String?,
       date_added: json['date_added'] as String?,
       currency_code: json['currency_code'] as String?,
@@ -21,7 +21,7 @@ _$_Transactions _$$_TransactionsFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_TransactionsToJson(_$_Transactions instance) =>
     <String, dynamic>{
-      'orderId': instance.orderId,
+      'order_id': instance.order_id,
       'paymentMethod': instance.paymentMethod,
       'date_added': instance.date_added,
       'currency_code': instance.currency_code,

@@ -20,7 +20,7 @@ Transactions _$TransactionsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Transactions {
-  String? get orderId => throw _privateConstructorUsedError;
+  String? get order_id => throw _privateConstructorUsedError;
   String? get paymentMethod => throw _privateConstructorUsedError;
   String? get date_added => throw _privateConstructorUsedError;
   String? get currency_code => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $TransactionsCopyWith<$Res> {
       _$TransactionsCopyWithImpl<$Res, Transactions>;
   @useResult
   $Res call(
-      {String? orderId,
+      {String? order_id,
       String? paymentMethod,
       String? date_added,
       String? currency_code,
@@ -67,7 +67,7 @@ class _$TransactionsCopyWithImpl<$Res, $Val extends Transactions>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orderId = freezed,
+    Object? order_id = freezed,
     Object? paymentMethod = freezed,
     Object? date_added = freezed,
     Object? currency_code = freezed,
@@ -78,9 +78,9 @@ class _$TransactionsCopyWithImpl<$Res, $Val extends Transactions>
     Object? shipping_address = freezed,
   }) {
     return _then(_value.copyWith(
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
+      order_id: freezed == order_id
+          ? _value.order_id
+          : order_id // ignore: cast_nullable_to_non_nullable
               as String?,
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
@@ -127,7 +127,7 @@ abstract class _$$_TransactionsCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? orderId,
+      {String? order_id,
       String? paymentMethod,
       String? date_added,
       String? currency_code,
@@ -149,7 +149,7 @@ class __$$_TransactionsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orderId = freezed,
+    Object? order_id = freezed,
     Object? paymentMethod = freezed,
     Object? date_added = freezed,
     Object? currency_code = freezed,
@@ -160,9 +160,9 @@ class __$$_TransactionsCopyWithImpl<$Res>
     Object? shipping_address = freezed,
   }) {
     return _then(_$_Transactions(
-      orderId: freezed == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
+      order_id: freezed == order_id
+          ? _value.order_id
+          : order_id // ignore: cast_nullable_to_non_nullable
               as String?,
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
@@ -204,7 +204,7 @@ class __$$_TransactionsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Transactions implements _Transactions {
   _$_Transactions(
-      {this.orderId,
+      {this.order_id,
       this.paymentMethod,
       this.date_added,
       this.currency_code,
@@ -218,7 +218,7 @@ class _$_Transactions implements _Transactions {
       _$$_TransactionsFromJson(json);
 
   @override
-  final String? orderId;
+  final String? order_id;
   @override
   final String? paymentMethod;
   @override
@@ -238,7 +238,7 @@ class _$_Transactions implements _Transactions {
 
   @override
   String toString() {
-    return 'Transactions(orderId: $orderId, paymentMethod: $paymentMethod, date_added: $date_added, currency_code: $currency_code, total: $total, transactionId: $transactionId, isSelected: $isSelected, amount_partialy_paid: $amount_partialy_paid, shipping_address: $shipping_address)';
+    return 'Transactions(order_id: $order_id, paymentMethod: $paymentMethod, date_added: $date_added, currency_code: $currency_code, total: $total, transactionId: $transactionId, isSelected: $isSelected, amount_partialy_paid: $amount_partialy_paid, shipping_address: $shipping_address)';
   }
 
   @override
@@ -246,7 +246,8 @@ class _$_Transactions implements _Transactions {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Transactions &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.order_id, order_id) ||
+                other.order_id == order_id) &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
             (identical(other.date_added, date_added) ||
@@ -268,7 +269,7 @@ class _$_Transactions implements _Transactions {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      orderId,
+      order_id,
       paymentMethod,
       date_added,
       currency_code,
@@ -294,7 +295,7 @@ class _$_Transactions implements _Transactions {
 
 abstract class _Transactions implements Transactions {
   factory _Transactions(
-      {final String? orderId,
+      {final String? order_id,
       final String? paymentMethod,
       final String? date_added,
       final String? currency_code,
@@ -308,7 +309,7 @@ abstract class _Transactions implements Transactions {
       _$_Transactions.fromJson;
 
   @override
-  String? get orderId;
+  String? get order_id;
   @override
   String? get paymentMethod;
   @override

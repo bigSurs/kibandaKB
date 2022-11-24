@@ -19,6 +19,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:kibanda_kb/models/transactions/transactions.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/ui/home/main_home_page.dart';
+import 'package:kibanda_kb/utilities/toast/toast.dart';
 // import 'package:kibanda_kb/ui/home/transactions_page/transaction_page_view_model.dart';
 
 String generateRandomString(int len) {
@@ -30,10 +31,13 @@ String generateRandomString(int len) {
 
 class TransactionPage extends StatefulWidget {
   final transactionData;
+
   final Map<String, dynamic> orderData;
-  const TransactionPage(
-      {Key? key, this.transactionData, required this.orderData})
-      : super(key: key);
+  const TransactionPage({
+    Key? key,
+    this.transactionData,
+    required this.orderData,
+  }) : super(key: key);
 
   @override
   TransactionPageState createState() => TransactionPageState();
@@ -47,7 +51,7 @@ class TransactionPageState extends State<TransactionPage> {
     List<Widget> pages = [
       SuccessfulWidget(),
       PendingWidget(
-        orderData: {},
+        orderData: widget.orderData,
       ),
       CancelledWidget()
     ];
@@ -119,7 +123,10 @@ Center noData(String message) {
 
 class PendingWidget extends StatelessWidget {
   final Map<String, dynamic> orderData;
-  const PendingWidget({Key? key, required this.orderData}) : super(key: key);
+  const PendingWidget({
+    Key? key,
+    required this.orderData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -144,6 +151,8 @@ class PendingWidget extends StatelessWidget {
           // TODO: implement listener
         },
         builder: (context, state) {
+          var data = orderData;
+          var x = generateRandomString(12);
           return state.maybeWhen(loading: () {
             return const Center(
               child: CircularProgressIndicator(color: Palette.greenColor),
@@ -163,7 +172,7 @@ class PendingWidget extends StatelessWidget {
                             child: CardTwo(
                           pendingTransactions: pendingTransactions[index],
                           //TODO: ORDER REFERENCE CHECKUP HERE
-                          orderReference: '',
+                          orderReference: x,
                           orderData: orderData,
                         ))),
                   );
@@ -171,7 +180,12 @@ class PendingWidget extends StatelessWidget {
               ),
             );
           }, orElse: () {
-            return Container();
+            return const Center(
+              child: Text(
+                'Select a Kibanda to view their transaction history',
+                style: TextStyle(color: Palette.orangeColor),
+              ),
+            );
           });
         },
       ),
@@ -234,9 +248,9 @@ class SuccessfulWidget extends StatelessWidget {
                     ),
                   );
           }, orElse: () {
-            return Center(
+            return const Center(
               child: Text(
-                'You do not have any Transactions yet',
+                'Select a Kibanda to view their transaction history',
                 style: TextStyle(color: Palette.orangeColor),
               ),
             );
@@ -261,7 +275,7 @@ class CardOne extends StatelessWidget {
       color: AppTheme.colorWhite,
       child: Row(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 30,
             width: 30,
             // child: Checkbox(
@@ -283,15 +297,15 @@ class CardOne extends StatelessWidget {
                       child: Text.rich(
                         TextSpan(
                           text: "Order Id : ",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: AppTheme.colorDarkGrey,
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
                           ),
                           children: [
                             TextSpan(
-                              text: successfulTransactions.orderId,
-                              style: TextStyle(
+                              text: successfulTransactions.order_id,
+                              style: const TextStyle(
                                 color: AppTheme.colorDarkGrey,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -300,10 +314,10 @@ class CardOne extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text(
+                    const Text(
                       // "${data.currencyCode} ${data.total}",
                       'KES 6590',
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.colorDarkGrey,
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
@@ -317,7 +331,7 @@ class CardOne extends StatelessWidget {
                     Text.rich(
                       TextSpan(
                         text: "Order Date : ",
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: AppTheme.colorDarkGrey,
                           fontWeight: FontWeight.w600,
                         ),
@@ -326,7 +340,7 @@ class CardOne extends StatelessWidget {
                             text: CalendarTime(DateTime.parse(
                                     successfulTransactions.date_added!))
                                 .toHuman,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: AppTheme.colorDarkGrey,
                               fontWeight: FontWeight.w500,
                             ),
@@ -338,7 +352,7 @@ class CardOne extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Text.rich(
                         TextSpan(
                           text: "Payment Methods : ",
@@ -370,7 +384,7 @@ class CardOne extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(vertical: 2, horizontal: 8),
                         color: AppTheme.colorPerpal,
-                        child: Text(
+                        child: const Text(
                           "PAY NOW",
                           style: TextStyle(
                             color: AppTheme.colorWhite,
@@ -440,7 +454,7 @@ class CardTwo extends StatelessWidget {
                           ),
                           children: [
                             TextSpan(
-                              text: pendingTransactions.orderId,
+                              text: pendingTransactions.order_id,
                               style: TextStyle(
                                 color: AppTheme.colorDarkGrey,
                                 fontWeight: FontWeight.w500,
@@ -510,53 +524,9 @@ class CardTwo extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        var data = orderData;
-                        var x = generateRandomString(12);
-                        data.addAll({
-                          "payment_method": 'mpesa on delivery',
-                          "dropoff_notes": '',
-                          "payment_method_code": context
-                              .read<SelectedPaymentMethodCubit>()
-                              .state!
-                              .code!,
-                          "shipping_address_id": context
-                              .read<SelectedKibandaCubit>()
-                              .state!
-                              .address_id!,
-                          // "shipping_city_id": context
-                          //     .read<DeliveryAddressSelectionCubit>()
-                          //     .state!
-                          //     .address_id!,
-                          // 'login_latitude':
-                          //     context.read<UserLocationCubit>().state.latitude,
-                          // 'login_longitude':
-                          //     context.read<UserLocationCubit>().state.longitude,
-                          'login_mode': 'm',
-                          "payment_method['code']": context
-                              .read<SelectedPaymentMethodCubit>()
-                              .state!
-                              .code!,
-                          "payment_method['sort_order']": context
-                                  .read<SelectedPaymentMethodCubit>()
-                                  .state!
-                                  .sort_order ??
-                              '0',
-                          "payment_method['terms']": context
-                                  .read<SelectedPaymentMethodCubit>()
-                                  .state!
-                                  .terms ??
-                              '',
-                          "payment_method['title']": context
-                                  .read<SelectedPaymentMethodCubit>()
-                                  .state!
-                                  .title ??
-                              '',
-                          'mpesa_refrence_id': x
-                        });
-                        var phoneData = AutoRouter.of(context).push(
-                            MpesaPaymentRoute(orderReference: x, data: data));
-                        data.addAll(phoneData as Map<String, dynamic>);
+                      onTap: () async {
+                        AutoRouter.of(context).push(TransactionalMpesaRoute(
+                            orderId: int.parse(pendingTransactions.order_id!)));
                       },
                       child: Container(
                         padding:
@@ -625,7 +595,7 @@ class CardThree extends StatelessWidget {
                           ),
                           children: [
                             TextSpan(
-                              text: cancelledTransactions.orderId,
+                              text: cancelledTransactions.order_id,
                               style: TextStyle(
                                 color: AppTheme.colorDarkGrey,
                                 fontWeight: FontWeight.w500,
@@ -780,7 +750,12 @@ class CancelledWidget extends StatelessWidget {
                     ),
                   );
           }, orElse: () {
-            return Container();
+            return const Center(
+              child: Text(
+                'Select a Kibanda to view their transaction history',
+                style: TextStyle(color: Palette.orangeColor),
+              ),
+            );
           });
         },
       ),

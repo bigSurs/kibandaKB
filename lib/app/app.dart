@@ -19,6 +19,7 @@ import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/payment_me
 import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/selected_payment_method_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/place_order_cubit/place_order_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/save_to_basket_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/transactional_payment/transactional_payment_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/ui_cubits/home_bottom_index_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/ui_cubits/transaction_top_index_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/validate_order_cubit.dart';
@@ -67,6 +68,7 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => CustomerTokenCubit('')),
         BlocProvider(create: (context) => VendorProductsCubit()),
         BlocProvider(create: (context) => SelectedKibandaCubit()),
+        BlocProvider(create: (context) => TransactionalPaymentCubit()),
         BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
         BlocProvider(
             create: (context) =>

@@ -6,7 +6,7 @@ part 'transactions.g.dart';
 @freezed
 class Transactions with _$Transactions {
   factory Transactions({
-    String? orderId,
+    String? order_id,
     String? paymentMethod,
     String? date_added,
     String? currency_code,

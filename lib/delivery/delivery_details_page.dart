@@ -21,8 +21,9 @@ import 'package:kibanda_kb/utilities/toast/toast.dart';
 import 'package:intl/intl.dart';
 
 class DeliveryDetailsPage extends StatelessWidget {
+  
   final Map<String, dynamic> orderData;
-  const DeliveryDetailsPage({Key? key, required this.orderData})
+  const DeliveryDetailsPage({Key? key, required this.orderData, })
       : super(key: key);
 
   @override
@@ -398,7 +399,7 @@ class DeliveryDetailsPage extends StatelessWidget {
                           });
                         }
                         AutoRouter.of(context)
-                            .push(PaymentOPtionsRoute(orderData: data));
+                            .push(PaymentOPtionsRoute(orderData: data,));
                         // context.read<PlaceOrderCubit>().placeOrder(data);
                       }
                     }
