@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kibanda_kb">
    <application
-        android:label="kibanda_kb"
+        android:label="Kibanda KB"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
