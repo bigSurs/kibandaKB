@@ -12,8 +12,10 @@ class RestClientCustomer {
   Dio? get dio => _dio;
 
   String baseURL = 'https://stage.salesexecutiveapi.kwikbasket.com/api/';
-  String customerURL = 'https://stage.shop.kwikbasket.com/api/';
+  // String customerURL = 'https://stage.shop.kwikbasket.com/api/';
 
+  String customerURL = 'https://www.kwikbasket.com/api/';
+  //up above is production url
   RestClientCustomer({BaseOptions? options}) {
     create(options);
   }
