@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'order_detail.dart';
 
@@ -122,7 +122,7 @@ class _$OrderDetailCopyWithImpl<$Res, $Val extends OrderDetail>
     Object? email = freezed,
     Object? telephone = freezed,
     Object? dax = freezed,
-    Object? custom_field = null,
+    Object? custom_field = freezed,
     Object? shipping_name = freezed,
     Object? shipping_address = freezed,
     Object? shipping_city = freezed,
@@ -188,7 +188,7 @@ class _$OrderDetailCopyWithImpl<$Res, $Val extends OrderDetail>
           ? _value.dax
           : dax // ignore: cast_nullable_to_non_nullable
               as String?,
-      custom_field: null == custom_field
+      custom_field: freezed == custom_field
           ? _value.custom_field
           : custom_field // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -336,7 +336,7 @@ class __$$_OrderDetailCopyWithImpl<$Res>
     Object? email = freezed,
     Object? telephone = freezed,
     Object? dax = freezed,
-    Object? custom_field = null,
+    Object? custom_field = freezed,
     Object? shipping_name = freezed,
     Object? shipping_address = freezed,
     Object? shipping_city = freezed,
@@ -402,7 +402,8 @@ class __$$_OrderDetailCopyWithImpl<$Res>
           ? _value.dax
           : dax // ignore: cast_nullable_to_non_nullable
               as String?,
-      custom_field: null == custom_field ? _value.custom_field : custom_field,
+      custom_field:
+          freezed == custom_field ? _value.custom_field! : custom_field,
       shipping_name: freezed == shipping_name
           ? _value.shipping_name
           : shipping_name // ignore: cast_nullable_to_non_nullable
@@ -563,6 +564,7 @@ class _$_OrderDetail implements _OrderDetail {
   Map<String, dynamic>? get store_details {
     final value = _store_details;
     if (value == null) return null;
+    if (_store_details is EqualUnmodifiableMapView) return _store_details;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
@@ -596,6 +598,7 @@ class _$_OrderDetail implements _OrderDetail {
   List<dynamic>? get products {
     final value = _products;
     if (value == null) return null;
+    if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }

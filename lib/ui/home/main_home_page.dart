@@ -149,8 +149,8 @@ class _MainHomePageState extends State<MainHomePage> {
       //                             // context
       //                             //     .read<VendorProductsCubit>()
       //                             //     .getVendorProductsByAllCategories(
-      //                             //         customerId: selectedKibanda
-      //                             //             .customer_id as int);
+      //         customerId: selectedKibanda
+      //             .customer_id as int);
       //                             context
       //                                 .read<FeaturedProductCubit>()
       //                                 .getFeaturedProducts(context);
@@ -390,7 +390,7 @@ class _CardWidgetState extends State<CardWidget> {
                           ),
                           SizedBox(width: width * 0.01),
                           Text(
-                            widget.vendorProducts.weight!,
+                            widget.vendorProducts.unit!,
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -583,7 +583,10 @@ class HomeWidget extends StatelessWidget {
                                   //             .customer_id as int);
                                   context
                                       .read<FeaturedProductCubit>()
-                                      .getFeaturedProducts(context);
+                                      .getFeaturedProducts(
+                                        page: 1,
+                                        customerId: 15,
+                                      );
                                 },
                               )),
                           orElse: () {
@@ -603,16 +606,40 @@ class HomeWidget extends StatelessWidget {
                     child:
                         CupertinoActivityIndicator(color: Palette.greenColor),
                   );
-                }, success: (productList) {
-                  return ListView.builder(
-                    itemCount: productList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ProductTile(product: productList[index]);
-                    },
+                }, success: (products, page, isLast) {
+                  loadMore() async {
+                    // context.read<CategoryProductsRefreshCubit>().load();
+                    var prod = await context
+                        .read<FeaturedProductCubit>()
+                        .getMore(page: page + 1, customerId: 15);
+                    products.addAll(prod);
+                    context.read<FeaturedProductCubit>().emit(
+                        FeaturedProductState.success(
+                            page: page + 1, isLast: isLast, products: []));
+                    // context.read<CategoryProductsRefreshCubit>().reset();
+                    // setState(() {});
+                    print(page);
+                  }
 
-                    // children: productList
-                    //     .map((e) => CardWidget(vendorProducts: e))
-                    //     .toList(),
+                  return NotificationListener<ScrollEndNotification>(
+                    onNotification: (scrollEnd) {
+                      if (scrollEnd.metrics.atEdge) {
+                        if (scrollEnd.metrics.pixels != 0) {
+                          loadMore();
+                        }
+                      }
+                      return true;
+                    },
+                    child: ListView.builder(
+                      itemCount: products.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ProductTile(product: products[index]);
+                      },
+
+                      // children: productList
+                      //     .map((e) => CardWidget(vendorProducts: e))
+                      //     .toList(),
+                    ),
                   );
                 }, orElse: () {
                   return Container();
@@ -787,7 +814,7 @@ class MoreWidget extends StatelessWidget {
             ListTile(
               onTap: () {
                 // AutoRouter.of(context).push(TransactionsRoute());
-                //TODO: ADD required params here 
+                //TODO: ADD required params here
                 AutoRouter.of(context).push(TransactionRoute(orderData: {}));
               },
               leading: const Icon(

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'transaction_cubit.dart';
 
@@ -405,6 +405,8 @@ class _$_Success implements _Success {
   final List<Transactions> _pendingTransactions;
   @override
   List<Transactions> get pendingTransactions {
+    if (_pendingTransactions is EqualUnmodifiableListView)
+      return _pendingTransactions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_pendingTransactions);
   }
@@ -412,6 +414,8 @@ class _$_Success implements _Success {
   final List<Transactions> _successfulTransactions;
   @override
   List<Transactions> get successfulTransactions {
+    if (_successfulTransactions is EqualUnmodifiableListView)
+      return _successfulTransactions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_successfulTransactions);
   }
@@ -419,6 +423,8 @@ class _$_Success implements _Success {
   final List<Transactions> _cancelledTransactions;
   @override
   List<Transactions> get cancelledTransactions {
+    if (_cancelledTransactions is EqualUnmodifiableListView)
+      return _cancelledTransactions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_cancelledTransactions);
   }

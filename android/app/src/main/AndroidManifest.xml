@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kibanda_kb">
+    package="com.kwikbasket.kibanda.kb">
    <application
         android:label="Kibanda KB"
         android:name="${applicationName}"

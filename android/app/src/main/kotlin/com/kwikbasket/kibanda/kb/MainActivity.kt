@@ -1,4 +1,4 @@
-package com.example.kibanda_kb
+package com.kwikbasket.kibanda.kb
 
 import io.flutter.embedding.android.FlutterActivity
 

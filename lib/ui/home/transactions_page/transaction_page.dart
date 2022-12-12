@@ -385,7 +385,7 @@ class CardOne extends StatelessWidget {
                             EdgeInsets.symmetric(vertical: 2, horizontal: 8),
                         color: AppTheme.colorPerpal,
                         child: const Text(
-                          "PAY NOW",
+                          "PAID",
                           style: TextStyle(
                             color: AppTheme.colorWhite,
                             fontWeight: FontWeight.bold,

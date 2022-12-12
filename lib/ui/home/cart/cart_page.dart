@@ -111,93 +111,93 @@ class _CartPageState extends State<CartPage> {
                                               color: Colors.black),
                                         ),
                                       )),
-                                    //   Expanded(
-                                    //       child: BlocConsumer<SaveToBasketCubit,
-                                    //           SaveToBasketState>(
-                                    //     listener: (context, state) {
-                                    //       state.maybeWhen(
-                                    //           success: () {
-                                    //             AppToast.showToast(
-                                    //                 message:
-                                    //                     'Successfully added products to basket',
-                                    //                 isError: false);
-                                    //             context
-                                    //                 .read<WishlistCubit>()
-                                    //                 .getWishLists();
-                                    //             Navigator.pop(context);
-                                    //           },
-                                    //           orElse: () {});
-                                    //     },
-                                    //     builder: (context, state) {
-                                    //       return state.maybeWhen(
-                                    //           orElse: () {
-                                    //             return CupertinoButton(
-                                    //                 onPressed: () {
-                                    //                   if (formKey.currentState!
-                                    //                       .saveAndValidate()) {
-                                    //                     var data = {};
-                                    //                     for (int i = 0;
-                                    //                         i <
-                                    //                             context
-                                    //                                 .read<
-                                    //                                     CartCubit>()
-                                    //                                 .state
-                                    //                                 .length;
-                                    //                         i++) {
-                                    //                       data.addAll({
-                                    //                         'products[$i][product_id]':
-                                    //                             context
-                                    //                                 .read<
-                                    //                                     CartCubit>()
-                                    //                                 .state[i]
-                                    //                                 .product_id,
-                                    //                         'products[$i][quantity]': context
-                                    //                             .read<
-                                    //                                 CartProductMetadataCubit>()
-                                    //                             .state
-                                    //                             .where((element) =>
-                                    //                                 element
-                                    //                                     .product_id ==
-                                    //                                 int.parse(context
-                                    //                                     .read<
-                                    //                                         CartCubit>()
-                                    //                                     .state[
-                                    //                                         i]
-                                    //                                     .product_id!))
-                                    //                             .first
-                                    //                             .amount
-                                    //                             .toString(),
-                                    //                       });
-                                    //                     }
+                                      //   Expanded(
+                                      //       child: BlocConsumer<SaveToBasketCubit,
+                                      //           SaveToBasketState>(
+                                      //     listener: (context, state) {
+                                      //       state.maybeWhen(
+                                      //           success: () {
+                                      //             AppToast.showToast(
+                                      //                 message:
+                                      //                     'Successfully added products to basket',
+                                      //                 isError: false);
+                                      //             context
+                                      //                 .read<WishlistCubit>()
+                                      //                 .getWishLists();
+                                      //             Navigator.pop(context);
+                                      //           },
+                                      //           orElse: () {});
+                                      //     },
+                                      //     builder: (context, state) {
+                                      //       return state.maybeWhen(
+                                      //           orElse: () {
+                                      //             return CupertinoButton(
+                                      //                 onPressed: () {
+                                      //                   if (formKey.currentState!
+                                      //                       .saveAndValidate()) {
+                                      //                     var data = {};
+                                      //                     for (int i = 0;
+                                      //                         i <
+                                      //                             context
+                                      //                                 .read<
+                                      //                                     CartCubit>()
+                                      //                                 .state
+                                      //                                 .length;
+                                      //                         i++) {
+                                      //                       data.addAll({
+                                      //                         'products[$i][product_id]':
+                                      //                             context
+                                      //                                 .read<
+                                      //                                     CartCubit>()
+                                      //                                 .state[i]
+                                      //                                 .product_id,
+                                      //                         'products[$i][quantity]': context
+                                      //                             .read<
+                                      //                                 CartProductMetadataCubit>()
+                                      //                             .state
+                                      //                             .where((element) =>
+                                      //                                 element
+                                      //                                     .product_id ==
+                                      //                                 int.parse(context
+                                      //                                     .read<
+                                      //                                         CartCubit>()
+                                      //                                     .state[
+                                      //                                         i]
+                                      //                                     .product_id!))
+                                      //                             .first
+                                      //                             .amount
+                                      //                             .toString(),
+                                      //                       });
+                                      //                     }
 
-                                    //                     context
-                                    //                         .read<
-                                    //                             SaveToBasketCubit>()
-                                    //                         .saveToBasket(
-                                    //                             data: {
-                                    //                           ...formKey
-                                    //                               .currentState!
-                                    //                               .value,
-                                    //                           ...data
-                                    //                         });
-                                    //                   }
-                                    //                 },
-                                    //                 padding:
-                                    //                     const EdgeInsets.all(0),
-                                    //                 child: Text(
-                                    //                   'Submit',
-                                    //                   style: TextStyle(
-                                    //                       fontSize: 13,
-                                    //                       fontWeight:
-                                    //                           FontWeight.bold,
-                                    //                       color: Palette
-                                    //                           .greenColor),
-                                    //                 ));
-                                    //           },
-                                    //           loading: () =>
-                                    //               CupertinoActivityIndicator());
-                                    //     },
-                                    //   )),
+                                      //                     context
+                                      //                         .read<
+                                      //                             SaveToBasketCubit>()
+                                      //                         .saveToBasket(
+                                      //                             data: {
+                                      //                           ...formKey
+                                      //                               .currentState!
+                                      //                               .value,
+                                      //                           ...data
+                                      //                         });
+                                      //                   }
+                                      //                 },
+                                      //                 padding:
+                                      //                     const EdgeInsets.all(0),
+                                      //                 child: Text(
+                                      //                   'Submit',
+                                      //                   style: TextStyle(
+                                      //                       fontSize: 13,
+                                      //                       fontWeight:
+                                      //                           FontWeight.bold,
+                                      //                       color: Palette
+                                      //                           .greenColor),
+                                      //                 ));
+                                      //           },
+                                      //           loading: () =>
+                                      //               CupertinoActivityIndicator());
+                                      //     },
+                                      //   )),
                                     ],
                                   ),
                                 ],
@@ -348,7 +348,6 @@ class _CartPageState extends State<CartPage> {
   }
 }
 
-
 class EmptyCartWidget extends StatelessWidget {
   const EmptyCartWidget({Key? key}) : super(key: key);
 
@@ -440,7 +439,7 @@ class EmptyCartWidget extends StatelessWidget {
                             ),
                           ),
                           orElse: () => Container(),
-                          success: (products) => FeaturedWidget(
+                          success: (products, isLast, page) => FeaturedWidget(
                             products: products,
                           ),
                         );

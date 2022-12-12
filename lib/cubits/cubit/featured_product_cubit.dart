@@ -10,20 +10,49 @@ part 'featured_product_cubit.freezed.dart';
 class FeaturedProductCubit extends Cubit<FeaturedProductState> {
   FeaturedProductCubit() : super(const FeaturedProductState.initial());
 
-  getFeaturedProducts(BuildContext context) async {
+  getFeaturedProducts({
+    required int page,
+    required int customerId,
+  }) async {
     emit(const FeaturedProductState.loading());
     try {
       var response = await RestService()
-          .getData(path: 'customer/products/productsearch', queries: {
+          .getDataCustomer(path: 'customer/products', queries: {
         'store_id': 75,
         'search': '',
+        'page': page,
+        'customer_id': customerId,
+        'parent': '0',
       });
       List products = response['data']['products'];
       emit(FeaturedProductState.success(
           products: List.generate(products.length,
-              (index) => VendorProducts.fromJson(products[index]))));
+              (index) => VendorProducts.fromJson(products[index])),
+          page: page,
+          isLast: false));
     } catch (e) {
       emit(FeaturedProductState.failed(e.toString()));
     }
+  }
+
+  Future<List<VendorProducts>> getMore({
+    required int page,
+    // required int categoryId,
+    required int customerId,
+  }) async {
+    var response =
+        await RestService().getData(path: '/customer/products', queries: {
+      'store_id': '75',
+      'customer_id': customerId,
+      'search': '',
+      'page': page,
+      'parent': '0',
+    });
+    List products = response['data']['products'];
+    var productModels = [
+      ...List.generate(
+          products.length, (index) => VendorProducts.fromJson(products[index])),
+    ];
+    return productModels;
   }
 }

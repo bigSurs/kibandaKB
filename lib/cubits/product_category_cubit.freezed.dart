@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'delivery_timeslot_cubit.dart';
+part of 'product_category_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,30 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DeliveryTimeslotState {
+mixin _$ProductCategoryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots)
-        success,
-    required TResult Function(String erroe) failed,
+    required TResult Function(List<ProductCategory> categories) success,
+    required TResult Function(String error) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult? Function(String erroe)? failed,
+    TResult? Function(List<ProductCategory> categories)? success,
+    TResult? Function(String error)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult Function(String erroe)? failed,
+    TResult Function(List<ProductCategory> categories)? success,
+    TResult Function(String error)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,17 +69,17 @@ mixin _$DeliveryTimeslotState {
 }
 
 /// @nodoc
-abstract class $DeliveryTimeslotStateCopyWith<$Res> {
-  factory $DeliveryTimeslotStateCopyWith(DeliveryTimeslotState value,
-          $Res Function(DeliveryTimeslotState) then) =
-      _$DeliveryTimeslotStateCopyWithImpl<$Res, DeliveryTimeslotState>;
+abstract class $ProductCategoryStateCopyWith<$Res> {
+  factory $ProductCategoryStateCopyWith(ProductCategoryState value,
+          $Res Function(ProductCategoryState) then) =
+      _$ProductCategoryStateCopyWithImpl<$Res, ProductCategoryState>;
 }
 
 /// @nodoc
-class _$DeliveryTimeslotStateCopyWithImpl<$Res,
-        $Val extends DeliveryTimeslotState>
-    implements $DeliveryTimeslotStateCopyWith<$Res> {
-  _$DeliveryTimeslotStateCopyWithImpl(this._value, this._then);
+class _$ProductCategoryStateCopyWithImpl<$Res,
+        $Val extends ProductCategoryState>
+    implements $ProductCategoryStateCopyWith<$Res> {
+  _$ProductCategoryStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -97,7 +96,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$DeliveryTimeslotStateCopyWithImpl<$Res, _$_Initial>
+    extends _$ProductCategoryStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -110,7 +109,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'DeliveryTimeslotState.initial()';
+    return 'ProductCategoryState.initial()';
   }
 
   @override
@@ -127,9 +126,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots)
-        success,
-    required TResult Function(String erroe) failed,
+    required TResult Function(List<ProductCategory> categories) success,
+    required TResult Function(String error) failed,
   }) {
     return initial();
   }
@@ -139,8 +137,8 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult? Function(String erroe)? failed,
+    TResult? Function(List<ProductCategory> categories)? success,
+    TResult? Function(String error)? failed,
   }) {
     return initial?.call();
   }
@@ -150,8 +148,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult Function(String erroe)? failed,
+    TResult Function(List<ProductCategory> categories)? success,
+    TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -198,7 +196,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements DeliveryTimeslotState {
+abstract class _Initial implements ProductCategoryState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -211,7 +209,7 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$DeliveryTimeslotStateCopyWithImpl<$Res, _$_Loading>
+    extends _$ProductCategoryStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -224,7 +222,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'DeliveryTimeslotState.loading()';
+    return 'ProductCategoryState.loading()';
   }
 
   @override
@@ -241,9 +239,8 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots)
-        success,
-    required TResult Function(String erroe) failed,
+    required TResult Function(List<ProductCategory> categories) success,
+    required TResult Function(String error) failed,
   }) {
     return loading();
   }
@@ -253,8 +250,8 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult? Function(String erroe)? failed,
+    TResult? Function(List<ProductCategory> categories)? success,
+    TResult? Function(String error)? failed,
   }) {
     return loading?.call();
   }
@@ -264,8 +261,8 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult Function(String erroe)? failed,
+    TResult Function(List<ProductCategory> categories)? success,
+    TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -312,7 +309,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements DeliveryTimeslotState {
+abstract class _Loading implements ProductCategoryState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -322,12 +319,12 @@ abstract class _$$_SuccessCopyWith<$Res> {
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<dynamic> dates, Map<String, dynamic> slots});
+  $Res call({List<ProductCategory> categories});
 }
 
 /// @nodoc
 class __$$_SuccessCopyWithImpl<$Res>
-    extends _$DeliveryTimeslotStateCopyWithImpl<$Res, _$_Success>
+    extends _$ProductCategoryStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
@@ -335,18 +332,13 @@ class __$$_SuccessCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dates = null,
-    Object? slots = null,
+    Object? categories = null,
   }) {
     return _then(_$_Success(
-      dates: null == dates
-          ? _value._dates
-          : dates // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      slots: null == slots
-          ? _value._slots
-          : slots // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+      null == categories
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<ProductCategory>,
     ));
   }
 }
@@ -354,31 +346,20 @@ class __$$_SuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success(
-      {required final List<dynamic> dates,
-      required final Map<String, dynamic> slots})
-      : _dates = dates,
-        _slots = slots;
+  const _$_Success(final List<ProductCategory> categories)
+      : _categories = categories;
 
-  final List<dynamic> _dates;
+  final List<ProductCategory> _categories;
   @override
-  List<dynamic> get dates {
-    if (_dates is EqualUnmodifiableListView) return _dates;
+  List<ProductCategory> get categories {
+    if (_categories is EqualUnmodifiableListView) return _categories;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_dates);
-  }
-
-  final Map<String, dynamic> _slots;
-  @override
-  Map<String, dynamic> get slots {
-    if (_slots is EqualUnmodifiableMapView) return _slots;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_slots);
+    return EqualUnmodifiableListView(_categories);
   }
 
   @override
   String toString() {
-    return 'DeliveryTimeslotState.success(dates: $dates, slots: $slots)';
+    return 'ProductCategoryState.success(categories: $categories)';
   }
 
   @override
@@ -386,15 +367,13 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            const DeepCollectionEquality().equals(other._dates, _dates) &&
-            const DeepCollectionEquality().equals(other._slots, _slots));
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_dates),
-      const DeepCollectionEquality().hash(_slots));
+      runtimeType, const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
   @override
@@ -407,11 +386,10 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots)
-        success,
-    required TResult Function(String erroe) failed,
+    required TResult Function(List<ProductCategory> categories) success,
+    required TResult Function(String error) failed,
   }) {
-    return success(dates, slots);
+    return success(categories);
   }
 
   @override
@@ -419,10 +397,10 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult? Function(String erroe)? failed,
+    TResult? Function(List<ProductCategory> categories)? success,
+    TResult? Function(String error)? failed,
   }) {
-    return success?.call(dates, slots);
+    return success?.call(categories);
   }
 
   @override
@@ -430,12 +408,12 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult Function(String erroe)? failed,
+    TResult Function(List<ProductCategory> categories)? success,
+    TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(dates, slots);
+      return success(categories);
     }
     return orElse();
   }
@@ -478,13 +456,10 @@ class _$_Success implements _Success {
   }
 }
 
-abstract class _Success implements DeliveryTimeslotState {
-  const factory _Success(
-      {required final List<dynamic> dates,
-      required final Map<String, dynamic> slots}) = _$_Success;
+abstract class _Success implements ProductCategoryState {
+  const factory _Success(final List<ProductCategory> categories) = _$_Success;
 
-  List<dynamic> get dates;
-  Map<String, dynamic> get slots;
+  List<ProductCategory> get categories;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -495,12 +470,12 @@ abstract class _$$_FailedCopyWith<$Res> {
   factory _$$_FailedCopyWith(_$_Failed value, $Res Function(_$_Failed) then) =
       __$$_FailedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String erroe});
+  $Res call({String error});
 }
 
 /// @nodoc
 class __$$_FailedCopyWithImpl<$Res>
-    extends _$DeliveryTimeslotStateCopyWithImpl<$Res, _$_Failed>
+    extends _$ProductCategoryStateCopyWithImpl<$Res, _$_Failed>
     implements _$$_FailedCopyWith<$Res> {
   __$$_FailedCopyWithImpl(_$_Failed _value, $Res Function(_$_Failed) _then)
       : super(_value, _then);
@@ -508,12 +483,12 @@ class __$$_FailedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? erroe = null,
+    Object? error = null,
   }) {
     return _then(_$_Failed(
-      null == erroe
-          ? _value.erroe
-          : erroe // ignore: cast_nullable_to_non_nullable
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -522,14 +497,14 @@ class __$$_FailedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Failed implements _Failed {
-  const _$_Failed(this.erroe);
+  const _$_Failed(this.error);
 
   @override
-  final String erroe;
+  final String error;
 
   @override
   String toString() {
-    return 'DeliveryTimeslotState.failed(erroe: $erroe)';
+    return 'ProductCategoryState.failed(error: $error)';
   }
 
   @override
@@ -537,11 +512,11 @@ class _$_Failed implements _Failed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Failed &&
-            (identical(other.erroe, erroe) || other.erroe == erroe));
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, erroe);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
@@ -554,11 +529,10 @@ class _$_Failed implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> dates, Map<String, dynamic> slots)
-        success,
-    required TResult Function(String erroe) failed,
+    required TResult Function(List<ProductCategory> categories) success,
+    required TResult Function(String error) failed,
   }) {
-    return failed(erroe);
+    return failed(error);
   }
 
   @override
@@ -566,10 +540,10 @@ class _$_Failed implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult? Function(String erroe)? failed,
+    TResult? Function(List<ProductCategory> categories)? success,
+    TResult? Function(String error)? failed,
   }) {
-    return failed?.call(erroe);
+    return failed?.call(error);
   }
 
   @override
@@ -577,12 +551,12 @@ class _$_Failed implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> dates, Map<String, dynamic> slots)? success,
-    TResult Function(String erroe)? failed,
+    TResult Function(List<ProductCategory> categories)? success,
+    TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
     if (failed != null) {
-      return failed(erroe);
+      return failed(error);
     }
     return orElse();
   }
@@ -625,10 +599,10 @@ class _$_Failed implements _Failed {
   }
 }
 
-abstract class _Failed implements DeliveryTimeslotState {
-  const factory _Failed(final String erroe) = _$_Failed;
+abstract class _Failed implements ProductCategoryState {
+  const factory _Failed(final String error) = _$_Failed;
 
-  String get erroe;
+  String get error;
   @JsonKey(ignore: true)
   _$$_FailedCopyWith<_$_Failed> get copyWith =>
       throw _privateConstructorUsedError;

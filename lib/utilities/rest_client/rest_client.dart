@@ -13,7 +13,8 @@ class RestClient {
   Dio? get dioNoAuth => _dioNoAUth;
 
   String baseURL = 'https://stage.salesexecutiveapi.kwikbasket.com/api/';
-  String customerURL = 'https://stage.shop.kwikbasket.com/api/';
+  // String customerURL = 'https://stage.shop.kwikbasket.com/api/';
+  String customerURL = 'https://www.kwikbasket.com/api/';
   static String url = 'https://stage.shop.kwikbasket.com';
 
   String imageURL = '$url/image/';

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'featured_product_cubit.dart';
 
@@ -20,7 +20,9 @@ mixin _$FeaturedProductState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProducts> products) success,
+    required TResult Function(
+            List<VendorProducts> products, int page, bool isLast)
+        success,
     required TResult Function(String error) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,8 @@ mixin _$FeaturedProductState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<VendorProducts> products)? success,
+    TResult? Function(List<VendorProducts> products, int page, bool isLast)?
+        success,
     TResult? Function(String error)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +39,8 @@ mixin _$FeaturedProductState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProducts> products)? success,
+    TResult Function(List<VendorProducts> products, int page, bool isLast)?
+        success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) =>
@@ -126,7 +130,9 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProducts> products) success,
+    required TResult Function(
+            List<VendorProducts> products, int page, bool isLast)
+        success,
     required TResult Function(String error) failed,
   }) {
     return initial();
@@ -137,7 +143,8 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<VendorProducts> products)? success,
+    TResult? Function(List<VendorProducts> products, int page, bool isLast)?
+        success,
     TResult? Function(String error)? failed,
   }) {
     return initial?.call();
@@ -148,7 +155,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProducts> products)? success,
+    TResult Function(List<VendorProducts> products, int page, bool isLast)?
+        success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -239,7 +247,9 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProducts> products) success,
+    required TResult Function(
+            List<VendorProducts> products, int page, bool isLast)
+        success,
     required TResult Function(String error) failed,
   }) {
     return loading();
@@ -250,7 +260,8 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<VendorProducts> products)? success,
+    TResult? Function(List<VendorProducts> products, int page, bool isLast)?
+        success,
     TResult? Function(String error)? failed,
   }) {
     return loading?.call();
@@ -261,7 +272,8 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProducts> products)? success,
+    TResult Function(List<VendorProducts> products, int page, bool isLast)?
+        success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -319,7 +331,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<VendorProducts> products});
+  $Res call({List<VendorProducts> products, int page, bool isLast});
 }
 
 /// @nodoc
@@ -333,12 +345,22 @@ class __$$_SuccessCopyWithImpl<$Res>
   @override
   $Res call({
     Object? products = null,
+    Object? page = null,
+    Object? isLast = null,
   }) {
     return _then(_$_Success(
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<VendorProducts>,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      isLast: null == isLast
+          ? _value.isLast
+          : isLast // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -346,19 +368,28 @@ class __$$_SuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success({required final List<VendorProducts> products})
+  const _$_Success(
+      {required final List<VendorProducts> products,
+      required this.page,
+      required this.isLast})
       : _products = products;
 
   final List<VendorProducts> _products;
   @override
   List<VendorProducts> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_products);
   }
 
   @override
+  final int page;
+  @override
+  final bool isLast;
+
+  @override
   String toString() {
-    return 'FeaturedProductState.success(products: $products)';
+    return 'FeaturedProductState.success(products: $products, page: $page, isLast: $isLast)';
   }
 
   @override
@@ -366,12 +397,14 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            (identical(other.page, page) || other.page == page) &&
+            (identical(other.isLast, isLast) || other.isLast == isLast));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_products), page, isLast);
 
   @JsonKey(ignore: true)
   @override
@@ -384,10 +417,12 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProducts> products) success,
+    required TResult Function(
+            List<VendorProducts> products, int page, bool isLast)
+        success,
     required TResult Function(String error) failed,
   }) {
-    return success(products);
+    return success(products, page, isLast);
   }
 
   @override
@@ -395,10 +430,11 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<VendorProducts> products)? success,
+    TResult? Function(List<VendorProducts> products, int page, bool isLast)?
+        success,
     TResult? Function(String error)? failed,
   }) {
-    return success?.call(products);
+    return success?.call(products, page, isLast);
   }
 
   @override
@@ -406,12 +442,13 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProducts> products)? success,
+    TResult Function(List<VendorProducts> products, int page, bool isLast)?
+        success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(products);
+      return success(products, page, isLast);
     }
     return orElse();
   }
@@ -455,10 +492,14 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements FeaturedProductState {
-  const factory _Success({required final List<VendorProducts> products}) =
-      _$_Success;
+  const factory _Success(
+      {required final List<VendorProducts> products,
+      required final int page,
+      required final bool isLast}) = _$_Success;
 
   List<VendorProducts> get products;
+  int get page;
+  bool get isLast;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -528,7 +569,9 @@ class _$_Failed implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<VendorProducts> products) success,
+    required TResult Function(
+            List<VendorProducts> products, int page, bool isLast)
+        success,
     required TResult Function(String error) failed,
   }) {
     return failed(error);
@@ -539,7 +582,8 @@ class _$_Failed implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<VendorProducts> products)? success,
+    TResult? Function(List<VendorProducts> products, int page, bool isLast)?
+        success,
     TResult? Function(String error)? failed,
   }) {
     return failed?.call(error);
@@ -550,7 +594,8 @@ class _$_Failed implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<VendorProducts> products)? success,
+    TResult Function(List<VendorProducts> products, int page, bool isLast)?
+        success,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
