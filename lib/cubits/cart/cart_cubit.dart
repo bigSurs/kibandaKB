@@ -62,7 +62,7 @@ class CartCubit extends HydratedCubit<List<VendorProducts>> {
           .where((element) =>
               (element.product_id) == int.parse(state[i].product_id!))
           .first
-          .variation['special']);
+          .variation['special_price']);
       sum += ((num.parse(variationPrice)) * amount);
     }
     return sum;

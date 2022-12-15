@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -41,14 +43,14 @@ class FeaturedProductCubit extends Cubit<FeaturedProductState> {
     required int customerId,
   }) async {
     var response =
-        await RestService().getData(path: '/customer/products', queries: {
+        await RestService().getDataCustomer(path: 'customer/products', queries: {
       'store_id': '75',
       'customer_id': customerId,
       'search': '',
-      'page': page,
+      'page': page +1,
       'parent': '0',
     });
-    List products = response['data']['products'];
+    List products = response['data']['products'] ;
     var productModels = [
       ...List.generate(
           products.length, (index) => VendorProducts.fromJson(products[index])),

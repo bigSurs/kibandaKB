@@ -618,7 +618,7 @@ class EmptyCartWidget extends StatelessWidget {
                             ),
                           ),
                           orElse: () => Container(),
-                          success: (products, isLast, page) => FeaturedWidget(
+                          success: (products, isLast,page) => FeaturedWidget(
                             products: products,
                           ),
                         );

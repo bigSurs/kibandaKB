@@ -16,6 +16,7 @@ import 'package:kibanda_kb/configuration/palette/palette.dart';
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/authentication/session_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/authentication/token_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/category_products_refresh_cubit/category_products_refresh_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/ui_cubits/home_bottom_index_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
@@ -459,9 +460,14 @@ class SelectedKibandaCubit extends Cubit<Kibanda?> {
   }
 }
 
-class HomeWidget extends StatelessWidget {
+class HomeWidget extends StatefulWidget {
   const HomeWidget({Key? key}) : super(key: key);
 
+  @override
+  State<HomeWidget> createState() => _HomeWidgetState();
+}
+
+class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -561,8 +567,13 @@ class HomeWidget extends StatelessWidget {
                                       },
                                       path: 'customer/login/loginascustomer');
                                   var data = response['token'];
+                                  var customerID = int.parse(
+                                      response['data']['customer_id']);
                                   var cookieData = response['cookie'];
                                   context.read<CustomerTokenCubit>().emit(data);
+                                  context
+                                      .read<CustomerIdCubit>()
+                                      .emit(customerID);
                                   // context.read<TokenCubit>().emit(data);
                                   context
                                       .read<CustomerCookieCubit>()
@@ -585,7 +596,7 @@ class HomeWidget extends StatelessWidget {
                                       .read<FeaturedProductCubit>()
                                       .getFeaturedProducts(
                                         page: 1,
-                                        customerId: 15,
+                                        customerId: customerID,
                                       );
                                 },
                               )),
@@ -606,40 +617,49 @@ class HomeWidget extends StatelessWidget {
                     child:
                         CupertinoActivityIndicator(color: Palette.greenColor),
                   );
-                }, success: (products, page, isLast) {
+                }, success: (
+                  products,
+                  isLast,
+                  page,
+                ) {
                   loadMore() async {
                     // context.read<CategoryProductsRefreshCubit>().load();
+
                     var prod = await context
                         .read<FeaturedProductCubit>()
-                        .getMore(page: page + 1, customerId: 15);
-                    products.addAll(prod);
+                        .getMore(
+                            page: page + 1,
+                            customerId: context.read<CustomerIdCubit>().state);
                     context.read<FeaturedProductCubit>().emit(
                         FeaturedProductState.success(
-                            page: page + 1, isLast: isLast, products: []));
-                    // context.read<CategoryProductsRefreshCubit>().reset();
-                    // setState(() {});
+                            page: page + 1,
+                            isLast: isLast,
+                            products: [...products, ...prod]));
+                            context.read<CategoryProductsRefreshCubit>().reset();
+                  setState(() {});
+
                     print(page);
                   }
 
-                  return NotificationListener<ScrollEndNotification>(
-                    onNotification: (scrollEnd) {
-                      if (scrollEnd.metrics.atEdge) {
-                        if (scrollEnd.metrics.pixels != 0) {
-                          loadMore();
-                        }
-                      }
-                      return true;
+                  var _scrollController = ScrollController();
+                  _scrollController.addListener(() {
+                    if (_scrollController.position.pixels ==
+                        _scrollController.position.maxScrollExtent) {
+                      loadMore();
+                    }
+                  });
+                  return ListView.builder(
+                    controller: _scrollController,
+                    itemCount: products.length,
+                    physics: BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics()),
+                    itemBuilder: (BuildContext context, int index) {
+                      return ProductTile(product: products[index]);
                     },
-                    child: ListView.builder(
-                      itemCount: products.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ProductTile(product: products[index]);
-                      },
 
-                      // children: productList
-                      //     .map((e) => CardWidget(vendorProducts: e))
-                      //     .toList(),
-                    ),
+                    // children: productList
+                    //     .map((e) => CardWidget(vendorProducts: e))
+                    //     .toList(),
                   );
                 }, orElse: () {
                   return Container();
@@ -940,5 +960,16 @@ class MoreWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class CustomerIdCubit extends Cubit<int> {
+  CustomerIdCubit(int state) : super(state);
+
+  // var token =
+  //     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjI0NzkxOTQsImp0aSI6Im9qNVZGVHJRTHRIXC96NCtRanFvdG1oazU1T29vS1oyRFJsR01sZFltdU8wPSIsImlzcyI6InNlcnZlck5hbWUiLCJuYmYiOjE2NjI0NzkxOTQsImV4cCI6MTY3ODI1OTE5NCwiZGF0YSI6eyJpZCI6IjY1MiIsIm5hbWUiOiI3NDYwNTE4MzMifX0.6ezMPOyS0I9u2UURah4AvSchEBO0rvs2tR9WDxXlpfLwbi_rqa8OcZdtIZW-xth5eStP3mWSEVJHMZHJJgn-0g';
+
+  saveToken(int customerID) {
+    emit(customerID);
   }
 }

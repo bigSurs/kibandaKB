@@ -11,6 +11,7 @@ import 'package:kibanda_kb/cubits/address/delivery_address_selection_cubit.dart'
 import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/authentication/session_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/category_products_refresh_cubit/category_products_refresh_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/delivery_timeslot/delivery_timeslot_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/payments/lipa_na_mpesa_cubit/lipa_na_mpesa_cubit.dart';
@@ -64,15 +65,16 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SessionCubit(''),
         ),
+        BlocProvider(
+          create: (context) => CategoryProductsRefreshCubit(),
+        ),
         BlocProvider(create: (context) => CustomerCookieCubit('')),
         BlocProvider(create: (context) => CustomerTokenCubit('')),
         BlocProvider(create: (context) => VendorProductsCubit()),
         BlocProvider(create: (context) => SelectedKibandaCubit()),
         BlocProvider(create: (context) => TransactionalPaymentCubit()),
         BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
-        BlocProvider(
-            create: (context) => FeaturedProductCubit()
-              ..getFeaturedProducts(page: 1, customerId: 15)),
+        BlocProvider(create: (context) => FeaturedProductCubit()),
         BlocProvider(create: (context) => HomeBottomIndexCubit(0)),
         BlocProvider(create: (context) => TransactionIndexCubit(0)),
         BlocProvider(
@@ -107,6 +109,7 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => DeliveryAddressSelectionCubit(null)),
         BlocProvider(create: (context) => SelectDeliveryDateCubit()),
         BlocProvider(create: (context) => SelectTimeslotCubit('')),
+        BlocProvider(create: (context) => CustomerIdCubit(0)),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(
