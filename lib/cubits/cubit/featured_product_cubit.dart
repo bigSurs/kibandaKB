@@ -22,7 +22,8 @@ class FeaturedProductCubit extends Cubit<FeaturedProductState> {
           .getDataCustomer(path: 'customer/products', queries: {
         'store_id': 75,
         'search': '',
-        'page': page,
+        // 'page': page,
+        'limit': 200,
         'customer_id': customerId,
         'parent': '0',
       });
@@ -40,17 +41,19 @@ class FeaturedProductCubit extends Cubit<FeaturedProductState> {
   Future<List<VendorProducts>> getMore({
     required int page,
     // required int categoryId,
+    // required int limit,
     required int customerId,
   }) async {
-    var response =
-        await RestService().getDataCustomer(path: 'customer/products', queries: {
+    var response = await RestService()
+        .getDataCustomer(path: 'customer/products', queries: {
       'store_id': '75',
       'customer_id': customerId,
       'search': '',
-      'page': page +1,
+      // 'page': page +1,
+      'limit': 200,
       'parent': '0',
     });
-    List products = response['data']['products'] ;
+    List products = response['data']['products'];
     var productModels = [
       ...List.generate(
           products.length, (index) => VendorProducts.fromJson(products[index])),

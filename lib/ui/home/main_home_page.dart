@@ -635,8 +635,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                             page: page + 1,
                             isLast: isLast,
                             products: [...products, ...prod]));
-                            context.read<CategoryProductsRefreshCubit>().reset();
-                  setState(() {});
+                    context.read<CategoryProductsRefreshCubit>().reset();
+                    setState(() {});
 
                     print(page);
                   }
