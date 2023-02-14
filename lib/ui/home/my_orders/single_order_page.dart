@@ -27,58 +27,60 @@ class SingleOrderPage extends StatelessWidget {
           elevation: 0,
           backgroundColor: Palette.greenColor,
           actions: [
-            StarMenu(
-              params:
-                  StarMenuParameters(onItemTapped: (index, controller) async {
-                controller.closeMenu();
-              }),
-              child: Icon(
-                Icons.more_vert,
-                color: Colors.white,
-              ),
-              items: [
-                Container(
-                  width: 200,
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // CupertinoButton(
-                      //     onPressed: () {},
-                      //     color: Palette.greenColor,
-                      //     padding: EdgeInsets.all(0),
-                      //     child: Text('Edit Order')),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      CupertinoButton(
-                          onPressed: () {},
-                          color: CupertinoColors.destructiveRed,
-                          padding: EdgeInsets.all(0),
-                          child: Text('Cancel Order')),
-                      // SizedBox(
-                      //   height: 4,
-                      // ),
-                      // CupertinoButton(
-                      //     onPressed: () {
-                      //       AutoRouter.of(context)
-                      //           .push(RepostAnIssueRoute(order: order));
-                      //     },
-                      //     color: CupertinoColors.activeBlue,
-                      //     padding: EdgeInsets.all(0),
-                      //     child: Text('Report Issue')),
-                      SizedBox(
-                        height: 4,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            )
+            //TODO:ON STAR MENU
+            // StarMenu(
+            //   params:
+            //       StarMenuParameters(onItemTapped: (index, controller) async {
+            //     controller.closeMenu();
+            //   }),
+            //   child: Icon(
+            //     Icons.more_vert,
+            //     color: Colors.white,
+            //   ),
+            //   items: [
+            //     Container(
+            //       width: 200,
+            //       padding: const EdgeInsets.all(8),
+            //       decoration: BoxDecoration(
+            //           color: Colors.white,
+            //           borderRadius: BorderRadius.circular(5)),
+            //       child: Column(
+            //         mainAxisSize: MainAxisSize.min,
+            //         crossAxisAlignment: CrossAxisAlignment.stretch,
+            //         children: [
+            //           // CupertinoButton(
+            //           //     onPressed: () {},
+            //           //     color: Palette.greenColor,
+            //           //     padding: EdgeInsets.all(0),
+            //           //     child: Text('Edit Order')),
+            //           SizedBox(
+            //             height: 4,
+            //           ),
+            //           CupertinoButton(
+            //               onPressed: () {},
+            //               color: CupertinoColors.destructiveRed,
+            //               padding: EdgeInsets.all(0),
+            //               child: Text('Cancel Order')),
+            //           // SizedBox(
+            //           //   height: 4,
+            //           // ),
+            //           // CupertinoButton(
+            //           //     onPressed: () {
+            //           //       AutoRouter.of(context)
+            //           //           .push(RepostAnIssueRoute(order: order));
+            //           //     },
+            //           //     color: CupertinoColors.activeBlue,
+            //           //     padding: EdgeInsets.all(0),
+            //           //     child: Text('Report Issue')),
+            //           SizedBox(
+            //             height: 4,
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ],
+            // )
+         
           ],
           title: Text(
             'Order Details',

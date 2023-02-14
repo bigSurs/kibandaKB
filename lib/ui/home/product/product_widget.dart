@@ -11,6 +11,7 @@ import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
 import 'package:kibanda_kb/models/vendor_prodcuts/vendor_products.dart';
 import 'package:collection/collection.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
+import 'package:badges/badges.dart' as badges;
 
 class ProductWidget extends StatefulWidget {
   final VendorProducts product;
@@ -65,7 +66,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                         onTap: () {
                           AutoRouter.of(context).push(const CartRoute());
                         },
-                        child: Badge(
+                        child: badges.Badge(
                           badgeContent: Text(
                             '${context.watch<CartCubit>().state.length}',
                             style: const TextStyle(color: Colors.white),

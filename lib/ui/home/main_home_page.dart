@@ -18,8 +18,10 @@ import 'package:kibanda_kb/cubits/cubit/authentication/session_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/authentication/token_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/category_products_refresh_cubit/category_products_refresh_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/ui_cubits/customer_id_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/ui_cubits/home_bottom_index_cubit.dart';
 import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
+import 'package:kibanda_kb/cubits/product_category_cubit.dart';
 import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
 import 'package:kibanda_kb/models/customer_token_model.dart';
 import 'package:kibanda_kb/models/kibanda_model/kibanda.dart';
@@ -34,6 +36,7 @@ import 'package:kibanda_kb/ui/home/product/product_tile.dart';
 import 'package:quantity_input/quantity_input.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
+import 'package:badges/badges.dart' as badges;
 
 import '../../authentication/customer_cookie_cubit.dart';
 
@@ -58,142 +61,6 @@ class _MainHomePageState extends State<MainHomePage> {
     ];
     return Scaffold(
       body: pages[context.watch<HomeBottomIndexCubit>().state],
-      // Column(
-      //   children: [
-      //     Container(
-      //       padding: EdgeInsets.all(8),
-      //       decoration: BoxDecoration(
-      //           color: Palette.orangeBackgroundColor,
-      //           borderRadius: BorderRadius.circular(10)),
-      //       child: IntrinsicHeight(
-      //         child: Row(
-      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //           children: [
-      //             // Row(
-      //             //   children: const [
-      //             //     Text(
-      //             //       'Pick your Kibanda here ',
-      //             //       style: TextStyle(
-      //             //         fontFamily: 'Red Hat Display-BoldItalic',
-      //             //         fontStyle: FontStyle.italic,
-      //             //       ),
-      //             //     ),
-      //             //     Icon(
-      //             //       Boxicons.bx_arrow_from_left,
-      //             //       size: 14,
-      //             //     ),
-      //             //   ],
-      //             // ),
-      //             Flexible(
-      //                 child: BlocBuilder<KibandalistCubit, KibandalistState>(
-      //               builder: (context, state) {
-      //                 return state.maybeWhen(
-      //                     loading: () => const Center(
-      //                           child: CircularProgressIndicator(),
-      //                         ),
-      //                     success: ((kibandaskistores) =>
-      //                         FormBuilderSearchableDropdown<String>(
-      //                           // dropdownDecoratorProps:
-      //                           //     const DropDownDecoratorProps(
-      //                           //   dropdownSearchDecoration: InputDecoration(
-      //                           //     disabledBorder: InputBorder.none,
-      //                           //     hintText: 'Select a Kibanda',
-      //                           //     hintStyle: TextStyle(
-      //                           //       color: Colors.black,
-      //                           //       fontSize: 12,
-      //                           //     ),
-      //                           //   ),
-      //                           // ),
-
-      //                           name: '',
-      //                           decoration: const InputDecoration(
-      //                             labelText: 'Select Kibanda',
-      //                           ),
-      //                           popupProps: const PopupProps.menu(
-      //                               showSearchBox: true,
-      //                               title: Text('Search Kibanda')),
-      //                           items: kibandaskistores!
-      //                               .map(
-      //                                   (e) => e.firstname! + ' ' + e.lastname!)
-      //                               .toList(),
-      //                           onChanged: (val) async {
-      //                             var selectedKibanda = kibandaskistores!
-      //                                 .firstWhere((element) =>
-      //                                     element.firstname! +
-      //                                         ' ' +
-      //                                         element.lastname! ==
-      //                                     val);
-      //                             context
-      //                                 .read<SelectedKibandaCubit>()
-      //                                 .save(selectedKibanda);
-      //                             var response = await ApiService.postCustomer(
-      //                                 data: {
-      //                                   'telephone': selectedKibanda.telephone
-      //                                 },
-      //                                 path: 'customer/login/loginascustomer');
-      //                             var data = response['token'];
-      //                             var cookieData = response['cookie'];
-      //                             context.read<CustomerTokenCubit>().emit(data);
-      //                             // context.read<TokenCubit>().emit(data);
-      //                             context
-      //                                 .read<CustomerCookieCubit>()
-      //                                 .emit(cookieData);
-      //                             CustomerCookieCubit cookieCubit =
-      //                                 BlocProvider.of<CustomerCookieCubit>(
-      //                                     context);
-      //                             GetIt.I.registerSingleton(cookieCubit);
-      //                             GetIt.I.registerSingleton<CustomerTokenModel>(
-      //                                 CustomerTokenModel(
-      //                                     token: data, cookie: cookieData));
-
-      //                             /// This [val] is the value of the selected item (Customer ID)
-      //                             // context
-      //                             //     .read<VendorProductsCubit>()
-      //                             //     .getVendorProductsByAllCategories(
-      //         customerId: selectedKibanda
-      //             .customer_id as int);
-      //                             context
-      //                                 .read<FeaturedProductCubit>()
-      //                                 .getFeaturedProducts(context);
-      //                           },
-      //                         )),
-      //                     orElse: () {
-      //                       return Container();
-      //                     });
-      //               },
-      //             )),
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //     Expanded(
-      //       child: BlocBuilder<FeaturedProductCubit, FeaturedProductState>(
-      //         builder: (context, state) {
-      //           return state.maybeWhen(loading: () {
-      //             return const Center(
-      //               child:
-      //                   CupertinoActivityIndicator(color: Palette.greenColor),
-      //             );
-      //           }, success: (productList) {
-      //             return ListView.builder(
-      //               itemCount: productList.length,
-      //               itemBuilder: (BuildContext context, int index) {
-      //                 return ProductTile(product: productList[index]);
-      //               },
-
-      //               // children: productList
-      //               //     .map((e) => CardWidget(vendorProducts: e))
-      //               //     .toList(),
-      //             );
-      //           }, orElse: () {
-      //             return Container();
-      //           });
-      //         },
-      //       ),
-      //     ),
-      //   ],
-      // ),
-
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
         selectedIconTheme: IconThemeData(color: Palette.orangeColor),
@@ -204,7 +71,7 @@ class _MainHomePageState extends State<MainHomePage> {
         },
         currentIndex: context.watch<HomeBottomIndexCubit>().state,
         items: [
-          BottomNavigationBarItem(
+        const  BottomNavigationBarItem(
               icon: Icon(
                 CupertinoIcons.home,
               ),
@@ -212,8 +79,8 @@ class _MainHomePageState extends State<MainHomePage> {
           // BottomNavigationBarItem(
           //     icon: Icon(CupertinoIcons.bag), label: 'Baskets'),
           BottomNavigationBarItem(
-              icon: Badge(
-                badgeColor: Palette.greenColor,
+              icon: badges.Badge(
+                // badgeColor: Palette.greenColor,
                 badgeContent: Text(
                   context.watch<CartCubit>().state.length.toString(),
                   style: TextStyle(color: Colors.white),
@@ -489,7 +356,7 @@ class _HomeWidgetState extends State<HomeWidget> {
             onPressed: () {
               AutoRouter.of(context).push(const CartRoute());
             },
-            child: Badge(
+            child: badges.Badge(
               badgeContent: Text(
                 '${context.watch<CartCubit>().state.length}',
                 style: const TextStyle(color: Colors.white),
@@ -605,6 +472,28 @@ class _HomeWidgetState extends State<HomeWidget> {
                           });
                     },
                   )),
+                  Flexible(
+                      child: CupertinoButton(
+                          child: const Text(
+                            "View Categories",
+                            style: TextStyle(
+                                color: Palette.orangeColor, fontSize: 14),
+                          ),
+                          onPressed: () {
+                            context
+                                .read<ProductCategoryCubit>()
+                                .getProductCategories();
+                            AutoRouter.of(context)
+                                .push(ExpandedCategoriesRoute());
+                            // context
+                            //     .read<FeaturedProductCubit>()
+                            //     .getFeaturedProducts(
+                            //         categoryId:
+                            //             int.parse(category.category_id!),
+                            //         customerId:
+                            //             context.read<CustomerIdCubit>().state,
+                            //         page: 1);
+                          }))
                 ],
               ),
             ),
@@ -960,16 +849,5 @@ class MoreWidget extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class CustomerIdCubit extends Cubit<int> {
-  CustomerIdCubit(int state) : super(state);
-
-  // var token =
-  //     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjI0NzkxOTQsImp0aSI6Im9qNVZGVHJRTHRIXC96NCtRanFvdG1oazU1T29vS1oyRFJsR01sZFltdU8wPSIsImlzcyI6InNlcnZlck5hbWUiLCJuYmYiOjE2NjI0NzkxOTQsImV4cCI6MTY3ODI1OTE5NCwiZGF0YSI6eyJpZCI6IjY1MiIsIm5hbWUiOiI3NDYwNTE4MzMifX0.6ezMPOyS0I9u2UURah4AvSchEBO0rvs2tR9WDxXlpfLwbi_rqa8OcZdtIZW-xth5eStP3mWSEVJHMZHJJgn-0g';
-
-  saveToken(int customerID) {
-    emit(customerID);
   }
 }

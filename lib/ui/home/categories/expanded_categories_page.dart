@@ -3,6 +3,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kibanda_kb/configuration/configuration.dart';
@@ -10,11 +11,11 @@ import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/ui_cubits/categories_tab_index_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/ui_cubits/customer_id_cubit.dart';
+
 import 'package:kibanda_kb/cubits/product_category_cubit.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:kibanda_kb/ui/home/categories/category_products_widget.dart';
-import 'package:kibanda_kb/utilities/toast/toast.dart';
-import 'package:badges/badges.dart' as badges;
+import 'package:kibanda_kb/utilities/utilities.dart';
 
 class ExpandedCategoriesPage extends StatelessWidget {
   const ExpandedCategoriesPage({Key? key}) : super(key: key);
@@ -42,28 +43,27 @@ class ExpandedCategoriesPage extends StatelessWidget {
                   )),
               actions: [
                 CupertinoButton(
-                    child: Icon(CupertinoIcons.search, color: Colors.black),
                     padding: EdgeInsets.all(0),
                     onPressed: () {
-                      // AutoRouter.of(context).push(SearchRoute(searchQuery: ''));
-                    }),
+                      AutoRouter.of(context).push(SearchRoute(searchQuery: ''));
+                    },
+                    child: Icon(CupertinoIcons.search, color: Colors.black)),
                 CupertinoButton(
-                    // ignore: sort_child_properties_last
+                    padding: EdgeInsets.all(0),
+                    onPressed: () {
+                      AutoRouter.of(context).push(CartRoute());
+                    },
                     child: badges.Badge(
                       badgeContent: Text(
                         context.watch<CartCubit>().state.length.toString(),
                         style: TextStyle(color: Colors.white),
                       ),
-                      // badgeColor: Palette.greenColor,
+                      // color: Palette.greenColor,
                       child: const Icon(
                         CupertinoIcons.cart,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
-                    ),
-                    padding: EdgeInsets.all(0),
-                    onPressed: () {
-                      AutoRouter.of(context).push(CartRoute());
-                    }),
+                    )),
               ],
             ),
           ),
@@ -173,13 +173,12 @@ class ExpandedCategoriesPage extends StatelessWidget {
                                       context
                                           .read<FeaturedProductCubit>()
                                           .getFeaturedProducts(
-                                              customerId: context
-                                                  .read<CustomerIdCubit>()
-                                                  .state,
-                                              page: 1,
-                                              categoryId: int.parse(
-                                                  categories[val]
-                                                      .category_id!));
+                                            customerId: context
+                                                .read<CustomerIdCubit>()
+                                                .state,
+                                            page: 1,
+                                            categoryId: int.parse(categories[val].category_id!)
+                                          );
                                     },
                                     children: List.generate(
                                         categories.length,

@@ -15,17 +15,18 @@ class FeaturedProductCubit extends Cubit<FeaturedProductState> {
   getFeaturedProducts({
     required int page,
     required int customerId,
+    int? categoryId,
   }) async {
     emit(const FeaturedProductState.loading());
     try {
       var response = await RestService()
           .getDataCustomer(path: 'customer/products', queries: {
-        'store_id': 75,
+        // 'store_id': 75,
         'search': '',
         // 'page': page,
-        'limit': 200,
+        'limit': 50,
         'customer_id': customerId,
-        'parent': '0',
+        // 'parent': '0',
       });
       List products = response['data']['products'];
       emit(FeaturedProductState.success(
@@ -40,13 +41,13 @@ class FeaturedProductCubit extends Cubit<FeaturedProductState> {
 
   Future<List<VendorProducts>> getMore({
     required int page,
-    // required int categoryId,
+    int? categoryId,
     // required int limit,
     required int customerId,
   }) async {
     var response = await RestService()
         .getDataCustomer(path: 'customer/products', queries: {
-      'store_id': '75',
+      // 'store_id': '75',
       'customer_id': customerId,
       'search': '',
       // 'page': page +1,

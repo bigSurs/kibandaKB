@@ -3,6 +3,7 @@ import 'package:kibanda_kb/delivery/delivery_details_page.dart';
 import 'package:kibanda_kb/ui/address/my_addresses_page.dart';
 import 'package:kibanda_kb/ui/home/cart/cart_page.dart';
 import 'package:kibanda_kb/ui/home/cart/order_success_page.dart';
+import 'package:kibanda_kb/ui/home/categories/search_page.dart';
 import 'package:kibanda_kb/ui/home/expanded_categories_page.dart';
 import 'package:kibanda_kb/ui/home/main_home_page.dart';
 import 'package:kibanda_kb/ui/home/my_orders/my_orders_page.dart';
@@ -30,6 +31,7 @@ import 'package:kibanda_kb/ui/splash_screen.dart';
   AutoRoute(page: SingleOrderPage),
   AutoRoute(page: TransactionPage),
   AutoRoute(page: TransactionalMpesaPage),
-  AutoRoute(page: DeliveryDetailsPage)
+  AutoRoute(page: DeliveryDetailsPage),
+  AutoRoute(page:  SearchPage)
 ])
 class $AppRouter {}

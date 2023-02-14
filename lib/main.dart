@@ -31,6 +31,11 @@ void main() async {
   /// Initialize hydrated storage for all state persists storage
   final storage =
       await HydratedStorage.build(storageDirectory: storageDirectory);
-  HydratedBlocOverrides.runZoned(() => runApp(KwikBasketKibandaApp()),
-      storage: storage);
+  // HydratedBloc.storage.runZoned(() => runApp(KwikBasketKibandaApp()),
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getTemporaryDirectory(),
+  );
+  runApp(KwikBasketKibandaApp());
 }

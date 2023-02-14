@@ -19,8 +19,12 @@ import 'package:kibanda_kb/cubits/cubit/payments/lipa_na_mpesa_cubit/lipa_na_mpe
 import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/payment_method_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/selected_payment_method_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/place_order_cubit/place_order_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/products_cubit/products_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/products_cubit/recently_searched_products_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/save_to_basket_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/transactional_payment/transactional_payment_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/ui_cubits/categories_tab_index_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/ui_cubits/customer_id_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/ui_cubits/home_bottom_index_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/ui_cubits/transaction_top_index_cubit.dart';
 import 'package:kibanda_kb/cubits/cubit/validate_order_cubit.dart';
@@ -30,6 +34,7 @@ import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
 import 'package:kibanda_kb/cubits/login_cubit/login_cubit.dart';
 import 'package:kibanda_kb/cubits/my_orders_cubit/my_orders_cubit.dart';
 import 'package:kibanda_kb/cubits/order_details_cubit/order_details_cubit.dart';
+import 'package:kibanda_kb/cubits/product_category_cubit.dart';
 import 'package:kibanda_kb/cubits/select_date_timeslot/select_date_cubit.dart';
 import 'package:kibanda_kb/cubits/select_date_timeslot/select_timeslot_cubit.dart';
 import 'package:kibanda_kb/cubits/transactions/transaction_cubit.dart';
@@ -68,6 +73,15 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(
           create: (context) => CategoryProductsRefreshCubit(),
         ),
+        BlocProvider(
+          create: (context) => CategoriesTabIndexCubit(0),
+        ),
+        BlocProvider(
+          create: (context) => ProductsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => RecentlySearchedProductsCubit([]),
+        ),
         BlocProvider(create: (context) => CustomerCookieCubit('')),
         BlocProvider(create: (context) => CustomerTokenCubit('')),
         BlocProvider(create: (context) => VendorProductsCubit()),
@@ -93,6 +107,9 @@ class KwikBasketKibandaApp extends StatelessWidget {
               SelectedPaymentMethodCubit(PaymentMethod(code: 'cod')),
         ),
         BlocProvider(
+          create: (context) => SelectedVariationCubit(),
+        ),
+        BlocProvider(
           create: (context) => LipaNaMpesaCubit(),
         ),
         BlocProvider(create: (context) => SaveToBasketCubit()),
@@ -110,6 +127,10 @@ class KwikBasketKibandaApp extends StatelessWidget {
         BlocProvider(create: (context) => SelectDeliveryDateCubit()),
         BlocProvider(create: (context) => SelectTimeslotCubit('')),
         BlocProvider(create: (context) => CustomerIdCubit(0)),
+        BlocProvider(
+          //Get them at first the category cubit is hit
+          create: (context) => ProductCategoryCubit()..getProductCategories(),
+        ),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(
