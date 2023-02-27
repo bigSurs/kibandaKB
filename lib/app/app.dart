@@ -3,9 +3,47 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kibanda_kb/authentication/customer_cookie_cubit.dart';
+import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/cubits/address/delivery_address_selection_cubit.dart';
+import 'package:kibanda_kb/cubits/cart/cart_cubit.dart';
+import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/authentication/session_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/category_products_refresh_cubit/category_products_refresh_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/delivery_timeslot/delivery_timeslot_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/featured_product_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/payments/lipa_na_mpesa_cubit/lipa_na_mpesa_cubit.dart';
+
+import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/payment_method_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/payments/payment_method_cubit/selected_payment_method_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/place_order_cubit/place_order_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/products_cubit/products_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/products_cubit/recently_searched_products_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/save_to_basket_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/transactional_payment/transactional_payment_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/ui_cubits/categories_tab_index_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/ui_cubits/customer_id_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/ui_cubits/home_bottom_index_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/ui_cubits/transaction_top_index_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/validate_order_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/wishlist_cubit.dart';
+import 'package:kibanda_kb/cubits/customer_address/customer_address_cubit.dart';
+import 'package:kibanda_kb/cubits/kibandalist/kibandalist_cubit.dart';
+import 'package:kibanda_kb/cubits/login_cubit/login_cubit.dart';
+import 'package:kibanda_kb/cubits/my_orders_cubit/my_orders_cubit.dart';
+import 'package:kibanda_kb/cubits/order_details_cubit/order_details_cubit.dart';
+import 'package:kibanda_kb/cubits/product_category_cubit.dart';
+import 'package:kibanda_kb/cubits/select_date_timeslot/select_date_cubit.dart';
+import 'package:kibanda_kb/cubits/select_date_timeslot/select_timeslot_cubit.dart';
+import 'package:kibanda_kb/cubits/transactions/transaction_cubit.dart';
+import 'package:kibanda_kb/cubits/vendor_products/vendor_products_cubit.dart';
+import 'package:kibanda_kb/models/payment_method/payment_method.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
+import 'package:kibanda_kb/ui/home/main_home_page.dart';
+import 'package:kibanda_kb/ui/home/payments/payment_options_page.dart';
+import 'package:kibanda_kb/ui/home/product/expanded_product_widget.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:kibanda_kb/routes/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -26,7 +64,73 @@ class KwikBasketKibandaApp extends StatelessWidget {
     ]);
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
         BlocProvider(create: (context) => TokenCubit('')),
+        BlocProvider(
+          create: (context) => SessionCubit(''),
+        ),
+        BlocProvider(
+          create: (context) => CategoryProductsRefreshCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CategoriesTabIndexCubit(0),
+        ),
+        BlocProvider(
+          create: (context) => ProductsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => RecentlySearchedProductsCubit([]),
+        ),
+        BlocProvider(create: (context) => CustomerCookieCubit('')),
+        BlocProvider(create: (context) => CustomerTokenCubit('')),
+        BlocProvider(create: (context) => VendorProductsCubit()),
+        BlocProvider(create: (context) => SelectedKibandaCubit()),
+        BlocProvider(create: (context) => TransactionalPaymentCubit()),
+        BlocProvider(create: (context) => KibandalistCubit()..getVibandas()),
+        BlocProvider(create: (context) => FeaturedProductCubit()),
+        BlocProvider(create: (context) => HomeBottomIndexCubit(0)),
+        BlocProvider(create: (context) => TransactionIndexCubit(0)),
+        BlocProvider(
+            create: (context) => TransactionCubit()..getallTransactions()),
+        BlocProvider(create: (context) => CartCubit([])),
+        BlocProvider(create: (context) => CartProductMetadataCubit([])),
+        BlocProvider(create: (context) => SelectedVariationCubit()),
+        BlocProvider(
+          create: (context) => PaymentMethodCubit(),
+        ),
+        BlocProvider(
+          create: (context) => OrderDetailsCubit(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              SelectedPaymentMethodCubit(PaymentMethod(code: 'cod')),
+        ),
+        BlocProvider(
+          create: (context) => SelectedVariationCubit(),
+        ),
+        BlocProvider(
+          create: (context) => LipaNaMpesaCubit(),
+        ),
+        BlocProvider(create: (context) => SaveToBasketCubit()),
+        BlocProvider(create: (context) => ValidateOrderCubit()),
+        BlocProvider(create: (context) => WishlistCubit()),
+        BlocProvider(create: (context) => CustomerAddressCubit()),
+        // BlocProvider(create: (context) => FeaturedProductCubit()),
+        BlocProvider(create: (context) => PlaceOrderCubit()),
+        BlocProvider(create: (context) => DeliveryTimeslotCubit()),
+        BlocProvider(
+          create: (context) => MyOrdersCubit()..getMyOrders(),
+        ),
+        BlocProvider(create: (context) => HybridSelectedCubit()),
+        BlocProvider(create: (context) => DeliveryAddressSelectionCubit(null)),
+        BlocProvider(create: (context) => SelectDeliveryDateCubit()),
+        BlocProvider(create: (context) => SelectTimeslotCubit('')),
+        BlocProvider(create: (context) => CustomerIdCubit(0)),
+        BlocProvider(
+          //Get them at first the category cubit is hit
+          create: (context) => ProductCategoryCubit()..getProductCategories(),
+        ),
       ],
       child: OverlaySupport.global(
         child: MaterialApp.router(
@@ -41,7 +145,7 @@ class KwikBasketKibandaApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
           ],
           theme: ThemeData(
-              textTheme: GoogleFonts.poppinsTextTheme(),
+              textTheme: GoogleFonts.poppinsTextTheme().copyWith(),
               primaryColor: Palette.greenColor,
               colorScheme: const ColorScheme(
                   primary: Palette.greenColor,

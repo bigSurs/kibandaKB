@@ -7,10 +7,17 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class RestClient {
   Dio? _dio;
+  Dio? _dioNoAUth;
 
   Dio? get dio => _dio;
+  Dio? get dioNoAuth => _dioNoAUth;
 
   String baseURL = 'https://stage.salesexecutiveapi.kwikbasket.com/api/';
+  // String customerURL = 'https://stage.shop.kwikbasket.com/api/';
+  String customerURL = 'https://www.kwikbasket.com/api/';
+  static String url = 'https://stage.shop.kwikbasket.com';
+
+  String imageURL = '$url/image/';
 
   RestClient({BaseOptions? options}) {
     create(options);
@@ -19,6 +26,7 @@ class RestClient {
   /// Instantiate the restclient class
   void create([BaseOptions? options]) {
     _dio = Dio(options);
+    _dioNoAUth = Dio();
 
     ///Add the interceptors
     // The [AuthInterceptor] to authenticate all requests

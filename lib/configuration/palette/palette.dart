@@ -8,6 +8,8 @@ class Palette {
 
   static const Color placeholderGrey = Color(0xffA0A3BD);
 
+  static const Color limeGreenColor = Color.fromRGBO(203, 255, 174, 0.5);
+
   /// The orange accent app color
   static const Color orangeColor = Color(0xffef7b24);
 

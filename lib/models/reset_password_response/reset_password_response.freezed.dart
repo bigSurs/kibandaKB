@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'reset_password_response.dart';
 
@@ -39,7 +39,8 @@ mixin _$ResetPasswordResponse {
 abstract class $ResetPasswordResponseCopyWith<$Res> {
   factory $ResetPasswordResponseCopyWith(ResetPasswordResponse value,
           $Res Function(ResetPasswordResponse) then) =
-      _$ResetPasswordResponseCopyWithImpl<$Res>;
+      _$ResetPasswordResponseCopyWithImpl<$Res, ResetPasswordResponse>;
+  @useResult
   $Res call(
       {int? delivery_executive_id,
       String? firstname,
@@ -51,14 +52,17 @@ abstract class $ResetPasswordResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ResetPasswordResponseCopyWithImpl<$Res>
+class _$ResetPasswordResponseCopyWithImpl<$Res,
+        $Val extends ResetPasswordResponse>
     implements $ResetPasswordResponseCopyWith<$Res> {
   _$ResetPasswordResponseCopyWithImpl(this._value, this._then);
 
-  final ResetPasswordResponse _value;
   // ignore: unused_field
-  final $Res Function(ResetPasswordResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? delivery_executive_id = freezed,
@@ -70,35 +74,35 @@ class _$ResetPasswordResponseCopyWithImpl<$Res>
     Object? date_added = freezed,
   }) {
     return _then(_value.copyWith(
-      delivery_executive_id: delivery_executive_id == freezed
+      delivery_executive_id: freezed == delivery_executive_id
           ? _value.delivery_executive_id
           : delivery_executive_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      firstname: firstname == freezed
+      firstname: freezed == firstname
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastname: lastname == freezed
+      lastname: freezed == lastname
           ? _value.lastname
           : lastname // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      telephone: telephone == freezed
+      telephone: freezed == telephone
           ? _value.telephone
           : telephone // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      date_added: date_added == freezed
+      date_added: freezed == date_added
           ? _value.date_added
           : date_added // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -109,6 +113,7 @@ abstract class _$$_ResetPasswordResponseCopyWith<$Res>
           $Res Function(_$_ResetPasswordResponse) then) =
       __$$_ResetPasswordResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? delivery_executive_id,
       String? firstname,
@@ -121,16 +126,13 @@ abstract class _$$_ResetPasswordResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_ResetPasswordResponseCopyWithImpl<$Res>
-    extends _$ResetPasswordResponseCopyWithImpl<$Res>
+    extends _$ResetPasswordResponseCopyWithImpl<$Res, _$_ResetPasswordResponse>
     implements _$$_ResetPasswordResponseCopyWith<$Res> {
   __$$_ResetPasswordResponseCopyWithImpl(_$_ResetPasswordResponse _value,
       $Res Function(_$_ResetPasswordResponse) _then)
-      : super(_value, (v) => _then(v as _$_ResetPasswordResponse));
+      : super(_value, _then);
 
-  @override
-  _$_ResetPasswordResponse get _value =>
-      super._value as _$_ResetPasswordResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? delivery_executive_id = freezed,
@@ -142,31 +144,31 @@ class __$$_ResetPasswordResponseCopyWithImpl<$Res>
     Object? date_added = freezed,
   }) {
     return _then(_$_ResetPasswordResponse(
-      delivery_executive_id: delivery_executive_id == freezed
+      delivery_executive_id: freezed == delivery_executive_id
           ? _value.delivery_executive_id
           : delivery_executive_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      firstname: firstname == freezed
+      firstname: freezed == firstname
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastname: lastname == freezed
+      lastname: freezed == lastname
           ? _value.lastname
           : lastname // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      telephone: telephone == freezed
+      telephone: freezed == telephone
           ? _value.telephone
           : telephone // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      date_added: date_added == freezed
+      date_added: freezed == date_added
           ? _value.date_added
           : date_added // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -214,38 +216,37 @@ class _$_ResetPasswordResponse implements _ResetPasswordResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ResetPasswordResponse &&
-            const DeepCollectionEquality()
-                .equals(other.delivery_executive_id, delivery_executive_id) &&
-            const DeepCollectionEquality().equals(other.firstname, firstname) &&
-            const DeepCollectionEquality().equals(other.lastname, lastname) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.telephone, telephone) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.date_added, date_added));
+            (identical(other.delivery_executive_id, delivery_executive_id) ||
+                other.delivery_executive_id == delivery_executive_id) &&
+            (identical(other.firstname, firstname) ||
+                other.firstname == firstname) &&
+            (identical(other.lastname, lastname) ||
+                other.lastname == lastname) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.telephone, telephone) ||
+                other.telephone == telephone) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.date_added, date_added) ||
+                other.date_added == date_added));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(delivery_executive_id),
-      const DeepCollectionEquality().hash(firstname),
-      const DeepCollectionEquality().hash(lastname),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(telephone),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(date_added));
+  int get hashCode => Object.hash(runtimeType, delivery_executive_id, firstname,
+      lastname, email, telephone, status, date_added);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ResetPasswordResponseCopyWith<_$_ResetPasswordResponse> get copyWith =>
       __$$_ResetPasswordResponseCopyWithImpl<_$_ResetPasswordResponse>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ResetPasswordResponseToJson(this);
+    return _$$_ResetPasswordResponseToJson(
+      this,
+    );
   }
 }
 
@@ -263,19 +264,19 @@ abstract class _ResetPasswordResponse implements ResetPasswordResponse {
       _$_ResetPasswordResponse.fromJson;
 
   @override
-  int? get delivery_executive_id => throw _privateConstructorUsedError;
+  int? get delivery_executive_id;
   @override
-  String? get firstname => throw _privateConstructorUsedError;
+  String? get firstname;
   @override
-  String? get lastname => throw _privateConstructorUsedError;
+  String? get lastname;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get telephone => throw _privateConstructorUsedError;
+  String? get telephone;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  String? get date_added => throw _privateConstructorUsedError;
+  String? get date_added;
   @override
   @JsonKey(ignore: true)
   _$$_ResetPasswordResponseCopyWith<_$_ResetPasswordResponse> get copyWith =>

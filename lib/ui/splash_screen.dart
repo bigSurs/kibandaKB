@@ -2,9 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:kibanda_kb/authentication/customer_token.dart';
 import 'package:kibanda_kb/authentication/token_cubit.dart';
 import 'package:kibanda_kb/configuration/palette/palette.dart';
+import 'package:kibanda_kb/cubits/cart/cart_product_metadata_cubit.dart';
+import 'package:kibanda_kb/cubits/cubit/authentication/session_cubit.dart';
 import 'package:kibanda_kb/routes/router.gr.dart';
 import 'package:get_it/get_it.dart';
 
@@ -20,21 +24,22 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 5), () {
-      AutoRouter.of(context).replace(LoginRoute());
-      // await startKioskMode();
-
-      // TokenCubit tokenCubit = GetIt.I.get<TokenCubit>();
-
-      // // IsDeCubit isDeCubit = GetIt.I.get<IsDeCubit>();
-      // tokenCubit.state.isEmpty
-      //     ? AutoRouter.of(context).replace(const LoginRoute())
-      //     : AutoRouter.of(context).replace(const MainHomeRoute());
-
-      // tokenCubit.state.isEmpty
-      //     ? AutoRouter.of(context).replace(LoginRoute())
-      //     : isDeCubit.state
-      //         ? AutoRouter.of(context).replace(MainHomeDeliveryExecutiveRoute())
-      //         : AutoRouter.of(context).replace(const MainHomeRoute());
+      //
+      TokenCubit tokenCubit = BlocProvider.of<TokenCubit>(context);
+      SessionCubit sessionCubit = BlocProvider.of<SessionCubit>(context);
+      CustomerTokenCubit customertokenCubit =
+          BlocProvider.of<CustomerTokenCubit>(context);
+      CartProductMetadataCubit cartProductMetadataCubit =
+          BlocProvider.of<CartProductMetadataCubit>(context);
+      GetIt.I.registerSingleton(tokenCubit);
+      GetIt.I.registerSingleton(customertokenCubit);
+      GetIt.I.registerSingleton(sessionCubit);
+      GetIt.I.registerSingleton(cartProductMetadataCubit);
+      if (tokenCubit.state.isNotEmpty) {
+        AutoRouter.of(context).replace(const MainHomeRoute());
+      } else {
+        AutoRouter.of(context).replace(const LoginRoute());
+      }
     });
   }
 
